@@ -1,0 +1,45 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@property --border-angle {
+  inherits: false;
+  initial-value: 0deg;
+  syntax: "<angle>";
+}
+
+@layer utilities {
+  .glow {
+    background: radial-gradient(
+      circle at center,
+      rgba(32, 26, 202, 0.1) 0%,
+      rgba(91, 16, 230, 0.08) 25%,
+      transparent 50%
+    );
+  }
+}
+
+/* For the entire scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* For the scrollbar track (background) */
+::-webkit-scrollbar-track {
+  background: #18181b; /* Add any color or background you'd like */
+}
+
+/* For the scrollbar thumb (the scroll handle) */
+::-webkit-scrollbar-thumb {
+  background: #27272a; /* Add any color you'd like */
+  border: 1px solid #3f3f46;
+}
+section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.disable-transitions * {
+  transition: none !important;
+}
