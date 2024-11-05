@@ -15,19 +15,19 @@ import { toast, Toaster } from "react-hot-toast";
 import { motion, AnimatePresence } from "framer-motion";
 
 export const Topic = ({ children }) => (
-  <h1 className="mt-5 mb-5 text-xl font-medium md:mt-0 md:text-4xl text-zinc-800 dark:text-zinc-100">
+  <h1 className="text-2xl font-medium mt- md:mt-0 md:text-4xl text-zinc-800 dark:text-zinc-100">
     {children}
   </h1>
 );
 
 export const Title = ({ children }) => (
-  <h1 className="mt-5 text-xl font-medium md:text-2xl text-zinc-700 dark:text-zinc-200">
+  <h1 className="mt-5 text-lg font-medium md:text-2xl text-zinc-700 dark:text-zinc-300">
     {children}
   </h1>
 );
 
 export const Description = ({ children }) => (
-  <p className="text-sm md:text-base text-zinc-700 dark:text-zinc-400">
+  <p className="text-sm md:text-base text-zinc-500 dark:text-[#7e7e7e]">
     {children}
   </p>
 );
@@ -170,7 +170,7 @@ export const Image = ({ image, height }) => (
 );
 
 export const List = ({ title, items }) => (
-  <div className="flex flex-col gap-2 text-zinc-700 dark:text-zinc-300">
+  <div className="flex flex-col gap-2 text-zinc-700 dark:text-[#7e7e7e]">
     <h1 className="text-base md:text-lg">{title}</h1>
     <ul className="flex flex-col gap-3 px-4 py-2 md:px-8">
       {items.map((item, index) => (

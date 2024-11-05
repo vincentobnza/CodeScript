@@ -84,7 +84,7 @@ export default function Quiz() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1.5 }}
-        className="relative w-full h-screen p-5 space-y-4 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300"
+        className="relative w-full h-screen p-3 space-y-10 bg-white md:space-y-4 lg:space-y-4 dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300"
       >
         <div className="flex justify-between w-full max-w-screen-lg p-2 mx-auto">
           <div className="relative flex flex-col gap-2 ml-2">
@@ -101,7 +101,7 @@ export default function Quiz() {
                 showArrow={true}
                 placement="bottom"
                 content={
-                  <div className="w-[200px] p-3 font-NotoSans">
+                  <div className="w-[220px] p-3 font-NotoSans">
                     <h1 className="mb-3 text-xs font-semibold">
                       Fantastic Score 🥳
                     </h1>
@@ -113,7 +113,7 @@ export default function Quiz() {
               >
                 <button
                   onClick={triggerConfetti}
-                  className="px-2 py-1 text-xs font-semibold bg-transparent border rounded-full outline-none text-zinc-600 dark:text-zinc-200 border-zinc-200 dark:border-zinc-700"
+                  className="hidden px-4 py-1 text-xs font-semibold bg-transparent border rounded-full outline-none lg:flex md:flex text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:border-zinc-700"
                 >
                   Make a Celebration 🎉
                 </button>
@@ -364,8 +364,9 @@ const QuizCard = ({ points, setPoints, quizCompleted, setQuizCompleted }) => {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.7 }}
-        className="flex flex-col items-center justify-center w-full max-w-screen-lg gap-4 p-5 mx-auto text-center"
+        className="relative flex flex-col items-center justify-center w-full max-w-screen-lg gap-4 p-5 mx-auto text-center "
       >
+        <div className="absolute w-[240px] h-[100px] bg-green-600/60  bottom-24 z-0 filter blur-[80px]" />
         <motion.div
           initial={{ filter: "blur(10px)" }}
           whileInView={{ filter: "blur(0px)" }}
@@ -385,29 +386,32 @@ const QuizCard = ({ points, setPoints, quizCompleted, setQuizCompleted }) => {
           out of {quizData.length}
         </h2>
 
-        <div className="grid w-full max-w-lg gap-2 mt-5 md:grid-cols-3">
+        <div className="grid w-full max-w-screen-xl grid-cols-3 gap-1 mt-5 md:gap-2 md:max-w-lg">
           {quizDetails.map((details, idx) => (
             <div
               key={idx}
-              className="relative flex flex-col gap-2 p-6 overflow-hidden text-left border rounded bg-zinc-100 dark:bg-zinc-800 border-zinc-300 dark:border-zinc-700"
+              className="relative z-10 flex flex-col gap-2 p-4 overflow-hidden text-left border rounded md:p-6 bg-zinc-100 dark:bg-zinc-800/50 border-zinc-300 dark:border-[#393939]"
             >
-              <h1 className="absolute text-5xl opacity-40 -bottom-2 -right-2 grayscale">
+              <h1 className="absolute text-3xl md:text-5xl opacity-40 -bottom-2 -right-2 grayscale">
                 {details.icon}
               </h1>
-              <h1 className="text-xs font-semibold text-zinc-700 dark:text-zinc-400">
+              <h1 className="text-[9px] md:text-xs font-semibold text-zinc-700 dark:text-zinc-400">
                 {details.title}
               </h1>
-              <h1 className="text-3xl font-bold text-zinc-900 dark:text-white">
+              <h1 className="text-3xl font-bold text-zinc-900 dark:text-zinc-100">
                 {details.value}
               </h1>
             </div>
           ))}
         </div>
 
-        <div className="text-lg font-bold mt-14">
-          <Link to={nextRoute} className="flex items-center gap-3">
+        <div className="relative text-lg font-bold mt-14">
+          <Link
+            to={nextRoute}
+            className="flex items-center gap-3 text-xs md:text-sm"
+          >
             Next:{" "}
-            <span className="flex items-center gap-3 text-green-500 animate-pulse">
+            <span className="flex items-center gap-3 text-green-500 ">
               {title} <MoveRight size={20} />
             </span>
           </Link>

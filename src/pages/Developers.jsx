@@ -67,7 +67,7 @@ const TeamImage = () => {
             transition={{ duration: 0.5, delay: index * 0.1 }}
           >
             <Card
-              className="max-w-[340px] mx-auto border border-zinc-200 dark:border-zinc-700 group cursor-pointer"
+              className="max-w-[320px] mx-auto border border-zinc-200 dark:border-zinc-700 group cursor-pointer"
               radius="none"
               shadow="none"
             >

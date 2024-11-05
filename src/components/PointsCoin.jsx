@@ -159,7 +159,7 @@ export default function PointsCoin() {
           toastShownRef.current = true;
           updatePoints(5);
           updateProgress(0.5);
-    s
+          s;
         }
         setIsLoading(true);
         return 0;
@@ -205,7 +205,7 @@ export default function PointsCoin() {
     <div className="fixed z-50 flex items-center gap-3 bottom-4 right-4">
       {points === 100 && (
         <p className="mb-10 text-xs font-semibold text-amber-300 animate-pulse">
-          Click to gain points and progress
+          Click to gain points
         </p>
       )}
       <div className="flex flex-col items-center gap-1">

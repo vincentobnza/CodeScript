@@ -26,7 +26,7 @@
 
 /* For the scrollbar track (background) */
 ::-webkit-scrollbar-track {
-  background: #18181b; /* Add any color or background you'd like */
+  background: #242425; /* Add any color or background you'd like */
 }
 
 /* For the scrollbar thumb (the scroll handle) */

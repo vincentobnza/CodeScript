@@ -2,7 +2,7 @@
 
 import React from "react";
 import { motion } from "framer-motion";
-import { Card, CardBody, CardFooter, CardHeader } from "@nextui-org/react";
+import { Card, CardHeader } from "@nextui-org/react";
 import {
   Container,
   Target,
@@ -60,43 +60,43 @@ const jsLessons = [
 
 export default function InfiniteMarquee() {
   return (
-    <div className="w-full max-w-screen-lg mx-auto overflow-hidden">
-      <div className="relative w-full">
+    <div className="w-full max-w-screen-lg mx-auto overflow-hidden bg-transparent">
+      <div className="relative w-full bg-transparent">
         {/* Left gradient */}
         <div className="absolute top-0 left-0 z-10 w-32 h-full bg-gradient-to-r from-white dark:from-zinc-900 to-transparent"></div>
         {/* Right gradient */}
         <div className="absolute top-0 right-0 z-10 w-32 h-full bg-gradient-to-l from-white dark:from-zinc-900 to-transparent"></div>
 
         <motion.div
-          className="flex items-center h-full py-4"
+          className="flex items-center h-full py-4 bg-transparent"
           animate={{
-            x: [0, -100 * jsLessons.length * 2], // Doubled to account for the duplicated array
+            x: [0, -100 * jsLessons.length * 2],
           }}
           transition={{
             x: {
               repeat: Infinity,
               repeatType: "loop",
-              duration: 60, // Increased duration for smoother animation
+              duration: 60,
               ease: "linear",
             },
           }}
         >
-          {jsLessons.map((lesson, index) => (
+          {[...jsLessons, ...jsLessons].map((lesson, index) => (
             <motion.div key={index} className="w-full m-2">
-              <Card className="p-3">
+              <Card className="p-3 bg-transparent border border-zinc-50 dark:border-zinc-800">
                 <CardHeader>
                   <div className="flex items-center space-x-4">
-                    <div className="grid bg-white border rounded-lg size-12 place-items-center dark:bg-gradient-to-br dark:from-zinc-800 dark:to-zinc-900 border-zinc-200 dark:border-zinc-800">
+                    <div className="grid bg-white border rounded-lg size-12 place-items-center dark:bg-zinc-800/50 backdrop-blur border-zinc-200 dark:border-zinc-700">
                       <lesson.icon
                         size={20}
                         className="text-green-500 animate-pulse"
                       />
                     </div>
                     <div className="w-[250px] p-2 flex flex-col text-left gap-2">
-                      <div className="text-zinc-700 dark:text-zinc-300">
+                      <div className="text-sm text-zinc-700 dark:text-zinc-300">
                         {lesson.title}
                       </div>
-                      <div className="text-xs text-zinc-500">
+                      <div className="text-xs text-zinc-500 dark:text-zinc-500">
                         {lesson.description}
                       </div>
                     </div>

@@ -69,7 +69,7 @@ export default function FeedbackForm() {
   }
 
   return (
-    <div className="flex items-center justify-center w-full min-h-screen border border-zinc-200 font-NotoSans">
+    <div className="flex items-center justify-center w-full min-h-screen bg-white border border-zinc-200 font-NotoSans">
       <motion.div
         className="w-full max-w-2xl p-8 bg-white rounded-lg "
         variants={containerVariants}
@@ -128,7 +128,7 @@ export default function FeedbackForm() {
                 <textarea
                   id="message"
                   rows={4}
-                  className="w-full p-4 text-xs text-gray-700 border border-gray-300 outline-none resize-none focus:outline-none"
+                  className="w-full p-4 text-xs text-gray-700 bg-white border border-gray-300 outline-none resize-none focus:outline-none"
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   placeholder="Tell us more about your experience..."
@@ -158,17 +158,21 @@ export default function FeedbackForm() {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            <img src={Cat} alt="cat" className="w-48" />
+            <img
+              src="https://cdn-icons-png.flaticon.com/128/5290/5290058.png"
+              alt="check"
+              className="w-20"
+            />
             <div className="flex flex-col w-full max-w-lg gap-3 mx-auto text-center">
               <h2 className="text-3xl font-bold text-gray-800">
                 Thank You for Your Feedback!
               </h2>
-              <p className="text-gray-600 text-md">
+              <p className="text-sm text-gray-600">
                 We appreciate your time and input. Your feedback helps us
                 improve our services.
               </p>
             </div>
-            <Link to="/" className="text-xs font-bold text-orange-600">
+            <Link to="/" className="text-lg font-bold underline text-zinc-800">
               Go back home
             </Link>
           </motion.div>

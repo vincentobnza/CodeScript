@@ -330,10 +330,9 @@ const Ranking = () => {
                           <TableCell>
                             <div className="flex items-center gap-2 md:gap-6">
                               <Avatar
-                                isBordered
                                 src={rankedUser.avatar_url}
                                 alt={`${rankedUser.username}'s profile`}
-                                size="sm"
+                                size="md"
                                 className="hidden md:inline-block"
                               />
                               <div className="flex flex-col gap-1">

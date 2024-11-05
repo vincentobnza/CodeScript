@@ -89,12 +89,12 @@ export default function NavbarQuickSearch({ isOpen, onOpen, onOpenChange }) {
   return (
     <>
       <Modal
-        backdrop="blur"
         radius="none"
-        className="font-sans"
-        size="2xl"
+        className="font-Inter"
+        size="3xl"
         isOpen={isOpen}
         onOpenChange={onOpenChange}
+        hideCloseButton
         motionProps={{
           variants: {
             enter: {
@@ -119,7 +119,10 @@ export default function NavbarQuickSearch({ isOpen, onOpen, onOpenChange }) {
         <ModalContent>
           {(onClose) => (
             <>
-              <div className="relative flex flex-col justify-center w-full border dark:bg-zinc-900 dark:border-zinc-800 bg-zinc-50">
+              <div className="relative flex flex-col justify-center w-full bg-transparent border dark:border-zinc-800">
+                <div className="absolute px-3 py-[4px] text-[9px] border rounded top-1 right-1 bg-white dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-800 border-zinc-200 dark:border-zinc-800">
+                  ESC
+                </div>
                 <div className="grid w-full px-2 border-b h-14 border-zinc-200 dark:border-zinc-800 place-items-center">
                   <div className="relative w-full">
                     <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
