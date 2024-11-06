@@ -68,8 +68,8 @@ const Header = () => {
   }, []);
 
   return (
-    <div className="flex items-start justify-between w-full max-w-screen-lg gap-4 p-3 mx-auto md:p-0 relative">
-
+    <div className="relative flex items-start justify-between w-full max-w-screen-lg gap-4 p-3 mx-auto md:p-0">
+      <div className="absolute w-[240px] h-[100px] bg-green-600/40 rounded-full bottom-8 z-0 filter blur-[100px]" />
       <NavbarQuickSearch
         isOpen={isOpen}
         onOpen={onOpen}
@@ -93,7 +93,7 @@ const Header = () => {
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <Search className="text-gray-400 size-4" />
             </div>
-            <div className="flex items-center justify-start w-full py-3 pl-10 pr-4 bg-transparent bg-white border outline-none dark:bg-zinc-800/50  border-zinc-200 dark:border-zinc-700 hover:border-zinxc-300 dark:hover:border-zinc-600">
+            <div className="flex items-center justify-start w-full py-3 pl-10 pr-4 bg-transparent bg-white border outline-none dark:bg-zinc-800/50 border-zinc-200 dark:border-zinc-700 hover:border-zinxc-300 dark:hover:border-zinc-600">
               <p className="text-sm">Quick Search for Lessons</p>
             </div>
 

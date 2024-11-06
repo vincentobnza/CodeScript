@@ -529,7 +529,43 @@ const OutputPanel = ({
       </div>
     </div>
     <div className="flex-1 p-4 overflow-auto font-mono text-sm">
-      {/* ... (rest of the OutputPanel content remains the same) */}
+      <div className="w-full pb-5 border-b border-zinc-800">
+        <div
+          className={`whitespace-pre-wrap ${
+            error ? "text-red-500" : "text-zinc-400"
+          } font-semibold`}
+        >
+          {output}
+        </div>
+      </div>
+      {testResults.length > 0 && (
+        <div className="mt-4">
+          <h3 className="mb-2 text-sm font-semibold text-zinc-300">
+            Assessment Test Results 🧐
+          </h3>
+          {testResults.map((result, index) => (
+            <div
+              key={index}
+              className={`mt-5 mb-2 p-3 rounded border  ${
+                result.passed
+                  ? "bg-gradient-to-br from-green-800/20 to-green-800/50 border-green-700"
+                  : "bg-gradient-to-br from-red-800/10 to-red-800/40 border-red-700"
+              }`}
+            >
+              <p className="mb-2 text-xs font-semibold text-zinc-300">
+                {result.name}
+              </p>
+              <p
+                className={`text-xs font-medium ${
+                  result.passed ? "text-green-500" : "text-red-500"
+                }`}
+              >
+                {result.message}
+              </p>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   </div>
 );
