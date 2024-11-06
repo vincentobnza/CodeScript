@@ -31,11 +31,14 @@ const Hero = () => {
       <div className="flex flex-col items-center justify-center space-y-2">
         <>
           <div className="grid self-center px-6 py-[5px] mb-5 -mt-2 md:-mt-6 text-[9px] md:text-[11px] bg-transparent border rounded-full text-zinc-700 dark:text-zinc-300 border-zinc-200 dark:border-zinc-800 place-items-center">
-            <p>
-              Boost Your Skills with{" "}
-              <span className="font-black text-green-500">21+</span> In-Depth
-              JavaScript Topics 🎉
-            </p>
+            <div className="flex items-center gap-2">
+              <p>
+                Boost Your Skills with{" "}
+                <span className="font-black text-green-500">21+</span> In-Depth
+                JavaScript Topics
+              </p>
+              <Zap size={13} className="text-green-500" />
+            </div>
           </div>
         </>
         <h1 className="text-4xl md:text-[48px] dark:bg-gradient-to-br dark:from-white dark:to-zinc-600 dark:bg-clip-text dark:text-transparent text-zinc-600 leading-snug font-semibold z-10">

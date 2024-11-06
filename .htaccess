@@ -1,1 +1,12 @@
-AddType application/javascript .js
+<IfModule mod_mime.c> AddType application/javascript .js </IfModule>
+<IfModule mod_headers.c> Header set Access-Control-Allow-Origin "*" </IfModule>
+
+<IfModule mod_mime.c>
+  AddType application/javascript .js AddType application/json .json
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On RewriteBase / RewriteRule ^index\.html$ - [L] RewriteCond
+  %{REQUEST_FILENAME} !-f RewriteCond %{REQUEST_FILENAME} !-d RewriteRule .
+  /index.html [L]
+</IfModule>
