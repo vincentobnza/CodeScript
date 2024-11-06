@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useTheme } from "next-themes";
 import MainPicture from "../assets/MainPicture.png";
 import { Zap, Blocks, FlaskConical, ArrowUpRight } from "lucide-react";
 import InfiniteMarquee from "@/components/ui/InfiniteMarquee";
