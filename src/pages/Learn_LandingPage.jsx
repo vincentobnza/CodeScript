@@ -28,7 +28,7 @@ const Hero = () => {
         practical examples, and expert guidance.
       </p>
 
-      <div className="mt-16 w-full h-[500px] md:h-[550px] flex flex-col items-center space-y-10 max-w-screen-md rounded-lg bg-white dark:bg-gradient-to-b dark:from-zinc-900 dark:to-zinc-950 border border-zinc-300 dark:border-zinc-800 relative">
+      <div className="mt-16 w-full h-[500px] md:h-[550px] flex flex-col items-center space-y-10 max-w-screen-md rounded-lg bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-800 relative">
         {/* BOOK  */}
         <div className="w-[160px] h-[190px] -mt-10 bg-zinc-100 dark:bg-white rounded relative before:absolute before:content-[''] before:left-0 before:h-full before:w-[10px] before:bg-zinc-600 before:rounded-tl before:rounded-bl shadow-none dark:shadow-2xl dark:shadow-zinc-800 border border-zinc-300 dark:border-none">
           <img
@@ -52,11 +52,13 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 relative">
+          <div className="absolute w-[240px] h-[100px] bg-green-600/40 rounded-full bottom-8 z-0 filter blur-[80px]" />
+
           <h1 className="text-xl font-semibold text-zinc-900 dark:text-white">
             Learn JavaScript
           </h1>
-          <div className="w-[340px] mx-auto text-xs text-center text-zinc-500 dark:text-zinc-500">
+          <div className="mt-5 w-[340px] mx-auto text-xs text-center text-zinc-500 dark:text-zinc-400">
             <p>
               The module in this Computer Assisted Instruction for JavaScript
               has been thoughtfully curated and endorsed by a certified web
@@ -66,7 +68,7 @@ const Hero = () => {
 
           <Link
             to="/learn-js"
-            className="flex items-center self-center gap-4 px-4 py-2 mt-10 text-xs font-bold bg-transparent border rounded dark:border-none text-zinc-700 md:text-sm md:py-3 md:px-6 dark:text-black border-zinc-400 dark:bg-white dark:hover:brightness-125"
+            className="flex items-center self-center gap-4 px-4 py-2 mt-10 text-xs font-bold bg-transparent border  dark:border-none text-zinc-700 md:text-sm md:py-3 md:px-6 dark:text-black border-zinc-400 dark:bg-white dark:hover:brightness-125 rounded-full"
           >
             Learn Now
             <MoveRight size={20} />
