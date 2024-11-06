@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { LockKeyhole } from "lucide-react";
 import supabase from "../config/supabaseClient";
 import { useNavigate } from "react-router-dom";
-import toast from "react-hot-toast"; // Import toast
+import { toast, Toaster } from "react-hot-toast";
 
-export default function AdminLogin() {
+const AdminLogin = () => {
   const [instructorID, setInstructorID] = useState("");
   const navigate = useNavigate();
 
@@ -14,61 +14,68 @@ export default function AdminLogin() {
       const { data, error } = await supabase
         .from("admin_account")
         .select("*")
-        .eq("instructor_id", instructorID);
+        .eq("instructor_id", instructorID)
+        .single();
 
-      if (error || !data || data.length === 0) {
-        toast.error("Invalid Instructor ID. Please try again"); // Error toast
+      if (error || !data) {
+        toast.error("Invalid Instructor ID. Please try again.");
         return;
       }
 
-      setInstructorID(data);
-      toast.success("Login successful! Redirecting..."); // Success toast
+      toast.success("Login successful! Redirecting...");
       navigate("/admin/dashboard");
     } catch (error) {
-      toast.error("Error logging in. Please try again later"); // Error toast for any other issues
-      console.error("Error fetching instructor ID", error);
+      toast.error("Error logging in. Please try again later.");
+      console.error("Error fetching instructor ID:", error);
     }
   };
 
   return (
-    <div className="grid w-full h-screen font-sans text-center bg-white place-items-center text-zinc-700">
-      <div className="w-full max-w-xl p-5 mx-auto">
-        <div className="flex flex-col items-center justify-center gap-3">
-          <div className="grid mb-5 text-green-400 border rounded-lg shadow-2xl bg-gradient-to-br from-white to-zinc-100 size-12 place-items-center border-zinc-200 shadow-zinc-100">
-            <LockKeyhole />
+    <div className="flex items-center justify-center h-screen bg-white font-NotoSans">
+      <Toaster />
+      <div className="w-1/2 p-10 bg-white ">
+        <div className="flex flex-col items-center mb-10">
+          <div className="p-5 rounded-full shadow-lg bg-gradient-to-br from-green-200 to-green-400">
+            <LockKeyhole size={40} color="#fff" />
           </div>
-          <h1 className="mb-2 text-3xl font-semibold">
-            Login to your Instructor Account
-          </h1>
+          <h2 className="mt-5 mb-4 text-3xl font-bold text-zinc-800">
+            Instructor Login
+          </h2>
           <p className="text-sm text-zinc-500">
-            Please log in to your admin account below
+            Enter your instructor ID to access the dashboard.
           </p>
-          <form
-            onSubmit={handleLogin}
-            className="flex flex-col items-start justify-start w-full max-w-sm gap-2 mx-auto mt-5 text-zinc-500"
-          >
-            <label htmlFor="instructorID" className="text-sm font-semibold">
+        </div>
+        <form
+          onSubmit={handleLogin}
+          className="flex flex-col w-full max-w-sm gap-5 mx-auto mt-4"
+        >
+          <div className="flex flex-col gap-2">
+            <label
+              htmlFor="instructorID"
+              className="text-sm font-semibold text-zinc-600"
+            >
               Instructor ID
-              <span className="ml-2 text-red-400">*</span>
+              <span className="text-red-400">*</span>
             </label>
             <input
               type="text"
               value={instructorID}
               onChange={(e) => setInstructorID(e.target.value)}
-              className="w-full h-12 px-3 border rounded shadow outline-none border-zinc-200 placeholder:text-sm shadow-zinc-200"
+              className="w-full h-12 px-3 py-2 border rounded shadow outline-none border-zinc-200 placeholder:text-sm shadow-zinc-200"
               placeholder="Enter Instructor ID"
               required
             />
-
-            <button
-              type="submit"
-              className="w-full py-3 mt-6 text-sm font-bold tracking-wide text-green-900 transition-colors bg-green-200 border border-green-400 rounded hover:bg-green-300"
-            >
-              Login Account
-            </button>
-          </form>
-        </div>
+          </div>
+          <button
+            type="submit"
+            className="w-full py-3 text-sm font-bold tracking-wide text-green-900 transition-colors bg-green-200 border border-green-400 rounded hover:bg-green-300"
+          >
+            Login Account
+          </button>
+        </form>
       </div>
     </div>
   );
-}
+};
+
+export default AdminLogin;

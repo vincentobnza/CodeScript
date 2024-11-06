@@ -66,7 +66,6 @@ export default function Navbar() {
         onOpenChange={onOpenChange}
       />
       <div className="flex items-center justify-between w-full max-w-screen-xl p-4 mx-auto">
-        {/* Previous mobile menu code remains the same */}
         <div
           className="grid w-10 h-8 duration-300 border rounded cursor-pointer md:hidden place-items-center bg-zinc-200 dark:bg-zinc-800/20 border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-600 hover:opacity-80"
           onClick={toggleMobileMenu}
@@ -116,7 +115,7 @@ export default function Navbar() {
 
           {/* User profile dropdown remains the same */}
           {user ? (
-            <Dropdown placement="bottom-end" className="font-sans text-xs">
+            <Dropdown placement="bottom-end" className="text-xs font-Inter">
               <DropdownTrigger>
                 <div className="items-center gap-4">
                   <div className="grid overflow-hidden rounded-full cursor-pointer size-8 place-items-center">

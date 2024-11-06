@@ -1,14 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import {
-  Search,
-  X,
-  Plus,
-  Box,
-  Trash2,
-  AlertTriangle,
-  Edit,
-} from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { Search, Plus, Box, Trash2, AlertTriangle, Edit } from "lucide-react";
 import { toast, Toaster } from "react-hot-toast";
 import supabase from "@/config/supabaseClient";
 import {
@@ -26,6 +17,7 @@ import {
   Spinner,
 } from "@nextui-org/react";
 import MonacoEditor from "@monaco-editor/react";
+import { Link } from "react-router-dom";
 
 export default function AdminAssessments() {
   const [assessments, setAssessments] = useState([]);
@@ -133,13 +125,13 @@ const Header = ({ searchTerm, setSearchTerm }) => {
       </div>
 
       <div className="flex items-center gap-2">
-        <button
-          onClick={onOpen}
+        <Link
+          to="/admin/create-assessment"
           className="flex items-center self-start gap-3 px-3 py-2 mt-5 text-sm font-semibold text-green-500 border rounded shadow outline-none border-zinc-200 shadow-zinc-200"
         >
           <Plus size={15} />
           Create Assessment
-        </button>
+        </Link>
       </div>
 
       <CreateModal

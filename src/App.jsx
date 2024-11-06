@@ -32,8 +32,7 @@ import UserProfiles from "./admin/UserProfiles";
 import AdminLeaderboard from "./admin/AdminLeaderboard";
 import AdminAssessments from "./admin/AdminAssessments";
 import Feedbacks from "./admin/Feedbacks";
-import { AdminProvider } from "./context/AdminContext";
-import AdminQuizzes from "./admin/AdminQuizzes";
+import CreateAssessment from "./admin/CreateAssessment";
 
 // LESSONS
 import Lesson1_Topic1 from "./content/Lesson1/Lesson1.1";
@@ -74,6 +73,8 @@ import { UserProvider } from "./context/UserContext";
 
 import LivePreview from "./pages/LivePreview";
 import CreateProfile from "./pages/CreateProfile";
+
+import AdminProtectedRoute from "./private/AdminProtectedRoute";
 
 // LOADER
 import LoadingPageWithNavigation from "./components/PageLoading";
@@ -255,15 +256,15 @@ const router = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: (
-      <AdminProvider>
-        <AdminLayout />
-      </AdminProvider>
-    ),
+    element: <AdminLayout />,
     children: [
       {
         path: "dashboard",
-        element: <Dashboard />,
+        element: (
+          <AdminProtectedRoute>
+            <Dashboard />
+          </AdminProtectedRoute>
+        ),
       },
       {
         path: "profiles",
@@ -278,23 +279,19 @@ const router = createBrowserRouter([
         element: <AdminAssessments />,
       },
       {
-        path: "feedbacks",
-        element: <Feedbacks />,
+        path: "create-assessment",
+        element: <CreateAssessment />,
       },
       {
-        path: "users-quizzes",
-        element: <AdminQuizzes />,
+        path: "feedbacks",
+        element: <Feedbacks />,
       },
     ],
   },
 
   {
     path: "admin-login",
-    element: (
-      <AdminProvider>
-        <AdminLogin />
-      </AdminProvider>
-    ),
+    element: <AdminLogin />,
   },
 
   // QUIZ
@@ -302,9 +299,9 @@ const router = createBrowserRouter([
     path: "/quiz/:quizType",
     element: (
       <ThemeProvider>
-        {/* <ProtectedRoute> */}
-        <Quiz />
-        {/* </ProtectedRoute> */}
+        <ProtectedRoute>
+          <Quiz />
+        </ProtectedRoute>
       </ThemeProvider>
     ),
   },

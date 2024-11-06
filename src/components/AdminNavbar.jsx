@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Bell } from "lucide-react";
-import { useAdmin } from "@/context/AdminContext";
 import supabase from "@/config/supabaseClient";
 import { motion, AnimatePresence } from "framer-motion";
 

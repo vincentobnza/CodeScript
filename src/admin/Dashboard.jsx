@@ -4,7 +4,6 @@ import {
   ShieldCheck,
   Container,
   ChevronDown,
-  RefreshCw,
   Search,
 } from "lucide-react";
 import {

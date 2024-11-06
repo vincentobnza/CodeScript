@@ -4,12 +4,9 @@ import {
   LayoutDashboard,
   Users,
   Trophy,
-  UserRound,
-  Settings2,
   LogOut,
   Layers3,
   MessageSquareDot,
-  FileQuestion,
 } from "lucide-react";
 import {
   Modal,
@@ -48,7 +45,6 @@ export default function AdminSidebar() {
     },
     { to: "profiles", icon: <Users size={16} />, label: "User Profiles" },
     { to: "leaderboard", icon: <Trophy size={16} />, label: "Leaderboard" },
-    { to: "users-quizzes", icon: <FileQuestion size={16} />, label: "Quizzes" },
   ];
 
   const accountLinks = [
