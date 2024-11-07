@@ -9,9 +9,8 @@ import { toast, Toaster } from "react-hot-toast";
 
 export default function Settings() {
   return (
-    <div className="flex flex-col w-full max-w-screen-lg pb-10 mx-auto space-y-6 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-300">
+    <div className="flex flex-col w-full max-w-screen-lg p-3 pb-10 mx-auto space-y-6 bg-white md:p-0 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-300">
       <Header />
-
       <Main />
     </div>
   );
@@ -29,19 +28,19 @@ const Header = () => (
 );
 
 const Main = () => (
-  <div className="w-full h-[70vh] flex gap-2">
+  <div className="w-full min-h-[70vh] flex flex-col lg:flex-row gap-2">
     <Sidebar />
     <Content />
   </div>
 );
 
 const Sidebar = () => (
-  <div className="inset-y-0 p-5 border-r w-80 border-zinc-200 dark:border-zinc-800 ">
+  <div className="w-full p-5 border-b lg:inset-y-0 lg:border-b-0 lg:border-r lg:w-80 border-zinc-200 dark:border-zinc-800">
     <h3 className="text-xs font-bold text-zinc-500 dark:text-zinc-500">
       Information Details
     </h3>
 
-    <ul className="mt-5 ">
+    <ul className="mt-5">
       <Link
         to="/settings"
         className="flex items-center gap-6 px-3 py-2 text-sm font-semibold rounded-md hover:bg-zinc-200 dark:hover:bg-zinc-800 bg-zinc-100 dark:bg-zinc-800"
@@ -175,10 +174,17 @@ const Content = () => {
   };
 
   return (
-    <div className="flex flex-1 gap-4 p-5">
+    <div className="flex flex-col flex-1 gap-4 p-5 lg:flex-row">
       <Toaster />
-      <div className="flex flex-col items-center gap-4 basis-1/4">
-        <Avatar src={filePreview || formData.avatar_url} size="lg" isBordered />
+      <div className="flex flex-col items-center gap-4 mb-5 lg:basis-1/4">
+        <Avatar
+          src={
+            filePreview ||
+            "https://cdn-icons-png.flaticon.com/128/16070/16070176.png"
+          }
+          size="lg"
+          isBordered
+        />
         <label className="px-4 py-2 mt-5 text-xs font-semibold border cursor-pointer border-zinc-200 dark:text-zinc-400 dark:border-zinc-700">
           Change
           <input
@@ -191,7 +197,10 @@ const Content = () => {
         </label>
       </div>
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-2 basis-1/2">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col gap-2 lg:basis-1/2"
+      >
         <h1 className="text-3xl font-semibold">Profile Settings</h1>
         <p className="text-sm font-semibold dark:text-zinc-500 text-zinc-500">
           Edit and save your profile information.

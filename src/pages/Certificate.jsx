@@ -55,7 +55,7 @@ export default function Certificate() {
 
   const isProgressComplete = useCallback(() => {
     if (activeTab === "completion") {
-      return (currentUser?.progress || 0) === 100;
+      return Math.min(currentUser?.progress || 0, 100) === 100;
     } else {
       return (currentUser?.current_points || 0) >= 1000;
     }
@@ -180,7 +180,7 @@ export default function Certificate() {
             <div className="absolute inset-0 flex flex-col items-center justify-center p-8 text-center">
               <div className="w-[500px]">
                 <p className="mb-5 font-medium text-gray-900 font-Inter text-md">
-                  {user.user_metadata.name.toUpperCase()}
+                  {user?.user_metadata.name.toUpperCase()}
                 </p>
               </div>
               <div className="absolute left-0 w-full top-[380px]">
@@ -206,7 +206,7 @@ export default function Certificate() {
               <Progress
                 value={
                   activeTab === "completion"
-                    ? currentUser?.progress
+                    ? Math.min(currentUser?.progress || 0, 100)
                     : Math.min((currentUser?.current_points || 0) / 10, 100)
                 }
                 color={activeTab === "completion" ? "success" : "warning"}
@@ -214,7 +214,7 @@ export default function Certificate() {
               />
               <p className="text-sm font-bold text-center text-zinc-900">
                 {activeTab === "completion"
-                  ? `${currentUser?.progress}% completed`
+                  ? `${Math.min(currentUser?.progress || 0, 100)}% completed`
                   : `${currentUser?.current_points || 0} / 1000 points`}
               </p>
             </div>
