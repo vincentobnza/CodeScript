@@ -52,7 +52,7 @@ export const Code = ({
       <div
         className={`w-full relative rounded-md overflow-hidden ${
           theme === "dark"
-            ? "bg-[#1e1e1e] border border-zinc-800"
+            ? "bg-[#1e1e1e] border border-zinc-700"
             : "border border-zinc-200 bg-[#FAFAFA]"
         }`}
       >
@@ -151,17 +151,19 @@ export const CopyIcon = ({ code }) => {
   };
 
   return (
-    <button
-      onClick={handleCopy}
-      className="absolute top-0 right-0 p-2 transition-colors duration-200 bg-gray-100 hover:bg-gray-200 dark:bg-[#2c2c2c] outline-none border border-zinc-200 dark:border-zinc-800 dark:hover:bg-zinc-800 px-4"
-      aria-label={copied ? "Copied!" : "Copy code"}
-    >
-      {copied ? (
-        <Check className="w-4 h-4 text-green-500" />
-      ) : (
-        <Copy className="w-4 h-4 text-gray-500 dark:text-gray-400" />
-      )}
-    </button>
+    <>
+      <button
+        onClick={handleCopy}
+        className="absolute top-0 right-0 p-2 transition-colors duration-200 bg-gray-100 hover:bg-gray-200 dark:bg-[#2c2c2c] outline-none border border-zinc-200 dark:border-zinc-800 dark:hover:bg-zinc-800 px-4"
+        aria-label={copied ? "Copied!" : "Copy code"}
+      >
+        {copied ? (
+          <Check className="w-4 h-4 text-green-500" />
+        ) : (
+          <Copy className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+        )}
+      </button>
+    </>
   );
 };
 

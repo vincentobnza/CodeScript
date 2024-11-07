@@ -153,6 +153,7 @@ export default function PointsCoin() {
   );
 
   const handleClick = useCallback(() => {
+    toast.success("You've earned 5 points!");
     setPoints((prevPoints) => {
       if (prevPoints >= 100) {
         if (!toastShownRef.current) {
