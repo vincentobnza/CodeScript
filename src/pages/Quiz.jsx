@@ -35,6 +35,40 @@ export default function Quiz() {
   const [isOpen, setIsOpen] = useState(true);
   const [quizCompleted, setQuizCompleted] = useState(false);
   const [quizAlreadyCompleted, setQuizAlreadyCompleted] = useState(false);
+  const [time, setTime] = useState(60);
+
+  useEffect(() => {
+    let timerInterval;
+
+    // Only start the timer when the modal is closed
+    if (!isOpen && !quizCompleted && time > 0) {
+      timerInterval = setInterval(() => {
+        setTime((prevTime) => {
+          // If time reaches 0, clear interval and set quiz as completed
+          if (prevTime <= 1) {
+            clearInterval(timerInterval);
+            setQuizCompleted(true);
+            return 0;
+          }
+          return prevTime - 1;
+        });
+      }, 1000);
+    }
+
+    // Cleanup function
+    return () => {
+      if (timerInterval) {
+        clearInterval(timerInterval);
+      }
+    };
+  }, [isOpen, quizCompleted, time]);
+
+  useEffect(() => {
+    if (isOpen) {
+      setTime(60);
+      setQuizCompleted(false);
+    }
+  }, [isOpen]);
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
@@ -119,12 +153,33 @@ export default function Quiz() {
                 </button>
               </Tooltip>
             )}
-            <div className="flex items-center gap-2 text-xs font-bold">
-              <h3>Points: </h3>
-              <h1 className="px-2 py-[1px] text-white rounded-full bg-orange-700 border border-amber-400">
-                {points} pts
-              </h1>
-            </div>
+
+            {/* TIMER */}
+
+            {!quizCompleted && !isOpen && (
+              <div className="relative px-2 text-sm font-bold text-zinc-500 dark:text-zinc-400">
+                <h1>
+                  Time:
+                  <span
+                    className={`ml-2 py-[1px] px-4 border ${
+                      time <= 10
+                        ? "border-red-200 dark:border-red-700 bg-red-50 dark:bg-red-500/20 text-red-600 dark:text-red-300"
+                        : "border-green-200 dark:border-green-700 bg-green-50 dark:bg-green-500/20 text-green-600 dark:text-green-300"
+                    } rounded`}
+                  >
+                    {time}s
+                  </span>
+                </h1>
+              </div>
+            )}
+            {quizCompleted && (
+              <div className="flex items-center gap-2 text-xs font-bold">
+                <h3>Points: </h3>
+                <h1 className="px-2 py-[1px] text-white rounded-full bg-orange-700 border border-amber-400">
+                  {points} pts
+                </h1>
+              </div>
+            )}
             <div
               className="transition duration-500 ease-in-out cursor-pointer"
               onClick={toggleTheme}
@@ -436,6 +491,9 @@ const QuizCard = ({ points, setPoints, quizCompleted, setQuizCompleted }) => {
   return (
     <div className="flex flex-col items-start justify-start w-full max-w-screen-md p-5 mx-auto space-y-6 text-left">
       <div className="flex flex-col w-full max-w-lg gap-2 mt-5">
+        <h1 className="mb-2 text-sm font-semibold">
+          Question {currentQuestionIndex + 1} out of {quizData.length}
+        </h1>
         <Progress
           size="sm"
           aria-label="Quiz progress"

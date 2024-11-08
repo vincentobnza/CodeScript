@@ -52,7 +52,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="flex flex-col gap-2 relative">
+        <div className="relative flex flex-col gap-2">
           <div className="absolute w-[240px] h-[100px] bg-green-600/40 rounded-full bottom-8 z-0 filter blur-[80px]" />
 
           <h1 className="text-xl font-semibold text-zinc-900 dark:text-white">
@@ -68,7 +68,7 @@ const Hero = () => {
 
           <Link
             to="/learn-js"
-            className="flex items-center self-center gap-4 px-4 py-2 mt-10 text-xs font-bold bg-transparent border  dark:border-none text-zinc-700 md:text-sm md:py-3 md:px-6 dark:text-black border-zinc-400 dark:bg-white dark:hover:brightness-125 rounded-full"
+            className="flex items-center self-center gap-4 px-4 py-2 mt-10 text-xs font-bold bg-transparent border dark:border-none text-zinc-700 md:text-sm md:py-3 md:px-6 dark:text-black border-zinc-400 dark:bg-white dark:hover:brightness-125 "
           >
             Learn Now
             <MoveRight size={20} />

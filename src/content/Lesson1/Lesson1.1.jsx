@@ -1,3 +1,4 @@
+import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 import {
   Topic,
   Description,
@@ -5,6 +6,7 @@ import {
   List,
   NextButton,
 } from "../../layout/UILayout";
+import Thumbnail1 from "@/assets/Thumbnail1.png";
 
 export default function Lesson1_Topic1() {
   return (
@@ -55,6 +57,12 @@ export default function Lesson1_Topic1() {
             this. Nevertheless, JavaScript can be utilized to develop mobile
             apps, servers, and other software.
           </Description>
+
+          <HeroVideoDialog
+            videoSrc="https://www.youtube.com/embed/upDLs1sn7g4?si=fnM3dT-JA8OI2jaG"
+            thumbnailSrc={Thumbnail1}
+            link="https://www.youtube.com/watch?v=upDLs1sn7g4"
+          />
         </section>
 
         <section id="section2">
