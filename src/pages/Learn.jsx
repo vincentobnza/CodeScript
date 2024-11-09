@@ -16,13 +16,24 @@ import {
 } from "../data/Chapter1Data";
 import { Search } from "lucide-react";
 import { MdKeyboardCommandKey } from "react-icons/md";
-import SearchModal from "@/components/SearchModal";
 import { useDisclosure } from "@nextui-org/react";
 import { motion } from "framer-motion";
 import { RiJavascriptLine } from "react-icons/ri";
 import ScrollUp from "@/components/ScrollUp";
 import NavbarQuickSearch from "@/components/NavbarQuickSearch";
-import { ShieldCheck, Loader } from "lucide-react";
+import {
+  ShieldCheck,
+  Loader,
+  SquareTerminal,
+  EqualNot,
+  RefreshCcw,
+  Parentheses,
+  Brackets,
+  SquareMousePointer,
+  Dices,
+  Ban,
+} from "lucide-react";
+
 export default function Learn() {
   return (
     <motion.div
@@ -202,7 +213,7 @@ const Lesson1Data = () => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center gap-6">
-        <FaDiamond className="text-sm text-yellow-600 animate-pulse" />
+        <SquareTerminal className="text-sm text-red-600 animate-pulse" />
         <div className="flex flex-col gap-1">
           <p className="text-xs font-semibold">Lesson 1</p>
           <h1 className="font-semibold text-zinc-700 dark:text-zinc-200">
@@ -211,24 +222,29 @@ const Lesson1Data = () => {
         </div>
       </div>
 
-      <ul className="grid grid-cols-2 gap-2 p-2 md:grid-cols-4">
+      <ul className="grid grid-cols-2 gap-2 p-1 md:grid-cols-4">
         {Lesson1.map((item, idx) => (
           <Link
             preventScrollReset={false}
             to={item.link}
             key={idx}
-            className="relative flex flex-col h-16 gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-zinc-50 dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-500"
+            className="relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border h-22 text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-zinc-50 dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
           >
-            <RiJavascriptLine
+            <SquareTerminal
               size={50}
-              className="absolute duration-300 ease-in-out -bottom-3 -right-3 dark:text-zinc-700 text-zinc-200 group:hover:text-zinc-300 dark:group-hover:text-zinc-500"
+              className="absolute duration-300 ease-in-out -bottom-3 -right-3 dark:text-zinc-500 text-zinc-200 group-hover:text-zinc-300 dark:group-hover:text-red-500 group-hover:-rotate-12"
             />
             <div className="flex justify-between w-full">
               <h1 className="z-10 flex items-center text-xs font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 duration underline-offset-2 dark:group:hover:text-yellow-200">
                 {item.name}
               </h1>
-              <GoArrowRight className=" text-zinc-400 group:hover:text-zinc-300 dark:group-hover:text-zinc-200" />
+
+              <GoArrowRight className=" text-zinc-400 group-hover:text-zinc-300 dark:group-hover:text-zinc-200" />
             </div>
+
+            <p className="text-[10px] md:text-xs font-medium text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
+              {item.subTopics} Subtopics
+            </p>
           </Link>
         ))}
       </ul>
@@ -240,7 +256,7 @@ const Lesson2Data = () => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center gap-6">
-        <FaDiamond className="text-sm text-green-600 animate-pulse" />
+        <EqualNot className="text-sm text-green-600 animate-pulse" />
         <div className="flex flex-col gap-1">
           <p className="text-xs font-semibold">Lesson 2</p>
           <h1 className="font-semibold text-zinc-700 dark:text-zinc-200">
@@ -249,16 +265,16 @@ const Lesson2Data = () => {
         </div>
       </div>
 
-      <ul className="grid grid-cols-2 gap-2 p-2 md:grid-cols-4">
+      <ul className="grid grid-cols-2 gap-2 p-1 md:grid-cols-4">
         {Lesson2.map((item, idx) => (
           <Link
             to={item.link}
             key={idx}
-            className="relative flex flex-col h-16 gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-zinc-50 dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-500"
+            className="relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border h-22 text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-zinc-50 dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
           >
-            <RiJavascriptLine
+            <EqualNot
               size={50}
-              className="absolute duration-300 ease-in-out -bottom-3 -right-3 dark:text-zinc-700 text-zinc-200 group:hover:text-zinc-300 dark:group-hover:text-zinc-500"
+              className="absolute duration-300 ease-in-out -bottom-3 -right-3 dark:text-zinc-500 text-zinc-200 group-hover:text-zinc-300 dark:group-hover:text-green-500 group-hover:-rotate-12"
             />
 
             <div className="flex justify-between w-full">
@@ -267,6 +283,10 @@ const Lesson2Data = () => {
               </h1>
               <GoArrowRight className=" text-zinc-400 group:hover:text-zinc-300 dark:group-hover:text-zinc-200" />
             </div>
+
+            <p className="text-[10px] md:text-xs font-medium text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
+              {item.subTopics} Subtopics
+            </p>
           </Link>
         ))}
       </ul>
@@ -278,7 +298,7 @@ const Lesson3Data = () => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center gap-6">
-        <FaDiamond className="text-sm text-indigo-600 animate-pulse" />
+        <RefreshCcw className="text-sm text-indigo-600 animate-pulse" />
         <div className="flex flex-col gap-1">
           <p className="text-xs font-semibold">Lesson 3</p>
           <h1 className="font-semibold text-zinc-700 dark:text-zinc-200">
@@ -287,16 +307,16 @@ const Lesson3Data = () => {
         </div>
       </div>
 
-      <ul className="grid grid-cols-2 gap-2 p-2 md:grid-cols-4">
+      <ul className="grid grid-cols-2 gap-2 p-1 md:grid-cols-4">
         {Lesson3.map((item, idx) => (
           <Link
             to={item.link}
             key={idx}
-            className="relative flex flex-col h-16 gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-zinc-50 dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-500"
+            className="relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border h-22 text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-zinc-50 dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
           >
-            <RiJavascriptLine
+            <RefreshCcw
               size={50}
-              className="absolute duration-300 ease-in-out -bottom-3 -right-3 dark:text-zinc-700 text-zinc-200 group:hover:text-zinc-300 dark:group-hover:text-zinc-500"
+              className="absolute duration-300 ease-in-out -bottom-3 -right-3 dark:text-zinc-500 text-zinc-200 group-hover:text-zinc-300 dark:group-hover:text-indigo-500 group-hover:-rotate-12"
             />
 
             <div className="flex justify-between w-full">
@@ -305,6 +325,10 @@ const Lesson3Data = () => {
               </h1>
               <GoArrowRight className=" text-zinc-400 group:hover:text-zinc-300 dark:group-hover:text-zinc-200" />
             </div>
+
+            <p className="text-[10px] md:text-xs font-medium text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
+              {item.subTopics} Subtopics
+            </p>
           </Link>
         ))}
       </ul>
@@ -316,7 +340,7 @@ const Lesson4Data = () => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center gap-6">
-        <FaDiamond className="text-sm text-orange-600 animate-pulse" />
+        <Parentheses className="text-sm text-orange-600 animate-pulse" />
         <div className="flex flex-col gap-1">
           <p className="text-xs font-semibold">Lesson 4</p>
           <h1 className="font-semibold text-zinc-700 dark:text-zinc-200">
@@ -325,16 +349,16 @@ const Lesson4Data = () => {
         </div>
       </div>
 
-      <ul className="grid grid-cols-2 gap-2 p-2 md:grid-cols-4">
+      <ul className="grid grid-cols-2 gap-2 p-1 md:grid-cols-4">
         {Lesson4.map((item, idx) => (
           <Link
             to={item.link}
             key={idx}
-            className="relative flex flex-col h-16 gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-zinc-50 dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-500"
+            className="relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border h-22 text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-zinc-50 dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
           >
-            <RiJavascriptLine
+            <Parentheses
               size={50}
-              className="absolute duration-300 ease-in-out -bottom-3 -right-3 dark:text-zinc-700 text-zinc-200 group:hover:text-zinc-300 dark:group-hover:text-zinc-500"
+              className="absolute duration-300 ease-in-out -bottom-3 -right-3 dark:text-zinc-500 text-zinc-200 group:hover:text-zinc-300 dark:group-hover:text-orange-500 group-hover:-rotate-12"
             />
 
             <div className="flex justify-between w-full">
@@ -343,6 +367,10 @@ const Lesson4Data = () => {
               </h1>
               <GoArrowRight className=" text-zinc-400 group:hover:text-zinc-300 dark:group-hover:text-zinc-200" />
             </div>
+
+            <p className="text-[10px] md:text-xs font-medium text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
+              {item.subTopics} Subtopics
+            </p>
           </Link>
         ))}
       </ul>
@@ -354,7 +382,7 @@ const Lesson5Data = () => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center gap-6">
-        <FaDiamond className="text-sm text-sky-600 animate-pulse" />
+        <Brackets className="text-sm text-amber-600 animate-pulse" />
         <div className="flex flex-col gap-1">
           <p className="text-xs font-semibold">Lesson 5</p>
           <h1 className="font-semibold text-zinc-700 dark:text-zinc-200">
@@ -363,7 +391,7 @@ const Lesson5Data = () => {
         </div>
       </div>
 
-      <ul className="grid grid-cols-2 gap-2 p-2 md:grid-cols-4">
+      <ul className="grid grid-cols-2 gap-2 p-1 md:grid-cols-4">
         {Lesson5.map((item, idx) => (
           <Link
             to={item.link}
@@ -391,7 +419,7 @@ const Lesson6Data = () => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center gap-6">
-        <FaDiamond className="text-sm text-purple-600 animate-pulse" />
+        <SquareMousePointer className="text-sm text-purple-600 animate-pulse" />
         <div className="flex flex-col gap-1">
           <p className="text-xs font-semibold">Lesson 6</p>
           <h1 className="font-semibold text-zinc-700 dark:text-zinc-200">
@@ -400,7 +428,7 @@ const Lesson6Data = () => {
         </div>
       </div>
 
-      <ul className="grid grid-cols-2 gap-2 p-2 md:grid-cols-4">
+      <ul className="grid grid-cols-2 gap-2 p-1 md:grid-cols-4">
         {Lesson6.map((item, idx) => (
           <Link
             to={item.link}
@@ -429,7 +457,7 @@ const Lesson7Data = () => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center gap-6">
-        <FaDiamond className="text-sm text-zinc-600 animate-pulse" />
+        <Dices className="text-sm text-zinc-600 animate-pulse" />
         <div className="flex flex-col gap-1">
           <p className="text-xs font-semibold">Lesson 7</p>
           <h1 className="font-semibold text-zinc-700 dark:text-zinc-200">
@@ -438,7 +466,7 @@ const Lesson7Data = () => {
         </div>
       </div>
 
-      <ul className="grid grid-cols-2 gap-2 p-2 md:grid-cols-4">
+      <ul className="grid grid-cols-2 gap-2 p-1 md:grid-cols-4">
         {Lesson7.map((item, idx) => (
           <Link
             to={item.link}
@@ -467,7 +495,7 @@ const Lesson8Data = () => {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex items-center gap-6">
-        <FaDiamond className="text-sm text-cyan-600 animate-pulse" />
+        <Ban className="text-sm text-red-600 animate-pulse" />
         <div className="flex flex-col gap-1">
           <p className="text-xs font-semibold">Lesson 8</p>
           <h1 className="font-semibold text-zinc-700 dark:text-zinc-200">
@@ -476,7 +504,7 @@ const Lesson8Data = () => {
         </div>
       </div>
 
-      <ul className="grid grid-cols-2 gap-2 p-2 md:grid-cols-4">
+      <ul className="grid grid-cols-2 gap-2 p-1 md:grid-cols-4">
         {Lesson8.map((item, idx) => (
           <Link
             to={item.link}

@@ -3,16 +3,19 @@ export const Lesson1 = [
     id: 1,
     name: "What is JavaScript",
     link: "intro",
+    subTopics: 2,
   },
   {
     id: 2,
     name: "Development Environment",
     link: "development-environment",
+    subTopics: 2,
   },
   {
     id: 3,
     name: "Adding JavaScript to a Page",
     link: "adding-javascript-to-page",
+    subTopics: 3,
   },
 ];
 
@@ -21,16 +24,19 @@ export const Lesson2 = [
     id: 1,
     name: "Variables and Data Types",
     link: "variables-data-types",
+    subTopics: 2,
   },
   {
     id: 2,
     name: "Operators",
     link: "operators",
+    subTopics: 5,
   },
   {
     id: 3,
     name: "Comments and Code Structure",
     link: "comments-code-structure",
+    subTopics: 3,
   },
 ];
 
@@ -39,21 +45,25 @@ export const Lesson3 = [
     id: 1,
     name: "Conditionals: if, else, else if",
     link: "conditionals",
+    subTopics: 3,
   },
   {
     id: 2,
     name: "Switch Statements",
     link: "switch-statements",
+    subTopics: 3,
   },
   {
     id: 3,
     name: "Loops: for, while, do...while",
     link: "loops",
+    subTopics: 4,
   },
   {
     id: 4,
     name: "Break and Continue Statement",
     link: "break-statements",
+    subTopics: 3,
   },
 ];
 
@@ -62,16 +72,19 @@ export const Lesson4 = [
     id: 1,
     name: "Function Declaration and Expression",
     link: "functions",
+    subTopics: 2,
   },
   {
     id: 2,
     name: "Parameters and Return Values",
     link: "parameters-return-values",
+    subTopics: 1,
   },
   {
     id: 3,
     name: "Arrow Functions",
     link: "arrow-functions",
+    subTopics: 5,
   },
 ];
 

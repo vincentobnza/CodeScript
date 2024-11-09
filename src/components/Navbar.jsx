@@ -212,7 +212,7 @@ const Navs = () => {
   return (
     <nav className="items-center hidden ml-24 space-x-7 md:flex">
       <NavLink to="learn" className="text-[12px] hover:brightness-125">
-        Learn JS
+        Lessons
       </NavLink>
       <NavLink
         to="leaderboard"
@@ -221,7 +221,7 @@ const Navs = () => {
         Leaderboards
       </NavLink>
       <NavLink to="code-lab" className="text-[12px] hover:brightness-125">
-        Code Lab
+        Code Assessments
       </NavLink>
       <NavLink
         to="/about-us"
@@ -239,8 +239,8 @@ function MobileMenu({ isOpen, onClose }) {
   const navigate = useNavigate();
 
   const navLinks = [
-    { href: "/learn", label: "Learn JS" },
-    { href: "/code-lab", label: "Code Lab" },
+    { href: "/learn", label: "Lessons" },
+    { href: "/code-lab", label: "Code Assessments" },
     { href: "/leaderboard", label: "Leaderboard" },
     { href: "/about-us", label: "About Us" },
   ];
