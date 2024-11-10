@@ -11,6 +11,7 @@ import {
   Highlight,
 } from "../../layout/UILayout";
 import { Link } from "react-router-dom";
+import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
 export default function Lesson3_Topic4() {
   return (
@@ -290,6 +291,11 @@ i = 2, j = 1
               `The \`continue\` statement skips the rest of the current iteration and moves to the next iteration of the loop.`,
               `Both \`break\` and \`continue\` are useful for controlling the flow of loops in JavaScript.`,
             ]}
+          />
+          <HeroVideoDialog
+            videoSrc="https://www.youtube.com/embed/9OJ4A58g0Hs?si=xubHoFhZKLUdz11G"
+            thumbnailSrc="https://img.youtube.com/vi/9OJ4A58g0Hs/maxresdefault.jpg"
+            link="https://www.youtube.com/watch?v=9OJ4A58g0Hs"
           />
         </section>
         <div className="flex items-center justify-end w-full gap-3">

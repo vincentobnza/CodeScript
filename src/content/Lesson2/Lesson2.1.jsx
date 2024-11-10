@@ -4,18 +4,12 @@ import {
   Description,
   Title,
   Code,
-  Example,
-  Image,
   List,
-  Text,
-  Note,
-  ListItem,
   NextButton,
   Output,
   CodeEditor,
 } from "../../layout/UILayout";
-import { FaInfoCircle } from "react-icons/fa";
-import { BsArrowRight } from "react-icons/bs";
+
 import {
   Table,
   TableHeader,
@@ -24,7 +18,7 @@ import {
   TableRow,
   TableCell,
 } from "@nextui-org/react";
-import { Link } from "react-router-dom";
+import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
 export default function Lesson2_Topic1() {
   return (
@@ -302,6 +296,12 @@ console.log(salary)
               </div>
             </li>
           </ul>
+
+          <HeroVideoDialog
+            videoSrc="https://www.youtube.com/embed/XWo3YUblZxk?si=xZVn5Pa-5UQRDkze"
+            thumbnailSrc="https://img.youtube.com/vi/XWo3YUblZxk/maxresdefault.jpg"
+            link="https://www.youtube.com/watch?v=XWo3YUblZxk"
+          />
         </section>
         <div className="flex items-center justify-end w-full gap-3">
           <NextButton link="/learn-js/operators" text="Operators" />

@@ -12,8 +12,8 @@ import { Copy, Check, CircleCheck } from "lucide-react";
 import { toast, Toaster } from "react-hot-toast";
 import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardBody, Button, Select, SelectItem } from "@nextui-org/react";
-import { Loader2, Play } from "lucide-react";
-import * as monaco from "monaco-editor";
+import { Loader2, Play, SquareX } from "lucide-react";
+import MonacoEditor from "@monaco-editor/react";
 import { RxMoon, RxSun } from "react-icons/rx";
 
 export const Topic = ({ children }) => (
@@ -240,32 +240,21 @@ export const QuizButton = ({ text, link }) => (
 export const CodeEditor = ({
   initialCode = "// Write your JavaScript code here",
 }) => {
-  const editorRef = useRef(null);
   const editorInstanceRef = useRef(null);
   const [isEditorReady, setIsEditorReady] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(true);
   const [output, setOutput] = useState("");
+  const [code, setCode] = useState(initialCode);
 
-  useEffect(() => {
-    if (editorRef.current) {
-      editorInstanceRef.current = monaco.editor.create(editorRef.current, {
-        value: initialCode,
-        language: "javascript",
-        theme: isDarkTheme ? "vs-dark" : "vs-light",
-        automaticLayout: true,
-        minimap: { enabled: false },
-      });
-
-      setIsEditorReady(true);
-
-      return () => {
-        editorInstanceRef.current.dispose();
-      };
-    }
-  }, [isDarkTheme]);
+  const editorTheme = isDarkTheme ? "vs-dark" : "light";
 
   const toggleTheme = () => {
     setIsDarkTheme((prevTheme) => !prevTheme);
+  };
+
+  const handleEditorDidMount = (editor) => {
+    editorInstanceRef.current = editor;
+    setIsEditorReady(true);
   };
 
   const runCode = () => {
@@ -281,18 +270,18 @@ export const CodeEditor = ({
       };
 
       eval(code);
-
-      console.log = originalLog;
     } catch (error) {
       setOutput(`Error: ${error.message}`);
+    } finally {
+      console.log = originalLog;
     }
   };
 
   return (
-    <div className="w-full max-w-4xl mx-auto border bg-zinc-100 dark:bg-[#1e1e1e] rounded-lg border-zinc-200 dark:border-zinc-700 relative p-4">
+    <div className="mt-2 w-full mx-auto border bg-zinc-100 dark:bg-[#1e1e1e] rounded-lg border-zinc-200 dark:border-zinc-700 relative p-4">
       <div>
         <div className="flex flex-col items-start justify-between mb-4 space-y-4 sm:flex-row sm:items-center sm:space-y-0">
-          <div className="flex flex-col gap-1">
+          <div className="flex flex-col gap-2">
             <h2 className="text-lg font-bold text-zinc-800 dark:text-zinc-200">
               Try the Code here
             </h2>
@@ -301,10 +290,13 @@ export const CodeEditor = ({
             </h3>
           </div>
 
-          <div className="absolute top-0 right-0 flex items-center justify-between w-full p-1 space-x-4 text-sm sm:space-x-4 sm:w-auto sm:justify-end">
-            <button
+          <div className="absolute top-0 right-0 flex items-center justify-between w-full gap-2 p-1 text-sm sm:w-auto sm:justify-end">
+            <Button
+              isIconOnly
+              size="sm"
+              radius="none"
               onClick={toggleTheme}
-              className="p-2 transition-colors rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800"
+              className="border border-zinc-600 bg-zinc-800"
               aria-label={
                 isDarkTheme ? "Switch to light theme" : "Switch to dark theme"
               }
@@ -314,29 +306,46 @@ export const CodeEditor = ({
               ) : (
                 <RxMoon size={20} className="cursor-pointer" />
               )}
-            </button>
+            </Button>
+            <Button
+              radius="none"
+              disabled={!isEditorReady}
+              onClick={() => setOutput("")}
+              size="sm"
+              startContent={<SquareX className="w-4 h-4" />}
+              className="px-4 py-2 text-white border bg-zinc-800 hover:bg-zinc-700 border-zinc-600"
+            >
+              Clear Console
+            </Button>
             <Button
               radius="none"
               disabled={!isEditorReady}
               onClick={runCode}
               size="sm"
               startContent={<Play className="w-4 h-4" />}
-              className="px-4 py-2 text-white bg-green-700 rounded-tr-lg hover:bg-green-700"
+              className="px-4 py-2 text-white bg-green-700 border border-green-500 rounded-tr-lg hover:bg-green-700"
             >
               Run Code
             </Button>
           </div>
         </div>
-        <div
-          ref={editorRef}
-          className={`w-full h-[200px] overflow-hidden border border-gray-300 h- dark:border-zinc-800`}
-        >
-          {!isEditorReady && (
-            <div className="flex items-center justify-center h-full">
-              <Loader2 className="w-6 h-6 animate-spin" />
-            </div>
-          )}
-        </div>
+        <MonacoEditor
+          className="w-full h-[200px]"
+          language="javascript"
+          theme={editorTheme}
+          value={code}
+          onChange={setCode}
+          onMount={handleEditorDidMount}
+          options={{
+            minimap: { enabled: false },
+            fontSize: 14,
+            lineNumbers: "on",
+            scrollBeyondLastLine: false,
+            automaticLayout: true,
+            wordWrap: "on",
+            wrappingStrategy: "advanced",
+          }}
+        />
         {output && (
           <div
             className="p-4 mt-4 border border-zinc-200 dark:border-zinc-700"

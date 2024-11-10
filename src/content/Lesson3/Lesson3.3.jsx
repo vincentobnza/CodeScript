@@ -9,6 +9,7 @@ import {
   Highlight,
 } from "../../layout/UILayout";
 import { Link } from "react-router-dom";
+import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
 export default function Lesson3_Topic3() {
   return (
@@ -266,6 +267,11 @@ Current count: 5
 Count is stopped`}
           />
           <CodeEditor />
+          <HeroVideoDialog
+            videoSrc="https://www.youtube.com/embed/OPdhb7n_oL4?si=lkqdwtQekFBJ8G7s"
+            thumbnailSrc="https://img.youtube.com/vi/OPdhb7n_oL4/maxresdefault.jpg"
+            link="https://www.youtube.com/watch?v=OPdhb7n_oL4"
+          />
         </section>
         <NextButton
           link="/learn-js/break-statements"

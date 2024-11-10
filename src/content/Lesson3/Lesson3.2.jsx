@@ -8,6 +8,7 @@ import {
   Output,
   CodeEditor,
 } from "../../layout/UILayout";
+import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
 export default function Lesson3_Topic2() {
   return (
@@ -181,6 +182,12 @@ switch (day) {
               If none of the cases match, the default case runs as a fallback.
             </li>
           </ul>
+
+          <HeroVideoDialog
+            videoSrc="https://www.youtube.com/embed/fM5qnyasUYI?si=F-63s37Ar3cj5DlQ"
+            thumbnailSrc="https://img.youtube.com/vi/fM5qnyasUYI/maxresdefault.jpg"
+            link="https://www.youtube.com/watch?v=fM5qnyasUYI"
+          />
         </section>
 
         <NextButton link="/learn-js/loops" text="JavaScript Loops" />

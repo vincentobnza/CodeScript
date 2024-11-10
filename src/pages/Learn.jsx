@@ -145,7 +145,7 @@ const Header = () => {
 
 const Content = () => {
   return (
-    <div className="flex flex-col w-full max-w-screen-lg gap-4 p-3 mx-auto md:p-0">
+    <div className="relative flex flex-col w-full max-w-screen-lg gap-4 p-3 mx-auto overflow-hidden md:p-0">
       <div className="flex flex-col gap-3">
         <div className="flex flex-col w-full gap-4 p-4 text-sm bg-white border md:p-7 dark:bg-gradient-to-br dark:from-zinc-800 dark:to-zinc-900 border-zinc-200 dark:border-zinc-700">
           <div className="flex items-center gap-4">
@@ -188,7 +188,7 @@ const Lessons = () => {
     <div className="flex flex-col w-full max-w-screen-lg p-3 mx-auto space-y-10 md:p-0">
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-1">
-          <h3 className="font-semibold text-yellow-600 text-md">
+          <h3 className="font-semibold text-amber-300 text-md">
             The JavaScript Language
           </h3>
         </div>

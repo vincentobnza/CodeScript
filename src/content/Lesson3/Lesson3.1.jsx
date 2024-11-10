@@ -8,6 +8,7 @@ import {
   Output,
   CodeEditor,
 } from "../../layout/UILayout";
+import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
 export default function Lesson3_Topic1() {
   return (
@@ -147,6 +148,12 @@ let result = "else if block";
 
           <Output output={"first else if block"} />
           <CodeEditor />
+
+          <HeroVideoDialog
+            videoSrc="https://www.youtube.com/embed/N4V0FZASK60?si=b-v4RkWfcBul4RFg"
+            thumbnailSrc="https://img.youtube.com/vi/N4V0FZASK60/maxresdefault.jpg"
+            link="https://www.youtube.com/watch?v=N4V0FZASK60"
+          />
         </section>
 
         <NextButton

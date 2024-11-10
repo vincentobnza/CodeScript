@@ -24,6 +24,7 @@ import {
 import NavbarQuickSearch from "./NavbarQuickSearch";
 import { useDisclosure } from "@nextui-org/react";
 import { useLocation } from "react-router-dom";
+import Logo from "../assets/CodeScriptLogo.png";
 
 export default function Navbar() {
   const { theme, setTheme, isDarkMode } = useTheme();
@@ -85,7 +86,7 @@ export default function Navbar() {
               to="/"
               className="hidden text-lg font-black text-transparent md:flex bg-gradient-to-br from-green-500 to-green-600 dark:to-green-800 bg-clip-text font-Orbitron"
             >
-              CodeScript
+              <img src={Logo} alt="logo" className="w-8" />
             </Link>
           </div>
           <Navs />

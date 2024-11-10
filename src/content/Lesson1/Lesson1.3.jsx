@@ -9,8 +9,7 @@ import {
   List,
 } from "../../layout/UILayout";
 
-import { Link } from "react-router-dom";
-
+import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 export default function Lesson1_Topic3() {
   return (
     <div className="w-full max-w-screen-lg mx-auto bg-white dark:bg-zinc-900">
@@ -165,6 +164,12 @@ document.getElementById("btn").onclick = greetings;`}
               {`Note: You should always maintain a clear separation between your website's presentation (CSS), behavior (JavaScript), and content (i.e., HTML).`}
             </h3>
           </div>
+
+          <HeroVideoDialog
+            videoSrc="https://www.youtube.com/embed/AD5hxsFJc4o?si=sWNaKq8tF2efwixI"
+            thumbnailSrc="https://img.youtube.com/vi/AD5hxsFJc4o/maxresdefault.jpg"
+            link="https://www.youtube.com/watch?v=AD5hxsFJc4o&t=15s"
+          />
         </section>
 
         <div className="flex items-center justify-end w-full gap-3">

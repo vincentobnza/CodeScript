@@ -6,6 +6,7 @@ import { FaGithub } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import { useAuth } from "@/context/AuthContext";
 import { motion } from "framer-motion";
+import Logo from "../assets/CodeScriptLogo.png";
 
 export default function Login() {
   const { signInWithGoogle, signInWithGithub } = useAuth();
@@ -23,6 +24,7 @@ export default function Login() {
     >
       <Toaster />
       <div className="flex flex-col items-center justify-center w-full max-w-md gap-4 p-10 text-center">
+        <img src={Logo} alt="CodeScript Logo" className="w-40 h-40" />
         <h1 className="text-3xl font-semibold tracking-wide text-transparent bg-gradient-to-br from-white to-zinc-400 bg-clip-text">
           Create your account
         </h1>

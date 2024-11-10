@@ -16,7 +16,7 @@ import {
   TableRow,
   TableCell,
 } from "@nextui-org/react";
-import { Link } from "react-router-dom";
+import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
 export default function Lesson2_Topic2() {
   return (
@@ -305,6 +305,12 @@ console.log( typeof bool);   // output will be:   Boolean
 `}
           />
           <CodeEditor />
+
+          <HeroVideoDialog
+            videoSrc="https://www.youtube.com/embed/4UwdF2Ia8rY?si=qVG7Eq58hbH6XzyV"
+            thumbnailSrc="https://img.youtube.com/vi/4UwdF2Ia8rY/maxresdefault.jpg"
+            link="https://www.youtube.com/watch?v=4UwdF2Ia8rY"
+          />
         </section>
         <div className="flex items-center justify-end w-full gap-3">
           <QuizButton text="Operators" link="/quiz/lesson2" />

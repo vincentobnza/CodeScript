@@ -226,11 +226,11 @@ export default function PointsCoin() {
           <div
             className={`absolute flex items-center justify-center rounded-full inset-1 focus:outline-none ${
               points === 100
-                ? "bg-amber-600 text-white animate-bounce border-2 border-amber-400"
+                ? "dark:bg-gradient-to-br dark:from-amber-500/30 bg-amber-600 dark:to-yellow-700/40 text-white animate-bounce border-2 border-amber-400"
                 : "bg-zinc-200 dark:bg-zinc-800 text-black dark:text-zinc-100 font-Ubuntu"
             }`}
           >
-            <span className="font-bold text-amber-400 text-md">P</span>
+            <span className="font-bold text-amber-100 text-md">P</span>
           </div>
           {isLoading && (
             <CircularProgress
@@ -249,7 +249,7 @@ export default function PointsCoin() {
           )}
         </motion.div>
 
-        <div className="mt-2 px-2 py-[1px] text-xs font-bold text-white rounded-full bg-orange-600 border border-amber-300 text-center">
+        <div className="mt-2 px-2 py-[1px] text-xs font-bold text-white rounded-full dark:bg-gradient-to-br dark:bg-orange-600/30 dark:to-amber-700/80 border border-amber-300 text-center">
           <p>{updatedPoints} ✨</p>
         </div>
       </div>

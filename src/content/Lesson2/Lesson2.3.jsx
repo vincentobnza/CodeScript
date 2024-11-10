@@ -6,7 +6,9 @@ import {
   Code,
   NextButton,
   QuizButton,
+  CodeEditor,
 } from "../../layout/UILayout";
+import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
 export default function Lesson2_Topic3() {
   const reservedWords = [
@@ -123,6 +125,7 @@ let str = "Hello" ;
             JavaScript is case sensitive. A variable named something is
             different from Something . The same goes for any identifier.
           </Description>
+          <CodeEditor />
         </section>
 
         <section id="section3">
@@ -143,6 +146,12 @@ let str = "Hello" ;
               </li>
             ))}
           </ul>
+
+          <HeroVideoDialog
+            videoSrc="https://www.youtube.com/embed/HzWf-EeE3uI?si=9ff4VRUMnoy9mVdW"
+            thumbnailSrc="https://img.youtube.com/vi/HzWf-EeE3uI/maxresdefault.jpg"
+            link="https://www.youtube.com/watch?v=HzWf-EeE3uI"
+          />
         </section>
         <div className="flex items-center justify-end w-full gap-3">
           <QuizButton text="Lesson 2" link="/quiz/lesson2" />
