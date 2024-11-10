@@ -2,7 +2,6 @@ import { Moon, Sun } from "lucide-react";
 import React, { useEffect, useMemo, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { Button } from "@nextui-org/react";
-import axios from "axios";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useTheme } from "next-themes";
@@ -19,14 +18,14 @@ import { useAuth } from "@/context/AuthContext";
 import { Progress } from "@nextui-org/react";
 import LeaveSitePrompt from "@/components/LeaveSitePrompt";
 import QuizStartModal from "@/components/QuizStartModal";
-import toast, { Toaster } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { NextRoute } from "../data/NextRoute";
 import { MoveRight } from "lucide-react";
 import confetti from "canvas-confetti";
 import { useCallback } from "react";
 import Trophy from "../assets/trophy.png";
 import { Tooltip } from "@nextui-org/react";
-import Loading from "@/components/loading";
+import { Clock } from "lucide-react";
 
 import { Quizzes } from "@/data/QuizData";
 export default function Quiz() {
@@ -34,13 +33,24 @@ export default function Quiz() {
   const [points, setPoints] = useState(0);
   const [isOpen, setIsOpen] = useState(true);
   const [quizCompleted, setQuizCompleted] = useState(false);
-  const [quizAlreadyCompleted, setQuizAlreadyCompleted] = useState(false);
-  const [time, setTime] = useState(60);
+  const [time, setTime] = useState(120);
+
+  const isLowTime = time <= 10;
+
+  const shakeAnimation = {
+    shake: {
+      x: [0, -5, 5, -5, 5, 0],
+      transition: {
+        duration: 0.4,
+        repeat: Infinity,
+        repeatType: "loop",
+      },
+    },
+  };
 
   useEffect(() => {
     let timerInterval;
 
-    // Only start the timer when the modal is closed
     if (!isOpen && !quizCompleted && time > 0) {
       timerInterval = setInterval(() => {
         setTime((prevTime) => {
@@ -65,7 +75,7 @@ export default function Quiz() {
 
   useEffect(() => {
     if (isOpen) {
-      setTime(60);
+      setTime(120);
       setQuizCompleted(false);
     }
   }, [isOpen]);
@@ -135,7 +145,7 @@ export default function Quiz() {
                 showArrow={true}
                 placement="bottom"
                 content={
-                  <div className="w-[220px] p-3 font-NotoSans">
+                  <div className="w-[220px] p-3 font-SpaceGrotesk">
                     <h1 className="mb-3 text-xs font-semibold">
                       Fantastic Score 🥳
                     </h1>
@@ -157,20 +167,37 @@ export default function Quiz() {
             {/* TIMER */}
 
             {!quizCompleted && !isOpen && (
-              <div className="relative px-2 text-sm font-bold text-zinc-500 dark:text-zinc-400">
-                <h1>
-                  Time:
+              <motion.div
+                className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-white dark:bg-zinc-800/20 border border-zinc-200 dark:border-zinc-800 shadow-xl"
+                animate={isLowTime ? "shake" : ""}
+                variants={shakeAnimation}
+              >
+                <Clock
+                  className={`w-5 h-5 ${
+                    isLowTime ? "text-red-500" : "text-green-500"
+                  }`}
+                />
+                <div className="text-sm font-bold">
                   <span
-                    className={`ml-2 py-[1px] px-4 border ${
-                      time <= 10
-                        ? "border-red-200 dark:border-red-700 bg-red-50 dark:bg-red-500/20 text-red-600 dark:text-red-300"
-                        : "border-green-200 dark:border-green-700 bg-green-50 dark:bg-green-500/20 text-green-600 dark:text-green-300"
-                    } rounded`}
+                    className={`${
+                      isLowTime
+                        ? "text-red-500"
+                        : "text-gray-700 dark:text-gray-300"
+                    }`}
+                  >
+                    {isLowTime ? "Hurry!" : "Time:"}
+                  </span>
+                  <span
+                    className={`ml-2 py-1 px-3 rounded-full ${
+                      isLowTime
+                        ? "bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-300"
+                        : "bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-300"
+                    }`}
                   >
                     {time}s
                   </span>
-                </h1>
-              </div>
+                </div>
+              </motion.div>
             )}
             {quizCompleted && (
               <div className="flex items-center gap-2 text-xs font-bold">
@@ -181,7 +208,7 @@ export default function Quiz() {
               </div>
             )}
             <div
-              className="transition duration-500 ease-in-out cursor-pointer"
+              className="hidden md:flex transition duration-500 ease-in-out cursor-pointer"
               onClick={toggleTheme}
             >
               {theme === "dark" ? <Sun size={24} /> : <Moon size={24} />}
@@ -517,7 +544,7 @@ const QuizCard = ({ points, setPoints, quizCompleted, setQuizCompleted }) => {
               className={`w-full p-3 rounded-lg text-left font-semibold text-[13px] flex items-center relative ${
                 selectedAnswer === key
                   ? "text-white"
-                  : "bg-zinc-50 dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-700 border border-zinc-200 dark:border-zinc-800"
+                  : "bg-zinc-50 dark:bg-zinc-900 hover:bg-zinc-100 dark:hover:bg-zinc-800 border border-zinc-200 dark:border-zinc-800"
               }`}
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -537,7 +564,7 @@ const QuizCard = ({ points, setPoints, quizCompleted, setQuizCompleted }) => {
                 className={`z-10 mr-4 size-6 grid place-items-center rounded-md ${
                   selectedAnswer === key
                     ? "bg-white text-green-500 border-2 border-green-200"
-                    : "bg-white border border-zinc-200 dark:border-zinc-600 dark:bg-zinc-700 font-bold"
+                    : "bg-white border border-zinc-200 dark:border-zinc-600 dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-700 font-bold"
                 }`}
               >
                 {optionLetters[index]}

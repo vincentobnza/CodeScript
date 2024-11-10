@@ -124,7 +124,7 @@ export default function Dashboard() {
           isLoading={isLoading}
         />
         <DataCard
-          title="Active Users (This Month)"
+          title="Users (This Month)"
           value={activeUsers.thisMonth}
           icon={<ShieldCheck />}
           color="success"

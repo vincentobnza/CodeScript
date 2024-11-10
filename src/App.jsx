@@ -299,9 +299,9 @@ const router = createBrowserRouter([
     path: "/quiz/:quizType",
     element: (
       <ThemeProvider>
-        <ProtectedRoute>
-          <Quiz />
-        </ProtectedRoute>
+        {/* <ProtectedRoute> */}
+        <Quiz />
+        {/* </ProtectedRoute> */}
       </ThemeProvider>
     ),
   },

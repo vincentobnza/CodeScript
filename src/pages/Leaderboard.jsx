@@ -170,7 +170,7 @@ const Ranking = () => {
 
       const updatedUsersData = usersData.map((user, index) => ({
         ...user,
-        rank: index + 1,
+        rank: index + 1, // Ensure rank starts from 1
       }));
 
       setUsers(updatedUsersData);
@@ -323,7 +323,7 @@ const Ranking = () => {
                                     : "text-zinc-500 dark:text-white"
                                 }`}
                               >
-                                {index + 1}
+                                {rankedUser.rank}
                               </h1>
                             </div>
                           </TableCell>

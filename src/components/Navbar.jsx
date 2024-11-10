@@ -222,7 +222,7 @@ const Navs = () => {
   const navLinks = [
     { to: "/learn", label: "Lessons" },
     { to: "/leaderboard", label: "Leaderboards" },
-    { to: "/code-lab", label: "Code Assessments" },
+    { to: "/code-lab", label: "Code Lab" },
     { to: "/about-us", label: "About Us" },
   ];
 
@@ -252,7 +252,7 @@ function MobileMenu({ isOpen, onClose }) {
 
   const navLinks = [
     { href: "/learn", label: "Lessons" },
-    { href: "/code-lab", label: "Code Assessments" },
+    { href: "/code-lab", label: "Code Lab" },
     { href: "/leaderboard", label: "Leaderboard" },
     { href: "/about-us", label: "About Us" },
   ];
