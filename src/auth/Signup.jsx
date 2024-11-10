@@ -8,70 +8,7 @@ import { useAuth } from "@/context/AuthContext";
 import { motion } from "framer-motion";
 
 export default function Login() {
-  const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
   const { signInWithGoogle, signInWithGithub } = useAuth();
-
-  // const handleSignIn = async (e) => {
-  //   e.preventDefault();
-
-  //   // Basic validation
-  //   if (!email || !password) {
-  //     toast.error("Please fill in all fields", {
-  //       style: {
-  //         borderRadius: "5px",
-  //         background: "#333",
-  //         color: "#fff",
-  //         fontSize: "12px",
-  //         letterSpacing: "0.5px",
-  //       },
-  //     });
-  //     return;
-  //   }
-
-  //   // Start the sign-in process
-  //   const signInPromise = new Promise(async (resolve, reject) => {
-  //     try {
-  //       setLoading(true);
-
-  //       const { data, error } = await supabase.auth.signInWithPassword({
-  //         email,
-  //         password,
-  //       });
-
-  //       if (error) throw error;
-
-  //       resolve(data);
-  //     } catch (error) {
-  //       reject(error.message);
-  //     } finally {
-  //       setLoading(false);
-  //     }
-  //   });
-
-  //   toast.promise(
-  //     signInPromise,
-  //     {
-  //       loading: "Signing in...",
-  //       success: () => {
-  //         navigate("/"); // Redirect on success
-  //         return "Signed in successfully!";
-  //       },
-  //       error: (err) => `Error: ${err}`,
-  //     },
-  //     {
-  //       style: {
-  //         borderRadius: "5px",
-  //         background: "#333",
-  //         color: "#fff",
-  //         fontSize: "12px",
-  //         letterSpacing: "0.5px",
-  //       },
-  //     }
-  //   );
-  // };
 
   const handleGithubLogin = async () => {
     await signInWithGithub();
@@ -86,10 +23,10 @@ export default function Login() {
     >
       <Toaster />
       <div className="flex flex-col items-center justify-center w-full max-w-md gap-4 p-10 text-center">
-        <h1 className="text-4xl font-semibold tracking-wide text-transparent bg-gradient-to-br from-white to-zinc-400 bg-clip-text">
+        <h1 className="text-3xl font-semibold tracking-wide text-transparent bg-gradient-to-br from-white to-zinc-400 bg-clip-text">
           Create your account
         </h1>
-        <p className="text-md">Get started with CodeScript</p>
+        <p className="text-sm font-semibold">Get started with CodeScript</p>
 
         <div className="flex flex-col w-full max-w-xl gap-2 mt-5">
           <button

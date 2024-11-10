@@ -12,6 +12,7 @@ import {
   ListItem,
   NextButton,
   Output,
+  CodeEditor,
 } from "../../layout/UILayout";
 import { FaInfoCircle } from "react-icons/fa";
 import { BsArrowRight } from "react-icons/bs";
@@ -45,6 +46,7 @@ export default function Lesson2_Topic1() {
 
           <Description>In Example: </Description>
           <Code code={`let y = 20;`} />
+          <CodeEditor height={100} />
           <Description>
             In this example, we defined the variable with the keyword “let".
             Variables can be declared in ways using the keyword “let", “var",
@@ -125,15 +127,17 @@ export default function Lesson2_Topic1() {
                   code={`let firstName = "aezil";
 let lastName = "sison";
 
-console.log("Value of firstName =" + firstname);
-console.log("Value of lastName =" + firstname);
+console.log("Value of firstName = " + firstName);
+console.log("Value of lastName = " + lastName);
 `}
                 />
                 <Output
-                  output={`Value of firstName= aezil
-Value of lastName= sison
+                  output={`Value of firstName = aezil
+Value of lastName = sison
 `}
                 />
+
+                <CodeEditor />
               </div>
             </li>
             <li className="list-decimal list-inside text-zinc-700 dark:text-zinc-400">
@@ -146,17 +150,19 @@ Value of lastName= sison
                   code={`let x = 21 ;
 let y = 2024 ;
 
-console.log("Value of x= " + x);
-console.log("Value of y= " + y);
+console.log("Value of x = " + x);
+console.log("Value of y = " + y);
 
 `}
                 />
                 <Output
-                  output={`Value of x= 21
-Value of y= 2024
+                  output={`Value of x = 21
+Value of y = 2024
 
 `}
                 />
+
+                <CodeEditor />
               </div>
             </li>
             <li className="list-decimal list-inside text-zinc-700 dark:text-zinc-400">
@@ -179,6 +185,8 @@ console.log("Value of bigNum= " + bigNum);
 
 `}
                 />
+
+                <CodeEditor />
               </div>
             </li>
             <li className="list-decimal list-inside text-zinc-700 dark:text-zinc-400">
@@ -204,6 +212,8 @@ if (isNicole) {
 
 `}
                 />
+
+                <CodeEditor />
 
                 <Description>
                   In this example, it checks if the variable isNicole is true.
@@ -233,6 +243,8 @@ if (x === undefined) {
                 />
                 <Output output={`x is empty`} />
 
+                <CodeEditor />
+
                 <Description>
                   In this example, it checks if the variable x is empty (meaning
                   it has no value). If it is, it prints “x is empty". If it has
@@ -254,6 +266,8 @@ console.log(salary)
 
 `}
                 />
+
+                <CodeEditor />
 
                 <Description>
                   The variable x is assigned the value of null. This means x
@@ -283,6 +297,8 @@ console.log(salary)
   address: "Philippines"
 };`}
                 />
+
+                <CodeEditor />
               </div>
             </li>
           </ul>

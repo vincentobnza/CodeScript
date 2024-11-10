@@ -3,15 +3,11 @@ import {
   Description,
   Title,
   Code,
-  Example,
-  Image,
   List,
-  Text,
-  Note,
-  ListItem,
   NextButton,
   QuizButton,
   Output,
+  CodeEditor,
   Highlight,
 } from "../../layout/UILayout";
 import { Link } from "react-router-dom";
@@ -61,7 +57,7 @@ break[label];`}
           />
 
           <Description>
-            <h1 className="text-xs text-zinc-600 dark:text-zinc-400 italic underline dark:hover:text-green-600">
+            <h1 className="text-xs italic underline text-zinc-600 dark:text-zinc-400 dark:hover:text-green-600">
               Reference:
               <Link to="https://www.tutorialspoint.com/javascript/javascript_break_statement.htm">
                 https://www.tutorialspoint.com/javascript/javascript_break_statement.htm
@@ -94,6 +90,8 @@ In this example, the loop stops when the value of \`i\` equals 5, even though th
 4`}
           />
 
+          <CodeEditor />
+
           <Description>
             Once the `break` statement is encountered at `i = 5`, the loop
             terminates, and no further iterations are executed.
@@ -122,6 +120,7 @@ while (count < 10) {
 6
 `}
           />
+          <CodeEditor />
 
           <Description>
             Here, the loop stops as soon as the `count` variable reaches 7.
@@ -163,6 +162,8 @@ while (count < 10) {
 4
 `}
           />
+          <CodeEditor />
+
           <Description>
             The number 3 is skipped because the `continue` statement causes the
             loop to bypass the rest of the code in that iteration and move on to
@@ -188,6 +189,7 @@ while (x < 5) {
 5
 `}
           />
+          <CodeEditor />
 
           <Description>
             The `continue` statement skips the iterations where `x` equals 2 or
@@ -236,6 +238,7 @@ x = 5, y = 4
 x = 5, y = 5
 `}
           />
+          <CodeEditor />
 
           <Description>
             In this example, the `continue` statement skips the iterations where
@@ -271,6 +274,7 @@ i = 2, j = 0
 i = 2, j = 1
 `}
           />
+          <CodeEditor />
 
           <Description>
             In this case, when `i === j`, the `continue` statement tells the
@@ -288,7 +292,7 @@ i = 2, j = 1
             ]}
           />
         </section>
-        <div className="w-full flex items-center gap-3 justify-end">
+        <div className="flex items-center justify-end w-full gap-3">
           <QuizButton text="Lesson 3" link="/quiz/lesson3" />
           <NextButton
             link="/learn-js/functions"

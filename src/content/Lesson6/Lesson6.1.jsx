@@ -3,18 +3,8 @@ import {
   Description,
   Title,
   Code,
-  Example,
-  Image,
-  List,
-  Text,
-  Note,
-  ListItem,
   NextButton,
-  QuizButton,
-  Output,
-  Highlight,
 } from "../../layout/UILayout";
-import { Link } from "react-router-dom";
 
 export default function Lesson6_Topic1() {
   return (

@@ -6,6 +6,7 @@ import {
   Code,
   NextButton,
   QuizButton,
+  CodeEditor,
 } from "../../layout/UILayout";
 import {
   Table,
@@ -82,6 +83,8 @@ console.log("Equal");
 // Output will be : Equal
 `}
           />
+
+          <CodeEditor />
           <Description>
             Not equal to ( != ), checks if two operands are not equal (loose
             inequality).
@@ -95,6 +98,8 @@ console.log("Not equal");
 // Output will be : Not equal
 `}
           />
+          <CodeEditor />
+
           <Description>
             Strictly equal to ( === ), check if two operands are equal in both
             value and type.
@@ -107,6 +112,8 @@ if(a === b){
 console.log("Strictly equal"); }  // Output will be : Nothing
 `}
           />
+          <CodeEditor />
+
           <Description>
             Strictly not equal to ( !== ), check if two operands are not equal
             in either value or type.
@@ -117,6 +124,8 @@ let  b = "10" ;
 // Output will be :  Strictly not equal
 `}
           />
+          <CodeEditor />
+
           <Description>
             {`Greater than ( > ), check if the first operand is greater than the
           second`}
@@ -127,6 +136,8 @@ let  b = "10" ;
 } // Output will be :  Greater than
 `}
           />
+          <CodeEditor />
+
           <Description>
             {`Less than ( < ), checksif the first operand is less than the second.`}
           </Description>
@@ -136,6 +147,8 @@ console.log("Less than");
 }  // Output will be:Less than
 `}
           />
+          <CodeEditor />
+
           <Description>
             {`Greater than or equal ( >= ), checks if the first operand is greater than or equal to the second.`}
           </Description>
@@ -145,6 +158,8 @@ console.log("Greater than or equal to");
 }  // Output will be :  Greater than or equal to
 `}
           />
+          <CodeEditor />
+
           <Description>
             {`Less than or equal to ( <= ), checks if the first operand is less than or equal to the second.`}
           </Description>
@@ -154,6 +169,7 @@ console.log("Less than or equal to");
 }  // Output will be :  Less than or equal to
 `}
           />
+          <CodeEditor />
         </section>
 
         <section id="section3">
@@ -167,6 +183,7 @@ console.log("Both true");
 }  // Output will be :  Nothing
 `}
           />
+          <CodeEditor />
           <Description>
             {`Logical OR ( || ), returns true if at least one operand is true.`}
           </Description>
@@ -176,6 +193,8 @@ console.log("at least one is true");
 }  // Output will be :  at least one is true
 `}
           />
+          <CodeEditor />
+
           <Description>
             Logical NOT ( ! ), reverses the logical value of an operand.
           </Description>
@@ -185,6 +204,7 @@ console.log("Not false");
 }  // Output will be :  Not false
 `}
           />
+          <CodeEditor />
         </section>
         <section id="section4">
           <Title>Assignment Operators</Title>
@@ -257,6 +277,8 @@ let message = age >= 18 ? "You are an adult" : "You are a minor";
 console.log(message);   // Result will be: You are an adult
 `}
           />
+          <CodeEditor />
+
           <Title>Bit wise operators</Title>
           <Description>It’s operate on individual bits of numbers.</Description>
           <Title>String operators</Title>
@@ -269,6 +291,8 @@ let str2 = "World";
 let result = str1 + str2;   // output will be: “Hello World”
 `}
           />
+          <CodeEditor />
+
           <Title>Typeof Operator</Title>
           <Code
             code={`let num = 10 ;
@@ -280,6 +304,7 @@ console.log( typeof str);       // output will be:  string
 console.log( typeof bool);   // output will be:   Boolean
 `}
           />
+          <CodeEditor />
         </section>
         <div className="flex items-center justify-end w-full gap-3">
           <QuizButton text="Operators" link="/quiz/lesson2" />

@@ -3,15 +3,9 @@ import {
   Description,
   Title,
   Code,
-  Example,
-  Image,
-  List,
-  Text,
-  Note,
-  ListItem,
   NextButton,
-  QuizButton,
   Output,
+  CodeEditor,
   Highlight,
 } from "../../layout/UILayout";
 import { Link } from "react-router-dom";
@@ -43,7 +37,7 @@ export default function Lesson3_Topic3() {
           />
 
           <Description>
-            <h1 className="text-xs text-zinc-600 dark:text-zinc-400 italic underline dark:hover:text-green-600">
+            <h1 className="text-xs italic underline text-zinc-600 dark:text-zinc-400 dark:hover:text-green-600">
               Reference:
               <Link to="https://codeexercise.com/about-for-loops-with-example-in-javascript/">
                 https://codeexercise.com/about-for-loops-with-example-in-javascript/
@@ -99,6 +93,8 @@ export default function Lesson3_Topic3() {
 I'm Monkey D. Luffy and I'm gonna be King of the Pirates!
 I'm Monkey D. Luffy and I'm gonna be King of the Pirates!`}
           />
+
+          <CodeEditor />
           <Title>How to Display a Sequence of Numbers with a For Loop</Title>
           <Description>
             This time around, let’s display a sequence of numbers by displaying
@@ -116,6 +112,7 @@ I'm Monkey D. Luffy and I'm gonna be King of the Pirates!`}
 4
 5`}
           />
+          <CodeEditor />
 
           <Title>How to Display a Sequence of Even Numbers</Title>
           <Description>
@@ -139,6 +136,7 @@ for(let i = 0; i <= 10; i+=2){
 8
 10`}
           />
+          <CodeEditor />
 
           <Title>How to Break a For Loop Operation</Title>
           <Description>
@@ -163,6 +161,8 @@ for(let i = 0; i <= 10; i+=2){
 4
 6`}
           />
+
+          <CodeEditor />
         </section>
 
         <section id="section3">
@@ -191,7 +191,7 @@ for(let i = 0; i <= 10; i+=2){
             />
           </div>
           <Description>
-            <h1 className="text-xs text-zinc-600 dark:text-zinc-400 italic underline dark:hover:text-green-600">
+            <h1 className="text-xs italic underline text-zinc-600 dark:text-zinc-400 dark:hover:text-green-600">
               Reference:
               <Link to="https://www.programiz.com/javascript/while-loop">
                 https://www.programiz.com/javascript/while-loop
@@ -254,7 +254,7 @@ do {
   count++;
 }while(count <= 5);
 
-console.log("\nCount is stopped")`}
+console.log("Count is stopped")`}
           />
 
           <Output
@@ -263,9 +263,9 @@ Current count: 2
 Current count: 3
 Current count: 4
 Current count: 5
-
 Count is stopped`}
           />
+          <CodeEditor />
         </section>
         <NextButton
           link="/learn-js/break-statements"

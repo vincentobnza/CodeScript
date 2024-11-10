@@ -27,10 +27,10 @@ export default function Login() {
     >
       <Toaster />
       <div className="flex flex-col items-center justify-center w-full max-w-md gap-4 p-10 text-center">
-        <h1 className="text-4xl font-semibold tracking-wide text-transparent bg-gradient-to-br from-white to-zinc-400 bg-clip-text">
+        <h1 className="text-3xl font-semibold tracking-wide text-transparent bg-gradient-to-br from-white to-zinc-400 bg-clip-text">
           Welcome Back!
         </h1>
-        <p className="text-md">Sign in to your account</p>
+        <p className="text-sm font-semibold">Sign in to your account</p>
 
         <div className="flex flex-col w-full max-w-xl gap-2 mt-5">
           <button

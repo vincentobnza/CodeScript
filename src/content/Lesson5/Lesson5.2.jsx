@@ -3,16 +3,10 @@ import {
   Description,
   Title,
   Code,
-  Example,
-  Image,
-  List,
-  Text,
-  Note,
-  ListItem,
   NextButton,
   QuizButton,
   Output,
-  Highlight,
+  CodeEditor,
 } from "../../layout/UILayout";
 import { Link } from "react-router-dom";
 
@@ -102,6 +96,7 @@ console.log(cars)`}
           />
 
           <Output output={`Saab,Volvo,BMW`} />
+          <CodeEditor />
         </section>
 
         <section id="section4">
@@ -115,6 +110,7 @@ console.log(cars)`}
             code={`const animals = ["dog", "cat", "bird", "chicken"];
 let animal  = "penguin"`}
           />
+          <CodeEditor />
 
           <Title>Altering an Element in an Array</Title>
 
@@ -146,6 +142,7 @@ console.log(animals)`}
             code={`let person = ["Pedro", "Juan"];
 console.log(person.length);`}
           />
+          <CodeEditor />
 
           <Title>Adding and removing elements</Title>
           <Title>push()</Title>
@@ -157,6 +154,7 @@ fruits.push("orange","grape");
 console.log(fruits);
 console.log(fruits.length)`}
           />
+          <CodeEditor />
 
           <Description>
             The push() method adds elements to the end of an array and returns
@@ -172,6 +170,7 @@ console.log(lastElement); // Output: 4
 console.log(numbers); // Output: [1, 2, 3]
 `}
           />
+          <CodeEditor />
 
           <Description>
             The pop() method removes the last element from an array and returns
@@ -187,6 +186,7 @@ console.log(firstElement); // Output: 'a'
 console.log(items); // Output: ['b', 'c']
 `}
           />
+          <CodeEditor />
 
           <Description>
             The shift() method removes the first element from an array and
@@ -201,6 +201,8 @@ values.unshift(1);
 console.log(values); // Output: [1, 2, 3, 4]
 `}
           />
+          <CodeEditor />
+
           <Description>
             The unshift() method adds one or more elements to the beginning of
             an array and returns the new length of the array.
@@ -215,6 +217,8 @@ let combined = arr1.concat(arr2);
 console.log(combined); // Output: [1, 2, 3, 4]
 `}
           />
+          <CodeEditor />
+
           <Description>
             The concat() method combines two or more arrays into a new array.
           </Description>
@@ -227,6 +231,7 @@ let part = letters.slice(1, 3);
 console.log(part); // Output: ['b', 'c']
 console.log(letters); // Output: ['a', 'b', 'c', 'd']`}
           />
+          <CodeEditor />
 
           <Description>
             The slice() method returns a shallow copy of a portion of an array
@@ -241,6 +246,7 @@ arr.splice(1, 2, 'a', 'b');
 console.log(arr); // Output: [1, 'a', 'b', 4]
 `}
           />
+          <CodeEditor />
           <Description>
             The splice() method changes an array by adding, removing, or
             replacing elements in place.
@@ -254,6 +260,7 @@ numbers.forEach(num => console.log(num * 2));
 // Output: 2, 4, 6
 `}
           />
+          <CodeEditor />
 
           <Description>
             The forEach() method executes a provided function once for each
@@ -268,6 +275,7 @@ let doubled = numbers.map(num => num * 2);
 console.log(doubled); // Output: [2, 4, 6]
 `}
           />
+          <CodeEditor />
           <Description>
             The map() method creates a new array with the results of calling a
             function on every element in the array.
@@ -281,6 +289,7 @@ let greaterThanTwo = numbers.filter(num => num > 2);
 console.log(greaterThanTwo); // Output: [3, 4]
 `}
           />
+          <CodeEditor />
           <Description>
             The filter() method creates a new array with elements that pass the
             test in a provided function.
@@ -294,6 +303,7 @@ let sum = numbers.reduce((acc, num) => acc + num, 0);
 console.log(sum); // Output: 10
 `}
           />
+          <CodeEditor />
           <Description>
             The reduce() method executes a reducer function on each element of
             the array, resulting in a single value.
@@ -307,6 +317,7 @@ let found = numbers.find(num => num > 2);
 console.log(found); // Output: 3
 `}
           />
+          <CodeEditor />
           <Description>
             The find() method returns the first element that satisfies the
             provided function.
@@ -320,6 +331,7 @@ let index = numbers.findIndex(num => num > 2);
 console.log(index); // Output: 2
 `}
           />
+          <CodeEditor />
           <Description>
             The findIndex() method returns the index of the first element that
             satisfies the provided function.
@@ -333,6 +345,7 @@ let index = fruits.indexOf('banana');
 console.log(index); // Output: 1
 `}
           />
+          <CodeEditor />
           <Description>
             The indexOf() method returns the first index at which a given
             element can be found.
@@ -346,6 +359,7 @@ let hasBanana = fruits.includes('banana');
 console.log(hasBanana); // Output: true
 `}
           />
+          <CodeEditor />
           <Description>
             The includes() method checks if an array contains a specified
             element and returns a boolean.
@@ -359,6 +373,7 @@ numbers.sort();
 console.log(numbers); // Output: [1, 2, 3, 4]
 `}
           />
+          <CodeEditor />
           <Description>
             The sort() method sorts the elements of an array in place and
             returns the sorted array.
@@ -372,6 +387,7 @@ numbers.reverse();
 console.log(numbers); // Output: [3, 2, 1]
 `}
           />
+          <CodeEditor />
           <Description>
             The reverse() method reverses the order of the elements in an array
             in place.
@@ -385,6 +401,7 @@ let sentence = words.join(' ');
 console.log(sentence); // Output: 'hello world'
 `}
           />
+          <CodeEditor />
           <Description>
             The join() method joins all elements of an array into a string, with
             a specified separator.
@@ -398,6 +415,7 @@ let allPositive = numbers.every(num => num > 0);
 console.log(allPositive); // Output: true
 `}
           />
+          <CodeEditor />
           <Description>
             The every() method tests whether all elements in the array pass the
             test implemented by the provided function.
@@ -411,6 +429,8 @@ let hasGreaterThanThree = numbers.some(num => num > 3);
 console.log(hasGreaterThanThree); // Output: true
 `}
           />
+          <CodeEditor />
+
           <Description>
             The some() method tests whether at least one element in the array
             passes the test implemented by the provided function.
@@ -424,6 +444,8 @@ let flatArr = arr.flat();
 console.log(flatArr); // Output: [1, 2, 3, 4, 5]
 `}
           />
+          <CodeEditor />
+
           <Description>
             The flat() method flattens a nested array into a single-level array.
           </Description>
@@ -436,6 +458,8 @@ let result = numbers.flatMap(num => [num, num * 2]);
 console.log(result); // Output: [1, 2, 2, 4, 3, 6]
 `}
           />
+          <CodeEditor />
+
           <Description>
             The flatMap() method maps each element and flattens the result into
             a new array.
@@ -449,6 +473,8 @@ numbers.fill(0, 1, 3);
 console.log(numbers); // Output: [1, 0, 0, 4]
 `}
           />
+          <CodeEditor />
+
           <Description>
             The fill() method fills all or part of the array with a static
             value.
@@ -462,6 +488,8 @@ let arr = Array.from(str);
 console.log(arr); // Output: ['h', 'e', 'l', 'l', 'o']
 `}
           />
+          <CodeEditor />
+
           <Description>
             The from() method creates a new array from an array-like or iterable
             object.
@@ -473,13 +501,15 @@ console.log(arr); // Output: ['h', 'e', 'l', 'l', 'o']
 console.log(Array.isArray('hello')); // Output: false
 `}
           />
+          <CodeEditor />
+
           <Description>
             The isArray() method checks if a value is an array and returns a
             boolean.
           </Description>
         </section>
 
-        <div className="w-full flex items-center gap-3 justify-end">
+        <div className="flex items-center justify-end w-full gap-3">
           <QuizButton text="Lesson 5" link="/quiz/lesson5" />
           <NextButton link="/learn-js/dom" text="What is DOM?" />
         </div>

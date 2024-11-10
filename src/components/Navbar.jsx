@@ -115,7 +115,10 @@ export default function Navbar() {
 
           {/* User profile dropdown remains the same */}
           {user ? (
-            <Dropdown placement="bottom-end" className="text-xs font-Inter">
+            <Dropdown
+              placement="bottom-end"
+              className="text-xs font-SpaceGrotesk"
+            >
               <DropdownTrigger>
                 <div className="items-center gap-4">
                   <div className="grid overflow-hidden rounded-full cursor-pointer size-8 place-items-center">
@@ -167,7 +170,7 @@ export default function Navbar() {
             </Tooltip>
           )}
 
-          <Dropdown className="font-Inter">
+          <Dropdown className="font-SpaceGrotesk">
             <DropdownTrigger>
               <div className="grid transition duration-500 ease-in-out rounded-lg cursor-pointer hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:brightness-125 size-9 place-items-center">
                 {getCurrentThemeIcon()}
@@ -209,26 +212,35 @@ export default function Navbar() {
 }
 
 const Navs = () => {
+  const location = useLocation();
+  const [activeTab, setActiveTab] = useState(location.pathname);
+
+  useEffect(() => {
+    setActiveTab(location.pathname);
+  }, [location]);
+
+  const navLinks = [
+    { to: "/learn", label: "Lessons" },
+    { to: "/leaderboard", label: "Leaderboards" },
+    { to: "/code-lab", label: "Code Assessments" },
+    { to: "/about-us", label: "About Us" },
+  ];
+
   return (
-    <nav className="items-center hidden ml-24 space-x-7 md:flex">
-      <NavLink to="learn" className="text-[12px] hover:brightness-125">
-        Lessons
-      </NavLink>
-      <NavLink
-        to="leaderboard"
-        className="gap-2 text-[12px] hover:brightness-125"
-      >
-        Leaderboards
-      </NavLink>
-      <NavLink to="code-lab" className="text-[12px] hover:brightness-125">
-        Code Assessments
-      </NavLink>
-      <NavLink
-        to="/about-us"
-        className="relative text-[12px] hover:brightness-125 duration-300"
-      >
-        About Us
-      </NavLink>
+    <nav className="items-center hidden ml-24 space-x-8 md:flex">
+      {navLinks.map((link) => (
+        <div className="relative">
+          <NavLink
+            key={link.to}
+            to={link.to}
+            className={`text-xs font-medium hover:brightness-125 ${
+              activeTab === link.to ? "font-bold text-zinc-100" : ""
+            }`}
+          >
+            {link.label}
+          </NavLink>
+        </div>
+      ))}
     </nav>
   );
 };

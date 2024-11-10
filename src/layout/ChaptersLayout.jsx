@@ -15,7 +15,7 @@ export default function ChaptersLayout() {
           <div className="flex">
             <Link
               to="/learn-js"
-              className="flex items-center gap-2 px-4 py-2 text-xs rounded text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:hover:brightness-125"
+              className="flex items-center gap-2 px-4 py-2 text-xs font-semibold rounded text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:hover:brightness-125"
             >
               <Undo2 size={13} />
               Return to Homepage

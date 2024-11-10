@@ -4,9 +4,9 @@ import {
   Title,
   Code,
   NextButton,
-  QuizButton,
   Highlight,
   Output,
+  CodeEditor,
 } from "../../layout/UILayout";
 
 export default function Lesson3_Topic2() {
@@ -89,6 +89,8 @@ export default function Lesson3_Topic2() {
 // only logs 1`}
           />
 
+          <CodeEditor />
+
           <Description>
             transfers control to that clause, executing statements following
             that clause. If no default clause is found, the program continu3:45
@@ -155,8 +157,10 @@ switch (day) {
 
           <Output output={`Wednesday`} />
 
+          <CodeEditor />
+
           <Title>Explanation</Title>
-          <ul className="mt-4 mb-8 space-y-1">
+          <ul className="mt-4 mb-8 space-y-1 text-sm">
             <li className="list-disc list-inside text-zinc-600 dark:text-zinc-400">
               The variable day holds a number (representing a day of the week).
             </li>

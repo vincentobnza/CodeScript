@@ -3,18 +3,11 @@ import {
   Description,
   Title,
   Code,
-  Example,
-  Image,
-  List,
-  Text,
-  Note,
-  ListItem,
   NextButton,
-  QuizButton,
   Output,
   Highlight,
+  CodeEditor,
 } from "../../layout/UILayout";
-import { Link } from "react-router-dom";
 
 export default function Lesson4_Topic1() {
   return (
@@ -37,6 +30,8 @@ console.log(apple);`}
           />
 
           <Output output={`Apple is color red`} />
+
+          <CodeEditor />
 
           <Description>
             This code illustrates the use of the straightforward method
@@ -72,6 +67,8 @@ console.log(apple);`}
           />
 
           <Output output={`Apple is color red`} />
+          <CodeEditor />
+
           <Description>
             As you can see, the function keyword is present but the function
             name is missing. This turns it into an expression that needs to be
@@ -91,6 +88,7 @@ console.log(apple);`}
           <Output
             output={`Syntax error: Function statements require a function name`}
           />
+          <CodeEditor />
 
           <Description>
             <Highlight> A SyntaxError</Highlight>: Function statements require a

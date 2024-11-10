@@ -3,18 +3,10 @@ import {
   Description,
   Title,
   Code,
-  Example,
-  Image,
   List,
-  Text,
-  Note,
-  ListItem,
-  NextButton,
   QuizButton,
-  Output,
-  Highlight,
+  CodeEditor,
 } from "../../layout/UILayout";
-import { Link } from "react-router-dom";
 
 export default function Lesson8_Topic3() {
   return (
@@ -44,6 +36,8 @@ export default function Lesson8_Topic3() {
 MyCustomError.prototype = Object.create(Error.prototype);
 MyCustomError.prototype.constructor = CustomError;`}
           />
+
+          <CodeEditor />
 
           <Description>Using Custom Errors</Description>
           <Description>

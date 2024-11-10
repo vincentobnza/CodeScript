@@ -3,18 +3,12 @@ import {
   Description,
   Title,
   Code,
-  Example,
-  Image,
-  List,
-  Text,
-  Note,
-  ListItem,
   NextButton,
   QuizButton,
   Output,
   Highlight,
+  CodeEditor,
 } from "../../layout/UILayout";
-import { Link } from "react-router-dom";
 
 export default function Lesson4_Topic3() {
   return (
@@ -44,6 +38,7 @@ console.log(sumArrow(2, 3));`}
             output={`5
 5`}
           />
+          <CodeEditor />
 
           <Description>
             In the example, <Highlight>sumArrow</Highlight> is a compact version
@@ -79,6 +74,7 @@ console.log(greet());`}
 10
 Hello World`}
           />
+          <CodeEditor />
 
           <Description>
             The parentheses in the first function, double, can be removed
@@ -114,6 +110,7 @@ console.log(multiply(3, 7))`}
             output={`16
 21`}
           />
+          <CodeEditor />
 
           <Description>
             The <Highlight>square</Highlight> function returns the value of{" "}
@@ -163,6 +160,7 @@ const objArrow = {
 }
 objArrow.arrowFunc();`}
           />
+          <CodeEditor />
 
           <Description>
             In the first case, this inside the regular function refers to the
@@ -191,12 +189,14 @@ const doubledArrow = numbers.map(num => num * 2);
 console.log(doubledArrow);`}
           />
 
+          <CodeEditor />
+
           <Description>
             Both functions return an array where each number is doubled, but the
             arrow function version is much shorter and easier to read.
           </Description>
         </section>
-        <div className="w-full flex items-center gap-3 justify-end">
+        <div className="flex items-center justify-end w-full gap-3">
           <QuizButton text="Lesson 4" link="/quiz/lesson4" />
           <NextButton
             link="/learn-js/objects-properties-methods"

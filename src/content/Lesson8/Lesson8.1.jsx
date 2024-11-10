@@ -3,18 +3,11 @@ import {
   Description,
   Title,
   Code,
-  Example,
-  Image,
-  List,
-  Text,
-  Note,
-  ListItem,
   NextButton,
-  QuizButton,
   Output,
   Highlight,
+  CodeEditor,
 } from "../../layout/UILayout";
-import { Link } from "react-router-dom";
 
 export default function Lesson8_Topic1() {
   return (
@@ -82,6 +75,7 @@ catch(error){
 An error caught
 Error message: ReferenceError: a is not defined`}
           />
+          <CodeEditor />
 
           <Description>
             There is no definition for a variable in the program above. The
@@ -137,6 +131,7 @@ An error caught
 Error message: ReferenceError: a is not defined
 Finally statement will execute everytime`}
             />
+            <CodeEditor />
 
             <Description>
               An error happens in the program mentioned above, and the catch
@@ -168,6 +163,7 @@ Finally statement will execute everytime`}
   console.log("Wont work")
 }`}
             />
+            <CodeEditor />
 
             <Description>
               Because the function is called later and the engine has already
@@ -190,6 +186,7 @@ Finally statement will execute everytime`}
 }, 3000);
 `}
             />
+            <CodeEditor />
           </section>
         </section>
         <NextButton link="/learn-js/throwing-errors" text="Throwing Errors" />

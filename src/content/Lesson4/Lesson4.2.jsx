@@ -3,18 +3,12 @@ import {
   Description,
   Title,
   Code,
-  Example,
-  Image,
   List,
-  Text,
-  Note,
-  ListItem,
   NextButton,
-  QuizButton,
   Output,
   Highlight,
+  CodeEditor,
 } from "../../layout/UILayout";
-import { Link } from "react-router-dom";
 
 export default function Lesson4_Topic2() {
   return (
@@ -69,6 +63,7 @@ let sum =  addNumbers(5, 1);
 console.log(sum);`}
           />
           <Output output={`6`} />
+          <CodeEditor />
 
           <Title>Explanation</Title>
           <Description>

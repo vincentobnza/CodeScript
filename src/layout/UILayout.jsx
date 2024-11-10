@@ -5,14 +5,16 @@ import {
   oneLight,
 } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { IoCloseCircleSharp } from "react-icons/io5";
-import { FaInfoCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { useTheme } from "next-themes";
-import Editor from "@monaco-editor/react";
 import { Kbd } from "@nextui-org/react";
-import { Copy, Check, MoveRight, CircleCheck } from "lucide-react";
+import { Copy, Check, CircleCheck } from "lucide-react";
 import { toast, Toaster } from "react-hot-toast";
 import { motion, AnimatePresence } from "framer-motion";
+import { Card, CardBody, Button, Select, SelectItem } from "@nextui-org/react";
+import { Loader2, Play } from "lucide-react";
+import * as monaco from "monaco-editor";
+import { RxMoon, RxSun } from "react-icons/rx";
 
 export const Topic = ({ children }) => (
   <h1 className="text-2xl font-medium mt- md:mt-0 md:text-4xl text-zinc-800 dark:text-zinc-100">
@@ -27,7 +29,7 @@ export const Title = ({ children }) => (
 );
 
 export const Description = ({ children }) => (
-  <p className="text-sm md:text-base text-zinc-500 dark:text-[#7e7e7e]">
+  <p className="text-sm  font-medium text-zinc-500 dark:text-[#7e7e7e]">
     {children}
   </p>
 );
@@ -115,34 +117,6 @@ export const CopyIcon = ({ code }) => {
   const handleCopy = async () => {
     try {
       await navigator.clipboard.writeText(code);
-      toast.custom(
-        (t) => (
-          <AnimatePresence>
-            {t.visible && (
-              <motion.div
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 50, transition: { duration: 0.2 } }}
-                className="flex items-center justify-start gap-3 p-2 bg-white border-l-4 border-green-400 dark:bg-zinc-800"
-              >
-                <div className="grid rounded size-9 bg-zinc-50 dark:bg-zinc-700 place-items-center">
-                  <CircleCheck className="text-green-400" />
-                </div>
-                <div className="flex flex-col justify-center gap-1 text-left">
-                  <h1 className="text-sm font-bold">Text Copied</h1>
-                  <p className="text-xs text-zinc-600 dark:text-zinc-400">
-                    Code is successfully copied to clipboard
-                  </p>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
-        ),
-        {
-          duration: 2000,
-          position: "top-right",
-        }
-      );
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch (err) {
@@ -158,7 +132,9 @@ export const CopyIcon = ({ code }) => {
         aria-label={copied ? "Copied!" : "Copy code"}
       >
         {copied ? (
-          <Check className="w-4 h-4 text-green-500" />
+          <>
+            <p className="text-[11px] font-medium">Code Copied!</p>
+          </>
         ) : (
           <Copy className="w-4 h-4 text-gray-500 dark:text-gray-400" />
         )}
@@ -178,7 +154,7 @@ export const List = ({ title, items }) => (
       {items.map((item, index) => (
         <li
           key={index}
-          className="text-xs list-disc list-inside md:text-[15px] leading-normal"
+          className="text-xs leading-normal list-disc list-inside md:text-sm"
           style={{
             textIndent: "-22px",
           }}
@@ -260,3 +236,121 @@ export const QuizButton = ({ text, link }) => (
     </div>
   </Link>
 );
+
+export const CodeEditor = ({
+  initialCode = "// Write your JavaScript code here",
+}) => {
+  const editorRef = useRef(null);
+  const editorInstanceRef = useRef(null);
+  const [isEditorReady, setIsEditorReady] = useState(false);
+  const [isDarkTheme, setIsDarkTheme] = useState(true);
+  const [output, setOutput] = useState("");
+
+  useEffect(() => {
+    if (editorRef.current) {
+      editorInstanceRef.current = monaco.editor.create(editorRef.current, {
+        value: initialCode,
+        language: "javascript",
+        theme: isDarkTheme ? "vs-dark" : "vs-light",
+        automaticLayout: true,
+        minimap: { enabled: false },
+      });
+
+      setIsEditorReady(true);
+
+      return () => {
+        editorInstanceRef.current.dispose();
+      };
+    }
+  }, [isDarkTheme]);
+
+  const toggleTheme = () => {
+    setIsDarkTheme((prevTheme) => !prevTheme);
+  };
+
+  const runCode = () => {
+    if (!editorInstanceRef.current) return;
+
+    const code = editorInstanceRef.current.getModel().getValue();
+    setOutput("");
+
+    try {
+      const originalLog = console.log;
+      console.log = (...args) => {
+        setOutput((prev) => prev + args.join(" ") + "\n");
+      };
+
+      eval(code);
+
+      console.log = originalLog;
+    } catch (error) {
+      setOutput(`Error: ${error.message}`);
+    }
+  };
+
+  return (
+    <div className="w-full max-w-4xl mx-auto border bg-zinc-100 dark:bg-[#1e1e1e] rounded-lg border-zinc-200 dark:border-zinc-700 relative p-4">
+      <div>
+        <div className="flex flex-col items-start justify-between mb-4 space-y-4 sm:flex-row sm:items-center sm:space-y-0">
+          <div className="flex flex-col gap-1">
+            <h2 className="text-lg font-bold text-zinc-800 dark:text-zinc-200">
+              Try the Code here
+            </h2>
+            <h3 className="text-xs text-zinc-500 dark:text-zinc-400">
+              CodeScript Editor
+            </h3>
+          </div>
+
+          <div className="absolute top-0 right-0 flex items-center justify-between w-full p-1 space-x-4 text-sm sm:space-x-4 sm:w-auto sm:justify-end">
+            <button
+              onClick={toggleTheme}
+              className="p-2 transition-colors rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800"
+              aria-label={
+                isDarkTheme ? "Switch to light theme" : "Switch to dark theme"
+              }
+            >
+              {isDarkTheme ? (
+                <RxSun size={20} className="cursor-pointer" />
+              ) : (
+                <RxMoon size={20} className="cursor-pointer" />
+              )}
+            </button>
+            <Button
+              radius="none"
+              disabled={!isEditorReady}
+              onClick={runCode}
+              size="sm"
+              startContent={<Play className="w-4 h-4" />}
+              className="px-4 py-2 text-white bg-green-700 rounded-tr-lg hover:bg-green-700"
+            >
+              Run Code
+            </Button>
+          </div>
+        </div>
+        <div
+          ref={editorRef}
+          className={`w-full h-[200px] overflow-hidden border border-gray-300 h- dark:border-zinc-800`}
+        >
+          {!isEditorReady && (
+            <div className="flex items-center justify-center h-full">
+              <Loader2 className="w-6 h-6 animate-spin" />
+            </div>
+          )}
+        </div>
+        {output && (
+          <div
+            className="p-4 mt-4 border border-zinc-200 dark:border-zinc-700"
+            radius="none"
+          >
+            <div>
+              <h3 className="mb-2 text-sm font-semibold">Output:</h3>
+              <pre className="p-4 overflow-x-auto font-mono text-xs whitespace-pre-wrap bg-gray-100 sm:text-sm dark:bg-zinc-900 text-zinc-500 dark:text-zinc-500">
+                {output}
+              </pre>
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+};

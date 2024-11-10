@@ -90,7 +90,7 @@ export default function NavbarQuickSearch({ isOpen, onOpen, onOpenChange }) {
     <>
       <Modal
         radius="none"
-        className="font-Inter"
+        className="font-SpaceGrotesk"
         size="3xl"
         isOpen={isOpen}
         onOpenChange={onOpenChange}

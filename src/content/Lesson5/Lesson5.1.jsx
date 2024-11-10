@@ -3,18 +3,11 @@ import {
   Description,
   Title,
   Code,
-  Example,
-  Image,
-  List,
-  Text,
-  Note,
-  ListItem,
   NextButton,
-  QuizButton,
   Output,
   Highlight,
+  CodeEditor,
 } from "../../layout/UILayout";
-import { Link } from "react-router-dom";
 
 export default function Lesson5_Topic1() {
   return (
@@ -53,6 +46,8 @@ export default function Lesson5_Topic1() {
 }`}
           />
 
+          <CodeEditor />
+
           <Description>
             Try typing some of the following into the JavaScript console on your
             browser's devtools after saving and refreshing:
@@ -70,6 +65,7 @@ car.start()`}
           />
 
           <Output output={`Mustang and Ferrari color is red`} />
+          <CodeEditor />
         </section>
         <section id="section2">
           <Title>Dot Notation</Title>
@@ -178,6 +174,7 @@ person.greet();  // Output: "Hello, my name is Vincent and I am 25 years old."
           />
 
           <Output output={`Hello, my name is Vincent and I am 21 years old.`} />
+          <CodeEditor />
         </section>
 
         <section id="section6">
@@ -218,6 +215,8 @@ console.log(getName.bio());`}
           <Output
             output={`My name is John. I'm 20 years old. I'm from England`}
           />
+          <CodeEditor />
+
           <Description>
             This code defines a constructor <Highlight>function</Highlight>{" "}
             Profile, which creates objects with properties{" "}
@@ -274,6 +273,7 @@ console.log(object4 === object5);`}
 [object Object]
 true`}
           />
+          <CodeEditor />
         </section>
 
         <section id="section8">
@@ -332,6 +332,7 @@ true
 [object Object]
 false`}
           />
+          <CodeEditor />
 
           <Description>
             As you can see, a change in object6 did not result in a change in

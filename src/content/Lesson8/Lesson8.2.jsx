@@ -3,18 +3,11 @@ import {
   Description,
   Title,
   Code,
-  Example,
-  Image,
-  List,
-  Text,
-  Note,
-  ListItem,
   NextButton,
-  QuizButton,
   Output,
   Highlight,
+  CodeEditor,
 } from "../../layout/UILayout";
-import { Link } from "react-router-dom";
 
 export default function Lesson8_Topic2() {
   return (
@@ -94,6 +87,7 @@ try {
             output={`An error caught 
 Error message: Error: The number is low `}
           />
+          <CodeEditor />
 
           <Description>
             A condition is checked in the software mentioned above. An error is

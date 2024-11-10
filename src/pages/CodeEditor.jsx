@@ -23,12 +23,14 @@ import {
   Code,
   Lightbulb,
   Menu,
+  Undo2,
   PanelRightClose,
 } from "lucide-react";
 import supabase from "../config/supabaseClient";
 import { useAuth } from "@/context/AuthContext";
 import { toast, Toaster } from "react-hot-toast";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
 
 export default function CodeScript() {
   const editorRef = useRef(null);
@@ -292,7 +294,7 @@ export default function CodeScript() {
   };
 
   return (
-    <div className="flex flex-col w-full h-screen font-NotoSans bg-zinc-900 md:flex-row">
+    <div className="flex flex-col w-full h-screen font-SpaceGrotesk bg-zinc-900 md:flex-row">
       <Toaster />
       <AssessmentSidePanel
         assessments={assessments}
@@ -594,6 +596,13 @@ const AssessmentSidePanel = ({
     >
       <div className="flex items-center justify-between p-5">
         <div className="flex flex-col gap-1 font-semibold">
+          <Link
+            to="/"
+            className="flex items-center gap-2 mb-10 text-xs font-black underline text-zinc-400"
+          >
+            <Undo2 size={14} />
+            GO BACK HOME
+          </Link>
           <h3 className="text-xs text-zinc-400">JavaScript Assessments</h3>
           <h3 className="text-lg font-semibold text-zinc-100">
             Assessments for You

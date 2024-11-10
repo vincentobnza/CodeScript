@@ -93,11 +93,13 @@ export const Lesson5 = [
     id: 1,
     name: "Object Properties and Methods",
     link: "objects-properties-methods",
+    subTopics: 8,
   },
   {
     id: 2,
     name: "Arrays and Array Methods  ",
     link: "array-array-methods",
+    subTopics: 6,
   },
 ];
 
@@ -106,16 +108,19 @@ export const Lesson6 = [
     id: 1,
     name: "What is DOM?",
     link: "dom",
+    subTopics: 7,
   },
   {
     id: 2,
     name: "DOM Elements",
     link: "dom-elements",
+    subTopics: 1,
   },
   {
     id: 3,
     name: "Event Listeners and Handling Events ",
     link: "event-listeners-handling-events",
+    subTopics: 4,
   },
 ];
 
@@ -124,11 +129,13 @@ export const Lesson7 = [
     id: 1,
     name: "Event Types?",
     link: "event-types",
+    subTopics: 4,
   },
   {
     id: 2,
     name: "Event Bubbling and Capturing",
     link: "event-bubbling-capturing",
+    subTopics: 2,
   },
 ];
 export const Lesson8 = [
@@ -136,15 +143,18 @@ export const Lesson8 = [
     id: 1,
     name: "Try, Catch, Finally",
     link: "try-catch-finally",
+    subTopics: 3,
   },
   {
     id: 2,
     name: "Throwing Errors",
     link: "throwing-errors",
+    subTopics: 2,
   },
   {
     id: 3,
     name: "Custom Errors",
     link: "custom-errors",
+    subTopics: 2,
   },
 ];

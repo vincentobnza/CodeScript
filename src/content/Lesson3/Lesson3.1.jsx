@@ -3,16 +3,10 @@ import {
   Description,
   Title,
   Code,
-  Example,
-  Image,
-  List,
-  Text,
-  Note,
-  ListItem,
   NextButton,
-  QuizButton,
   Highlight,
   Output,
+  CodeEditor,
 } from "../../layout/UILayout";
 
 export default function Lesson3_Topic1() {
@@ -66,6 +60,8 @@ export default function Lesson3_Topic1() {
 `}
           />
 
+          <CodeEditor />
+
           <Description>
             Here’s what’s happening in the example above:
           </Description>
@@ -103,7 +99,9 @@ export default function Lesson3_Topic1() {
 }
 `}
           />
+
           <Output output={"else block"} />
+          <CodeEditor />
 
           <Description>
             {
@@ -128,8 +126,10 @@ else {
 var result = "else block";
 }`}
           />
+
           <Description>Output</Description>
           <Output output={"else if block"} />
+          <CodeEditor />
           <Description>
             An else if statement doesn’t need a following else statement to
             work. If none of the if or else if conditions pass, then JavaScript
@@ -144,7 +144,9 @@ let result = "else if block";
 }
 `}
           />
+
           <Output output={"first else if block"} />
+          <CodeEditor />
         </section>
 
         <NextButton
