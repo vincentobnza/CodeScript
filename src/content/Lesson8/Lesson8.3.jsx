@@ -7,6 +7,7 @@ import {
   QuizButton,
   CodeEditor,
 } from "../../layout/UILayout";
+import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
 export default function Lesson8_Topic3() {
   return (
@@ -118,6 +119,11 @@ try {
             and debugging capabilities of your JavaScript code by adhering to
             these principles.
           </Description>
+          <HeroVideoDialog
+            videoSrc="https://www.youtube.com/embed/cVo186hyYsM?si=4UAKUoQQidwWjqBC"
+            thumbnailSrc="https://img.youtube.com/vi/cVo186hyYsM/maxresdefault.jpg"
+            link="https://www.youtube.com/watch?v=cVo186hyYsM"
+          />
 
           <QuizButton text="Lesson 8" link="/quiz/lesson8" />
         </section>

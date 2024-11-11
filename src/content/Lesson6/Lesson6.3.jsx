@@ -1,20 +1,11 @@
 import {
-  Topic,
   Description,
   Title,
   Code,
-  Example,
-  Image,
   List,
-  Text,
-  Note,
-  ListItem,
   NextButton,
   QuizButton,
-  Output,
-  Highlight,
 } from "../../layout/UILayout";
-import { Link } from "react-router-dom";
 import {
   Table,
   TableHeader,
@@ -23,6 +14,7 @@ import {
   TableRow,
   TableCell,
 } from "@nextui-org/react";
+import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
 export default function Lesson6_Topic3() {
   return (
@@ -340,9 +332,15 @@ document.addEventListener('mouseup', event => {
 </html>
 `}
           />
+
+          <HeroVideoDialog
+            videoSrc="https://www.youtube.com/embed/XF1_MlZ5l6M?si=vYh0Pf3HXCZmKAT1"
+            thumbnailSrc="https://img.youtube.com/vi/XF1_MlZ5l6M/maxresdefault.jpg"
+            link="https://www.youtube.com/watch?v=XF1_MlZ5l6M"
+          />
         </section>
 
-        <div className="w-full flex items-center gap-3 justify-end">
+        <div className="flex items-center justify-end w-full gap-3">
           <QuizButton text="Lesson 6" link="/quiz/lesson6" />
           <NextButton link="/learn-js/event-types" text="Event Types" />
         </div>

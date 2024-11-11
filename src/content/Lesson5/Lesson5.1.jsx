@@ -8,6 +8,7 @@ import {
   Highlight,
   CodeEditor,
 } from "../../layout/UILayout";
+import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
 export default function Lesson5_Topic1() {
   return (
@@ -357,6 +358,12 @@ false`}
             complex systems by grouping related data and actions into cohesive
             objects.
           </Description>
+
+          <HeroVideoDialog
+            videoSrc="https://www.youtube.com/embed/4uVwGw317QM?si=OIkczFHdz8iWKQ-X"
+            thumbnailSrc="https://img.youtube.com/vi/4uVwGw317QM/maxresdefault.jpg"
+            link="https://www.youtube.com/watch?v=4uVwGw317QM"
+          />
         </section>
 
         <NextButton

@@ -17,7 +17,7 @@ import MonacoEditor from "@monaco-editor/react";
 import { RxMoon, RxSun } from "react-icons/rx";
 
 export const Topic = ({ children }) => (
-  <h1 className="text-2xl font-medium mt- md:mt-0 md:text-4xl text-zinc-800 dark:text-zinc-100">
+  <h1 className="mb-5 text-2xl font-medium md:mt-0 md:text-4xl text-zinc-800 dark:text-zinc-100">
     {children}
   </h1>
 );

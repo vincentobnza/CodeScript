@@ -9,6 +9,7 @@ import {
   Highlight,
   CodeEditor,
 } from "../../layout/UILayout";
+import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
 export default function Lesson4_Topic3() {
   return (
@@ -195,6 +196,11 @@ console.log(doubledArrow);`}
             Both functions return an array where each number is doubled, but the
             arrow function version is much shorter and easier to read.
           </Description>
+          <HeroVideoDialog
+            videoSrc="https://www.youtube.com/embed/22fyYvxz-do?si=llrj6oH4dK8B0MI4"
+            thumbnailSrc="https://img.youtube.com/vi/22fyYvxz-do/maxresdefault.jpg"
+            link="https://www.youtube.com/watch?v=22fyYvxz-do"
+          />
         </section>
         <div className="flex items-center justify-end w-full gap-3">
           <QuizButton text="Lesson 4" link="/quiz/lesson4" />

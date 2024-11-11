@@ -9,6 +9,7 @@ import {
   Highlight,
   CodeEditor,
 } from "../../layout/UILayout";
+import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
 export default function Lesson4_Topic2() {
   return (
@@ -79,6 +80,12 @@ console.log(sum);`}
             <Highlight> sum</Highlight>, and it is printed to the console using{" "}
             <Highlight>console.log()</Highlight>.
           </Description>
+
+          <HeroVideoDialog
+            videoSrc="https://www.youtube.com/embed/1iAvhS8niM8?si=WU-jG0010HvzAh1E"
+            thumbnailSrc="https://img.youtube.com/vi/1iAvhS8niM8/maxresdefault.jpg"
+            link="https://www.youtube.com/watch?v=1iAvhS8niM8"
+          />
         </section>
 
         <NextButton link="/learn-js/arrow-functions" text="Arrow Functions" />

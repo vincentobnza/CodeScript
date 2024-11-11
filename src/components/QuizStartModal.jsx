@@ -6,12 +6,12 @@ import { Clock, Check, LightbulbIcon } from "lucide-react";
 
 function ListItem({ icon, text }) {
   return (
-    <li className="w-full flex items-center space-x-3 group p-2 border border-zinc-700 bg-zinc-700/20 ">
-      <div className="flex-shrink-0 w-8 h-8 rounded-lg   flex items-center justify-center group-hover:bg-gray-200 dark:group-hover:bg-zinc-700 transition-colors duration-200">
+    <li className="flex items-center w-full p-2 space-x-3 border group border-zinc-700 bg-zinc-700/20 ">
+      <div className="flex items-center justify-center flex-shrink-0 w-8 h-8 transition-colors duration-200 rounded-lg group-hover:bg-gray-200 dark:group-hover:bg-zinc-700">
         {icon}
       </div>
       <div className="flex-1">
-        <p className="text-xs font-medium text-gray-700 dark:text-gray-300 leading-relaxed group-hover:text-gray-900 dark:group-hover:text-white transition-colors duration-200">
+        <p className="text-xs font-medium leading-relaxed text-gray-700 transition-colors duration-200 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white">
           {text}
         </p>
       </div>
@@ -57,14 +57,14 @@ const QuizStartModal = ({ isOpen, setIsOpen }) => {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 grid p-8 overflow-y-scroll  cursor-pointer bg-slate-900/20 backdrop-blur-lg place-items-center font-SpaceGrotesk">
+        <div className="fixed inset-0 z-50 grid p-8 overflow-y-scroll font-sans cursor-pointer bg-slate-900/20 backdrop-blur-lg place-items-center">
           {openModal && (
             <motion.div
               initial={{ scale: 0, rotate: "12.5deg" }}
               animate={{ scale: 1, rotate: "0deg" }}
               exit={{ scale: 0, rotate: "0deg" }}
               onClick={(e) => e.stopPropagation()}
-              className=" p-6 bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700 w-full max-w-xl md:max-w-2xl shadow-xl cursor-default relative overflow-hidden"
+              className="relative w-full max-w-xl p-6 overflow-hidden bg-white border shadow-xl cursor-default dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700 md:max-w-2xl"
             >
               <div className="absolute w-[55px] top-2 right-1 grid grid-cols-3">
                 <div className="border rounded-full size-3 bg-zinc-100 dark:bg-zinc-600 border-zinc-200 dark:border-zinc-500"></div>

@@ -3,18 +3,11 @@ import {
   Description,
   Title,
   Code,
-  Example,
-  Image,
   List,
-  Text,
-  Note,
-  ListItem,
   NextButton,
   QuizButton,
-  Output,
-  Highlight,
 } from "../../layout/UILayout";
-import { Link } from "react-router-dom";
+import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
 export default function Lesson7_Topic2() {
   return (
@@ -138,9 +131,15 @@ elem.addEventListener(..., true)
             handlers on both capturing and bubbling phases trigger at that
             phase.
           </Description>
+
+          <HeroVideoDialog
+            videoSrc="https://www.youtube.com/embed/Q6HAJ6bz7bY?si=Qo7JC5yhaSgDqe06"
+            thumbnailSrc="https://img.youtube.com/vi/Q6HAJ6bz7bY/maxresdefault.jpg"
+            link="https://www.youtube.com/watch?v=Q6HAJ6bz7bY"
+          />
         </section>
 
-        <div className="w-full flex items-center gap-3 justify-end">
+        <div className="flex items-center justify-end w-full gap-3">
           <QuizButton text="Lesson 7" link="/quiz/lesson7" />
           <NextButton
             link="/learn-js/try-catch-finally"

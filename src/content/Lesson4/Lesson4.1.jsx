@@ -8,6 +8,7 @@ import {
   Highlight,
   CodeEditor,
 } from "../../layout/UILayout";
+import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
 export default function Lesson4_Topic1() {
   return (
@@ -102,6 +103,11 @@ console.log(apple);`}
             and the variable (variable()) will then call the function expression
             that has been given to it, executing its logic.
           </Description>
+          <HeroVideoDialog
+            videoSrc="https://www.youtube.com/embed/cozcCZjkjto?si=IieGJpYmoCZblgaI"
+            thumbnailSrc="https://img.youtube.com/vi/cozcCZjkjto/maxresdefault.jpg"
+            link="https://www.youtube.com/watch?v=cozcCZjkjto"
+          />
         </section>
 
         <NextButton

@@ -8,6 +8,7 @@ import {
   Highlight,
   CodeEditor,
 } from "../../layout/UILayout";
+import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
 export default function Lesson8_Topic1() {
   return (
@@ -187,6 +188,11 @@ Finally statement will execute everytime`}
 `}
             />
             <CodeEditor />
+            <HeroVideoDialog
+              videoSrc="https://www.youtube.com/embed/cFTFtuEQ-10?si=oB3kslNqWKv-kFkz"
+              thumbnailSrc="https://img.youtube.com/vi/cFTFtuEQ-10/maxresdefault.jpg"
+              link="https://www.youtube.com/watch?v=cFTFtuEQ-10"
+            />
           </section>
         </section>
         <NextButton link="/learn-js/throwing-errors" text="Throwing Errors" />

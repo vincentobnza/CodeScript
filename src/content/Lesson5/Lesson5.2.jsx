@@ -8,7 +8,7 @@ import {
   Output,
   CodeEditor,
 } from "../../layout/UILayout";
-import { Link } from "react-router-dom";
+import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
 export default function Lesson5_Topic2() {
   return (
@@ -507,6 +507,12 @@ console.log(Array.isArray('hello')); // Output: false
             The isArray() method checks if a value is an array and returns a
             boolean.
           </Description>
+
+          <HeroVideoDialog
+            videoSrc="https://www.youtube.com/embed/cDCzz8vJf3Y?si=clKyJWiVPFHh6OFc"
+            thumbnailSrc="https://img.youtube.com/vi/cDCzz8vJf3Y/maxresdefault.jpg"
+            link="https://www.youtube.com/watch?v=cDCzz8vJf3Y"
+          />
         </section>
 
         <div className="flex items-center justify-end w-full gap-3">

@@ -8,6 +8,7 @@ import {
   Highlight,
   CodeEditor,
 } from "../../layout/UILayout";
+import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
 export default function Lesson8_Topic2() {
   return (
@@ -105,6 +106,11 @@ Error message: Error: The number is low `}
             constructors for standard errors: TypeError, SyntaxError,
             ReferenceError, EvalError, InternalError, and RangeError.
           </Description>
+          <HeroVideoDialog
+            videoSrc="https://www.youtube.com/embed/GvrapZbI_Jo?si=h72VTiQfmeX5ujvI"
+            thumbnailSrc="https://img.youtube.com/vi/GvrapZbI_Jo/maxresdefault.jpg"
+            link="https://www.youtube.com/watch?v=GvrapZbI_Jo"
+          />
         </section>
         <NextButton link="/learn-js/custom-errors" text="Custom Errors" />
       </div>

@@ -5,6 +5,7 @@ import {
   Code,
   NextButton,
 } from "../../layout/UILayout";
+import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
 export default function Lesson6_Topic1() {
   return (
@@ -166,6 +167,12 @@ box.style.backgroundColor = 'blue';
 box.style.width = '200px';
 box.style.height = '200px';
 `}
+            />
+
+            <HeroVideoDialog
+              videoSrc="https://www.youtube.com/embed/t3CWlfZUvL8?si=pX7umxbdWpVDBROw"
+              thumbnailSrc="https://img.youtube.com/vi/t3CWlfZUvL8/maxresdefault.jpg"
+              link="https://www.youtube.com/watch?v=t3CWlfZUvL8"
             />
           </section>
         </section>

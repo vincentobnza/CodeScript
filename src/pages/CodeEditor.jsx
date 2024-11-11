@@ -294,7 +294,7 @@ export default function CodeScript() {
   };
 
   return (
-    <div className="flex flex-col w-full h-screen font-SpaceGrotesk bg-zinc-900 md:flex-row">
+    <div className="flex flex-col w-full h-screen font-sans bg-zinc-900 md:flex-row">
       <Toaster />
       <AssessmentSidePanel
         assessments={assessments}
@@ -598,7 +598,7 @@ const AssessmentSidePanel = ({
         <div className="flex flex-col gap-1 font-semibold">
           <Link
             to="/"
-            className="flex items-center gap-2 mb-10 text-xs font-black underline text-zinc-400"
+            className="flex items-center gap-2 mb-10 text-xs underline text-zinc-400"
           >
             <Undo2 size={14} />
             GO BACK HOME

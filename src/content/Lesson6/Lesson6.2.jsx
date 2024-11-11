@@ -3,18 +3,10 @@ import {
   Description,
   Title,
   Code,
-  Example,
-  Image,
   List,
-  Text,
-  Note,
-  ListItem,
   NextButton,
-  QuizButton,
-  Output,
-  Highlight,
 } from "../../layout/UILayout";
-import { Link } from "react-router-dom";
+import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
 export default function Lesson6_Topic2() {
   return (
@@ -71,6 +63,12 @@ export default function Lesson6_Topic2() {
           </Description>
 
           <Code code={`const x = document.querySelectorAll("p.intro");`} />
+
+          <HeroVideoDialog
+            videoSrc="https://www.youtube.com/embed/WjxQRfZfZnw?si=rNgABfICz0RoyWhn"
+            thumbnailSrc="https://img.youtube.com/vi/WjxQRfZfZnw/maxresdefault.jpg"
+            link="https://www.youtube.com/watch?v=WjxQRfZfZnw"
+          />
         </section>
         <NextButton
           link="/learn-js/event-listeners-handling-events"

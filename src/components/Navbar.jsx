@@ -86,7 +86,7 @@ export default function Navbar() {
               to="/"
               className="hidden text-lg font-black text-transparent md:flex bg-gradient-to-br from-green-500 to-green-600 dark:to-green-800 bg-clip-text font-Orbitron"
             >
-              <img src={Logo} alt="logo" className="w-8" />
+              CodeScript
             </Link>
           </div>
           <Navs />
