@@ -132,7 +132,7 @@ const QuizStartModal = ({ isOpen, setIsOpen }) => {
 
           {/* Show timer only when modal is closed and countdown is active */}
           {!openModal && showTimer && (
-            <div className="relative flex flex-col items-center justify-center w-full max-w-xl mx-auto space-y-4 font-SpaceGrotesk">
+            <div className="relative flex flex-col items-center justify-center w-full max-w-xl mx-auto space-y-4 font-sans">
               <h1 className="text-4xl font-bold">Please Be Ready</h1>
               <p className="text-sm text-zinc-400">The quiz starts in</p>
               <motion.h1
