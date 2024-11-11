@@ -117,6 +117,7 @@ export default function CodeScript() {
       }
 
       try {
+        // Fetch current progress and points
         const { data, error } = await supabase
           .from("profiles")
           .select("progress, current_points")
@@ -125,24 +126,34 @@ export default function CodeScript() {
 
         if (error) throw error;
 
-        const newProgress = (data.progress || 0) + progressToAdd;
+        // Calculate the new progress, capping it at 100 if it exceeds
+        let newProgress = (data.progress || 0) + progressToAdd;
+        if (newProgress > 100) {
+          newProgress = 100; // Cap progress at 100
+        }
+
         const newPoints = (data.current_points || 0) + pointsToAdd;
 
-        const { error: updateError } = await supabase
-          .from("profiles")
-          .update({ progress: newProgress, current_points: newPoints })
-          .eq("id", user.id);
+        // Only update if there's a change (i.e., progress is below 100)
+        if (data.progress < 100) {
+          const { error: updateError } = await supabase
+            .from("profiles")
+            .update({ progress: newProgress, current_points: newPoints })
+            .eq("id", user.id);
 
-        if (updateError) throw updateError;
+          if (updateError) throw updateError;
 
-        toast.success(
-          `Progress and points updated: +${progressToAdd}%, +${pointsToAdd} points`,
-          {
-            style: {
-              fontSize: "12px",
-            },
-          }
-        );
+          toast.success(
+            `Progress and points updated: +${progressToAdd}%, +${pointsToAdd} points`,
+            {
+              style: {
+                fontSize: "12px",
+              },
+            }
+          );
+        } else {
+          toast.info("Progress is already at 100%");
+        }
       } catch (error) {
         console.error("Error updating progress and points:", error.message);
         toast.error("Failed to update progress and points");

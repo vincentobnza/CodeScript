@@ -14,7 +14,6 @@ import {
 import { CircularProgress } from "@nextui-org/react";
 import supabase from "../config/supabaseClient";
 import { Search, EyeOff, ArrowUpDown, Eye } from "lucide-react";
-import { motion } from "framer-motion";
 import ProfileHeader from "../assets/profile header.png";
 
 export default function Leaderboard() {

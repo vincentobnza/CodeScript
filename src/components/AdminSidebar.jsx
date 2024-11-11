@@ -79,7 +79,7 @@ export default function AdminSidebar() {
                 key={index}
                 to={link.to}
                 className={({ isActive }) =>
-                  `relative flex items-center w-full gap-4 p-2 text-xs transition-colors duration-300 rounded-lg ${
+                  `relative flex items-center w-full gap-4 p-2 text-sm transition-colors duration-300 rounded-lg ${
                     isActive ? "text-green-600" : "text-zinc-700"
                   }`
                 }
@@ -99,7 +99,7 @@ export default function AdminSidebar() {
                 key={index}
                 to={link.to}
                 className={({ isActive }) =>
-                  `flex items-center w-full gap-4 p-2 text-xs transition-colors duration-300 rounded-lg ${
+                  `flex items-center w-full gap-4 p-2 text-sm transition-colors duration-300 rounded-lg ${
                     isActive ? "text-green-500" : "text-zinc-700"
                   }`
                 }
@@ -117,7 +117,7 @@ export default function AdminSidebar() {
         <div className="flex flex-col items-start p-1 mt-3 space-y-1">
           <button
             onClick={onOpen}
-            className="flex items-center self-start gap-4 p-2 text-xs text-zinc-700"
+            className="flex items-center self-start gap-4 p-2 text-sm text-zinc-700"
           >
             <LogOut size={20} />
             Logout

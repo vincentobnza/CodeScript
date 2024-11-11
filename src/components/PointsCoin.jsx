@@ -175,8 +175,6 @@ export default function PointsCoin() {
     });
   }, [updatePoints]);
 
-  // REALTIME FETCHING POINTS
-
   useEffect(() => {
     if (user) {
       const subscription = supabase

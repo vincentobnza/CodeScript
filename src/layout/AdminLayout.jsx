@@ -5,7 +5,7 @@ import AdminNavbar from "@/components/AdminNavbar";
 
 export default function AdminLayout() {
   return (
-    <div className="flex flex-col w-full font-SpaceGrotesk bg-white text-zinc-700">
+    <div className="flex flex-col w-full font-sans bg-white text-zinc-700">
       <AdminNavbar />
       <div className="flex flex-1 overflow-hidden">
         <AdminSidebar />

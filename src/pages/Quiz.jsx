@@ -321,7 +321,7 @@ const QuizCard = ({ points, setPoints, quizCompleted, setQuizCompleted }) => {
         try {
           const { data: profileData, error: fetchError } = await supabase
             .from("profiles")
-            .select("current_points")
+            .select("current_points, progress")
             .eq("id", user.id)
             .single();
 
@@ -330,6 +330,7 @@ const QuizCard = ({ points, setPoints, quizCompleted, setQuizCompleted }) => {
           const currentPoints = profileData?.current_points || 0;
           const newTotalPoints = currentPoints + pointsAdded;
 
+          // Calculate progress increase and ensure it doesn't exceed 100%
           const quizProgressPercentage =
             (score / quizData.length) * quizData.length;
           const newTotalProgress = Math.min(
@@ -337,40 +338,46 @@ const QuizCard = ({ points, setPoints, quizCompleted, setQuizCompleted }) => {
             100
           );
 
-          // Update points in the profiles table
-          const { error: updateError } = await supabase
-            .from("profiles")
-            .update({
-              current_points: newTotalPoints,
-              progress: newTotalProgress,
-            })
-            .eq("id", user.id);
+          // Update only if the progress isn't already 100%
+          if (profileData.progress < 100) {
+            const { error: updateError } = await supabase
+              .from("profiles")
+              .update({
+                current_points: newTotalPoints,
+                progress: newTotalProgress,
+              })
+              .eq("id", user.id);
 
-          if (updateError) throw updateError;
+            if (updateError) throw updateError;
 
-          // Insert a new record in users_quizzes table
-          const { error: insertError } = await supabase
-            .from("users_quizzes")
-            .insert({
-              user_id: user.id,
-              lesson: quizType,
-              status: "Completed",
-              score: `${score}/${quizData.length}`,
-              name: user.user_metadata.full_name,
+            // Insert a new record in users_quizzes table
+            const { error: insertError } = await supabase
+              .from("users_quizzes")
+              .insert({
+                user_id: user.id,
+                lesson: quizType,
+                status: "Completed",
+                score: `${score}/${quizData.length}`,
+                name: user.user_metadata.full_name,
+              });
+
+            if (insertError) throw insertError;
+
+            toast.success("Points updated successfully", {
+              position: "top-center",
+              style: {
+                borderRadius: "5px",
+                background: "#333",
+                color: "#fff",
+                fontSize: "12px",
+                letterSpacing: "0.5px",
+              },
             });
-
-          if (insertError) throw insertError;
-
-          toast.success("Points updated successfully", {
-            position: "top-center",
-            style: {
-              borderRadius: "5px",
-              background: "#333",
-              color: "#fff",
-              fontSize: "12px",
-              letterSpacing: "0.5px",
-            },
-          });
+          } else {
+            toast.info("Progress is already at 100%", {
+              position: "top-center",
+            });
+          }
         } catch (error) {
           console.error("Error updating points:", error);
           toast.error("Failed to update points. Please try again later.");
