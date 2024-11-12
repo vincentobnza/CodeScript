@@ -31,6 +31,7 @@ import {
   SquareMousePointer,
   Dices,
   Ban,
+  BookCheck,
   ArrowUpRight,
 } from "lucide-react";
 
@@ -252,13 +253,23 @@ const Lesson1Data = () => {
         ))}
       </ul>
 
-      <Link
-        to="/learning-objectives/lesson1"
-        className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300 group"
-      >
-        Lesson 1 Learning Objectives
-        <ArrowUpRight size={15} />
-      </Link>
+      <div className="flex items-center gap-2">
+        <Link
+          to="/learning-objectives/lesson1"
+          className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300 dark:hover:text-green-400"
+        >
+          Lesson 1 Learning Objectives
+          <ArrowUpRight size={15} />
+        </Link>
+
+        <Link
+          to="/pre-test/lesson1"
+          className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300 dark:hover:text-orange-400"
+        >
+          Take Pre Test
+          <BookCheck size={15} />
+        </Link>
+      </div>
     </div>
   );
 };

@@ -20,6 +20,8 @@ import Settings from "./pages/Settings";
 import Certificate from "./pages/Certificate";
 import Feedback from "./pages/Feedback";
 import LearningObjectives from "./pages/LearningObjectives";
+import PretestPage from "./pages/PretestPage";
+
 // LAYOUT
 import RootLayout from "./layout/RootLayout";
 import ChaptersLayout from "./layout/ChaptersLayout";
@@ -116,6 +118,10 @@ const router = createBrowserRouter([
       {
         path: "learning-objectives/:lesson",
         element: <LearningObjectives />,
+      },
+      {
+        path: "pre-test/:lesson",
+        element: <PretestPage />,
       },
       {
         path: "settings",
@@ -297,8 +303,6 @@ const router = createBrowserRouter([
     path: "admin-login",
     element: <AdminLogin />,
   },
-
-  // QUIZ
   {
     path: "/quiz/:quizType",
     element: (

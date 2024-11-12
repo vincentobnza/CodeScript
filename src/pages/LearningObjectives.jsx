@@ -5,7 +5,7 @@ import { Lessons } from "@/data/LearningObjectives";
 
 export default function LearningObjectives() {
   return (
-    <div className="min-h-screen bg-zinc-100 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100">
+    <div className="min-h-screen dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100">
       <div className="max-w-4xl px-6 pb-10 mx-auto">
         <Header />
         <Content />
@@ -19,12 +19,12 @@ const Header = () => {
     <div className="mb-12">
       <Link
         to="/learn-js"
-        className="inline-flex items-center gap-2 mb-6 text-sm font-medium transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100"
+        className="inline-flex items-center gap-2 mb-6 text-sm transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100"
       >
         <Undo2 size={18} />
         Return to Homepage
       </Link>
-      <h1 className="mb-2 text-3xl font-bold">Learning Objectives</h1>
+      <h1 className="mb-2 text-2xl font-medium">Learning Objectives</h1>
       <p className="text-sm text-zinc-600 dark:text-zinc-400">
         By the end of this lesson, students will be able to:
       </p>
@@ -54,7 +54,7 @@ const Content = () => {
       {objData.map((objective, idx) => (
         <div
           key={idx}
-          className="flex items-start gap-6 p-6 bg-white border rounded-lg shadow-md dark:bg-gradient-to-br dark:from-zinc-800 dark:to-zinc-900 border-zinc-200 dark:border-zinc-700"
+          className="flex items-start gap-6 p-5 bg-white border rounded-lg shadow-md dark:bg-gradient-to-br dark:from-zinc-800 dark:to-zinc-900 border-zinc-200 dark:border-zinc-700"
         >
           <div className="flex-shrink-0">
             <div className="flex items-center justify-center border rounded-lg size-8 bg-zinc-50 dark:bg-gradient-to-br dark:from-zinc-800 dark:to-zinc-700 border-zinc-200 dark:border-zinc-600">
