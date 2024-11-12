@@ -19,7 +19,7 @@ import Quiz from "./pages/Quiz";
 import Settings from "./pages/Settings";
 import Certificate from "./pages/Certificate";
 import Feedback from "./pages/Feedback";
-
+import LearningObjectives from "./pages/LearningObjectives";
 // LAYOUT
 import RootLayout from "./layout/RootLayout";
 import ChaptersLayout from "./layout/ChaptersLayout";
@@ -112,6 +112,10 @@ const router = createBrowserRouter([
       {
         path: "privacy-policy",
         element: <PrivacyPolicy />,
+      },
+      {
+        path: "learning-objectives/:lesson",
+        element: <LearningObjectives />,
       },
       {
         path: "settings",

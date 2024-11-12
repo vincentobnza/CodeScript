@@ -116,10 +116,7 @@ export default function Navbar() {
 
           {/* User profile dropdown remains the same */}
           {user ? (
-            <Dropdown
-              placement="bottom-end"
-              className="text-xs font-SpaceGrotesk"
-            >
+            <Dropdown placement="bottom-end" className="text-xs">
               <DropdownTrigger>
                 <div className="items-center gap-4">
                   <div className="grid overflow-hidden rounded-full cursor-pointer size-8 place-items-center">
@@ -171,7 +168,7 @@ export default function Navbar() {
             </Tooltip>
           )}
 
-          <Dropdown className="font-SpaceGrotesk">
+          <Dropdown>
             <DropdownTrigger>
               <div className="grid transition duration-500 ease-in-out rounded-lg cursor-pointer hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:brightness-125 size-9 place-items-center">
                 {getCurrentThemeIcon()}

@@ -18,7 +18,6 @@ import { Search } from "lucide-react";
 import { MdKeyboardCommandKey } from "react-icons/md";
 import { useDisclosure } from "@nextui-org/react";
 import { motion } from "framer-motion";
-import { RiJavascriptLine } from "react-icons/ri";
 import ScrollUp from "@/components/ScrollUp";
 import NavbarQuickSearch from "@/components/NavbarQuickSearch";
 import {
@@ -32,6 +31,7 @@ import {
   SquareMousePointer,
   Dices,
   Ban,
+  ArrowUpRight,
 } from "lucide-react";
 
 export default function Learn() {
@@ -188,7 +188,7 @@ const Lessons = () => {
     <div className="flex flex-col w-full max-w-screen-lg p-3 mx-auto space-y-10 md:p-0">
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-1">
-          <h3 className="font-semibold text-amber-300 text-md">
+          <h3 className="font-semibold text-zinc-600 dark:text-amber-300 text-md">
             The JavaScript Language
           </h3>
         </div>
@@ -231,7 +231,7 @@ const Lesson1Data = () => {
             preventScrollReset={false}
             to={item.link}
             key={idx}
-            className="relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border h-[90px] text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-zinc-50 dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
+            className="relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border h-[90px] text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
           >
             <SquareTerminal
               size={50}
@@ -245,12 +245,20 @@ const Lesson1Data = () => {
               <GoArrowRight className=" text-zinc-400 group-hover:text-zinc-300 dark:group-hover:text-zinc-200" />
             </div>
 
-            <p className="text-[10px] md:text-xs font-medium text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
+            <p className="text-[10px] md:text-xs  text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
               {item.subTopics} Subtopics
             </p>
           </Link>
         ))}
       </ul>
+
+      <Link
+        to="/learning-objectives/lesson1"
+        className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300 group"
+      >
+        Lesson 1 Learning Objectives
+        <ArrowUpRight size={15} />
+      </Link>
     </div>
   );
 };
@@ -273,7 +281,7 @@ const Lesson2Data = () => {
           <Link
             to={item.link}
             key={idx}
-            className="relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border h-[90px] text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-zinc-50 dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
+            className="relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border h-[90px] text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
           >
             <EqualNot
               size={50}
@@ -287,12 +295,19 @@ const Lesson2Data = () => {
               <GoArrowRight className=" text-zinc-400 group:hover:text-zinc-300 dark:group-hover:text-zinc-200" />
             </div>
 
-            <p className="text-[10px] md:text-xs font-medium text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
+            <p className="text-[10px] md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
               {item.subTopics} Subtopics
             </p>
           </Link>
         ))}
       </ul>
+      <Link
+        to="/learning-objectives/lesson2"
+        className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300 "
+      >
+        Lesson 2 Learning Objectives
+        <ArrowUpRight size={15} />
+      </Link>
     </div>
   );
 };
@@ -315,7 +330,7 @@ const Lesson3Data = () => {
           <Link
             to={item.link}
             key={idx}
-            className="relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border h-[90px] text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-zinc-50 dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
+            className="relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border h-[90px] text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
           >
             <RefreshCcw
               size={50}
@@ -329,12 +344,19 @@ const Lesson3Data = () => {
               <GoArrowRight className=" text-zinc-400 group:hover:text-zinc-300 dark:group-hover:text-zinc-200" />
             </div>
 
-            <p className="text-[10px] md:text-xs font-medium text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
+            <p className="text-[10px] md:text-xs  text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
               {item.subTopics} Subtopics
             </p>
           </Link>
         ))}
       </ul>
+      <Link
+        to="/learning-objectives/lesson3"
+        className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300 "
+      >
+        Lesson 3 Learning Objectives
+        <ArrowUpRight size={15} />
+      </Link>
     </div>
   );
 };
@@ -357,7 +379,7 @@ const Lesson4Data = () => {
           <Link
             to={item.link}
             key={idx}
-            className="relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border h-[90px] text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-zinc-50 dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
+            className="relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border h-[90px] text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
           >
             <Parentheses
               size={50}
@@ -371,13 +393,20 @@ const Lesson4Data = () => {
               <GoArrowRight className=" text-zinc-400 group:hover:text-zinc-300 dark:group-hover:text-zinc-200" />
             </div>
 
-            <p className="text-[10px] md:text-xs font-medium text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
+            <p className="text-[10px] md:text-xs  text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
               {item.subTopics} {""}
               {item.subTopics > 1 ? "Subtopics" : "Subtopic"}
             </p>
           </Link>
         ))}
       </ul>
+      <Link
+        to="/learning-objectives/lesson4"
+        className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300"
+      >
+        Lesson 4 Learning Objectives
+        <ArrowUpRight size={15} />
+      </Link>
     </div>
   );
 };
@@ -420,6 +449,13 @@ const Lesson5Data = () => {
           </Link>
         ))}
       </ul>
+      <Link
+        to="/learning-objectives/lesson5"
+        className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300"
+      >
+        Lesson 5 Learning Objectives
+        <ArrowUpRight size={15} />
+      </Link>
     </div>
   );
 };
@@ -441,7 +477,7 @@ const Lesson6Data = () => {
           <Link
             to={item.link}
             key={idx}
-            className="relative flex flex-col h-[90px] gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-zinc-50 dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
+            className="relative flex flex-col h-[90px] gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
           >
             <SquareMousePointer
               size={50}
@@ -454,13 +490,20 @@ const Lesson6Data = () => {
               </h1>
               <GoArrowRight className=" text-zinc-400 group:hover:text-zinc-300 dark:group-hover:text-zinc-200" />
             </div>
-            <p className="text-[10px] md:text-xs font-medium text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
+            <p className="text-[10px] md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
               {item.subTopics} {""}
               {item.subTopics > 1 ? "SubTopics" : "Subtopic"}
             </p>
           </Link>
         ))}
       </ul>
+      <Link
+        to="/learning-objectives/lesson6"
+        className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300 "
+      >
+        Lesson 6 Learning Objectives
+        <ArrowUpRight size={15} />
+      </Link>
     </div>
   );
 };
@@ -483,7 +526,7 @@ const Lesson7Data = () => {
           <Link
             to={item.link}
             key={idx}
-            className="relative flex flex-col h-[90px] gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-zinc-50 dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
+            className="relative flex flex-col h-[90px] gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
           >
             <Dices
               size={50}
@@ -496,12 +539,19 @@ const Lesson7Data = () => {
               </h1>
               <GoArrowRight className=" text-zinc-400 group:hover:text-zinc-300 dark:group-hover:text-zinc-200" />
             </div>
-            <p className="text-[10px] md:text-xs font-medium text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
+            <p className="text-[10px] md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
               {item.subTopics} Subtopics
             </p>
           </Link>
         ))}
       </ul>
+      <Link
+        to="/learning-objectives/lesson7"
+        className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300"
+      >
+        Lesson 7 Learning Objectives
+        <ArrowUpRight size={15} />
+      </Link>
     </div>
   );
 };
@@ -524,7 +574,7 @@ const Lesson8Data = () => {
           <Link
             to={item.link}
             key={idx}
-            className="relative flex flex-col h-[90px] gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-zinc-50 dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
+            className="relative flex flex-col h-[90px] gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
           >
             <Ban
               size={50}
@@ -537,12 +587,19 @@ const Lesson8Data = () => {
               </h1>
               <GoArrowRight className=" text-zinc-400 group:hover:text-zinc-300 dark:group-hover:text-zinc-200" />
             </div>
-            <p className="text-[10px] md:text-xs font-medium text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
+            <p className="text-[10px] md:text-xs  text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
               {item.subTopics} Subtopics
             </p>
           </Link>
         ))}
       </ul>
+      <Link
+        to="/learning-objectives/lesson8"
+        className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300 "
+      >
+        Lesson 8 Learning Objectives
+        <ArrowUpRight size={15} />
+      </Link>
     </div>
   );
 };

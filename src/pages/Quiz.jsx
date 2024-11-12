@@ -168,7 +168,7 @@ export default function Quiz() {
 
             {!quizCompleted && !isOpen && (
               <motion.div
-                className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-white dark:bg-zinc-800/20 border border-zinc-200 dark:border-zinc-800 shadow-xl"
+                className="inline-flex items-center px-4 py-2 space-x-2 bg-white border rounded-full shadow-xl dark:bg-zinc-800/20 border-zinc-200 dark:border-zinc-800"
                 animate={isLowTime ? "shake" : ""}
                 variants={shakeAnimation}
               >
@@ -208,7 +208,7 @@ export default function Quiz() {
               </div>
             )}
             <div
-              className="hidden md:flex transition duration-500 ease-in-out cursor-pointer"
+              className="hidden transition duration-500 ease-in-out cursor-pointer md:flex"
               onClick={toggleTheme}
             >
               {theme === "dark" ? <Sun size={24} /> : <Moon size={24} />}
@@ -254,7 +254,7 @@ const QuizCard = ({ points, setPoints, quizCompleted, setQuizCompleted }) => {
       } else {
         setError("Quiz not found.");
         setIsLoading(false);
-      }
+      }e
     };
 
     loadQuizData();
