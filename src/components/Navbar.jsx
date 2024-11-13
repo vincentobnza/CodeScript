@@ -231,7 +231,7 @@ const Navs = () => {
           <NavLink
             key={link.to}
             to={link.to}
-            className={`text-xs font-medium hover:brightness-125 ${
+            className={`text-xs hover:brightness-125 ${
               activeTab === link.to ? "font-bold text-zinc-100" : ""
             }`}
           >

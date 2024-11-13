@@ -15,6 +15,18 @@ export default function LearningObjectives() {
 }
 
 const Header = () => {
+  const { lesson } = useParams();
+
+  const formatLesson = (les) => {
+    const lessonParts = les.match(/[a-zA-Z]+|[0-9]+/g); // Split letters and numbers
+    return lessonParts
+      .map((part, index) =>
+        index === 0 ? part.charAt(0).toUpperCase() + part.slice(1) : ` ${part}`
+      )
+      .join("");
+  };
+
+  const formattedLesson = formatLesson(lesson);
   return (
     <div className="mb-12">
       <Link
@@ -24,7 +36,9 @@ const Header = () => {
         <Undo2 size={18} />
         Return to Homepage
       </Link>
-      <h1 className="mb-2 text-2xl font-medium">Learning Objectives</h1>
+      <h1 className="mb-2 text-2xl font-medium">
+        Learning Objectives for {formattedLesson}
+      </h1>
       <p className="text-sm text-zinc-600 dark:text-zinc-400">
         By the end of this lesson, students will be able to:
       </p>

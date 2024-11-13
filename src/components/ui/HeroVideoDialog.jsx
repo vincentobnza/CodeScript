@@ -20,7 +20,7 @@ export default function HeroVideoDialog({ thumbnailSrc, videoSrc, link }) {
         </div>
         <h1 className="text-lg font-semibold">Additional Information</h1>
       </div>
-      <div className="relative p-4 h-[440px] border border-zinc-200 dark:border-zinc-700 w-full overflow-hidden bg-zinc-900 grid place-items-center group">
+      <div className="relative p-4 h-[250px] md:h-[440px] border border-zinc-200 dark:border-zinc-700 w-full overflow-hidden bg-zinc-900 grid place-items-center group">
         {/* Video Thumbnail */}
         <div className="w-full h-full">
           <img

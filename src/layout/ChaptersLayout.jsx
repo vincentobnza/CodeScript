@@ -21,7 +21,7 @@ export default function ChaptersLayout() {
               Return to Homepage
             </Link>
           </div>
-          <div className="flex items-center gap-[6px] text-xs font-semibold">
+          <div className="hidden md:flex items-center gap-[6px] text-xs font-semibold">
             <Link
               to="/certificate"
               className="px-4 py-2 border rounded border-zinc-200 dark:border-zinc-800 dark:hover:brightness-125"

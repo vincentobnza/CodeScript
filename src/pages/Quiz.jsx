@@ -16,7 +16,6 @@ import {
 import supabase from "../config/supabaseClient";
 import { useAuth } from "@/context/AuthContext";
 import { Progress } from "@nextui-org/react";
-import LeaveSitePrompt from "@/components/LeaveSitePrompt";
 import QuizStartModal from "@/components/QuizStartModal";
 import toast from "react-hot-toast";
 import { NextRoute } from "../data/NextRoute";
@@ -254,7 +253,8 @@ const QuizCard = ({ points, setPoints, quizCompleted, setQuizCompleted }) => {
       } else {
         setError("Quiz not found.");
         setIsLoading(false);
-      }e
+      }
+      e;
     };
 
     loadQuizData();

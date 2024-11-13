@@ -189,7 +189,7 @@ const Lessons = () => {
     <div className="flex flex-col w-full max-w-screen-lg p-3 mx-auto space-y-10 md:p-0">
       <div className="flex flex-col gap-4">
         <div className="flex flex-col gap-1">
-          <h3 className="font-semibold text-zinc-600 dark:text-amber-300 text-md">
+          <h3 className="font-semibold text-zinc-600 dark:text-zinc-200 text-md">
             The JavaScript Language
           </h3>
         </div>

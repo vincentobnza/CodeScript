@@ -240,7 +240,7 @@ export const QuizButton = ({ text, link }) => (
 export const CodeEditor = ({
   initialCode = "// Write your JavaScript code here",
 }) => {
-  const editorInstanceRef = useRef(null);
+  const editorInstanceRef = useRef(null); // Keeps track of the current editor instance
   const [isEditorReady, setIsEditorReady] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(true);
   const [output, setOutput] = useState("");
@@ -260,29 +260,31 @@ export const CodeEditor = ({
   const runCode = () => {
     if (!editorInstanceRef.current) return;
 
-    const code = editorInstanceRef.current.getModel().getValue();
-    setOutput("");
+    const codeToRun = editorInstanceRef.current.getValue();
+    setOutput(""); // Clear the previous output
 
     try {
+      // Temporarily override console.log to capture output
       const originalLog = console.log;
       console.log = (...args) => {
         setOutput((prev) => prev + args.join(" ") + "\n");
       };
 
-      eval(code);
+      // Evaluate the code
+      eval(codeToRun);
     } catch (error) {
       setOutput(`Error: ${error.message}`);
     } finally {
+      // Restore the original console.log
       console.log = originalLog;
     }
   };
-
   return (
     <div className="mt-2 w-full mx-auto border bg-zinc-100 dark:bg-[#1e1e1e] rounded-lg border-zinc-200 dark:border-zinc-700 relative p-4">
       <div>
         <div className="flex flex-col items-start justify-between mb-4 space-y-4 sm:flex-row sm:items-center sm:space-y-0">
           <div className="flex flex-col gap-2">
-            <h2 className="text-lg font-bold text-zinc-800 dark:text-zinc-200">
+            <h2 className="text-lg font-medium text-zinc-800 dark:text-zinc-200">
               Try the Code here
             </h2>
             <h3 className="text-xs text-zinc-500 dark:text-zinc-400">
