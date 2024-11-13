@@ -81,6 +81,10 @@ import AdminProtectedRoute from "./private/AdminProtectedRoute";
 // LOADER
 import LoadingPageWithNavigation from "./components/PageLoading";
 
+// 404
+
+import NotFound from "./pages/NotFound";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -243,6 +247,13 @@ const router = createBrowserRouter([
         ],
       },
     ],
+  },
+
+  // 404 PAGE
+
+  {
+    path: "*",
+    element: <NotFound />,
   },
   {
     path: "code-editor",

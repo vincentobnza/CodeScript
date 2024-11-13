@@ -312,13 +312,23 @@ const Lesson2Data = () => {
           </Link>
         ))}
       </ul>
-      <Link
-        to="/learning-objectives/lesson2"
-        className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300 "
-      >
-        Lesson 2 Learning Objectives
-        <ArrowUpRight size={15} />
-      </Link>
+      <div className="flex items-center gap-2">
+        <Link
+          to="/learning-objectives/lesson2"
+          className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300 dark:hover:text-green-400"
+        >
+          Lesson 2 Learning Objectives
+          <ArrowUpRight size={15} />
+        </Link>
+
+        <Link
+          to="/pre-test/lesson2"
+          className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300 dark:hover:text-orange-400"
+        >
+          Take Pre Test
+          <BookCheck size={15} />
+        </Link>
+      </div>
     </div>
   );
 };
@@ -361,13 +371,23 @@ const Lesson3Data = () => {
           </Link>
         ))}
       </ul>
-      <Link
-        to="/learning-objectives/lesson3"
-        className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300 "
-      >
-        Lesson 3 Learning Objectives
-        <ArrowUpRight size={15} />
-      </Link>
+      <div className="flex items-center gap-2">
+        <Link
+          to="/learning-objectives/lesson3"
+          className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300 dark:hover:text-green-400"
+        >
+          Lesson 3 Learning Objectives
+          <ArrowUpRight size={15} />
+        </Link>
+
+        <Link
+          to="/pre-test/lesson3"
+          className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300 dark:hover:text-orange-400"
+        >
+          Take Pre Test
+          <BookCheck size={15} />
+        </Link>
+      </div>
     </div>
   );
 };
@@ -411,13 +431,23 @@ const Lesson4Data = () => {
           </Link>
         ))}
       </ul>
-      <Link
-        to="/learning-objectives/lesson4"
-        className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300"
-      >
-        Lesson 4 Learning Objectives
-        <ArrowUpRight size={15} />
-      </Link>
+      <div className="flex items-center gap-2">
+        <Link
+          to="/learning-objectives/lesson4"
+          className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300 dark:hover:text-green-400"
+        >
+          Lesson 4 Learning Objectives
+          <ArrowUpRight size={15} />
+        </Link>
+
+        <Link
+          to="/pre-test/lesson4"
+          className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300 dark:hover:text-orange-400"
+        >
+          Take Pre Test
+          <BookCheck size={15} />
+        </Link>
+      </div>
     </div>
   );
 };
@@ -460,13 +490,23 @@ const Lesson5Data = () => {
           </Link>
         ))}
       </ul>
-      <Link
-        to="/learning-objectives/lesson5"
-        className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300"
-      >
-        Lesson 5 Learning Objectives
-        <ArrowUpRight size={15} />
-      </Link>
+      <div className="flex items-center gap-2">
+        <Link
+          to="/learning-objectives/lesson5"
+          className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300 dark:hover:text-green-400"
+        >
+          Lesson 5 Learning Objectives
+          <ArrowUpRight size={15} />
+        </Link>
+
+        <Link
+          to="/pre-test/lesson5"
+          className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300 dark:hover:text-orange-400"
+        >
+          Take Pre Test
+          <BookCheck size={15} />
+        </Link>
+      </div>
     </div>
   );
 };
@@ -508,13 +548,23 @@ const Lesson6Data = () => {
           </Link>
         ))}
       </ul>
-      <Link
-        to="/learning-objectives/lesson6"
-        className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300 "
-      >
-        Lesson 6 Learning Objectives
-        <ArrowUpRight size={15} />
-      </Link>
+      <div className="flex items-center gap-2">
+        <Link
+          to="/learning-objectives/lesson6"
+          className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300 dark:hover:text-green-400"
+        >
+          Lesson 6 Learning Objectives
+          <ArrowUpRight size={15} />
+        </Link>
+
+        <Link
+          to="/pre-test/lesson6"
+          className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300 dark:hover:text-orange-400"
+        >
+          Take Pre Test
+          <BookCheck size={15} />
+        </Link>
+      </div>
     </div>
   );
 };
@@ -556,13 +606,23 @@ const Lesson7Data = () => {
           </Link>
         ))}
       </ul>
-      <Link
-        to="/learning-objectives/lesson7"
-        className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300"
-      >
-        Lesson 7 Learning Objectives
-        <ArrowUpRight size={15} />
-      </Link>
+      <div className="flex items-center gap-2">
+        <Link
+          to="/learning-objectives/lesson7"
+          className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300 dark:hover:text-green-400"
+        >
+          Lesson 7 Learning Objectives
+          <ArrowUpRight size={15} />
+        </Link>
+
+        <Link
+          to="/pre-test/lesson7"
+          className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300 dark:hover:text-orange-400"
+        >
+          Take Pre Test
+          <BookCheck size={15} />
+        </Link>
+      </div>
     </div>
   );
 };
@@ -604,13 +664,23 @@ const Lesson8Data = () => {
           </Link>
         ))}
       </ul>
-      <Link
-        to="/learning-objectives/lesson8"
-        className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300 "
-      >
-        Lesson 8 Learning Objectives
-        <ArrowUpRight size={15} />
-      </Link>
+      <div className="flex items-center gap-2">
+        <Link
+          to="/learning-objectives/lesson8"
+          className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300 dark:hover:text-green-400"
+        >
+          Lesson 8 Learning Objectives
+          <ArrowUpRight size={15} />
+        </Link>
+
+        <Link
+          to="/pre-test/lesson8"
+          className="flex items-center gap-3 pb-5 ml-2 text-xs text-zinc-500 dark:text-zinc-300 dark:hover:text-orange-400"
+        >
+          Take Pre Test
+          <BookCheck size={15} />
+        </Link>
+      </div>
     </div>
   );
 };
