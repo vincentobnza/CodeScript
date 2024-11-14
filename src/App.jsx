@@ -21,6 +21,7 @@ import Certificate from "./pages/Certificate";
 import Feedback from "./pages/Feedback";
 import LearningObjectives from "./pages/LearningObjectives";
 import PretestPage from "./pages/PretestPage";
+import Overview from "./pages/Overview";
 
 // LAYOUT
 import RootLayout from "./layout/RootLayout";
@@ -118,6 +119,10 @@ const router = createBrowserRouter([
       {
         path: "privacy-policy",
         element: <PrivacyPolicy />,
+      },
+      {
+        path: "/overview",
+        element: <Overview />,
       },
       {
         path: "learning-objectives/:lesson",

@@ -222,6 +222,7 @@ const Navs = () => {
     { to: "/leaderboard", label: "Leaderboards" },
     { to: "/code-lab", label: "Code Lab" },
     { to: "/about-us", label: "About Us" },
+    { to: "/overview", label: "Overview" },
   ];
 
   return (
@@ -253,6 +254,7 @@ function MobileMenu({ isOpen, onClose }) {
     { href: "/code-lab", label: "Code Lab" },
     { href: "/leaderboard", label: "Leaderboard" },
     { href: "/about-us", label: "About Us" },
+    { href: "/overview", label: "Overview" },
   ];
 
   useEffect(() => {
