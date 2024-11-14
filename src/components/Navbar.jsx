@@ -233,7 +233,9 @@ const Navs = () => {
             key={link.to}
             to={link.to}
             className={`text-xs hover:brightness-125 ${
-              activeTab === link.to ? "font-bold text-zinc-100" : ""
+              activeTab === link.to
+                ? "font-bold text-zinc-700 dark:text-zinc-100"
+                : ""
             }`}
           >
             {link.label}

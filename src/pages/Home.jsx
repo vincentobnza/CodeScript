@@ -29,18 +29,18 @@ const Hero = () => {
     <div className="relative flex flex-col items-center justify-center w-full max-w-screen-lg gap-6 p-4 mx-auto text-center md:p-8 lg:p-8">
       <div className="flex flex-col items-center justify-center space-y-2">
         <>
-          <div className="grid self-center px-6 py-[5px] mb-5 -mt-2 md:-mt-6 text-[9px] md:text-[11px] bg-transparent border rounded-full text-zinc-700 dark:text-zinc-300 border-zinc-200 dark:border-zinc-800 place-items-center">
+          <div className="grid self-center px-6 py-[5px] mb-5 -mt-2 md:-mt-6 text-[9px] md:text-[11px] bg-transparent border rounded-full text-zinc-800 dark:text-zinc-300 border-zinc-300 dark:border-zinc-800 place-items-center">
             <div className="flex items-center gap-2">
               <p>
                 Boost Your Skills with{" "}
                 <span className="font-black text-green-500">21+</span> In-Depth
                 JavaScript Topics
               </p>
-              <Zap size={13} className="text-green-500" />
+              <Zap size={13} className="text-green-600 dark:text-green-500" />
             </div>
           </div>
         </>
-        <h1 className="text-4xl md:text-[48px] dark:bg-gradient-to-br dark:from-white dark:to-zinc-600 dark:bg-clip-text dark:text-transparent text-zinc-600 leading-snug font-semibold z-10">
+        <h1 className="text-4xl md:text-[48px] dark:bg-gradient-to-br dark:from-white dark:to-zinc-600 dark:bg-clip-text dark:text-transparent text-zinc-800 leading-snug font-semibold z-10">
           Learn, Build, and Excel in{" "}
           <span className="text-green-600 dark:text-transparent dark:bg-gradient-to-br dark:from-green-400 dark:to-green-950 bg-clip-text">
             JavaScript
@@ -48,7 +48,7 @@ const Hero = () => {
           Programming
         </h1>
       </div>
-      <p className="text-xs md:text-[15px] lg:text-md">
+      <p className="text-xs text-zinc-700 dark:text-zinc-300 md:text-[15px] lg:text-md">
         Interactive lessons designed to sharpen your JavaScript Skills
       </p>
       <div className="relative flex items-center gap-2">
@@ -62,7 +62,7 @@ const Hero = () => {
         </Link>
         <Link
           to="/code-lab"
-          className="z-10 flex items-center justify-center gap-2 w-[120px] py-2 mt-10 text-xs tracking-wide text-zinc-700 bg-transparent dark:text-white border border-zinc-400  dark:border-zinc-600 dark:bg-gradient-to-br dark:from-zinc-700/30 dark:to-zinc-600/40 md:px-4 md:py-[0.60rem] md:text-md dark:hover:brightness-125 "
+          className="z-10 flex items-center justify-center gap-2 w-[120px] py-2 mt-10 text-xs tracking-wide text-zinc-700 bg-transparent dark:text-white border border-zinc-400  dark:border-zinc-700 dark:bg-gradient-to-br dark:from-zinc-700/30 dark:to-zinc-600/40 md:px-4 md:py-[0.60rem] md:text-md dark:hover:brightness-125 "
         >
           Code Lab
           <FlaskConical size={16} />
