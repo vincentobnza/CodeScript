@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MdOutlineLeaderboard, MdKeyboardCommandKey } from "react-icons/md";
+import { MdKeyboardCommandKey } from "react-icons/md";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useTheme } from "next-themes";
 import { useAuth } from "@/context/AuthContext";
@@ -24,7 +24,6 @@ import {
 import NavbarQuickSearch from "./NavbarQuickSearch";
 import { useDisclosure } from "@nextui-org/react";
 import { useLocation } from "react-router-dom";
-import Logo from "../assets/CodeScriptLogo.png";
 
 export default function Navbar() {
   const { theme, setTheme, isDarkMode } = useTheme();
@@ -100,23 +99,26 @@ export default function Navbar() {
             className="hidden md:flex relative w-[260px] cursor-pointer"
           >
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-              <Search className="text-gray-400" size={14} />
+              <Search className="text-zinc-600 dark:text-zinc-400" size={14} />
             </div>
             <div className="flex items-center justify-start w-full py-2 pl-10 pr-4 bg-transparent border outline-none dark:bg-zinc-800/30 border-zinc-300 dark:border-zinc-700 hover:border-zinc-300 dark:hover:border-zinc-600">
-              <p className="text-xs text-zinc-400">Quick Search...</p>
+              <p className="text-xs text-zinc-500 dark:text-zinc-400">
+                Quick Search...
+              </p>
             </div>
             <div className="absolute inset-y-0 right-0 flex items-center gap-2 pr-3 pointer-events-none">
-              <h1 className="text-xs font-semibold text-zinc-400">Ctrl F</h1>
+              <h1 className="text-xs font-semibold text-zinc-500 dark:text-zinc-400">
+                Ctrl F
+              </h1>
               <MdKeyboardCommandKey
                 size={17}
-                className="text-zinc-400 dark:text-zinc-500"
+                className="text-zinc-400 dark:text-zinc-800"
               />
             </div>
           </div>
 
-          {/* User profile dropdown remains the same */}
           {user ? (
-            <Dropdown placement="bottom-end" className="text-xs">
+            <Dropdown placement="bottom-end" className="text-xs font-sans">
               <DropdownTrigger>
                 <div className="items-center gap-4">
                   <div className="grid overflow-hidden rounded-full cursor-pointer size-8 place-items-center">
@@ -149,7 +151,7 @@ export default function Navbar() {
               showArrow={true}
               placement="bottom"
               content={
-                <div className="w-[250px] p-5 pb-8 font-NotoSans">
+                <div className="w-[250px] p-5 pb-8 font-sans">
                   <div className="grid mb-4 border rounded-lg size-8 place-items-center bg-zinc-100 dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700">
                     <Lock size={15} />
                   </div>
@@ -168,7 +170,7 @@ export default function Navbar() {
             </Tooltip>
           )}
 
-          <Dropdown>
+          <Dropdown className="font-sans">
             <DropdownTrigger>
               <div className="grid transition duration-500 ease-in-out rounded-lg cursor-pointer hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:brightness-125 size-9 place-items-center">
                 {getCurrentThemeIcon()}

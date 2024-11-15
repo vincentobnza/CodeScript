@@ -55,14 +55,14 @@ const Hero = () => {
         <div className="absolute w-[240px] h-[100px] bg-green-600/40 rounded-full bottom-8 z-0 filter blur-[80px]" />
         <Link
           to="/learn"
-          className="z-10 flex items-center justify-center gap-2 w-[120px] py-2 mt-10 text-xs tracking-wide text-green-700 bg-transparent dark:text-green-200 border border-green-400  dark:border-green-600 dark:bg-gradient-to-br dark:from-green-600/30 dark:to-green-600/40 md:px-4 md:py-[0.60rem] md:text-md dark:hover:brightness-125"
+          className="z-10 flex items-center justify-center gap-2 w-[120px] py-2 mt-10 text-xs tracking-wide text-green-700 bg-green-100 dark:text-green-200 border border-green-400 dark:border-green-600 dark:bg-green-800/20 md:px-4 md:py-[0.60rem] md:text-md dark:hover:brightness-125 font-semibold rounded-sm"
         >
           Learn JS
           <Blocks size={16} />
         </Link>
         <Link
           to="/code-lab"
-          className="z-10 flex items-center justify-center gap-2 w-[120px] py-2 mt-10 text-xs tracking-wide text-zinc-700 bg-transparent dark:text-white border border-zinc-400  dark:border-zinc-700 dark:bg-gradient-to-br dark:from-zinc-700/30 dark:to-zinc-600/40 md:px-4 md:py-[0.60rem] md:text-md dark:hover:brightness-125 "
+          className="z-10 flex items-center justify-center gap-2 w-[120px] py-2 mt-10 text-xs tracking-wide text-zinc-700 bg-transparent dark:text-white border border-zinc-400  dark:border-zinc-500 dark:bg-zinc-800/20 md:px-4 md:py-[0.60rem] md:text-md dark:hover:brightness-125 font-semibold rounded-sm"
         >
           Code Lab
           <FlaskConical size={16} />

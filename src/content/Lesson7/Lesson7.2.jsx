@@ -6,6 +6,7 @@ import {
   List,
   NextButton,
   QuizButton,
+  TopicRef,
 } from "../../layout/UILayout";
 import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
@@ -136,6 +137,12 @@ elem.addEventListener(..., true)
             videoSrc="https://www.youtube.com/embed/Q6HAJ6bz7bY?si=Qo7JC5yhaSgDqe06"
             thumbnailSrc="https://img.youtube.com/vi/Q6HAJ6bz7bY/maxresdefault.jpg"
             link="https://www.youtube.com/watch?v=Q6HAJ6bz7bY"
+          />
+
+          <TopicRef
+            reference="-https://www.geeksforgeeks.org/what-is-event-bubbling/?ref=oin_asr4
+- https://javascript.info/bubbling-and-capturing
+"
           />
         </section>
 

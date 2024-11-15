@@ -7,6 +7,7 @@ import {
   Highlight,
   Output,
   CodeEditor,
+  TopicRef,
 } from "../../layout/UILayout";
 import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
@@ -188,6 +189,8 @@ switch (day) {
             thumbnailSrc="https://img.youtube.com/vi/fM5qnyasUYI/maxresdefault.jpg"
             link="https://www.youtube.com/watch?v=fM5qnyasUYI"
           />
+
+          <TopicRef reference="https://www.javascript.com/learn/conditionals" />
         </section>
 
         <NextButton link="/learn-js/loops" text="JavaScript Loops" />

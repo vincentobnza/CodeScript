@@ -1,10 +1,4 @@
-import {
-  Modal,
-  ModalContent,
-  ModalHeader,
-  ModalBody,
-  ModalFooter,
-} from "@nextui-org/react";
+import { Modal, ModalContent } from "@nextui-org/react";
 import React, { useState, useEffect } from "react";
 import { Search, Clock, X, ArrowUpRight } from "lucide-react";
 import { QuickSearchData } from "./QuickSearch";
@@ -90,7 +84,7 @@ export default function NavbarQuickSearch({ isOpen, onOpen, onOpenChange }) {
     <>
       <Modal
         radius="none"
-        className="font-NotoSans"
+        className="font-Inter"
         size="3xl"
         isOpen={isOpen}
         onOpenChange={onOpenChange}

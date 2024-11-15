@@ -1,5 +1,5 @@
 import { Moon, Sun } from "lucide-react";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { Button } from "@nextui-org/react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -121,8 +121,6 @@ export default function Quiz() {
   return (
     <>
       <QuizStartModal isOpen={isOpen} setIsOpen={setIsOpen} />
-      <LeaveSitePrompt />
-
       <motion.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -254,7 +252,6 @@ const QuizCard = ({ points, setPoints, quizCompleted, setQuizCompleted }) => {
         setError("Quiz not found.");
         setIsLoading(false);
       }
-      e;
     };
 
     loadQuizData();
@@ -607,7 +604,7 @@ const ViewAccuracyModal = ({
       isOpen={isOpen}
       onOpenChange={onOpenChange}
       scrollBehavior="inside"
-      className="font-NotoSans"
+      className="font-sans"
       size="2xl"
     >
       <ModalContent>

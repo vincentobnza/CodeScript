@@ -7,6 +7,7 @@ import {
   NextButton,
   QuizButton,
   List,
+  TopicRef,
 } from "../../layout/UILayout";
 
 import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
@@ -170,6 +171,7 @@ document.getElementById("btn").onclick = greetings;`}
             thumbnailSrc="https://img.youtube.com/vi/AD5hxsFJc4o/maxresdefault.jpg"
             link="https://www.youtube.com/watch?v=AD5hxsFJc4o&t=15s"
           />
+          <TopicRef reference="https://www.tutorialrepublic.com/javascript-tutorial/javascript-get-started.php" />
         </section>
 
         <div className="flex items-center justify-end w-full gap-3">

@@ -7,6 +7,7 @@ import {
   Output,
   Highlight,
   CodeEditor,
+  TopicRef,
 } from "../../layout/UILayout";
 import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
@@ -193,6 +194,8 @@ Finally statement will execute everytime`}
               thumbnailSrc="https://img.youtube.com/vi/cFTFtuEQ-10/maxresdefault.jpg"
               link="https://www.youtube.com/watch?v=cFTFtuEQ-10"
             />
+
+            <TopicRef reference="https://www.programiz.com/javascript/try-catch-finally" />
           </section>
         </section>
         <NextButton link="/learn-js/throwing-errors" text="Throwing Errors" />

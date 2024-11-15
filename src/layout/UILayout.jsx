@@ -365,3 +365,21 @@ export const CodeEditor = ({
     </div>
   );
 };
+
+export const TopicRef = ({ reference }) => {
+  const [hidden, setHidden] = useState(false);
+  return (
+    <div className="w-full p-3 pb-6 border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800/20 justify-start items-start flex flex-col space-y-2">
+      <button className="text-xs font-semibold text-zinc-400 italic">
+        Topic Reference
+      </button>
+
+      <Link
+        to={reference}
+        className="text-wrap text-md font-semibold text-amber-700 dark:bg-gradient-to-br dark:from-amber-200 dark:to-amber-900 dark:bg-clip-text dark:text-transparent italic"
+      >
+        {reference}
+      </Link>
+    </div>
+  );
+};

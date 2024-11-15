@@ -232,7 +232,7 @@ const Lesson1Data = () => {
             preventScrollReset={false}
             to={item.link}
             key={idx}
-            className="relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border h-[90px] text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
+            className="relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border h-[90px] text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-300 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
           >
             <SquareTerminal
               size={50}
@@ -292,7 +292,7 @@ const Lesson2Data = () => {
           <Link
             to={item.link}
             key={idx}
-            className="relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border h-[90px] text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
+            className="relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border h-[90px] text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-300 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
           >
             <EqualNot
               size={50}
@@ -351,7 +351,7 @@ const Lesson3Data = () => {
           <Link
             to={item.link}
             key={idx}
-            className="relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border h-[90px] text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
+            className="relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border h-[90px] text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-300 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
           >
             <RefreshCcw
               size={50}
@@ -410,7 +410,7 @@ const Lesson4Data = () => {
           <Link
             to={item.link}
             key={idx}
-            className="relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border h-[90px] text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
+            className="relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border h-[90px] text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-300 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
           >
             <Parentheses
               size={50}
@@ -470,7 +470,7 @@ const Lesson5Data = () => {
           <Link
             to={item.link}
             key={idx}
-            className="relative flex flex-col h-[90px] gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-zinc-50 dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
+            className="relative flex flex-col h-[90px] gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-300 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
           >
             <Brackets
               size={50}
@@ -528,7 +528,7 @@ const Lesson6Data = () => {
           <Link
             to={item.link}
             key={idx}
-            className="relative flex flex-col h-[90px] gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
+            className="relative flex flex-col h-[90px] gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-300 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
           >
             <SquareMousePointer
               size={50}
@@ -587,7 +587,7 @@ const Lesson7Data = () => {
           <Link
             to={item.link}
             key={idx}
-            className="relative flex flex-col h-[90px] gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
+            className="relative flex flex-col h-[90px] gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-300 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
           >
             <Dices
               size={50}
@@ -645,7 +645,7 @@ const Lesson8Data = () => {
           <Link
             to={item.link}
             key={idx}
-            className="relative flex flex-col h-[90px] gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-200 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
+            className="relative flex flex-col h-[90px] gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-300 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
           >
             <Ban
               size={50}

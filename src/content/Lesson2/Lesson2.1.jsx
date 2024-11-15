@@ -8,6 +8,7 @@ import {
   NextButton,
   Output,
   CodeEditor,
+  TopicRef,
 } from "../../layout/UILayout";
 
 import {
@@ -302,6 +303,8 @@ console.log(salary)
             thumbnailSrc="https://img.youtube.com/vi/XWo3YUblZxk/maxresdefault.jpg"
             link="https://www.youtube.com/watch?v=XWo3YUblZxk"
           />
+
+          <TopicRef reference="https://www.javascripthelp.org/learn/basics/variables-data-types/" />
         </section>
         <div className="flex items-center justify-end w-full gap-3">
           <NextButton link="/learn-js/operators" text="Operators" />

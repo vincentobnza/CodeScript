@@ -5,6 +5,7 @@ import {
   List,
   NextButton,
   QuizButton,
+  TopicRef,
 } from "../../layout/UILayout";
 import {
   Table,
@@ -338,6 +339,8 @@ document.addEventListener('mouseup', event => {
             thumbnailSrc="https://img.youtube.com/vi/XF1_MlZ5l6M/maxresdefault.jpg"
             link="https://www.youtube.com/watch?v=XF1_MlZ5l6M"
           />
+
+          <TopicRef reference="https://www.freecodecamp.org/news/dom-events-and-javascript-event-listeners/" />
         </section>
 
         <div className="flex items-center justify-end w-full gap-3">

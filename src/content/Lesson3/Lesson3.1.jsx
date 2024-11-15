@@ -7,6 +7,7 @@ import {
   Highlight,
   Output,
   CodeEditor,
+  TopicRef,
 } from "../../layout/UILayout";
 import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
@@ -154,6 +155,8 @@ let result = "else if block";
             thumbnailSrc="https://img.youtube.com/vi/N4V0FZASK60/maxresdefault.jpg"
             link="https://www.youtube.com/watch?v=N4V0FZASK60"
           />
+
+          <TopicRef reference="https://www.javascript.com/learn/conditionals" />
         </section>
 
         <NextButton

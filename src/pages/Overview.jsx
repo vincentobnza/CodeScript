@@ -27,7 +27,7 @@ const Header = () => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="w-full space-y-1 border-b border-zinc-200 dark:border-zinc-800 pb-10">
+      <div className="w-full space-y-1">
         <div className="space-y-2">
           <motion.p
             className="text-xs text-zinc-500 dark:text-zinc-400 font-semibold"

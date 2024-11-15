@@ -7,6 +7,7 @@ import {
   Output,
   Highlight,
   CodeEditor,
+  TopicRef,
 } from "../../layout/UILayout";
 import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
@@ -108,6 +109,8 @@ console.log(apple);`}
             thumbnailSrc="https://img.youtube.com/vi/cozcCZjkjto/maxresdefault.jpg"
             link="https://www.youtube.com/watch?v=cozcCZjkjto"
           />
+
+          <TopicRef reference="https://www.freecodecamp.org/news/function-declaration-vs-function-expression/" />
         </section>
 
         <NextButton

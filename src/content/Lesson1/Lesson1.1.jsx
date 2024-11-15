@@ -5,6 +5,7 @@ import {
   Title,
   List,
   NextButton,
+  TopicRef,
 } from "../../layout/UILayout";
 import Thumbnail1 from "@/assets/Thumbnail1.png";
 
@@ -66,7 +67,7 @@ export default function Lesson1_Topic1() {
         </section>
 
         <section id="section2">
-          <div className="relative flex flex-col w-full gap-3 p-5 mt-5 mb-3 border bg-zinc-100 border-zinc-300 dark:bg-zinc-800 dark:border-zinc-700">
+          <div className="relative flex flex-col w-full gap-3 p-5 mt-5 mb-3 border bg-zinc-100 border-zinc-300 dark:bg-zinc-800/20 dark:border-zinc-700">
             <h3 className="text-zinc-700 dark:text-zinc-200">{`Summary`}</h3>
 
             <List
@@ -77,6 +78,8 @@ export default function Lesson1_Topic1() {
               ]}
             />
           </div>
+
+          <TopicRef reference="https://javascript.info/intro" />
         </section>
 
         <NextButton

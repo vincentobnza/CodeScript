@@ -7,6 +7,7 @@ import {
   Output,
   Highlight,
   CodeEditor,
+  TopicRef,
 } from "../../layout/UILayout";
 import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
@@ -111,6 +112,8 @@ Error message: Error: The number is low `}
             thumbnailSrc="https://img.youtube.com/vi/GvrapZbI_Jo/maxresdefault.jpg"
             link="https://www.youtube.com/watch?v=GvrapZbI_Jo"
           />
+
+          <TopicRef reference="https://www.programiz.com/javascript/throw?fbclid=IwZXh0bgNhZW0CMTEAAR21U95zcfYFXuayS_TkuNxf5D1OuweZL-0qNYyjWjBcbWcFF5EOlA9b4Vw_aem_u2Wwo_0RALoxbuuM5-RY_w" />
         </section>
         <NextButton link="/learn-js/custom-errors" text="Custom Errors" />
       </div>

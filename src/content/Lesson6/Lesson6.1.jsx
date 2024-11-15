@@ -4,6 +4,7 @@ import {
   Title,
   Code,
   NextButton,
+  TopicRef,
 } from "../../layout/UILayout";
 import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
@@ -174,6 +175,8 @@ box.style.height = '200px';
               thumbnailSrc="https://img.youtube.com/vi/t3CWlfZUvL8/maxresdefault.jpg"
               link="https://www.youtube.com/watch?v=t3CWlfZUvL8"
             />
+
+            <TopicRef reference="https://www.w3schools.com/js/js_htmldom_elements.asp" />
           </section>
         </section>
         <NextButton link="/learn-js/dom-elements" text="Dom Elements" />

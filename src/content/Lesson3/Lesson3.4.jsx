@@ -9,6 +9,7 @@ import {
   Output,
   CodeEditor,
   Highlight,
+  TopicRef,
 } from "../../layout/UILayout";
 import { Link } from "react-router-dom";
 import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
@@ -297,6 +298,8 @@ i = 2, j = 1
             thumbnailSrc="https://img.youtube.com/vi/9OJ4A58g0Hs/maxresdefault.jpg"
             link="https://www.youtube.com/watch?v=9OJ4A58g0Hs"
           />
+
+          <TopicRef reference="https://www.tutorialspoint.com/javascript/javascript_continue_statement.htm" />
         </section>
         <div className="flex items-center justify-end w-full gap-3">
           <QuizButton text="Lesson 3" link="/quiz/lesson3" />

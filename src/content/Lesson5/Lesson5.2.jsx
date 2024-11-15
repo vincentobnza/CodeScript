@@ -7,6 +7,7 @@ import {
   QuizButton,
   Output,
   CodeEditor,
+  TopicRef,
 } from "../../layout/UILayout";
 import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
@@ -513,6 +514,8 @@ console.log(Array.isArray('hello')); // Output: false
             thumbnailSrc="https://img.youtube.com/vi/cDCzz8vJf3Y/maxresdefault.jpg"
             link="https://www.youtube.com/watch?v=cDCzz8vJf3Y"
           />
+
+          <TopicRef reference="https://www.w3schools.com/js/js_arrays.asp" />
         </section>
 
         <div className="flex items-center justify-end w-full gap-3">

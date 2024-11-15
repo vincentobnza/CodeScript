@@ -57,7 +57,7 @@ const QuizStartModal = ({ isOpen, setIsOpen }) => {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 grid p-8 overflow-y-scroll font-sans cursor-pointer bg-slate-900/20 backdrop-blur-lg place-items-center">
+        <div className="fixed inset-0 z-50 grid p-8 overflow-y-scroll cursor-pointer bg-slate-900/20 backdrop-blur-lg place-items-center font-sans">
           {openModal && (
             <motion.div
               initial={{ scale: 0, rotate: "12.5deg" }}

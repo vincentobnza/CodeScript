@@ -6,6 +6,7 @@ import {
   List,
   NextButton,
   Highlight,
+  TopicRef,
 } from "../../layout/UILayout";
 import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
@@ -477,6 +478,8 @@ export default function Lesson7_Topic1() {
             thumbnailSrc="https://img.youtube.com/vi/xogpUfUL5kY/maxresdefault.jpg"
             link="https://www.youtube.com/watch?v=xogpUfUL5kY"
           />
+
+          <TopicRef reference=" https://www.geeksforgeeks.org/what-are-javascript events/?ref=oin_asr7#keyboard-events" />
         </section>
         <NextButton
           link="/learn-js/event-bubbling-capturing"

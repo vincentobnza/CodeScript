@@ -4,6 +4,7 @@ import {
   Description,
   Title,
   List,
+  TopicRef,
   NextButton,
 } from "../../layout/UILayout";
 
@@ -72,6 +73,7 @@ export default function Lesson1_Topic2() {
             To immediately run the JavaScript code without installing anything,
             use the online editor. The free web editors are as follows:
           </Description>
+          <TopicRef reference="https://www.tutorialsteacher.com/javascript/env-setup-for-javascript-development" />
         </section>
         <NextButton
           link="/learn-js/adding-javascript-to-page"

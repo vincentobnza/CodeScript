@@ -7,6 +7,7 @@ import {
   Output,
   Highlight,
   CodeEditor,
+  TopicRef,
 } from "../../layout/UILayout";
 import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
@@ -363,6 +364,11 @@ false`}
             videoSrc="https://www.youtube.com/embed/4uVwGw317QM?si=OIkczFHdz8iWKQ-X"
             thumbnailSrc="https://img.youtube.com/vi/4uVwGw317QM/maxresdefault.jpg"
             link="https://www.youtube.com/watch?v=4uVwGw317QM"
+          />
+          <TopicRef
+            reference="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Basics
+-https://www.w3schools.com/js/js_this.asp
+"
           />
         </section>
 

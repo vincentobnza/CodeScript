@@ -7,6 +7,7 @@ import {
   NextButton,
   QuizButton,
   CodeEditor,
+  TopicRef,
 } from "../../layout/UILayout";
 import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
@@ -152,6 +153,8 @@ let str = "Hello" ;
             thumbnailSrc="https://img.youtube.com/vi/HzWf-EeE3uI/maxresdefault.jpg"
             link="https://www.youtube.com/watch?v=HzWf-EeE3uI"
           />
+
+          <TopicRef reference="https://www.digitalocean.com/community/tutorials/understanding-syntax-and-code-structure-in-javascript" />
         </section>
         <div className="flex items-center justify-end w-full gap-3">
           <QuizButton text="Lesson 2" link="/quiz/lesson2" />

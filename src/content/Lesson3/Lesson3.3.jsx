@@ -7,6 +7,7 @@ import {
   Output,
   CodeEditor,
   Highlight,
+  TopicRef,
 } from "../../layout/UILayout";
 import { Link } from "react-router-dom";
 import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
@@ -272,6 +273,8 @@ Count is stopped`}
             thumbnailSrc="https://img.youtube.com/vi/OPdhb7n_oL4/maxresdefault.jpg"
             link="https://www.youtube.com/watch?v=OPdhb7n_oL4"
           />
+
+          <TopicRef reference="https://www.tutorialspoint.com/javascript/javascript_continue_statement.htm" />
         </section>
         <NextButton
           link="/learn-js/break-statements"

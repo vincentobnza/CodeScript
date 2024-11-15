@@ -5,6 +5,7 @@ import {
   Code,
   List,
   NextButton,
+  TopicRef,
 } from "../../layout/UILayout";
 import HeroVideoDialog from "@/components/ui/HeroVideoDialog";
 
@@ -69,6 +70,7 @@ export default function Lesson6_Topic2() {
             thumbnailSrc="https://img.youtube.com/vi/WjxQRfZfZnw/maxresdefault.jpg"
             link="https://www.youtube.com/watch?v=WjxQRfZfZnw"
           />
+          <TopicRef reference="https://www.w3schools.com/js/js_htmldom_elements.asp" />
         </section>
         <NextButton
           link="/learn-js/event-listeners-handling-events"
