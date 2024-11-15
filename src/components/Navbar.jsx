@@ -24,6 +24,7 @@ import {
 import NavbarQuickSearch from "./NavbarQuickSearch";
 import { useDisclosure } from "@nextui-org/react";
 import { useLocation } from "react-router-dom";
+import supabase from "@/config/supabaseClient";
 
 export default function Navbar() {
   const { theme, setTheme, isDarkMode } = useTheme();
@@ -31,6 +32,7 @@ export default function Navbar() {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
+  const [points, setPoints] = useState(0);
 
   const handleThemeChange = useCallback(
     (selectedTheme) => {
@@ -58,6 +60,44 @@ export default function Navbar() {
     return theme === "dark" ? <RxMoon size={22} /> : <RxSun size={22} />;
   };
 
+  // FETCH CURRENT POINTS IN SUPABASE
+
+  useEffect(() => {
+    const fetchPoints = async () => {
+      try {
+        const { data, error } = await supabase
+          .from("profiles")
+          .select("current_points")
+          .eq("id", user.id)
+          .single();
+
+        if (error) throw error;
+        setPoints(data.current_points);
+      } catch (error) {
+        console.log("Error fetching points", error);
+      }
+    };
+
+    const channel = supabase
+      .channel("user-changes")
+      .on(
+        "postgres_changes",
+        { event: "*", schema: "public", table: "profiles" },
+        (payload) => {
+          if (payload.eventType === "UPDATE" && payload.new.id === user.id) {
+            setPoints(payload.new.current_points); // Update with the new points
+          }
+        }
+      )
+      .subscribe();
+
+    fetchPoints();
+
+    return () => {
+      channel.unsubscribe();
+    };
+  }, [user?.id]);
+
   return (
     <div className="sticky top-0 z-50 grid w-full bg-white dark:border-b dark:bg-zinc-900/70 backdrop-blur-lg text-zinc-900 dark:text-zinc-300 place-items-center dark:border-zinc-800">
       <NavbarQuickSearch
@@ -78,7 +118,6 @@ export default function Navbar() {
           onClose={() => setIsMobileMenuOpen(false)}
         />
 
-        {/* Desktop Links */}
         <div className="flex items-center">
           <div className="relative">
             <Link
@@ -94,6 +133,13 @@ export default function Navbar() {
         {/* Right Side Icons */}
         <div className="flex items-center gap-6">
           {/* Search code remains the same */}
+          <div className="flex items-center gap-3 py-1 px-4 rounded-full border border-zinc-100 dark:border-zinc-800">
+            <div className="size-4 rounded-full bg-yellow-400"></div>
+
+            <p className="text-sm font-semibold text-zinc-500 dark:text-zinc-200">
+              {points}
+            </p>
+          </div>
           <div
             onClick={onOpen}
             className="hidden md:flex relative w-[260px] cursor-pointer"

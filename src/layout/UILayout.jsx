@@ -298,7 +298,7 @@ export const CodeEditor = ({
               size="sm"
               radius="none"
               onClick={toggleTheme}
-              className="border border-zinc-600 bg-zinc-800"
+              className="border border-zinc-600 bg-zinc-50 dark:bg-zinc-800"
               aria-label={
                 isDarkTheme ? "Switch to light theme" : "Switch to dark theme"
               }
@@ -315,7 +315,7 @@ export const CodeEditor = ({
               onClick={() => setOutput("")}
               size="sm"
               startContent={<SquareX className="w-4 h-4" />}
-              className="px-4 py-2 text-white border bg-zinc-800 hover:bg-zinc-700 border-zinc-600"
+              className="px-4 py-2 text-zinc-600 dark:text-white border bg-zinc-50 dark:bg-zinc-800 hover:bg-zinc-700 border-zinc-600"
             >
               Clear Console
             </Button>
