@@ -20,6 +20,7 @@ import {
   X,
   Menu,
   Laptop,
+  RefreshCcw,
 } from "lucide-react";
 import NavbarQuickSearch from "./NavbarQuickSearch";
 import { useDisclosure } from "@nextui-org/react";
@@ -33,6 +34,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const location = useLocation();
   const [points, setPoints] = useState(0);
+  const [refreshedPoints, setRefreshPoints] = useState(false);
 
   const handleThemeChange = useCallback(
     (selectedTheme) => {
@@ -78,25 +80,26 @@ export default function Navbar() {
       }
     };
 
-    const channel = supabase
-      .channel("user-changes")
-      .on(
-        "postgres_changes",
-        { event: "*", schema: "public", table: "profiles" },
-        (payload) => {
-          if (payload.eventType === "UPDATE" && payload.new.id === user.id) {
-            setPoints(payload.new.current_points); // Update with the new points
-          }
-        }
-      )
-      .subscribe();
-
     fetchPoints();
-
-    return () => {
-      channel.unsubscribe();
-    };
   }, [user?.id]);
+
+  const handleRefresh = async () => {
+    setRefreshPoints(true);
+    try {
+      const { data, error } = await supabase
+        .from("profiles")
+        .select("current_points")
+        .eq("id", user.id)
+        .single();
+
+      if (error) throw error;
+      setPoints(data.current_points);
+    } catch (error) {
+      console.log("Error refreshing points", error);
+    } finally {
+      setTimeout(() => setRefreshPoints(false), 500);
+    }
+  };
 
   return (
     <div className="sticky top-0 z-50 grid w-full bg-white dark:border-b dark:bg-zinc-900/70 backdrop-blur-lg text-zinc-900 dark:text-zinc-300 place-items-center dark:border-zinc-800">
@@ -132,14 +135,30 @@ export default function Navbar() {
 
         {/* Right Side Icons */}
         <div className="flex items-center gap-6">
-          {/* Search code remains the same */}
-          <div className="flex items-center gap-3 py-1 px-4 rounded-full border border-zinc-100 dark:border-zinc-800">
-            <div className="size-4 rounded-full bg-yellow-400"></div>
+          <div className="flex items-center gap-1">
+            <Tooltip
+              content="Current Points"
+              radius="sm"
+              placement="bottom"
+              showArrow
+            >
+              <div className="flex items-center gap-2 px-4 py-1 border rounded-full border-zinc-100 dark:border-zinc-800">
+                <div className="bg-green-400 rounded-full size-3"></div>
 
-            <p className="text-sm font-semibold text-zinc-500 dark:text-zinc-200">
-              {points}
-            </p>
+                <p className="text-sm font-semibold text-zinc-500 dark:text-zinc-200">
+                  {points}
+                </p>
+              </div>
+            </Tooltip>
+            <RefreshCcw
+              onClick={handleRefresh}
+              size={16}
+              className={`cursor-pointer hover:text-green-400 transition-transform duration-500 ${
+                refreshedPoints ? "rotate-180" : ""
+              }`}
+            />
           </div>
+
           <div
             onClick={onOpen}
             className="hidden md:flex relative w-[260px] cursor-pointer"
@@ -164,7 +183,7 @@ export default function Navbar() {
           </div>
 
           {user ? (
-            <Dropdown placement="bottom-end" className="text-xs font-sans">
+            <Dropdown placement="bottom-end" className="font-sans text-xs">
               <DropdownTrigger>
                 <div className="items-center gap-4">
                   <div className="grid overflow-hidden rounded-full cursor-pointer size-8 place-items-center">

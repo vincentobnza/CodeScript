@@ -3,6 +3,9 @@ import { useParams, Link } from "react-router-dom";
 import { Undo2, LoaderCircle } from "lucide-react";
 import { Pretest } from "@/data/Pretest";
 import { RadioGroup, Radio, Button, Spinner } from "@nextui-org/react";
+import { useAuth } from "@/context/AuthContext";
+
+import supabase from "../config/supabaseClient";
 
 export default function PretestPage() {
   return (
@@ -56,6 +59,8 @@ const Content = () => {
   const [score, setScore] = useState(null);
   const [loading, setLoading] = useState(true);
   const [submitting, setSubmitting] = useState(false);
+  const { user } = useAuth();
+  const [done, setDone] = useState(false);
 
   useEffect(() => {
     const testData = Pretest[lesson];
@@ -71,6 +76,54 @@ const Content = () => {
     }
   }, [lesson]);
 
+  useEffect(() => {
+    const fetchPretest = async () => {
+      setLoading(true);
+      try {
+        const { data: existingTest, error: existingError } = await supabase
+          .from("pre-test")
+          .select("status, score, percentage")
+          .eq("lesson", lesson)
+          .eq("user_id", user?.id)
+          .single();
+
+        if (existingError && existingError.code !== "PGRST116") {
+          throw existingError;
+        }
+
+        if (existingTest) {
+          setDone(true);
+          setScore(existingTest);
+          setLoading(false);
+          return;
+        }
+
+        // Fetch pretest questions
+        const { data, error } = await supabase
+          .from("pre-test-questions")
+          .select("*")
+          .eq("lesson", lesson);
+
+        if (error) throw error;
+
+        if (data) {
+          setTest(data);
+          setAnswers({});
+          setIsSubmitted(false);
+          setScore(null);
+        }
+      } catch (error) {
+        console.error("Error fetching pretest:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    if (user) {
+      fetchPretest();
+    }
+  }, [lesson, user]);
+
   const handleAnswerChange = (questionId, option) => {
     setAnswers((prevAnswers) => ({
       ...prevAnswers,
@@ -82,7 +135,7 @@ const Content = () => {
     let correctCount = 0;
     Object.entries(answers).forEach(([questionId, answer]) => {
       const question = test.find((q) => q.id === parseInt(questionId));
-      if (question && question.correctAnswer === answer) {
+      if (question && question.answer === answer) {
         correctCount++;
       }
     });
@@ -93,24 +146,58 @@ const Content = () => {
     };
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     if (Object.keys(answers).length !== test.length) {
       alert("Please answer all questions before submitting!");
       return;
     }
     setSubmitting(true);
-    setTimeout(() => {
+    try {
       const result = calculateScore();
       setScore(result);
       setIsSubmitted(true);
+
+      // Save result to Supabase
+      const { data, error } = await supabase.from("pre-test").insert({
+        user_id: user?.id,
+        lesson: lesson,
+        score: result.score,
+        status: "done",
+        percentage: result.percentage,
+      });
+
+      if (error) throw error;
+    } catch (error) {
+      console.error("Error submitting pretest:", error);
+    } finally {
       setSubmitting(false);
-    }, 2000);
+    }
   };
 
   if (loading) {
     return (
       <div className="flex items-center justify-center h-[200px]">
         <Spinner color="warning" />
+      </div>
+    );
+  }
+
+  if (done) {
+    return (
+      <div className="flex flex-col items-center justify-center w-full max-w-xl gap-4 p-5 mx-auto">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/10552/10552443.png"
+          alt="check"
+          className="mb-6 w-14"
+        />
+        <h1 className="text-4xl font-bold">Pre-test Completed</h1>
+        <p className="text-sm">
+          You have completed the pre-test for this lesson.
+        </p>
+
+        <p className="mt-10">
+          Your score: {score.score} out of {test.length}
+        </p>
       </div>
     );
   }

@@ -85,7 +85,7 @@ export default function PointsCoin() {
         const { data, error } = await supabase
           .from("profiles")
           .select("current_points")
-          .eq("id", user.id)
+          .eq("id", user?.id)
           .single();
 
         if (error) {
@@ -100,7 +100,7 @@ export default function PointsCoin() {
         const { error: updateError } = await supabase
           .from("profiles")
           .update({ current_points: newPoints })
-          .eq("id", user.id);
+          .eq("id", user?.id);
 
         if (updateError) {
           throw updateError;
@@ -144,9 +144,9 @@ export default function PointsCoin() {
           throw updateError;
         }
 
-        console.log("Points updated successfully in DB");
+        console.log("Progress updated successfully in DB");
       } catch (error) {
-        console.error("Error updating points:", error.message);
+        console.error("Error updating progress:", error.message);
       }
     },
     [user]
@@ -161,24 +161,24 @@ export default function PointsCoin() {
       },
     });
     setPoints((prevPoints) => {
-      if (prevPoints >= 100) {
+      if (prevPoints) {
         if (!toastShownRef.current) {
           toastShownRef.current = true;
           updatePoints(5);
           updateProgress(0.5);
-          s;
         }
         setIsLoading(true);
         return 0;
       }
       return prevPoints;
     });
-  }, [updatePoints]);
+  }, [updatePoints, updateProgress]);
 
   useEffect(() => {
     if (user) {
-      const subscription = supabase
-        .channel(`public:profiles:id=eq.${user.id}`)
+      const channel = supabase.channel("db-changes");
+
+      const subscription = channel
         .on(
           "postgres_changes",
           {
@@ -199,7 +199,6 @@ export default function PointsCoin() {
           }
         )
         .subscribe();
-
       return () => {
         subscription.unsubscribe();
       };

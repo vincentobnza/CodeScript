@@ -141,7 +141,7 @@ export const Pretest = {
     },
     {
       id: 3,
-      question: "Which data type is used to represent text in JavaScript?   ",
+      question: "Which data type is used to represent text in JavaScript?",
       options: {
         a: "Number",
         b: "Boolean",
@@ -345,123 +345,7 @@ export const Pretest = {
       },
       answer: "c",
     },
-    {
-      id: 11,
-      question: "What is a key difference between for and while loops?",
-      options: {
-        a: "for loops must have a break",
-        b: "while loops cannot run infinitely",
-        c: "for loops are only for numerical conditions",
-        d: "for loops have initialization, condition, and increment steps in one line",
-      },
-      answer: "d",
-    },
-    {
-      id: 12,
-      question:
-        "In JavaScript, what is the output if the continue statement is used in a loop?",
-      options: {
-        a: "Exits the loop",
-        b: "Skips the remaining code and starts the next iteration",
-        c: "Pauses the loop",
-        d: "Repeats the same iteration",
-      },
-      answer: "b",
-    },
-    {
-      id: 13,
-      question: "What happens if break is omitted in a switch case clause?",
-      options: {
-        a: "An error occurs",
-        b: "Execution continues to the next case clause",
-        c: "The loop exits",
-        d: "The program restarts",
-      },
-      answer: "b",
-    },
-    {
-      id: 14,
-      question:
-        "In a nested loop with continue, what happens if the condition is met in the inner loop?",
-      options: {
-        a: "Only the inner loop skips the iteration",
-        b: "Both loops exit",
-        c: "The outer loop skips an iteration",
-        d: "Both loops continue normally",
-      },
-      answer: "a",
-    },
-    {
-      id: 15,
-      question: "What does the default clause do in a switch statement?",
-      options: {
-        a: "It runs if no case matches",
-        b: "It terminates the switch",
-        c: "It must be the first clause",
-        d: "It stores values",
-      },
-      answer: "a",
-    },
-    {
-      id: 16,
-      question:
-        "What is the output of do...while loop if the condition is initially false?",
-      options: {
-        a: "The loop runs once",
-        b: "The loop does not run at all",
-        c: "The loop runs twice",
-        d: "An error occurs",
-      },
-      answer: "a",
-    },
-    {
-      id: 17,
-      question:
-        "Which keyword is used to exit a function early, returning control to the caller?",
-      options: {
-        a: "break",
-        b: "return",
-        c: "exit",
-        d: "continue",
-      },
-      answer: "b",
-    },
-    {
-      id: 18,
-      question: "What type of expression does a switch statement evaluate?",
-      options: {
-        a: "Boolean only",
-        b: "A single numeric expression",
-        c: "Any expression with a value",
-        d: "Only strings",
-      },
-      answer: "c",
-    },
-    {
-      id: 19,
-      question:
-        "Which loop guarantees at least one execution even if the condition is false?",
-      options: {
-        a: "for",
-        b: "while",
-        c: "do...while",
-        d: "switch",
-      },
-      answer: "c",
-    },
-    {
-      id: 20,
-      question: "What is the primary use of the while loop in JavaScript?",
-      options: {
-        a: "To execute code a fixed number of times",
-        b: "To execute code as long as a condition is true",
-        c: "To execute code once and exit",
-        d: "To handle multiple conditions",
-      },
-      answer: "b",
-    },
   ],
-
   lesson4: [
     {
       id: 1,
@@ -565,7 +449,7 @@ export const Pretest = {
         c: "The function's own this value",
         d: "A new variable created in the function",
       },
-      answer: "c",
+      answer: "b",
     },
     {
       id: 10,
@@ -583,226 +467,111 @@ export const Pretest = {
   lesson5: [
     {
       id: 1,
-      question: "How can you remove the last element from an array?",
+      question: "How do you add a new element to the beginning of an array?",
       options: {
-        a: "array.shift()",
-        b: "array.remove()",
-        c: "array.pop()",
-        d: "array.delete()",
+        a: "array.push(element)",
+        b: "array.unshift(element)",
+        c: "array.insertFirst(element)",
+        d: "array.addFirst(element)",
       },
-      answer: "c",
+      answer: "b",
     },
     {
       id: 2,
-      question: "How can you access an object's properties using dot notation?",
+      question: "What method can you use to convert an array to a string?",
       options: {
-        a: "object.property",
-        b: "object[property]",
-        c: "object->property",
-        d: "object{property}",
+        a: "array.toString()",
+        b: "array.stringify()",
+        c: "array.join()",
+        d: "array.convert()",
       },
-      answer: "a",
+      answer: "c",
     },
     {
       id: 3,
-      question: "How can you combine two or more arrays into one?",
+      question: "What does the `delete` operator do in JavaScript?",
       options: {
-        a: "array.concat(otherArray)",
-        b: "array.merge(otherArray)",
-        c: "array.add(otherArray)",
-        d: "array.join(otherArray)",
+        a: "Deletes an array element",
+        b: "Deletes a property from an object",
+        c: "Removes a function",
+        d: "Clears the console",
+      },
+      answer: "b",
+    },
+    {
+      id: 4,
+      question: "Which method is used to combine two or more arrays into one?",
+      options: {
+        a: "array.merge()",
+        b: "array.concat()",
+        c: "array.add()",
+        d: "array.combine()",
+      },
+      answer: "b",
+    },
+    {
+      id: 5,
+      question: "How can you create a shallow copy of an array?",
+      options: {
+        a: "array.copy()",
+        b: "array.slice()",
+        c: "array.clone()",
+        d: "array.duplicate()",
+      },
+      answer: "b",
+    },
+    {
+      id: 6,
+      question: "How can you check if an object has a specific property?",
+      options: {
+        a: "object.hasOwnProperty(property)",
+        b: "object.contains(property)",
+        c: "object.checkProperty(property)",
+        d: "object.propertyExists(property)",
       },
       answer: "a",
     },
     {
-      id: 4,
-      question: "What does the `hasOwnProperty()` method do in an object?",
-      options: {
-        a: "Deletes a property",
-        b: "Updates the value of a property",
-        c: "Creates a new property",
-        d: "Checks if a property exists",
-      },
-      answer: "d",
-    },
-    {
-      id: 5,
-      question: "How can you check if an array includes a certain element?",
-      options: {
-        a: "array.has(element)",
-        b: "array.exists(element)",
-        c: "array.includes(element)",
-        d: "array.contains(element)",
-      },
-      answer: "c",
-    },
-    {
-      id: 6,
-      question: "How can you add an element to the end of an array?",
-      options: {
-        a: "array.unshift(element)",
-        b: "array.append(element)",
-        c: "array.push(element)",
-        d: "array.add(element)",
-      },
-      answer: "c",
-    },
-    {
       id: 7,
-      question: "What is an object in JavaScript?",
+      question: "Which method returns an array of all the values of an object?",
       options: {
-        a: "A type of function",
-        b: "A grouping of linked information and/or features",
-        c: "A special variable",
-        d: "A single value",
+        a: "Object.getValues()",
+        b: "Object.values()",
+        c: "Object.keys()",
+        d: "Object.list()",
       },
       answer: "b",
     },
     {
       id: 8,
-      question: "How can you filter elements in an array based on a condition?",
+      question: "How can you check if a variable is an array?",
       options: {
-        a: "array.map(condition)",
-        b: "array.filter(condition)",
-        c: "array.find(condition)",
-        d: "array.select(condition)",
+        a: "Array.isArray(variable)",
+        b: "variable.isArray()",
+        c: "isArray(variable)",
+        d: "Array.check(variable)",
       },
-      answer: "b",
+      answer: "a",
     },
     {
       id: 9,
-      question: "What does the `Object.keys()` method return?",
+      question: "How do you remove the last element of an array?",
       options: {
-        a: "The first key in the object",
-        b: "A list of the object’s keys",
-        c: "A list of the object’s values",
-        d: "The number of keys",
+        a: "array.shift()",
+        b: "array.pop()",
+        c: "array.delete()",
+        d: "array.remove()",
       },
       answer: "b",
     },
     {
       id: 10,
-      question:
-        "How can you transform each element of an array using a function?",
+      question: "How can you combine multiple strings into one?",
       options: {
-        a: "array.forEach(function)",
-        b: "array.reduce(function)",
-        c: "array.map(function)",
-        d: "array.filter(function)",
-      },
-      answer: "c",
-    },
-    {
-      id: 11,
-      question:
-        "How can you retrieve a specific property value from an object?",
-      options: {
-        a: "object.getProperty(propertyName)",
-        b: "object.property",
-        c: "object[propertyName]",
-        d: "Both b and c",
-      },
-      answer: "d",
-    },
-    {
-      id: 12,
-      question: "What does the `length` property of an array return?",
-      options: {
-        a: "The number of elements in the array",
-        b: "The last element of the array",
-        c: "The type of the array",
-        d: "The first element of the array",
-      },
-      answer: "a",
-    },
-    {
-      id: 13,
-      question: "How can you sort the elements of an array in ascending order?",
-      options: {
-        a: "array.order()",
-        b: "array.sort()",
-        c: "array.arrange()",
-        d: "array.ascending()",
-      },
-      answer: "b",
-    },
-    {
-      id: 14,
-      question: "How can you remove the first element from an array?",
-      options: {
-        a: "array.pop()",
-        b: "array.shift()",
-        c: "array.removeFirst()",
-        d: "array.deleteFirst()",
-      },
-      answer: "b",
-    },
-    {
-      id: 15,
-      question:
-        "How can you add a new property to an object using dot notation?",
-      options: {
-        a: "object.property = value",
-        b: "object[newProperty] = value",
-        c: "object.set(newProperty, value)",
-        d: "object.addProperty(newProperty)",
-      },
-      answer: "a",
-    },
-    {
-      id: 16,
-      question: "How can you remove a property from an object?",
-      options: {
-        a: "object.remove(property)",
-        b: "delete object.property",
-        c: "object.property = null",
-        d: "object.clear(property)",
-      },
-      answer: "b",
-    },
-    {
-      id: 17,
-      question: "How can you find the index of an element in an array?",
-      options: {
-        a: "array.indexOf(element)",
-        b: "array.search(element)",
-        c: "array.findIndex(element)",
-        d: "array.getIndex(element)",
-      },
-      answer: "a",
-    },
-    {
-      id: 18,
-      question: "How can you copy an object without modifying the original?",
-      options: {
-        a: "const newObject = Object.assign({}, originalObject)",
-        b: "const newObject = Object.copy(originalObject)",
-        c: "const newObject = Object.createClone(originalObject)",
-        d: "const newObject = Object.clone(originalObject)",
-      },
-      answer: "a",
-    },
-    {
-      id: 19,
-      question:
-        "How can you find the first element in an array that meets a condition?",
-      options: {
-        a: "array.find(condition)",
-        b: "array.search(condition)",
-        c: "array.filterFirst(condition)",
-        d: "array.getFirst(condition)",
-      },
-      answer: "a",
-    },
-    {
-      id: 20,
-      question:
-        "How can you reduce an array to a single value using a function?",
-      options: {
-        a: "array.reduce(function)",
-        b: "array.accumulate(function)",
-        c: "array.aggregate(function)",
-        d: "array.transform(function)",
+        a: "string.concat(otherString)",
+        b: "string.append(otherString)",
+        c: "string.join(otherString)",
+        d: "string.merge(otherString)",
       },
       answer: "a",
     },
@@ -900,7 +669,7 @@ export const Pretest = {
     },
     {
       id: 9,
-      question: "What is querySelector() used for?",
+      question: "What is `querySelector()` used for?",
       options: {
         a: "Selecting all elements",
         b: "Selecting the first element that matches a specified CSS selector",
@@ -920,147 +689,34 @@ export const Pretest = {
       },
       answer: "a",
     },
-    {
-      id: 11,
-      question: "What is the result of calling document.createElement('div')?",
-      options: {
-        a: "Adds a div to the HTML",
-        b: "Creates a div element in memory",
-        c: "Deletes a div element",
-        d: "Creates a div and appends it to the document",
-      },
-      answer: "b",
-    },
-    {
-      id: 12,
-      question: "To change the text inside an HTML element, use:",
-      options: {
-        a: "innerText",
-        b: "textNode",
-        c: "textContent",
-        d: "innerHTML",
-      },
-      answer: "d",
-    },
-    {
-      id: 13,
-      question: "How do you change an element's CSS style directly?",
-      options: {
-        a: "element.classList.add()",
-        b: "element.style.property = value",
-        c: "element.setCSS()",
-        d: "element.updateStyle()",
-      },
-      answer: "b",
-    },
-    {
-      id: 14,
-      question: "Which method is used to listen for mouse events?",
-      options: {
-        a: "addMouseEventListener()",
-        b: "addEventListener()",
-        c: "listenMouse()",
-        d: "setEventListener()",
-      },
-      answer: "b",
-    },
-    {
-      id: 15,
-      question: "How can you stop event propagation?",
-      options: {
-        a: "stopPropagation()",
-        b: "preventEvent()",
-        c: "haltPropagation()",
-        d: "disablePropagation()",
-      },
-      answer: "a",
-    },
-    {
-      id: 16,
-      question:
-        "Which DOM method provides a list of all elements with a given class?",
-      options: {
-        a: "getElementsByName()",
-        b: "getElementsByClassName()",
-        c: "getClassList()",
-        d: "querySelector()",
-      },
-      answer: "b",
-    },
-    {
-      id: 17,
-      question:
-        "What is the function of `preventDefault()` in an event handler?",
-      options: {
-        a: "Stops event propagation",
-        b: "Resets the event",
-        c: "Prevents the default browser action",
-        d: "Deletes the event handler",
-      },
-      answer: "c",
-    },
-    {
-      id: 18,
-      question: "To attach a function to execute on an element click, use:",
-      options: {
-        a: "element.onclick = functionName",
-        b: "click.add()",
-        c: "onclick.set()",
-        d: "element.onClickListener()",
-      },
-      answer: "a",
-    },
-    {
-      id: 19,
-      question:
-        "Which mouse event fires when the mouse is moved over an element?",
-      options: {
-        a: "click",
-        b: "mouseover",
-        c: "mouseout",
-        d: "mousemove",
-      },
-      answer: "b",
-    },
-    {
-      id: 20,
-      question: "What does innerHTML modify?",
-      options: {
-        a: "CSS properties",
-        b: "Element ID",
-        c: "HTML content inside an element",
-        d: "Event handler",
-      },
-      answer: "c",
-    },
   ],
 
   lesson7: [
     {
       id: 1,
-      question: "what is an event in javascript?",
+      question: "What is an event in JavaScript?",
       options: {
-        a: "a function that returns a value",
-        b: "a change in the state of an object",
-        c: "a type of variable",
-        d: "a method to manipulate the dom",
+        a: "A function that returns a value",
+        b: "A change in the state of an object",
+        c: "A type of variable",
+        d: "A method to manipulate the DOM",
       },
       answer: "b", // correct answer: a change in the state of an object
     },
     {
       id: 2,
-      question: "what is the purpose of event handling in javascript?",
+      question: "What is the purpose of event handling in JavaScript?",
       options: {
-        a: "to create new html elements",
-        b: "to store user data",
-        c: "to respond to user interactions and execute code",
-        d: "to enhance the styling of web pages",
+        a: "To create new HTML elements",
+        b: "To store user data",
+        c: "To respond to user interactions and execute code",
+        d: "To enhance the styling of web pages",
       },
       answer: "c", // correct answer: to respond to user interactions and execute code
     },
     {
       id: 3,
-      question: "which of the following is a mouse event?",
+      question: "Which of the following is a mouse event?",
       options: {
         a: "keypress",
         b: "change",
@@ -1071,18 +727,18 @@ export const Pretest = {
     },
     {
       id: 4,
-      question: "what does the `onmouseover` event do?",
+      question: "What does the `onmouseover` event do?",
       options: {
-        a: "triggers when the mouse is clicked",
-        b: "triggers when the mouse moves over an element",
-        c: "triggers when the mouse is released",
-        d: "triggers when the keyboard is pressed",
+        a: "Triggers when the mouse is clicked",
+        b: "Triggers when the mouse moves over an element",
+        c: "Triggers when the mouse is released",
+        d: "Triggers when the keyboard is pressed",
       },
       answer: "b", // correct answer: triggers when the mouse moves over an element
     },
     {
       id: 5,
-      question: "which keyboard event occurs when a key is pressed down?",
+      question: "Which keyboard event occurs when a key is pressed down?",
       options: {
         a: "keypress",
         b: "keyup",
@@ -1093,18 +749,18 @@ export const Pretest = {
     },
     {
       id: 6,
-      question: "what happens during the `keyup` event?",
+      question: "What happens during the `keyup` event?",
       options: {
-        a: "a key is pressed down",
-        b: "a key is released",
-        c: "a key is held down",
-        d: "a key is typed",
+        a: "A key is pressed down",
+        b: "A key is released",
+        c: "A key is held down",
+        d: "A key is typed",
       },
       answer: "b", // correct answer: a key is released
     },
     {
       id: 7,
-      question: "what type of event occurs when a user submits a form?",
+      question: "What type of event occurs when a user submits a form?",
       options: {
         a: "change",
         b: "input",
@@ -1115,93 +771,36 @@ export const Pretest = {
     },
     {
       id: 8,
-      question: "in event bubbling, where does the event begin?",
+      question: "In event bubbling, where does the event begin?",
       options: {
-        a: "at the root element",
-        b: "at the target element",
-        c: "at the child elements",
-        d: "at the event handler",
+        a: "At the root element",
+        b: "At the target element",
+        c: "At the child elements",
+        d: "At the event handler",
       },
       answer: "b", // correct answer: at the target element
     },
     {
       id: 9,
-      question: "which statement describes event capturing?",
+      question: "Which statement describes event capturing?",
       options: {
-        a: "it is the same as event bubbling",
-        b: "it starts at the target and moves up the dom",
-        c: "it starts at the root and moves down to the target",
-        d: "it does not propagate events",
+        a: "It is the same as event bubbling",
+        b: "It starts at the target and moves up the DOM",
+        c: "It starts at the root and moves down to the target",
+        d: "It does not propagate events",
       },
       answer: "c", // correct answer: it starts at the root and moves down to the target
     },
     {
       id: 10,
-      question: "what is the default phase of event propagation?",
+      question: "What is the default phase of event propagation?",
       options: {
-        a: "capturing phase",
-        b: "target phase",
-        c: "bubbling phase",
-        d: "stopping phase",
+        a: "Capturing phase",
+        b: "Target phase",
+        c: "Bubbling phase",
+        d: "Stopping phase",
       },
       answer: "c", // correct answer: bubbling phase
-    },
-    {
-      id: 11,
-      question:
-        "how can you specify that an event listener should use capturing?",
-      options: {
-        a: "elem.addEventListener(..., true)",
-        b: "elem.addEventListener(..., false)",
-        c: "elem.addEventListener(..., capture: false)",
-        d: "elem.addEventListener(..., capture: true)",
-      },
-      answer: "a", // correct answer: elem.addEventListener(..., true)
-    },
-    {
-      id: 12,
-      question: "what does the `onload` event do?",
-      options: {
-        a: "it executes code when an element is clicked",
-        b: "it executes code when the page is resized",
-        c: "it executes code when the page is fully loaded",
-        d: "it executes code when a key is pressed",
-      },
-      answer: "c", // correct answer: it executes code when the page is fully loaded
-    },
-    {
-      id: 13,
-      question:
-        "which event is triggered when a user moves focus to an input element?",
-      options: {
-        a: "onblur",
-        b: "onfocus",
-        c: "onload",
-        d: "onchange",
-      },
-      answer: "b", // correct answer: onfocus
-    },
-    {
-      id: 14,
-      question: "what type of event is the `change` event?",
-      options: {
-        a: "a mouse event",
-        b: "a keyboard event",
-        c: "a form event",
-        d: "a window event",
-      },
-      answer: "c", // correct answer: a form event
-    },
-    {
-      id: 15,
-      question: "what is the main advantage of using events in javascript?",
-      options: {
-        a: "to improve the performance of web applications",
-        b: "to allow user interaction and create dynamic pages",
-        c: "to reduce the size of the html document",
-        d: "to automate tasks without user input",
-      },
-      answer: "b", // correct answer: to allow user interaction and create dynamic pages
     },
   ],
 
