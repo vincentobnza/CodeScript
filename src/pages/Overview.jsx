@@ -12,7 +12,7 @@ import {
 
 export default function Overview() {
   return (
-    <div className="w-full min-h-screen p-5 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 pb-10 ">
+    <div className="w-full min-h-screen p-5 pb-10 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 ">
       <Header />
       <Features />
     </div>
@@ -30,7 +30,7 @@ const Header = () => {
       <div className="w-full space-y-1">
         <div className="space-y-2">
           <motion.p
-            className="text-xs text-zinc-500 dark:text-zinc-400 font-semibold"
+            className="text-xs font-semibold text-zinc-500 dark:text-zinc-400"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
@@ -49,13 +49,13 @@ const Header = () => {
       </div>
 
       <motion.div
-        className="mt-8 w-full p-6 border border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-800 dark:text-zinc-200 rounded-lg shadow-sm"
+        className="w-full p-6 mt-8 border rounded-lg shadow-sm border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-900 dark:text-zinc-200"
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.4, duration: 0.3 }}
       >
-        <div className="flex items-center space-x-4 mb-4">
-          <div className="size-10 border border-zinc-200 dark:border-green-600 bg-white dark:bg-green-800/20 grid place-items-center rounded-full">
+        <div className="flex items-center mb-4 space-x-4">
+          <div className="grid bg-white border rounded-full size-10 border-zinc-200 dark:border-green-600 dark:bg-green-800/20 place-items-center">
             <PanelsTopLeft
               size={20}
               className="text-green-600 dark:text-green-400"
@@ -63,7 +63,7 @@ const Header = () => {
           </div>
           <h2 className="text-xl font-semibold">System Overview</h2>
         </div>
-        <p className="text-sm leading-relaxed">
+        <p className="text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
           Welcome to CodeScript, a cutting-edge Computer Assisted Instruction
           system designed to revolutionize JavaScript learning. Our platform
           combines state-of-the-art technology with proven pedagogical methods
@@ -117,14 +117,14 @@ const Features = () => {
       animate={{ opacity: 1 }}
       transition={{ delay: 0.6, duration: 0.5 }}
     >
-      <h2 className="text-2xl font-semibold mb-8">Key Features</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <h2 className="mb-8 text-2xl font-semibold">Key Features</h2>
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {features.map((feature, index) => {
           const Icon = feature.icon;
           return (
             <motion.div
               key={index}
-              className="p-6 border border-zinc-200 dark:border-zinc-700 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 relative overflow-hidden"
+              className="relative p-6 overflow-hidden transition-shadow duration-300 border rounded-lg shadow-sm border-zinc-200 dark:border-zinc-700 hover:shadow-md"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 + index * 0.1 }}
@@ -133,7 +133,7 @@ const Features = () => {
                 size={100}
                 className={`absolute -bottom-5 -right-5 ${feature.iconColor} opacity-20`}
               />
-              <div className="flex flex-col gap-2 items-start space-y-3 mb-3">
+              <div className="flex flex-col items-start gap-2 mb-3 space-y-3">
                 <div className={`${feature.iconColor}`}>
                   <Icon size={24} />
                 </div>

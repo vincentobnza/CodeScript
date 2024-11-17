@@ -47,6 +47,8 @@ export default function UserProfiles() {
     direction: "ascending",
   });
   const [statusFilter, setStatusFilter] = useState("all");
+  const [sectionFilter, setSectionFilter] = useState("all");
+  const [yearLevelFilter, setYearLevelFilter] = useState("all");
 
   useEffect(() => {
     fetchUsers();
@@ -69,7 +71,9 @@ export default function UserProfiles() {
       (user) =>
         (user.username.toLowerCase().includes(searchTerm.toLowerCase()) ||
           user.id.toString().includes(searchTerm)) &&
-        (statusFilter === "all" || user.status === statusFilter)
+        (statusFilter === "all" || user.status === statusFilter) &&
+        (sectionFilter === "all" || user.section === sectionFilter) &&
+        (yearLevelFilter === "all" || user.year_level === yearLevelFilter)
     );
 
     const sorted = [...filtered].sort((a, b) => {
@@ -80,7 +84,14 @@ export default function UserProfiles() {
     });
 
     setFilteredUsers(sorted);
-  }, [searchTerm, users, statusFilter, sortDescriptor]);
+  }, [
+    searchTerm,
+    users,
+    statusFilter,
+    sortDescriptor,
+    sectionFilter,
+    yearLevelFilter,
+  ]);
 
   const fetchUsers = async () => {
     const { data, error } = await supabase.from("profiles").select("*");
@@ -178,6 +189,10 @@ export default function UserProfiles() {
         setSearchTerm={setSearchTerm}
         statusFilter={statusFilter}
         setStatusFilter={setStatusFilter}
+        sectionFilter={sectionFilter}
+        setSectionFilter={setSectionFilter}
+        yearLevelFilter={yearLevelFilter}
+        setYearLevelFilter={setYearLevelFilter}
       />
       <UserStats users={users} />
       <UsersTable
@@ -233,6 +248,10 @@ const Header = ({
   setSearchTerm,
   statusFilter,
   setStatusFilter,
+  sectionFilter,
+  setSectionFilter,
+  yearLevelFilter,
+  setYearLevelFilter,
 }) => {
   return (
     <div className="flex flex-col w-full gap-2">
@@ -267,6 +286,43 @@ const Header = ({
             <DropdownItem key="offline">Offline</DropdownItem>
           </DropdownMenu>
         </Dropdown>
+        <Dropdown>
+          <DropdownTrigger>
+            <button className="px-4 py-[0.5rem] flex items-center gap-2 text-xs shadow border rounded border-zinc-200 outline-none">
+              Section: {sectionFilter === "all" ? "All" : sectionFilter}
+              <ChevronDown />
+            </button>
+          </DropdownTrigger>
+          <DropdownMenu
+            aria-label="Section filter"
+            onAction={(key) => setSectionFilter(key)}
+          >
+            <DropdownItem key="all">All</DropdownItem>
+            <DropdownItem key="A">A</DropdownItem>
+            <DropdownItem key="B">B</DropdownItem>
+            <DropdownItem key="C">C</DropdownItem>
+            <DropdownItem key="D">D</DropdownItem>
+            <DropdownItem key="E">E</DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
+        <Dropdown>
+          <DropdownTrigger>
+            <button className="px-4 py-[0.5rem] flex items-center gap-2 text-xs shadow border rounded border-zinc-200 outline-none">
+              Year Level: {yearLevelFilter === "all" ? "All" : yearLevelFilter}
+              <ChevronDown />
+            </button>
+          </DropdownTrigger>
+          <DropdownMenu
+            aria-label="Year Level filter"
+            onAction={(key) => setYearLevelFilter(key)}
+          >
+            <DropdownItem key="all">All</DropdownItem>
+            <DropdownItem key="1st Year">1st Year</DropdownItem>
+            <DropdownItem key="2nd Year">2nd Year</DropdownItem>
+            <DropdownItem key="3rd Year">3rd Year</DropdownItem>
+            <DropdownItem key="4th Year">4th Year</DropdownItem>
+          </DropdownMenu>
+        </Dropdown>
       </div>
     </div>
   );
@@ -276,7 +332,39 @@ const UserStats = ({ users }) => {
   const totalUsers = users.length;
   const onlineUsers = users.filter((user) => user.status === "online").length;
   const averagePoints =
-    users.reduce((sum, user) => sum + user.current_points, 0) / totalUsers;
+    totalUsers > 0
+      ? users.reduce((sum, user) => sum + (user.current_points || 0), 0) /
+        totalUsers
+      : 0;
+
+  const sectionActivity = users.reduce((acc, user) => {
+    if (user.section) {
+      acc[user.section] = (acc[user.section] || 0) + (user.current_points || 0);
+    }
+    return acc;
+  }, {});
+
+  const yearLevelActivity = users.reduce((acc, user) => {
+    if (user.year_level) {
+      acc[user.year_level] =
+        (acc[user.year_level] || 0) + (user.current_points || 0);
+    }
+    return acc;
+  }, {});
+
+  const mostActiveSection =
+    Object.entries(sectionActivity).length > 0
+      ? Object.entries(sectionActivity).reduce((a, b) =>
+          a[1] > b[1] ? a : b
+        )[0]
+      : "N/A";
+
+  const mostActiveYearLevel =
+    Object.entries(yearLevelActivity).length > 0
+      ? Object.entries(yearLevelActivity).reduce((a, b) =>
+          a[1] > b[1] ? a : b
+        )[0]
+      : "N/A";
 
   return (
     <Card className="w-full">
@@ -288,17 +376,32 @@ const UserStats = ({ users }) => {
               <p>Total Users: {totalUsers}</p>
               <p>Online Users: {onlineUsers}</p>
               <p>Average Points: {averagePoints.toFixed(2)}</p>
+              <p>Most Active Section: {mostActiveSection}</p>
+              <p>Most Active Year Level: {mostActiveYearLevel}</p>
             </div>
           </div>
-          <BarChart
-            xAxis={[
-              { scaleType: "band", data: ["Total", "Online", "Avg Points"] },
-            ]}
-            series={[{ data: [totalUsers, onlineUsers, averagePoints] }]}
-            width={300}
-            height={200}
-            colors={["#3b82f6", "#22c55e", "#ef4444"]}
-          />
+          {totalUsers > 0 ? (
+            <BarChart
+              xAxis={[
+                {
+                  scaleType: "band",
+                  data: ["Total", "Online", "Avg Points"],
+                },
+              ]}
+              series={[
+                {
+                  data: [totalUsers, onlineUsers, averagePoints],
+                },
+              ]}
+              width={400}
+              height={300}
+              colors={["#3b82f6", "#22c55e", "#ef4444", "#f59e0b", "#8b5cf6"]}
+            />
+          ) : (
+            <div className="w-[400px] h-[300px] flex items-center justify-center text-gray-400">
+              No data available
+            </div>
+          )}
         </div>
       </CardBody>
     </Card>
@@ -338,7 +441,10 @@ const UsersTable = ({
             allowsSorting
             className="text-center"
           >
-            Current Points
+            Year Level
+          </TableColumn>
+          <TableColumn key="section" allowsSorting className="text-center">
+            Section
           </TableColumn>
         </TableHeader>
         <TableBody>
@@ -377,7 +483,10 @@ const UsersTable = ({
                 </h1>
               </TableCell>
               <TableCell>
-                <div className="text-center">{user.current_points}</div>
+                <div className="text-center">{user.year_level}</div>
+              </TableCell>
+              <TableCell>
+                <div className="text-center">{user.section}</div>
               </TableCell>
             </TableRow>
           ))}

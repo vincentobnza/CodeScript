@@ -130,7 +130,11 @@ const router = createBrowserRouter([
       },
       {
         path: "pre-test/:lesson",
-        element: <PretestPage />,
+        element: (
+          <ProtectedRoute>
+            <PretestPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: "settings",

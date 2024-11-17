@@ -38,7 +38,7 @@ const Header = () => {
         to="/learn-js"
         className="inline-flex items-center gap-2 mb-6 text-sm transition-colors text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-zinc-100"
       >
-        <Undo2 size={18} />
+        <Undo2 size={14} />
         Return to Lessons
       </Link>
       <h1 className="mb-2 text-2xl font-medium">
@@ -177,25 +177,29 @@ const Content = () => {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-[200px]">
-        <Spinner color="warning" />
+        <Spinner color="success" />
       </div>
     );
   }
 
   if (done) {
     return (
-      <div className="flex flex-col items-center justify-center w-full max-w-xl gap-4 p-5 mx-auto">
+      <div className="relative flex flex-col items-center justify-center w-full max-w-xl gap-4 p-5 mx-auto text-center">
+        <div className="absolute w-[240px] h-[100px] bg-indigo-600/20 rounded-full bottom-8 z-0 filter blur-[80px]" />
+
         <img
-          src="https://cdn-icons-png.flaticon.com/128/10552/10552443.png"
+          src="https://cdn-icons-png.flaticon.com/128/12510/12510927.png"
           alt="check"
-          className="mb-6 w-14"
+          className="w-16 mb-6"
         />
-        <h1 className="text-4xl font-bold">Pre-test Completed</h1>
-        <p className="text-sm">
+        <h1 className="z-10 mb-2 text-3xl font-medium md:text-5xl">
+          Pre-test Completed
+        </h1>
+        <p className="text-xs text-zinc-500 dark:text-zinc-400">
           You have completed the pre-test for this lesson.
         </p>
 
-        <p className="mt-10">
+        <p className="mt-10 font-semibold">
           Your score: {score.score} out of {test.length}
         </p>
       </div>
