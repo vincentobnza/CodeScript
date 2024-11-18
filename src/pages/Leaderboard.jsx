@@ -344,8 +344,14 @@ const Ranking = () => {
                               </div>
                             </div>
                           </TableCell>
-                          <TableCell className="text-xs font-medium text-center md:text-sm text-amber-600 dark:text-amber-400">
-                            {rankedUser.current_points} pts
+                          <TableCell className="text-xs font-medium text-center md:text-sm">
+                            <div className="flex items-center justify-center gap-2 px-4 py-1 mx-auto">
+                              <div className="border border-green-600 rounded-full bg-gradient-to-br from-green-300 to-emerald-600 bg-gr size-3 dark:border-green-200"></div>
+
+                              <p className="text-sm font-semibold text-zinc-500 dark:text-zinc-200">
+                                {rankedUser.current_points}
+                              </p>
+                            </div>
                           </TableCell>
                           <TableCell className="items-center justify-center hidden gap-2 text-xs font-medium text-center md:flex text-zinc-500 dark:text-zinc-400">
                             <Progress

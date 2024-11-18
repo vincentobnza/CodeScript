@@ -143,7 +143,7 @@ export default function Navbar() {
               showArrow
             >
               <div className="flex items-center gap-2 px-4 py-1 border rounded-full border-zinc-100 dark:border-zinc-800">
-                <div className="bg-green-400 rounded-full size-3"></div>
+                <div className="border border-green-600 rounded-full bg-gradient-to-br from-green-300 to-emerald-600 bg-gr size-3 dark:border-green-200"></div>
 
                 <p className="text-sm font-semibold text-zinc-500 dark:text-zinc-200">
                   {points}
