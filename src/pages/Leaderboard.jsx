@@ -160,7 +160,8 @@ const Ranking = () => {
       const { data: usersData, error } = await supabase
         .from("profiles")
         .select("*")
-        .order("current_points", { ascending: false });
+        .order("current_points", { ascending: false })
+        .limit(50);
 
       if (error) {
         console.error("Error fetching users:", error);
@@ -169,7 +170,7 @@ const Ranking = () => {
 
       const updatedUsersData = usersData.map((user, index) => ({
         ...user,
-        rank: index + 1, // Ensure rank starts from 1
+        rank: index + 1,
       }));
 
       setUsers(updatedUsersData);

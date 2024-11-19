@@ -29,7 +29,7 @@ const Hero = () => {
     <div className="relative flex flex-col items-center justify-center w-full max-w-screen-lg gap-6 p-4 mx-auto text-center md:p-8 lg:p-8">
       <div className="flex flex-col items-center justify-center space-y-2">
         <>
-          <div className="grid self-center px-6 py-[5px] mb-5 -mt-2 md:-mt-6 text-[9px] md:text-[11px] bg-transparent border rounded-full text-zinc-800 dark:text-zinc-300 border-zinc-300 dark:border-zinc-800 place-items-center">
+          <div className="grid self-center px-6 py-[5px] mb-5 -mt-2 md:-mt-6 text-xs bg-transparent border rounded-full text-zinc-800 dark:text-zinc-300 border-zinc-300 dark:border-zinc-800 place-items-center">
             <div className="flex items-center gap-2">
               <p>
                 Boost Your Skills with{" "}
@@ -48,7 +48,7 @@ const Hero = () => {
           Programming
         </h1>
       </div>
-      <p className="text-xs text-zinc-700 dark:text-zinc-300 md:text-[15px] lg:text-md">
+      <p className="text-xs text-zinc-800 dark:text-zinc-300 md:text-[15px] lg:text-md">
         Interactive lessons designed to sharpen your JavaScript Skills
       </p>
       <div className="relative flex items-center gap-2">

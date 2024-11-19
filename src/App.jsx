@@ -22,6 +22,7 @@ import Feedback from "./pages/Feedback";
 import LearningObjectives from "./pages/LearningObjectives";
 import PretestPage from "./pages/PretestPage";
 import Overview from "./pages/Overview";
+import Bookmark from "./pages/Bookmark";
 
 // LAYOUT
 import RootLayout from "./layout/RootLayout";
@@ -106,6 +107,10 @@ const router = createBrowserRouter([
       {
         path: "code-lab",
         element: <CodeEditor_LandingPage />,
+      },
+      {
+        path: "bookmarks",
+        element: <Bookmark />,
       },
 
       {

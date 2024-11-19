@@ -33,7 +33,12 @@ import {
   Ban,
   BookCheck,
   ArrowUpRight,
+  Bookmark,
+  EllipsisVertical,
 } from "lucide-react";
+import { Tooltip } from "@nextui-org/react";
+
+import { useBookmarks } from "@/hooks/useBookmark";
 
 export default function Learn() {
   return (
@@ -185,18 +190,32 @@ const Content = () => {
 };
 
 const Lessons = () => {
+  const { bookmarks } = useBookmarks();
   return (
     <div className="flex flex-col w-full max-w-screen-lg p-3 mx-auto space-y-10 md:p-0">
-      <div className="flex flex-col gap-4">
-        <div className="flex flex-col gap-1">
-          <h3 className="font-semibold text-zinc-600 dark:text-zinc-200 text-md">
-            The JavaScript Language
-          </h3>
+      <div className="flex items-center justify-between w-full">
+        <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-1">
+            <h3 className="font-semibold text-zinc-600 dark:text-zinc-200 text-md">
+              The JavaScript Language
+            </h3>
+          </div>
+          <p className="text-xs">
+            Here we learn JavaScript, starting from scratch and go on to
+            advanced concepts like OOP.
+          </p>
         </div>
-        <p className="text-xs">
-          Here we learn JavaScript, starting from scratch and go on to advanced
-          concepts like OOP.
-        </p>
+
+        <Link
+          to="/bookmarks"
+          className="text-[12px] font-semibold flex items-center gap-3 bg-white dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-800 dark:hover:brightness-125 dark:shadow-lg px-3 py-[6px] border rounded border-zinc-200 dark:border-zinc-700 outline-none relative"
+        >
+          <div className="absolute z-10 grid text-[9px] text-zinc-800 dark:text-white border rounded-tr-xl rounded-tl-xl rounded-bl-xl bg-zinc-50 dark:bg-zinc-700 border-zinc-400 dark:border-zinc-600 size-5 -top-6 -left-6 place-items-center">
+            <h1>{bookmarks.length}</h1>
+          </div>
+          <Bookmark size={14} />
+          Bookmarks
+        </Link>
       </div>
 
       <div className="space-y-6">
@@ -214,8 +233,11 @@ const Lessons = () => {
 };
 
 const Lesson1Data = () => {
+  const { toggleBookmark, isBookmarked } = useBookmarks();
+
   return (
     <div className="flex flex-col gap-4">
+      {/* Header */}
       <div className="flex items-center gap-6">
         <SquareTerminal className="text-sm text-red-600 animate-pulse" />
         <div className="flex flex-col gap-1">
@@ -225,34 +247,67 @@ const Lesson1Data = () => {
           </h1>
         </div>
       </div>
-
+      {/* Lesson List */}
       <ul className="grid grid-cols-2 gap-2 p-1 md:grid-cols-4">
         {Lesson1.map((item, idx) => (
-          <Link
-            preventScrollReset={false}
-            to={item.link}
-            key={idx}
-            className="relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border h-[90px] text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-300 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
+          <div
+            key={idx} // Move `key` to the top-level element
+            className="relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out bg-white border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-300 group dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
           >
+            {/* Decorative Icon */}
             <SquareTerminal
               size={50}
               className="absolute duration-300 ease-in-out -bottom-3 -right-3 dark:text-zinc-500 text-zinc-200 group-hover:text-zinc-300 dark:group-hover:text-red-500 group-hover:-rotate-12"
             />
-            <div className="flex justify-between w-full">
-              <h1 className="z-10 flex items-center text-xs font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 duration underline-offset-2 dark:group:hover:text-yellow-200">
-                {item.name}
-              </h1>
 
-              <GoArrowRight className=" text-zinc-400 group-hover:text-zinc-300 dark:group-hover:text-zinc-200" />
+            {/* Lesson Link */}
+            <Link
+              to={item.link}
+              preventScrollReset={true}
+              className="flex flex-col gap-3"
+            >
+              <div className="flex justify-between w-full">
+                <h1 className="z-10 flex items-center text-xs font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
+                  {item.name}
+                </h1>
+                <GoArrowRight className="text-zinc-400 group-hover:text-zinc-300 dark:group-hover:text-zinc-200" />
+              </div>
+              <p className="text-[10px] md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
+                {item.subTopics} Subtopics
+              </p>
+            </Link>
+
+            {/* Bookmark Icon */}
+            <div className="self-start mt-2">
+              <Tooltip
+                placement="left"
+                radius="none"
+                showArrow
+                content={
+                  isBookmarked(item.name) ? "Remove bookmark" : "Add bookmark"
+                }
+              >
+                <button
+                  onClick={() =>
+                    toggleBookmark(item.name, item.subTopics, item.link)
+                  }
+                  className="cursor-pointer focus:outline-none"
+                >
+                  <Bookmark
+                    strokeWidth={2.5}
+                    className={
+                      isBookmarked(item.name)
+                        ? "text-green-500"
+                        : "text-zinc-400"
+                    }
+                    size={17}
+                  />
+                </button>
+              </Tooltip>
             </div>
-
-            <p className="text-[10px] md:text-xs  text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
-              {item.subTopics} Subtopics
-            </p>
-          </Link>
+          </div>
         ))}
       </ul>
-
       <div className="flex items-center gap-2">
         <Link
           to="/learning-objectives/lesson1"

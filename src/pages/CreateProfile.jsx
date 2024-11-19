@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import supabase from "../config/supabaseClient";
 import { User, CloudUpload } from "lucide-react";
+import { Checkbox } from "@nextui-org/react";
 
 export default function CreateProfile() {
   const [formData, setFormData] = useState({
@@ -231,19 +232,7 @@ export default function CreateProfile() {
               </select>
             </div>
           </div>
-          <div className="flex items-center w-full gap-6">
-            <input
-              type="checkbox"
-              checked={checked}
-              id="terms"
-              className="w-5 h-5 p-2 bg-white border border-gray-300 rounded-md checked:bg-green-500 checked:border-green-600"
-              onChange={(e) => setChecked(e.target.checked)}
-            />
-            <label htmlFor="terms" className="text-xs text-zinc-600">
-              I agree to share my profile information for platform use, as
-              outlined in the privacy policy.
-            </label>
-          </div>
+
           <div>
             <button
               type="submit"
@@ -252,8 +241,7 @@ export default function CreateProfile() {
                 !formData.username.trim() ||
                 !formData.displayName.trim() ||
                 !formData.yearLevel ||
-                !formData.section ||
-                !checked
+                !formData.section
               }
               className="flex items-center justify-center w-full h-12 px-4 text-sm font-medium text-white transition-colors bg-green-600 border border-transparent rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed"
             >
