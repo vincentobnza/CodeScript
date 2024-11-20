@@ -36,9 +36,16 @@ const Content = () => {
 
   if (bookmarks.length === 0) {
     return (
-      <p className="text-center text-zinc-500">
-        You haven't bookmarked any topics yet.
-      </p>
+      <div className="w-full p-5 mx-auto max-w-screen-lg min-h-[30vh] grid place-items-center">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/18066/18066918.png"
+          alt="bookmark"
+          className="w-14 grayscale"
+        />
+        <p className="text-sm font-semibold text-center text-zinc-500">
+          You haven't bookmarked any topics yet.
+        </p>
+      </div>
     );
   }
 
@@ -58,12 +65,12 @@ const BookmarkCard = ({ bookmark }) => {
   };
   return (
     <div className="relative p-5 bg-white border rounded shadow border-zinc-200 dark:bg-zinc-800/20 dark:border-zinc-800">
-      <button
+      {/* <button
         onClick={handleRemoveBookmark}
         className="absolute px-3 py-1 text-xs font-semibold bg-white border rounded border-zinc-200 dark:border-zinc-700 text-zinc-500 top-3 right-3 dark:hover:brightness-125 dark:bg-zinc-700/30"
       >
         Remove
-      </button>
+      </button> */}
 
       <Link to={`/learn-js/${bookmark.link}`}>
         <h2 className="mb-2 text-xl font-semibold">{bookmark.topic}</h2>

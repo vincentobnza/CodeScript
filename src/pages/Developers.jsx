@@ -202,7 +202,6 @@ const LibrariesUsed = () => {
       icon: "https://nextui.org/favicon.ico",
       link: "https://nextui.org/",
     },
-
     {
       name: "Material UI Charts",
       description: "A React charting library with Material UI styling.",
@@ -214,6 +213,13 @@ const LibrariesUsed = () => {
       description: "A library for customizable toast notifications.",
       icon: "https://cdn-icons-png.flaticon.com/128/868/868786.png",
       link: "https://react-hot-toast.com/",
+    },
+    {
+      name: "Flaticons",
+      description:
+        "A source for free icons, including customizable vector icons.",
+      icon: "https://focos.io/wp-content/uploads/focos-app-logos/flaticon.png",
+      link: "https://www.flaticon.com/",
     },
   ];
 

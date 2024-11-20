@@ -1,8 +1,5 @@
 import React, { useEffect } from "react";
-import { useState } from "react";
-import { Outlet, Link } from "react-router-dom";
 import { RiRoadMapLine } from "react-icons/ri";
-import { FaDiamond } from "react-icons/fa6";
 import { GoArrowRight } from "react-icons/go";
 import {
   Lesson1,
@@ -20,6 +17,7 @@ import { useDisclosure } from "@nextui-org/react";
 import { motion } from "framer-motion";
 import ScrollUp from "@/components/ScrollUp";
 import NavbarQuickSearch from "@/components/NavbarQuickSearch";
+import { Link } from "react-router-dom";
 import {
   ShieldCheck,
   Loader,
@@ -34,7 +32,6 @@ import {
   BookCheck,
   ArrowUpRight,
   Bookmark,
-  EllipsisVertical,
 } from "lucide-react";
 import { Tooltip } from "@nextui-org/react";
 
@@ -110,7 +107,7 @@ const Header = () => {
             <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
               <Search className="text-gray-400 size-4" />
             </div>
-            <div className="flex items-center justify-start w-full py-3 pl-10 pr-4 bg-transparent bg-white border outline-none dark:bg-zinc-800/50 border-zinc-200 dark:border-zinc-700 hover:border-zinxc-300 dark:hover:border-zinc-600">
+            <div className="flex items-center justify-start w-full py-3 pl-10 pr-4 bg-transparent bg-white border outline-none dark:bg-zinc-800/50 border-zinc-200 dark:border-zinc-700 hover:border-zinc-300 dark:hover:border-zinc-600">
               <p className="text-sm">Quick Search for Lessons</p>
             </div>
 
@@ -127,7 +124,7 @@ const Header = () => {
 
       <div className="items-center hidden gap-2 md:flex">
         <Link to="/certificate" className="flex">
-          <button className="flex items-center justify-center gap-2 px-3 py-2 text-xs font-medium text-green-600 transition-all duration-300 ease-linear bg-transparent border border-green-500 outline-none dark:text-green-200 dark:bg-gradient-to-br dark:from-green-600/20 dark:to-green-800/80 dark:hover:brightness-150">
+          <button className="flex items-center justify-center gap-2 px-3 py-2 text-xs font-medium text-green-600 transition-all duration-300 ease-linear bg-transparent border border-green-500 outline-none dark:border-green-700 dark:text-green-200 dark:bg-green-700/10 dark:hover:brightness-150">
             <ShieldCheck
               size={15}
               className="text-green-600 dark:text-green-300"
@@ -136,11 +133,8 @@ const Header = () => {
           </button>
         </Link>
         <Link to="/leaderboard" className="flex">
-          <button className="flex items-center justify-center gap-2 px-3 py-2 text-xs font-medium text-indigo-600 transition-all duration-300 ease-linear bg-transparent border border-indigo-500 outline-none dark:text-indigo-200 dark:bg-gradient-to-br dark:from-indigo-600/20 dark:to-indigo-800/80 dark:hover:brightness-150">
-            <Loader
-              size={15}
-              className="text-indigo-600 dark:text-indigo-300"
-            />
+          <button className="flex items-center justify-center gap-2 px-3 py-2 text-xs font-medium transition-all duration-300 ease-linear bg-transparent border outline-none border-amber-500 dark:border-amber-700 text-amber-600 dark:text-amber-200 dark:bg-amber-700/10 dark:hover:brightness-150">
+            <Loader size={15} className="text-amber-600 dark:text-amber-300" />
             My Progress
           </button>
         </Link>
@@ -210,9 +204,6 @@ const Lessons = () => {
           to="/bookmarks"
           className="text-[12px] font-semibold flex items-center gap-3 bg-white dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-800 dark:hover:brightness-125 dark:shadow-lg px-3 py-[6px] border rounded border-zinc-200 dark:border-zinc-700 outline-none relative"
         >
-          <div className="absolute z-10 grid text-[9px] text-zinc-800 dark:text-white border rounded-tr-xl rounded-tl-xl rounded-bl-xl bg-zinc-50 dark:bg-zinc-700 border-zinc-400 dark:border-zinc-600 size-5 -top-6 -left-6 place-items-center">
-            <h1>{bookmarks.length}</h1>
-          </div>
           <Bookmark size={14} />
           Bookmarks
         </Link>
@@ -252,12 +243,12 @@ const Lesson1Data = () => {
         {Lesson1.map((item, idx) => (
           <div
             key={idx} // Move `key` to the top-level element
-            className="relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out bg-white border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-300 group dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
+            className="h-[8rem] relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out bg-white border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-300 group dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
           >
             {/* Decorative Icon */}
             <SquareTerminal
               size={50}
-              className="absolute duration-300 ease-in-out -bottom-3 -right-3 dark:text-zinc-500 text-zinc-200 group-hover:text-zinc-300 dark:group-hover:text-red-500 group-hover:-rotate-12"
+              className="absolute duration-300 ease-in-out -bottom-3 -right-3 dark:text-zinc-600 text-zinc-200 group-hover:text-zinc-300 dark:group-hover:text-red-500 group-hover:-rotate-12"
             />
 
             {/* Lesson Link */}
@@ -278,7 +269,7 @@ const Lesson1Data = () => {
             </Link>
 
             {/* Bookmark Icon */}
-            <div className="self-start mt-2">
+            <div className="absolute left-2 bottom-2">
               <Tooltip
                 placement="left"
                 radius="none"
@@ -330,8 +321,11 @@ const Lesson1Data = () => {
 };
 
 const Lesson2Data = () => {
+  const { toggleBookmark, isBookmarked } = useBookmarks();
+
   return (
     <div className="flex flex-col gap-4">
+      {/* Header */}
       <div className="flex items-center gap-6">
         <EqualNot className="text-sm text-green-600 animate-pulse" />
         <div className="flex flex-col gap-1">
@@ -341,30 +335,65 @@ const Lesson2Data = () => {
           </h1>
         </div>
       </div>
-
+      {/* Lesson List */}
       <ul className="grid grid-cols-2 gap-2 p-1 md:grid-cols-4">
         {Lesson2.map((item, idx) => (
-          <Link
-            to={item.link}
-            key={idx}
-            className="relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border h-[90px] text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-300 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
+          <div
+            key={idx} // Move `key` to the top-level element
+            className="h-[8rem] relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out bg-white border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-300 group dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
           >
+            {/* Decorative Icon */}
             <EqualNot
               size={50}
               className="absolute duration-300 ease-in-out -bottom-3 -right-3 dark:text-zinc-500 text-zinc-200 group-hover:text-zinc-300 dark:group-hover:text-green-500 group-hover:-rotate-12"
             />
 
-            <div className="flex justify-between w-full">
-              <h1 className="z-10 flex items-center text-xs font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 duration underline-offset-2 dark:group:hover:text-yellow-200">
-                {item.name}
-              </h1>
-              <GoArrowRight className=" text-zinc-400 group:hover:text-zinc-300 dark:group-hover:text-zinc-200" />
-            </div>
+            {/* Lesson Link */}
+            <Link
+              to={item.link}
+              preventScrollReset={false}
+              className="flex flex-col gap-3"
+            >
+              <div className="flex justify-between w-full">
+                <h1 className="z-10 flex items-center text-xs font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
+                  {item.name}
+                </h1>
+                <GoArrowRight className="text-zinc-400 group-hover:text-zinc-300 dark:group-hover:text-zinc-200" />
+              </div>
+              <p className="text-[10px] md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
+                {item.subTopics} Subtopics
+              </p>
+            </Link>
 
-            <p className="text-[10px] md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
-              {item.subTopics} Subtopics
-            </p>
-          </Link>
+            {/* Bookmark Icon */}
+            <div className="absolute left-2 bottom-2">
+              <Tooltip
+                placement="left"
+                radius="none"
+                showArrow
+                content={
+                  isBookmarked(item.name) ? "Remove bookmark" : "Add bookmark"
+                }
+              >
+                <button
+                  onClick={() =>
+                    toggleBookmark(item.name, item.subTopics, item.link)
+                  }
+                  className="cursor-pointer focus:outline-none"
+                >
+                  <Bookmark
+                    strokeWidth={2.5}
+                    className={
+                      isBookmarked(item.name)
+                        ? "text-green-500"
+                        : "text-zinc-400"
+                    }
+                    size={17}
+                  />
+                </button>
+              </Tooltip>
+            </div>
+          </div>
         ))}
       </ul>
       <div className="flex items-center gap-2">
@@ -389,10 +418,13 @@ const Lesson2Data = () => {
 };
 
 const Lesson3Data = () => {
+  const { toggleBookmark, isBookmarked } = useBookmarks();
+
   return (
     <div className="flex flex-col gap-4">
+      {/* Header */}
       <div className="flex items-center gap-6">
-        <RefreshCcw className="text-sm text-indigo-600 animate-pulse" />
+        <RefreshCcw className="text-sm text-amber-600 animate-pulse" />
         <div className="flex flex-col gap-1">
           <p className="text-xs font-semibold">Lesson 3</p>
           <h1 className="font-semibold text-zinc-700 dark:text-zinc-200">
@@ -400,30 +432,65 @@ const Lesson3Data = () => {
           </h1>
         </div>
       </div>
-
+      {/* Lesson List */}
       <ul className="grid grid-cols-2 gap-2 p-1 md:grid-cols-4">
         {Lesson3.map((item, idx) => (
-          <Link
-            to={item.link}
-            key={idx}
-            className="relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border h-[90px] text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-300 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
+          <div
+            key={idx} // Move `key` to the top-level element
+            className="h-[8rem] relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out bg-white border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-300 group dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
           >
+            {/* Decorative Icon */}
             <RefreshCcw
               size={50}
-              className="absolute duration-300 ease-in-out -bottom-3 -right-3 dark:text-zinc-500 text-zinc-200 group-hover:text-zinc-300 dark:group-hover:text-indigo-500 group-hover:-rotate-12"
+              className="absolute duration-300 ease-in-out -bottom-3 -right-3 dark:text-zinc-500 text-zinc-200 group-hover:text-zinc-300 dark:group-hover:text-amber-500 group-hover:-rotate-12"
             />
 
-            <div className="flex justify-between w-full">
-              <h1 className="z-10 flex items-center text-xs font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 duration underline-offset-2 dark:group:hover:text-yellow-200">
-                {item.name}
-              </h1>
-              <GoArrowRight className=" text-zinc-400 group:hover:text-zinc-300 dark:group-hover:text-zinc-200" />
-            </div>
+            {/* Lesson Link */}
+            <Link
+              to={item.link}
+              preventScrollReset={false}
+              className="flex flex-col gap-3"
+            >
+              <div className="flex justify-between w-full">
+                <h1 className="z-10 flex items-center text-xs font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
+                  {item.name}
+                </h1>
+                <GoArrowRight className="text-zinc-400 group-hover:text-zinc-300 dark:group-hover:text-zinc-200" />
+              </div>
+              <p className="text-[10px] md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
+                {item.subTopics} Subtopics
+              </p>
+            </Link>
 
-            <p className="text-[10px] md:text-xs  text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
-              {item.subTopics} Subtopics
-            </p>
-          </Link>
+            {/* Bookmark Icon */}
+            <div className="absolute left-2 bottom-2">
+              <Tooltip
+                placement="left"
+                radius="none"
+                showArrow
+                content={
+                  isBookmarked(item.name) ? "Remove bookmark" : "Add bookmark"
+                }
+              >
+                <button
+                  onClick={() =>
+                    toggleBookmark(item.name, item.subTopics, item.link)
+                  }
+                  className="cursor-pointer focus:outline-none"
+                >
+                  <Bookmark
+                    strokeWidth={2.5}
+                    className={
+                      isBookmarked(item.name)
+                        ? "text-green-500"
+                        : "text-zinc-400"
+                    }
+                    size={17}
+                  />
+                </button>
+              </Tooltip>
+            </div>
+          </div>
         ))}
       </ul>
       <div className="flex items-center gap-2">
@@ -448,10 +515,13 @@ const Lesson3Data = () => {
 };
 
 const Lesson4Data = () => {
+  const { toggleBookmark, isBookmarked } = useBookmarks();
+
   return (
     <div className="flex flex-col gap-4">
+      {/* Header */}
       <div className="flex items-center gap-6">
-        <Parentheses className="text-sm text-orange-600 animate-pulse" />
+        <Parentheses className="text-sm text-blue-600 animate-pulse" />
         <div className="flex flex-col gap-1">
           <p className="text-xs font-semibold">Lesson 4</p>
           <h1 className="font-semibold text-zinc-700 dark:text-zinc-200">
@@ -459,31 +529,65 @@ const Lesson4Data = () => {
           </h1>
         </div>
       </div>
-
+      {/* Lesson List */}
       <ul className="grid grid-cols-2 gap-2 p-1 md:grid-cols-4">
         {Lesson4.map((item, idx) => (
-          <Link
-            to={item.link}
-            key={idx}
-            className="relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border h-[90px] text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-300 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
+          <div
+            key={idx} // Move `key` to the top-level element
+            className="h-[8rem] relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out bg-white border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-300 group dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
           >
+            {/* Decorative Icon */}
             <Parentheses
               size={50}
-              className="absolute duration-300 ease-in-out -bottom-3 -right-3 dark:text-zinc-500 text-zinc-200 group:hover:text-zinc-300 dark:group-hover:text-orange-500 group-hover:-rotate-12"
+              className="absolute duration-300 ease-in-out -bottom-3 -right-3 dark:text-zinc-500 text-zinc-200 group-hover:text-zinc-300 dark:group-hover:text-blue-500 group-hover:-rotate-12"
             />
 
-            <div className="flex justify-between w-full">
-              <h1 className="z-10 flex items-center text-xs font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 duration underline-offset-2 dark:group:hover:text-yellow-200">
-                {item.name}
-              </h1>
-              <GoArrowRight className=" text-zinc-400 group:hover:text-zinc-300 dark:group-hover:text-zinc-200" />
-            </div>
+            {/* Lesson Link */}
+            <Link
+              to={item.link}
+              preventScrollReset={false}
+              className="flex flex-col gap-3"
+            >
+              <div className="flex justify-between w-full">
+                <h1 className="z-10 flex items-center text-xs font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
+                  {item.name}
+                </h1>
+                <GoArrowRight className="text-zinc-400 group-hover:text-zinc-300 dark:group-hover:text-zinc-200" />
+              </div>
+              <p className="text-[10px] md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
+                {item.subTopics} Subtopics
+              </p>
+            </Link>
 
-            <p className="text-[10px] md:text-xs  text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
-              {item.subTopics} {""}
-              {item.subTopics > 1 ? "Subtopics" : "Subtopic"}
-            </p>
-          </Link>
+            {/* Bookmark Icon */}
+            <div className="absolute left-2 bottom-2">
+              <Tooltip
+                placement="left"
+                radius="none"
+                showArrow
+                content={
+                  isBookmarked(item.name) ? "Remove bookmark" : "Add bookmark"
+                }
+              >
+                <button
+                  onClick={() =>
+                    toggleBookmark(item.name, item.subTopics, item.link)
+                  }
+                  className="cursor-pointer focus:outline-none"
+                >
+                  <Bookmark
+                    strokeWidth={2.5}
+                    className={
+                      isBookmarked(item.name)
+                        ? "text-green-500"
+                        : "text-zinc-400"
+                    }
+                    size={17}
+                  />
+                </button>
+              </Tooltip>
+            </div>
+          </div>
         ))}
       </ul>
       <div className="flex items-center gap-2">
@@ -506,12 +610,14 @@ const Lesson4Data = () => {
     </div>
   );
 };
-
 const Lesson5Data = () => {
+  const { toggleBookmark, isBookmarked } = useBookmarks();
+
   return (
     <div className="flex flex-col gap-4">
+      {/* Header */}
       <div className="flex items-center gap-6">
-        <Brackets className="text-sm text-blue-600 animate-pulse" />
+        <Brackets className="text-sm text-green-600 animate-pulse" />
         <div className="flex flex-col gap-1">
           <p className="text-xs font-semibold">Lesson 5</p>
           <h1 className="font-semibold text-zinc-700 dark:text-zinc-200">
@@ -519,30 +625,65 @@ const Lesson5Data = () => {
           </h1>
         </div>
       </div>
-
+      {/* Lesson List */}
       <ul className="grid grid-cols-2 gap-2 p-1 md:grid-cols-4">
         {Lesson5.map((item, idx) => (
-          <Link
-            to={item.link}
-            key={idx}
-            className="relative flex flex-col h-[90px] gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-300 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
+          <div
+            key={idx} // Move `key` to the top-level element
+            className="h-[8rem] relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out bg-white border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-300 group dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
           >
+            {/* Decorative Icon */}
             <Brackets
               size={50}
-              className="absolute duration-300 ease-in-out -bottom-3 -right-3 dark:text-zinc-500 text-zinc-200 group:hover:text-zinc-300 dark:group-hover:text-blue-500 group-hover:-rotate-12"
+              className="absolute duration-300 ease-in-out -bottom-3 -right-3 dark:text-zinc-500 text-zinc-200 group-hover:text-zinc-300 dark:group-hover:text-green-500 group-hover:-rotate-12"
             />
 
-            <div className="flex justify-between w-full">
-              <h1 className="z-10 flex items-center text-xs font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 duration underline-offset-2 dark:group:hover:text-yellow-200">
-                {item.name}
-              </h1>
-              <GoArrowRight className=" text-zinc-400 group:hover:text-zinc-300 dark:group-hover:text-zinc-200" />
-            </div>
+            {/* Lesson Link */}
+            <Link
+              to={item.link}
+              preventScrollReset={false}
+              className="flex flex-col gap-3"
+            >
+              <div className="flex justify-between w-full">
+                <h1 className="z-10 flex items-center text-xs font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
+                  {item.name}
+                </h1>
+                <GoArrowRight className="text-zinc-400 group-hover:text-zinc-300 dark:group-hover:text-zinc-200" />
+              </div>
+              <p className="text-[10px] md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
+                {item.subTopics} Subtopics
+              </p>
+            </Link>
 
-            <p className="text-[10px] md:text-xs font-medium text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
-              {item.subTopics} Subtopics
-            </p>
-          </Link>
+            {/* Bookmark Icon */}
+            <div className="absolute left-2 bottom-2">
+              <Tooltip
+                placement="left"
+                radius="none"
+                showArrow
+                content={
+                  isBookmarked(item.name) ? "Remove bookmark" : "Add bookmark"
+                }
+              >
+                <button
+                  onClick={() =>
+                    toggleBookmark(item.name, item.subTopics, item.link)
+                  }
+                  className="cursor-pointer focus:outline-none"
+                >
+                  <Bookmark
+                    strokeWidth={2.5}
+                    className={
+                      isBookmarked(item.name)
+                        ? "text-green-500"
+                        : "text-zinc-400"
+                    }
+                    size={17}
+                  />
+                </button>
+              </Tooltip>
+            </div>
+          </div>
         ))}
       </ul>
       <div className="flex items-center gap-2">
@@ -566,10 +707,13 @@ const Lesson5Data = () => {
   );
 };
 const Lesson6Data = () => {
+  const { toggleBookmark, isBookmarked } = useBookmarks();
+
   return (
     <div className="flex flex-col gap-4">
+      {/* Header */}
       <div className="flex items-center gap-6">
-        <SquareMousePointer className="text-sm text-purple-600 animate-pulse" />
+        <SquareMousePointer className="text-sm text-indigo-600 animate-pulse" />
         <div className="flex flex-col gap-1">
           <p className="text-xs font-semibold">Lesson 6</p>
           <h1 className="font-semibold text-zinc-700 dark:text-zinc-200">
@@ -577,30 +721,65 @@ const Lesson6Data = () => {
           </h1>
         </div>
       </div>
-
+      {/* Lesson List */}
       <ul className="grid grid-cols-2 gap-2 p-1 md:grid-cols-4">
         {Lesson6.map((item, idx) => (
-          <Link
-            to={item.link}
-            key={idx}
-            className="relative flex flex-col h-[90px] gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-300 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
+          <div
+            key={idx} // Move `key` to the top-level element
+            className="h-[8rem] relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out bg-white border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-300 group dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
           >
+            {/* Decorative Icon */}
             <SquareMousePointer
               size={50}
-              className="absolute duration-300 ease-in-out -bottom-3 -right-3 dark:text-zinc-500 text-zinc-200 group:hover:text-zinc-300 dark:group-hover:text-purple-500 group-hover:-rotate-12"
+              className="absolute duration-300 ease-in-out -bottom-3 -right-3 dark:text-zinc-500 text-zinc-200 group-hover:text-zinc-300 dark:group-hover:text-indigo-500 group-hover:-rotate-12"
             />
 
-            <div className="flex justify-between w-full">
-              <h1 className="z-10 flex items-center text-xs font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 duration underline-offset-2 dark:group:hover:text-yellow-200">
-                {item.name}
-              </h1>
-              <GoArrowRight className=" text-zinc-400 group:hover:text-zinc-300 dark:group-hover:text-zinc-200" />
+            {/* Lesson Link */}
+            <Link
+              to={item.link}
+              preventScrollReset={false}
+              className="flex flex-col gap-3"
+            >
+              <div className="flex justify-between w-full">
+                <h1 className="z-10 flex items-center text-xs font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
+                  {item.name}
+                </h1>
+                <GoArrowRight className="text-zinc-400 group-hover:text-zinc-300 dark:group-hover:text-zinc-200" />
+              </div>
+              <p className="text-[10px] md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
+                {item.subTopics} Subtopics
+              </p>
+            </Link>
+
+            {/* Bookmark Icon */}
+            <div className="absolute left-2 bottom-2">
+              <Tooltip
+                placement="left"
+                radius="none"
+                showArrow
+                content={
+                  isBookmarked(item.name) ? "Remove bookmark" : "Add bookmark"
+                }
+              >
+                <button
+                  onClick={() =>
+                    toggleBookmark(item.name, item.subTopics, item.link)
+                  }
+                  className="cursor-pointer focus:outline-none"
+                >
+                  <Bookmark
+                    strokeWidth={2.5}
+                    className={
+                      isBookmarked(item.name)
+                        ? "text-green-500"
+                        : "text-zinc-400"
+                    }
+                    size={17}
+                  />
+                </button>
+              </Tooltip>
             </div>
-            <p className="text-[10px] md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
-              {item.subTopics} {""}
-              {item.subTopics > 1 ? "SubTopics" : "Subtopic"}
-            </p>
-          </Link>
+          </div>
         ))}
       </ul>
       <div className="flex items-center gap-2">
@@ -625,10 +804,13 @@ const Lesson6Data = () => {
 };
 
 const Lesson7Data = () => {
+  const { toggleBookmark, isBookmarked } = useBookmarks();
+
   return (
     <div className="flex flex-col gap-4">
+      {/* Header */}
       <div className="flex items-center gap-6">
-        <Dices className="text-sm text-zinc-400 animate-pulse" />
+        <Dices className="text-sm text-zinc-600 animate-pulse" />
         <div className="flex flex-col gap-1">
           <p className="text-xs font-semibold">Lesson 7</p>
           <h1 className="font-semibold text-zinc-700 dark:text-zinc-200">
@@ -636,29 +818,65 @@ const Lesson7Data = () => {
           </h1>
         </div>
       </div>
-
+      {/* Lesson List */}
       <ul className="grid grid-cols-2 gap-2 p-1 md:grid-cols-4">
         {Lesson7.map((item, idx) => (
-          <Link
-            to={item.link}
-            key={idx}
-            className="relative flex flex-col h-[90px] gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-300 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
+          <div
+            key={idx} // Move `key` to the top-level element
+            className="h-[8rem] relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out bg-white border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-300 group dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
           >
+            {/* Decorative Icon */}
             <Dices
               size={50}
-              className="absolute duration-300 ease-in-out -bottom-3 -right-3 dark:text-zinc-500 text-zinc-200 group:hover:text-zinc-300 dark:group-hover:text-zinc-400 group-hover:-rotate-12"
+              className="absolute duration-300 ease-in-out -bottom-3 -right-3 dark:text-zinc-500 text-zinc-200 group-hover:text-zinc-300 dark:group-hover:text-indigo-500 group-hover:-rotate-12"
             />
 
-            <div className="flex justify-between w-full">
-              <h1 className="z-10 flex items-center text-xs font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 duration underline-offset-2 dark:group:hover:text-yellow-200">
-                {item.name}
-              </h1>
-              <GoArrowRight className=" text-zinc-400 group:hover:text-zinc-300 dark:group-hover:text-zinc-200" />
+            {/* Lesson Link */}
+            <Link
+              to={item.link}
+              preventScrollReset={false}
+              className="flex flex-col gap-3"
+            >
+              <div className="flex justify-between w-full">
+                <h1 className="z-10 flex items-center text-xs font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
+                  {item.name}
+                </h1>
+                <GoArrowRight className="text-zinc-400 group-hover:text-zinc-300 dark:group-hover:text-zinc-200" />
+              </div>
+              <p className="text-[10px] md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
+                {item.subTopics} Subtopics
+              </p>
+            </Link>
+
+            {/* Bookmark Icon */}
+            <div className="absolute left-2 bottom-2">
+              <Tooltip
+                placement="left"
+                radius="none"
+                showArrow
+                content={
+                  isBookmarked(item.name) ? "Remove bookmark" : "Add bookmark"
+                }
+              >
+                <button
+                  onClick={() =>
+                    toggleBookmark(item.name, item.subTopics, item.link)
+                  }
+                  className="cursor-pointer focus:outline-none"
+                >
+                  <Bookmark
+                    strokeWidth={2.5}
+                    className={
+                      isBookmarked(item.name)
+                        ? "text-green-500"
+                        : "text-zinc-400"
+                    }
+                    size={17}
+                  />
+                </button>
+              </Tooltip>
             </div>
-            <p className="text-[10px] md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
-              {item.subTopics} Subtopics
-            </p>
-          </Link>
+          </div>
         ))}
       </ul>
       <div className="flex items-center gap-2">
@@ -683,8 +901,11 @@ const Lesson7Data = () => {
 };
 
 const Lesson8Data = () => {
+  const { toggleBookmark, isBookmarked } = useBookmarks();
+
   return (
     <div className="flex flex-col gap-4">
+      {/* Header */}
       <div className="flex items-center gap-6">
         <Ban className="text-sm text-red-600 animate-pulse" />
         <div className="flex flex-col gap-1">
@@ -694,29 +915,65 @@ const Lesson8Data = () => {
           </h1>
         </div>
       </div>
-
+      {/* Lesson List */}
       <ul className="grid grid-cols-2 gap-2 p-1 md:grid-cols-4">
         {Lesson8.map((item, idx) => (
-          <Link
-            to={item.link}
-            key={idx}
-            className="relative flex flex-col h-[90px] gap-3 p-3 overflow-hidden transition duration-300 ease-in-out border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-300 group bg-white dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
+          <div
+            key={idx} // Move `key` to the top-level element
+            className="h-[8rem] relative flex flex-col gap-3 p-3 overflow-hidden transition duration-300 ease-in-out bg-white border text-zinc-700 dark:text-zinc-200 dark:border-zinc-700 border-zinc-300 group dark:bg-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 dark:hover:bg-gradient-to-br hover:dark:from-zinc-800 hover:dark:to-zinc-900"
           >
+            {/* Decorative Icon */}
             <Ban
               size={50}
-              className="absolute duration-300 ease-in-out -bottom-3 -right-3 dark:text-zinc-500 text-zinc-200 group:hover:text-zinc-300 dark:group-hover:text-red-500 group-hover:rotate-12"
+              className="absolute duration-300 ease-in-out -bottom-3 -right-3 dark:text-zinc-500 text-zinc-200 group-hover:text-zinc-300 dark:group-hover:text-red-500 group-hover:-rotate-12"
             />
 
-            <div className="flex justify-between w-full">
-              <h1 className="z-10 flex items-center text-xs font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 duration underline-offset-2 dark:group:hover:text-yellow-200">
-                {item.name}
-              </h1>
-              <GoArrowRight className=" text-zinc-400 group:hover:text-zinc-300 dark:group-hover:text-zinc-200" />
+            {/* Lesson Link */}
+            <Link
+              to={item.link}
+              preventScrollReset={false}
+              className="flex flex-col gap-3"
+            >
+              <div className="flex justify-between w-full">
+                <h1 className="z-10 flex items-center text-xs font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
+                  {item.name}
+                </h1>
+                <GoArrowRight className="text-zinc-400 group-hover:text-zinc-300 dark:group-hover:text-zinc-200" />
+              </div>
+              <p className="text-[10px] md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
+                {item.subTopics} Subtopics
+              </p>
+            </Link>
+
+            {/* Bookmark Icon */}
+            <div className="absolute left-2 bottom-2">
+              <Tooltip
+                placement="left"
+                radius="none"
+                showArrow
+                content={
+                  isBookmarked(item.name) ? "Remove bookmark" : "Add bookmark"
+                }
+              >
+                <button
+                  onClick={() =>
+                    toggleBookmark(item.name, item.subTopics, item.link)
+                  }
+                  className="cursor-pointer focus:outline-none"
+                >
+                  <Bookmark
+                    strokeWidth={2.5}
+                    className={
+                      isBookmarked(item.name)
+                        ? "text-green-500"
+                        : "text-zinc-400"
+                    }
+                    size={17}
+                  />
+                </button>
+              </Tooltip>
             </div>
-            <p className="text-[10px] md:text-xs  text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
-              {item.subTopics} Subtopics
-            </p>
-          </Link>
+          </div>
         ))}
       </ul>
       <div className="flex items-center gap-2">
