@@ -263,7 +263,7 @@ const Lesson1Data = () => {
             {/* Lesson Link */}
             <Link
               to={item.link}
-              preventScrollReset={true}
+              preventScrollReset={false}
               className="flex flex-col gap-3"
             >
               <div className="flex justify-between w-full">
