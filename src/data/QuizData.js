@@ -28,7 +28,7 @@ export const Quizzes = {
       question: "Why was JavaScript renamed from its original name?",
       options: {
         a: "Because JavaScript is a part of Java",
-        b: "Java was very popular at the time",
+        b: "JavaScript was very popular at the time",
         c: "To avoid conflicts with other programming languages",
         d: "It was originally intended for backend development",
       },

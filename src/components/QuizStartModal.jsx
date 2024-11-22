@@ -57,7 +57,7 @@ const QuizStartModal = ({ isOpen, setIsOpen }) => {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 grid p-8 overflow-y-scroll cursor-pointer bg-slate-900/20 backdrop-blur-lg place-items-center font-sans">
+        <div className="fixed inset-0 z-50 grid p-8 overflow-y-scroll cursor-pointer font-Lato bg-slate-900/20 backdrop-blur-lg place-items-center">
           {openModal && (
             <motion.div
               initial={{ scale: 0, rotate: "12.5deg" }}
@@ -66,11 +66,6 @@ const QuizStartModal = ({ isOpen, setIsOpen }) => {
               onClick={(e) => e.stopPropagation()}
               className="relative w-full max-w-xl p-6 overflow-hidden bg-white border shadow-xl cursor-default dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700 md:max-w-2xl"
             >
-              <div className="absolute w-[55px] top-2 right-1 grid grid-cols-3">
-                <div className="border rounded-full size-3 bg-zinc-100 dark:bg-zinc-600 border-zinc-200 dark:border-zinc-500"></div>
-                <div className="border rounded-full size-3 bg-zinc-100 dark:bg-zinc-600 border-zinc-200 dark:border-zinc-500"></div>
-                <div className="border rounded-full size-3 bg-zinc-100 dark:bg-zinc-600 border-zinc-200 dark:border-zinc-500"></div>
-              </div>
               <img
                 src={Robot}
                 alt="robot"
@@ -132,7 +127,7 @@ const QuizStartModal = ({ isOpen, setIsOpen }) => {
 
           {/* Show timer only when modal is closed and countdown is active */}
           {!openModal && showTimer && (
-            <div className="relative flex flex-col items-center justify-center w-full max-w-xl mx-auto space-y-4 font-sans">
+            <div className="relative flex flex-col items-center justify-center w-full max-w-xl mx-auto space-y-4 font-Lato">
               <h1 className="text-4xl font-bold">Please Be Ready</h1>
               <p className="text-sm text-zinc-400">The quiz starts in</p>
               <motion.h1

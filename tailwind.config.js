@@ -27,6 +27,7 @@ export default {
         Ubuntu: ["Ubuntu", "sans-serif"],
         Inter: ["Inter", "sans-serif"],
         SpaceGrotesk: ["Space Grotesk", "sans-serif"],
+        Lato: ["Lato", "sans-serif"],
       },
     },
   },

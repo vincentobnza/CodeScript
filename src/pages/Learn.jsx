@@ -20,7 +20,6 @@ import NavbarQuickSearch from "@/components/NavbarQuickSearch";
 import { Link } from "react-router-dom";
 import {
   ShieldCheck,
-  Loader,
   SquareTerminal,
   EqualNot,
   RefreshCcw,
@@ -31,7 +30,9 @@ import {
   Ban,
   BookCheck,
   ArrowUpRight,
+  ChartNoAxesColumn,
   Bookmark,
+  LoaderCircle,
 } from "lucide-react";
 import { Tooltip } from "@nextui-org/react";
 
@@ -124,7 +125,7 @@ const Header = () => {
 
       <div className="items-center hidden gap-2 md:flex">
         <Link to="/certificate" className="flex">
-          <button className="flex items-center justify-center gap-2 px-3 py-2 text-xs font-medium text-green-600 transition-all duration-300 ease-linear bg-transparent border border-green-500 outline-none dark:border-green-700 dark:text-green-200 dark:bg-green-700/10 dark:hover:brightness-150">
+          <button className="flex items-center justify-center gap-2 px-3 py-2 text-xs text-green-600 transition-all duration-300 ease-linear bg-transparent border border-green-500 outline-none dark:border-green-900 dark:text-green-200 dark:bg-green-700/10 dark:hover:brightness-150">
             <ShieldCheck
               size={15}
               className="text-green-600 dark:text-green-300"
@@ -132,10 +133,13 @@ const Header = () => {
             My Certificate
           </button>
         </Link>
-        <Link to="/leaderboard" className="flex">
-          <button className="flex items-center justify-center gap-2 px-3 py-2 text-xs font-medium transition-all duration-300 ease-linear bg-transparent border outline-none border-amber-500 dark:border-amber-700 text-amber-600 dark:text-amber-200 dark:bg-amber-700/10 dark:hover:brightness-150">
-            <Loader size={15} className="text-amber-600 dark:text-amber-300" />
-            My Progress
+        <Link to="/performance" className="flex">
+          <button className="flex items-center justify-center gap-2 px-3 py-2 text-xs transition-all duration-300 ease-linear bg-transparent border outline-none border-amber-500 dark:border-amber-900 text-amber-600 dark:text-amber-200 dark:bg-amber-700/10 dark:hover:brightness-150">
+            <LoaderCircle
+              size={15}
+              className="text-amber-600 dark:text-amber-300"
+            />
+            Progress
           </button>
         </Link>
       </div>
@@ -202,7 +206,7 @@ const Lessons = () => {
 
         <Link
           to="/bookmarks"
-          className="text-[12px] font-semibold flex items-center gap-3 bg-white dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-800 dark:hover:brightness-125 dark:shadow-lg px-3 py-[6px] border rounded border-zinc-200 dark:border-zinc-700 outline-none relative"
+          className="text-[12px] font-semibold flex items-center gap-3 bg-white dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-800 dark:hover:brightness-125 dark:shadow-lg px-3 py-[6px] border border-zinc-200 dark:border-zinc-700 outline-none relative"
         >
           <Bookmark size={14} />
           Bookmarks

@@ -42,25 +42,33 @@ const Header = () => {
 const ListBox = () => {
   const { user } = useAuth();
   const [userDetails, setUserDetails] = useState(null);
+
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const { data, error } = await supabase
+        // Fetch all users and order them by points
+        const { data: leaderboard, error } = await supabase
           .from("profiles")
           .select("*")
-          .eq("id", user.id)
-          .single();
+          .order("current_points", { ascending: false });
 
         if (error) throw error;
 
-        setUserDetails(data);
+        // Find the current user's details
+        const currentUser = leaderboard.find((u) => u.id === user.id);
+
+        if (currentUser) {
+          // Calculate rank based on position in sorted leaderboard
+          const rank = leaderboard.findIndex((u) => u.id === user.id) + 1;
+          setUserDetails({ ...currentUser, rank });
+        }
       } catch (error) {
-        console.log(error);
+        console.error("Error fetching user data:", error);
       }
     };
 
     fetchUser();
-  }, []);
+  }, [user]);
 
   return (
     <div className="grid w-full max-w-screen-md gap-4 p-3 mx-auto md:grid-cols-2">
@@ -160,8 +168,7 @@ const Ranking = () => {
       const { data: usersData, error } = await supabase
         .from("profiles")
         .select("*")
-        .order("current_points", { ascending: false })
-        .limit(50);
+        .order("current_points", { ascending: false });
 
       if (error) {
         console.error("Error fetching users:", error);
@@ -291,6 +298,9 @@ const Ranking = () => {
                   <TableColumn className="hidden text-center md:table-cell">
                     Progress
                   </TableColumn>
+                  <TableColumn className="hidden text-center md:table-cell">
+                    Status
+                  </TableColumn>
                 </TableHeader>
                 <TableBody emptyContent={"No user is found"}>
                   {sortedUsers.map(
@@ -365,6 +375,21 @@ const Ranking = () => {
                               radius="none"
                               color="success"
                             />
+                          </TableCell>
+                          <TableCell className="text-xs font-bold text-center md:text-sm">
+                            <div className="flex items-center justify-center gap-2 px-4 py-1 mx-auto">
+                              <p
+                                className={`text-sm ${
+                                  rankedUser.status === "online"
+                                    ? "text-green-500"
+                                    : "text-zinc-500"
+                                }`}
+                              >
+                                {rankedUser.status === "online"
+                                  ? "Connected"
+                                  : "Disconnected"}
+                              </p>
+                            </div>
                           </TableCell>
                         </TableRow>
                       )

@@ -23,6 +23,7 @@ import LearningObjectives from "./pages/LearningObjectives";
 import PretestPage from "./pages/PretestPage";
 import Overview from "./pages/Overview";
 import Bookmark from "./pages/Bookmark";
+import Performance from "./pages/Performance";
 
 // LAYOUT
 import RootLayout from "./layout/RootLayout";
@@ -101,6 +102,14 @@ const router = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <Leaderboard />
+          </ProtectedRoute>
+        ),
+      },
+      {
+        path: "performance",
+        element: (
+          <ProtectedRoute>
+            <Performance />
           </ProtectedRoute>
         ),
       },
@@ -352,7 +361,7 @@ const router = createBrowserRouter([
 
 export default function App() {
   return (
-    <div className="font-sans App text-zinc-950 dark:text-zinc-300">
+    <div className=" font-Lato App text-zinc-950 dark:text-zinc-300">
       <AuthProvider>
         <UserProvider>
           <RouterProvider router={router} />
