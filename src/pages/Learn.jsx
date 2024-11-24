@@ -33,6 +33,7 @@ import {
   ChartNoAxesColumn,
   Bookmark,
   LoaderCircle,
+  Medal,
 } from "lucide-react";
 import { Tooltip } from "@nextui-org/react";
 
@@ -84,7 +85,7 @@ const Header = () => {
 
   return (
     <div className="relative flex items-start justify-between w-full max-w-screen-lg gap-4 p-3 mx-auto md:p-0">
-      <div className="absolute w-[240px] h-[100px] bg-indigo-600/40 rounded-full bottom-8 z-0 filter blur-[100px]" />
+      <div className="absolute w-[240px] h-[100px] bg-slate-400/80 rounded-full bottom-8 z-0 filter blur-[100px]" />
       <NavbarQuickSearch
         isOpen={isOpen}
         onOpen={onOpen}
@@ -126,10 +127,7 @@ const Header = () => {
       <div className="items-center hidden gap-2 md:flex">
         <Link to="/certificate" className="flex">
           <button className="flex items-center justify-center gap-2 px-3 py-2 text-xs text-green-600 transition-all duration-300 ease-linear bg-transparent border border-green-500 outline-none dark:border-green-900 dark:text-green-200 dark:bg-green-700/10 dark:hover:brightness-150">
-            <ShieldCheck
-              size={15}
-              className="text-green-600 dark:text-green-300"
-            />
+            <Medal size={15} className="text-green-600 dark:text-green-300" />
             My Certificate
           </button>
         </Link>

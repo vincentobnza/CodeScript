@@ -70,7 +70,7 @@ export default function Navbar() {
         const { data, error } = await supabase
           .from("profiles")
           .select("current_points")
-          .eq("id", user.id)
+          .eq("id", user?.id)
           .single();
 
         if (error) throw error;
@@ -90,7 +90,7 @@ export default function Navbar() {
           event: "UPDATE",
           schema: "public",
           table: "profiles",
-          filter: `id=eq.${user.id}`,
+          filter: `id=eq.${user?.id}`,
         },
         (payload) => {
           setPoints(payload.new.current_points);
@@ -109,7 +109,7 @@ export default function Navbar() {
       const { data, error } = await supabase
         .from("profiles")
         .select("current_points")
-        .eq("id", user.id)
+        .eq("id", user?.id)
         .single();
 
       if (error) throw error;

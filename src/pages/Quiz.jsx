@@ -2,7 +2,7 @@ import { Moon, Sun } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import { useLocation, useParams } from "react-router-dom";
 import { Button } from "@nextui-org/react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, complex } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useTheme } from "next-themes";
 import {
@@ -233,6 +233,7 @@ const QuizCard = ({ points, setPoints, quizCompleted, setQuizCompleted }) => {
   const [score, setScore] = useState(0);
   const [userAnswers, setUserAnswers] = useState([]);
   const { user } = useAuth();
+  const [quizStatus, setQuizStatus] = useState(null);
 
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
   const { quizType } = useParams();
@@ -356,6 +357,7 @@ const QuizCard = ({ points, setPoints, quizCompleted, setQuizCompleted }) => {
                 status: "Completed",
                 score: `${score}/${quizData.length}`,
                 name: user.user_metadata.full_name,
+                completed_at: new Date().toISOString(),
               });
 
             if (insertError) throw insertError;
@@ -387,6 +389,16 @@ const QuizCard = ({ points, setPoints, quizCompleted, setQuizCompleted }) => {
     if (lastAnswerCorrect === null) return "default";
     return lastAnswerCorrect ? "success" : "danger";
   };
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center w-full h-64">
+        <div className="text-sm text-zinc-600 dark:text-zinc-400">
+          Loading...
+        </div>
+      </div>
+    );
+  }
 
   if (isLoading) {
     return (

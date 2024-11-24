@@ -53,7 +53,7 @@ const Hero = () => {
         </div>
 
         <div className="relative flex flex-col gap-2">
-          <div className="absolute w-[240px] h-[100px] bg-indigo-600/40 rounded-full bottom-8 z-0 filter blur-[80px]" />
+          <div className="absolute w-[240px] h-[100px] bg-slate-400/60 rounded-full bottom-8 z-0 filter blur-[80px]" />
 
           <h1 className="text-xl font-semibold text-zinc-900 dark:text-white">
             Learn JavaScript

@@ -38,13 +38,15 @@ const Content = () => {
 
   if (bookmarks.length === 0) {
     return (
-      <div className="w-full p-5 mx-auto max-w-screen-lg min-h-[30vh] grid place-items-center">
+      <div className="w-full p-5 mx-auto max-w-screen-lg relative min-h-[30vh] grid place-items-center">
+        <div className="absolute w-[240px] h-[100px] bg-slate-400/60 rounded-full bottom-8 z-0 filter blur-[120px]" />
+
         <img
           src="https://cdn-icons-png.flaticon.com/128/18066/18066918.png"
           alt="bookmark"
-          className="w-14 grayscale"
+          className="z-10 w-14 grayscale"
         />
-        <p className="text-sm font-semibold text-center text-zinc-500">
+        <p className="text-sm font-semibold text-center text-zinc-500 dark:text-zinc-400">
           You haven't bookmarked any topics yet.
         </p>
       </div>

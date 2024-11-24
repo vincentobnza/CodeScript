@@ -178,10 +178,7 @@ const Content = () => {
       <Toaster />
       <div className="flex flex-col items-center gap-4 mb-5 lg:basis-1/4">
         <Avatar
-          src={
-            filePreview ||
-            "https://cdn-icons-png.flaticon.com/128/16070/16070176.png"
-          }
+          src={filePreview || userDetails?.avatar_url}
           size="lg"
           isBordered
         />

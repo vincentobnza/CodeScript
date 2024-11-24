@@ -76,32 +76,28 @@ const Header = () => {
 const Features = () => {
   const features = [
     {
-      icon: BookCheck,
+      icon: "https://cdn-icons-png.flaticon.com/128/3413/3413611.png",
       title: "Structured Lessons and Modules",
       description:
         "Our lessons are well-designed and available in modules that are according to students’ learning curves. Each lesson introduces important programming concepts clear to the kids very progressively and breaks down tough topics into small pieces.",
-      iconColor: "text-green-400",
     },
     {
-      icon: Users,
+      icon: "https://cdn-icons-png.flaticon.com/128/8297/8297102.png",
       title: "Coding Assessments",
       description:
         "Coding tests are the core of the practical aspect of our platform. Rather than doing a typical quiz, these coding exercises let the students apply their theoretical knowledge in real coding",
-      iconColor: "text-indigo-400",
     },
     {
-      icon: Trophy,
+      icon: "https://cdn-icons-png.flaticon.com/128/6038/6038410.png",
       title: "Leaderboard ",
       description:
         "The platform's leaderboard feature will inspire the students to compete with each other. The leaderboard showcases the top scores and achievement of the learners which motivates them to do better. ",
-      iconColor: "text-red-400",
     },
     {
-      icon: BookOpen,
+      icon: "https://cdn-icons-png.flaticon.com/128/6703/6703900.png",
       title: "Certifications",
       description:
         "When students reach certain milestones that your CAI system has set out for them, they earn certifications. Our certificates are helpful for the students to demonstrate what they have learned in their studies..",
-      iconColor: "text-amber-400",
     },
   ];
 
@@ -112,26 +108,28 @@ const Features = () => {
       animate={{ opacity: 1 }}
       transition={{ delay: 0.6, duration: 0.5 }}
     >
-      <h2 className="mb-8 text-xl font-semibold">Key Features</h2>
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+      <h2 className="mb-2 text-xl font-semibold">Key Features</h2>
+      <p className="mb-8 text-sm text-zinc-500 dark:text-zinc-400">
+        List of CodeScript Features
+      </p>
+      <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
         {features.map((feature, index) => {
           const Icon = feature.icon;
           return (
             <motion.div
               key={index}
-              className="relative p-6 overflow-hidden transition-shadow duration-300 border rounded-lg shadow-sm border-zinc-200 dark:border-zinc-700 hover:shadow-md"
+              className="relative p-6 overflow-hidden transition-shadow duration-300 border shadow-sm border-zinc-200 dark:border-zinc-800 hover:shadow-md"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7 + index * 0.1 }}
             >
-              <Icon
-                size={100}
-                className={`absolute -bottom-5 -right-5 text-zinc-200 dark:text-zinc-500 opacity-20`}
+              <img
+                src={feature.icon}
+                alt="icon"
+                className="absolute bottom-0 right-0 z-0 w-20 h-20 opacity-10"
               />
               <div className="flex flex-col items-start gap-2 mb-3 space-y-3">
-                <div className={`${feature.iconColor}`}>
-                  <Icon size={24} />
-                </div>
+                <img src={feature.icon} alt="icon" className="size-8 " />
                 <h3 className="font-semibold">{feature.title}</h3>
               </div>
               <p className="text-sm text-zinc-600 dark:text-zinc-400">
@@ -157,8 +155,8 @@ const HowToUse = () => {
     "Repeat the process to master JavaScript.",
   ];
   return (
-    <div className="relative flex flex-col w-full max-w-screen-md gap-2 mx-auto mt-10">
-      <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-[240px] h-[240px] bg-indigo-700/60 rounded-full filter blur-[120px]" />
+    <div className="relative flex flex-col w-full max-w-screen-md gap-2 p-6 mx-auto mt-10 border border-zinc-200 dark:border-zinc-800">
+      <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-[240px] h-[240px] bg-slate-500/80 rounded-full filter blur-[120px]" />
       <h2 className="text-xl font-semibold">How to Use</h2>
       <p className="mb-8 text-sm text-zinc-500 dark:text-zinc-400">
         A step-by-step guide on how to use the system.

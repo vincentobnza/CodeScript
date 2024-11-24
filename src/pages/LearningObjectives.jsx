@@ -7,7 +7,7 @@ export default function LearningObjectives() {
   return (
     <div className="min-h-screen dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100">
       <div className="relative max-w-4xl px-6 pb-10 mx-auto">
-        <div className="absolute left-0 top-1/4 transform -translate-y-1/2 w-[240px] h-[240px] bg-indigo-600/20 rounded-full filter blur-[120px]" />
+        <div className="absolute left-0 top-1/4 transform -translate-y-1/2 w-[240px] h-[240px] bg-slate-400/50 rounded-full filter blur-[120px]" />
 
         <Header />
         <Content />

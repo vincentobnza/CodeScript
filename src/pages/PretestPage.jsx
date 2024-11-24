@@ -185,7 +185,7 @@ const Content = () => {
   if (done) {
     return (
       <div className="relative flex flex-col items-center justify-center w-full max-w-xl gap-4 p-5 mx-auto text-center">
-        <div className="absolute w-[240px] h-[100px] bg-indigo-600/20 rounded-full bottom-8 z-0 filter blur-[80px]" />
+        <div className="absolute w-[240px] h-[100px] bg-slate-400/60 rounded-full bottom-8 z-0 filter blur-[80px]" />
 
         <img
           src="https://cdn-icons-png.flaticon.com/128/12510/12510927.png"
@@ -195,7 +195,7 @@ const Content = () => {
         <h1 className="z-10 mb-2 text-3xl font-medium md:text-5xl">
           Pre-test Completed
         </h1>
-        <p className="text-xs text-zinc-500 dark:text-zinc-400">
+        <p className="text-sm text-zinc-500 dark:text-zinc-300">
           You have completed the pre-test for this lesson.
         </p>
 

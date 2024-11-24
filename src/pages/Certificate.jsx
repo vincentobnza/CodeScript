@@ -57,7 +57,7 @@ export default function Certificate() {
     if (activeTab === "completion") {
       return Math.min(currentUser?.progress || 0, 100) === 100;
     } else {
-      return (currentUser?.current_points || 0) >= 1000;
+      return (currentUser?.current_points || 0) >= 5000;
     }
   }, [activeTab, currentUser]);
 
@@ -91,9 +91,12 @@ export default function Certificate() {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4 pb-10">
-      <h1 className="mb-8 text-4xl font-medium text-gray-800 dark:text-zinc-200">
+      <h1 className="mb-4 text-4xl font-medium text-gray-800 dark:text-zinc-200">
         Your Certificates
       </h1>
+      <p className="mb-8 text-sm text-zinc-500 dark:text-zinc-400">
+        Accumulate points and advance to earn certificates.
+      </p>
       <div className="flex mb-6 space-x-2">
         <Tooltip
           offset={15}
@@ -207,7 +210,10 @@ export default function Certificate() {
                 value={
                   activeTab === "completion"
                     ? Math.min(currentUser?.progress || 0, 100)
-                    : Math.min((currentUser?.current_points || 0) / 10, 100)
+                    : Math.min(
+                        ((currentUser?.current_points || 0) / 5000) * 100,
+                        100
+                      )
                 }
                 color={activeTab === "completion" ? "success" : "warning"}
                 className="mb-4"
@@ -215,7 +221,7 @@ export default function Certificate() {
               <p className="text-sm font-bold text-center text-zinc-900">
                 {activeTab === "completion"
                   ? `${Math.min(currentUser?.progress || 0, 100)}% completed`
-                  : `${currentUser?.current_points || 0} / 1000 points`}
+                  : `${currentUser?.current_points || 0} / 5000 points`}
               </p>
             </div>
           </div>

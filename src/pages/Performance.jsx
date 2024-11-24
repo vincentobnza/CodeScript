@@ -82,7 +82,7 @@ const Stats = () => {
           showValueLabel={true}
         />
 
-        <div className="absolute w-[240px] h-[100px] bg-indigo-700/60 rounded-full bottom-8 z-0 filter blur-[90px]" />
+        <div className="absolute w-[240px] h-[100px] bg-slate-400/60 rounded-full bottom-8 z-0 filter blur-[120px]" />
         <p className="mt-5 text-xs font-medium text-center">
           You have completed {userDetails?.progress}% of the course
         </p>

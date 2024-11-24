@@ -4,7 +4,7 @@ import LessonNavigation from "@/components/LessonNavigation";
 import PointsCoin from "@/components/PointsCoin";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { Undo2 } from "lucide-react";
+import { Undo2, Medal, Loader } from "lucide-react";
 export default function ChaptersLayout() {
   return (
     <div className="flex mb-10">
@@ -24,15 +24,17 @@ export default function ChaptersLayout() {
           <div className="hidden md:flex items-center gap-[6px] text-xs font-semibold">
             <Link
               to="/certificate"
-              className="px-4 py-2 border rounded border-zinc-200 dark:border-zinc-800 dark:hover:brightness-125"
+              className="flex items-center gap-2 px-3 py-2 border rounded border-zinc-200 dark:border-zinc-700 dark:hover:brightness-125"
             >
-              My Certificate 🏅
+              My Certificate
+              <Medal size={16} />
             </Link>
             <Link
               to="/performance"
-              className="px-4 py-2 border rounded border-zinc-200 dark:border-zinc-800 dark:hover:brightness-125"
+              className="flex items-center gap-2 px-3 py-2 border rounded border-zinc-200 dark:border-zinc-700 dark:hover:brightness-125"
             >
-              My Progress ⏳
+              My Progress
+              <Loader size={16} />
             </Link>
           </div>
         </div>
