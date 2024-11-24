@@ -35,6 +35,7 @@ export default function Navbar() {
   const location = useLocation();
   const [points, setPoints] = useState(0);
   const [refreshedPoints, setRefreshPoints] = useState(false);
+  const [userDetails, setUserDetails] = useState(null);
 
   const handleThemeChange = useCallback(
     (selectedTheme) => {
@@ -69,12 +70,12 @@ export default function Navbar() {
       try {
         const { data, error } = await supabase
           .from("profiles")
-          .select("current_points")
+          .select("*")
           .eq("id", user?.id)
           .single();
 
         if (error) throw error;
-        setPoints(data.current_points);
+        setUserDetails(data);
       } catch (error) {
         console.error("Error fetching points:", error);
       }
@@ -93,7 +94,10 @@ export default function Navbar() {
           filter: `id=eq.${user?.id}`,
         },
         (payload) => {
-          setPoints(payload.new.current_points);
+          setUserDetails((prevDetails) => ({
+            ...prevDetails,
+            current_points: payload.new.current_points,
+          }));
         }
       )
       .subscribe();
@@ -113,7 +117,6 @@ export default function Navbar() {
         .single();
 
       if (error) throw error;
-      setPoints(data.current_points);
     } catch (error) {
       console.log("Error refreshing points", error);
     } finally {
@@ -156,16 +159,31 @@ export default function Navbar() {
         <div className="flex items-center gap-6">
           <div className="flex items-center gap-1">
             <Tooltip
-              content="Current Points"
               radius="sm"
-              placement="bottom"
               showArrow
+              placement="bottom"
+              content={
+                <div className="grid grid-cols-2 gap-4 p-5 pb-2 font-Jost">
+                  <div className="flex flex-col items-center justify-center gap-3 mb-3 text-xs text-zinc-500 dark:text-zinc-400">
+                    <h1> Current Points</h1>
+                    <h1 className="text-lg font-bold text-amber-500">
+                      {userDetails?.current_points}
+                    </h1>
+                  </div>
+                  <div className="flex flex-col items-center justify-center gap-3 mb-3 text-xs text-zinc-500 dark:text-zinc-400">
+                    <h1> Current Progress</h1>
+                    <h1 className="text-lg font-bold text-indigo-500">
+                      {userDetails?.progress} %
+                    </h1>
+                  </div>
+                </div>
+              }
             >
               <div className="flex items-center gap-2 px-4 py-1 border rounded-full border-zinc-100 dark:border-zinc-800">
                 <div className="border border-green-600 rounded-full bg-gradient-to-br from-green-300 to-emerald-600 bg-gr size-3 dark:border-green-200"></div>
 
                 <p className="text-xs font-semibold text-zinc-500 dark:text-zinc-200">
-                  {points}
+                  {userDetails?.current_points}
                 </p>
               </div>
             </Tooltip>
@@ -223,7 +241,13 @@ export default function Navbar() {
                 <DropdownItem key="feedback" href="/feedback">
                   Feedback
                 </DropdownItem>
-                <DropdownItem key="signout" onClick={() => signOut()}>
+                <DropdownItem
+                  key="signout"
+                  onClick={() => {
+                    signOut();
+                    setPoints(0);
+                  }}
+                >
                   Signout
                 </DropdownItem>
               </DropdownMenu>
@@ -235,7 +259,7 @@ export default function Navbar() {
               showArrow={true}
               placement="bottom"
               content={
-                <div className="w-[250px] p-5 pb-8 font-sans">
+                <div className="w-[250px] p-5 pb-8 font-Jost">
                   <div className="grid mb-4 border rounded-lg size-8 place-items-center bg-zinc-100 dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700">
                     <Lock size={15} />
                   </div>

@@ -126,17 +126,14 @@ const Header = () => {
 
       <div className="items-center hidden gap-2 md:flex">
         <Link to="/certificate" className="flex">
-          <button className="flex items-center justify-center gap-2 px-3 py-2 text-xs text-green-600 transition-all duration-300 ease-linear bg-transparent border border-green-500 outline-none dark:border-green-900 dark:text-green-200 dark:bg-green-700/10 dark:hover:brightness-150">
-            <Medal size={15} className="text-green-600 dark:text-green-300" />
+          <button className="flex items-center justify-center gap-2 px-3 py-2 text-xs transition-all duration-300 ease-linear bg-white border dark:hover:brightness-125 dark:bg-zinc-800/20 border-zinc-200 dark:border-zinc-700">
+            <Medal size={15} />
             My Certificate
           </button>
         </Link>
         <Link to="/performance" className="flex">
-          <button className="flex items-center justify-center gap-2 px-3 py-2 text-xs transition-all duration-300 ease-linear bg-transparent border outline-none border-amber-500 dark:border-amber-900 text-amber-600 dark:text-amber-200 dark:bg-amber-700/10 dark:hover:brightness-150">
-            <LoaderCircle
-              size={15}
-              className="text-amber-600 dark:text-amber-300"
-            />
+          <button className="flex items-center justify-center gap-2 px-3 py-2 text-xs transition-all duration-300 ease-linear bg-white border dark:hover:brightness-125 dark:bg-zinc-800/20 border-zinc-200 dark:border-zinc-700">
+            <LoaderCircle size={15} />
             Progress
           </button>
         </Link>
@@ -232,7 +229,7 @@ const Lesson1Data = () => {
     <div className="flex flex-col gap-4">
       {/* Header */}
       <div className="flex items-center gap-6">
-        <SquareTerminal className="text-sm text-red-600 animate-pulse" />
+        <SquareTerminal className="text-sm text-yellow-300 animate-pulse" />
         <div className="flex flex-col gap-1">
           <p className="text-xs font-semibold">Lesson 1</p>
           <h1 className="font-semibold text-zinc-700 dark:text-zinc-200">
@@ -250,7 +247,7 @@ const Lesson1Data = () => {
             {/* Decorative Icon */}
             <SquareTerminal
               size={50}
-              className="absolute duration-300 ease-in-out -bottom-3 -right-3 dark:text-zinc-600 text-zinc-200 group-hover:text-zinc-300 dark:group-hover:text-red-500 group-hover:-rotate-12"
+              className="absolute duration-300 ease-in-out -bottom-3 -right-3 dark:text-zinc-600 text-zinc-200 group-hover:text-zinc-300 dark:group-hover:text-yellow-300 group-hover:-rotate-12"
             />
 
             {/* Lesson Link */}
@@ -426,7 +423,7 @@ const Lesson3Data = () => {
     <div className="flex flex-col gap-4">
       {/* Header */}
       <div className="flex items-center gap-6">
-        <RefreshCcw className="text-sm text-amber-600 animate-pulse" />
+        <RefreshCcw className="text-sm text-red-600 animate-pulse" />
         <div className="flex flex-col gap-1">
           <p className="text-xs font-semibold">Lesson 3</p>
           <h1 className="font-semibold text-zinc-700 dark:text-zinc-200">
@@ -444,7 +441,7 @@ const Lesson3Data = () => {
             {/* Decorative Icon */}
             <RefreshCcw
               size={50}
-              className="absolute duration-300 ease-in-out -bottom-3 -right-3 dark:text-zinc-500 text-zinc-200 group-hover:text-zinc-300 dark:group-hover:text-amber-500 group-hover:-rotate-12"
+              className="absolute duration-300 ease-in-out -bottom-3 -right-3 dark:text-zinc-500 text-zinc-200 group-hover:text-zinc-300 dark:group-hover:text-red-500 group-hover:-rotate-12"
             />
 
             {/* Lesson Link */}
