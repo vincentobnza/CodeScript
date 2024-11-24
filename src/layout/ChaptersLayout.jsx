@@ -29,7 +29,7 @@ export default function ChaptersLayout() {
               My Certificate 🏅
             </Link>
             <Link
-              to="/leaderboard"
+              to="/performance"
               className="px-4 py-2 border rounded border-zinc-200 dark:border-zinc-800 dark:hover:brightness-125"
             >
               My Progress ⏳

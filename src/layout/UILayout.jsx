@@ -274,9 +274,6 @@ export const CodeEditor = ({
       eval(codeToRun);
     } catch (error) {
       setOutput(`Error: ${error.message}`);
-    } finally {
-      // Restore the original console.log
-      console.log = originalLog;
     }
   };
   return (
@@ -315,7 +312,7 @@ export const CodeEditor = ({
               onClick={() => setOutput("")}
               size="sm"
               startContent={<SquareX className="w-4 h-4" />}
-              className="px-4 py-2 text-zinc-600 dark:text-white border bg-zinc-50 dark:bg-zinc-800 hover:bg-zinc-700 border-zinc-600"
+              className="px-4 py-2 border text-zinc-600 dark:text-white bg-zinc-50 dark:bg-zinc-800 hover:bg-zinc-700 border-zinc-600"
             >
               Clear Console
             </Button>
@@ -369,14 +366,14 @@ export const CodeEditor = ({
 export const TopicRef = ({ reference }) => {
   const [hidden, setHidden] = useState(false);
   return (
-    <div className="w-full p-3 pb-6 border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800/20 justify-start items-start flex flex-col space-y-2">
-      <button className="text-xs font-semibold text-zinc-400 italic">
+    <div className="flex flex-col items-start justify-start w-full p-3 pb-6 space-y-2 bg-white border border-zinc-300 dark:border-zinc-700 dark:bg-zinc-800/20">
+      <button className="text-xs italic font-semibold text-zinc-400">
         Topic Reference
       </button>
 
       <Link
         to={reference}
-        className="text-wrap text-md font-semibold text-amber-700 dark:bg-gradient-to-br dark:from-amber-200 dark:to-amber-900 dark:bg-clip-text dark:text-transparent italic"
+        className="italic font-semibold text-wrap text-md text-amber-700 dark:bg-gradient-to-br dark:from-amber-200 dark:to-amber-900 dark:bg-clip-text dark:text-transparent"
       >
         {reference}
       </Link>

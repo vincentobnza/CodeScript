@@ -7,6 +7,8 @@ import {
   LogOut,
   Layers3,
   MessageSquareDot,
+  NotebookText,
+  Palette,
 } from "lucide-react";
 import {
   Modal,
@@ -45,6 +47,11 @@ export default function AdminSidebar() {
     },
     { to: "profiles", icon: <Users size={16} />, label: "User Profiles" },
     { to: "leaderboard", icon: <Trophy size={16} />, label: "Leaderboard" },
+    {
+      to: "students-quizzes",
+      icon: <NotebookText size={16} />,
+      label: "Quizzes",
+    },
   ];
 
   const accountLinks = [
@@ -53,6 +60,11 @@ export default function AdminSidebar() {
       to: "/admin/feedbacks",
       icon: <MessageSquareDot size={16} />,
       label: "Feedbacks",
+    },
+    {
+      to: "customization",
+      icon: <Palette size={16} />,
+      label: "Customization",
     },
   ];
 
@@ -79,7 +91,7 @@ export default function AdminSidebar() {
                 key={index}
                 to={link.to}
                 className={({ isActive }) =>
-                  `relative flex items-center w-full gap-4 p-2 text-sm transition-colors duration-300 rounded-lg ${
+                  `relative flex items-center w-full gap-4 p-2 text-[13px] transition-colors duration-300 rounded-lg ${
                     isActive ? "text-green-600" : "text-zinc-700"
                   }`
                 }
@@ -99,7 +111,7 @@ export default function AdminSidebar() {
                 key={index}
                 to={link.to}
                 className={({ isActive }) =>
-                  `flex items-center w-full gap-4 p-2 text-sm transition-colors duration-300 rounded-lg ${
+                  `flex items-center w-full gap-4 p-2 text-[13px] transition-colors duration-300 rounded-lg ${
                     isActive ? "text-green-500" : "text-zinc-700"
                   }`
                 }
@@ -117,7 +129,7 @@ export default function AdminSidebar() {
         <div className="flex flex-col items-start p-1 mt-3 space-y-1">
           <button
             onClick={onOpen}
-            className="flex items-center self-start gap-4 p-2 text-sm text-zinc-700"
+            className="flex items-center self-start gap-4 p-2 text-[13px] text-zinc-700"
           >
             <LogOut size={20} />
             Logout

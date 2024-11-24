@@ -245,7 +245,7 @@ const ViewModal = ({
         isOpen={isOpen}
         onOpenChange={onOpenChange}
         size="3xl"
-        className="font-NotoSans"
+        className="font-Jost"
       >
         <ModalContent>
           {(onClose) => (
@@ -460,6 +460,7 @@ const CreateModal = ({ isOpen, onOpen, onOpenChange }) => {
       isOpen={isOpen}
       onOpenChange={onOpenChange}
       size="5xl"
+      className="font-Jost"
       radius="none"
       hideCloseButton
     >
@@ -735,6 +736,7 @@ const EditModal = ({ isOpen, onOpenChange, assessment, onUpdate }) => {
       onOpenChange={onOpenChange}
       size="5xl"
       radius="none"
+      className="font-Jost"
       hideCloseButton
     >
       <ModalContent>
@@ -923,7 +925,13 @@ const DeleteModal = ({ isOpen, onOpenChange, assessment, onDelete }) => {
   };
 
   return (
-    <Modal isOpen={isOpen} onOpenChange={onOpenChange} size="md" radius="none">
+    <Modal
+      isOpen={isOpen}
+      onOpenChange={onOpenChange}
+      size="md"
+      radius="none"
+      className="font-Jost"
+    >
       <ModalContent>
         {(onClose) => (
           <>

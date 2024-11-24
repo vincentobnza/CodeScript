@@ -15,6 +15,7 @@ export default function Overview() {
     <div className="w-full min-h-screen p-5 pb-10 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 ">
       <Header />
       <Features />
+      <HowToUse />
     </div>
   );
 }
@@ -22,13 +23,13 @@ export default function Overview() {
 const Header = () => {
   return (
     <motion.div
-      className="max-w-screen-md mx-auto space-y-8"
+      className="relative max-w-screen-md mx-auto space-y-8"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
       <div className="w-full space-y-1">
-        <div className="space-y-2">
+        <div className="space-y-6">
           <motion.p
             className="text-xs font-semibold text-zinc-500 dark:text-zinc-400"
             initial={{ opacity: 0 }}
@@ -49,18 +50,12 @@ const Header = () => {
       </div>
 
       <motion.div
-        className="w-full p-6 mt-8 border rounded-lg shadow-sm border-zinc-200 dark:border-zinc-700 bg-zinc-50 dark:bg-zinc-900 dark:text-zinc-200"
+        className="w-full"
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.4, duration: 0.3 }}
       >
-        <div className="flex items-center mb-4 space-x-4">
-          <div className="grid bg-white border rounded-full size-10 border-zinc-200 dark:border-green-600 dark:bg-green-800/20 place-items-center">
-            <PanelsTopLeft
-              size={20}
-              className="text-green-600 dark:text-green-400"
-            />
-          </div>
+        <div className="flex items-center mb-4">
           <h2 className="text-xl font-semibold">System Overview</h2>
         </div>
         <p className="text-sm leading-relaxed text-zinc-500 dark:text-zinc-400">
@@ -117,7 +112,7 @@ const Features = () => {
       animate={{ opacity: 1 }}
       transition={{ delay: 0.6, duration: 0.5 }}
     >
-      <h2 className="mb-8 text-2xl font-semibold">Key Features</h2>
+      <h2 className="mb-8 text-xl font-semibold">Key Features</h2>
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         {features.map((feature, index) => {
           const Icon = feature.icon;
@@ -131,7 +126,7 @@ const Features = () => {
             >
               <Icon
                 size={100}
-                className={`absolute -bottom-5 -right-5 ${feature.iconColor} opacity-20`}
+                className={`absolute -bottom-5 -right-5 text-zinc-200 dark:text-zinc-500 opacity-20`}
               />
               <div className="flex flex-col items-start gap-2 mb-3 space-y-3">
                 <div className={`${feature.iconColor}`}>
@@ -147,5 +142,40 @@ const Features = () => {
         })}
       </div>
     </motion.div>
+  );
+};
+
+const HowToUse = () => {
+  const steps = [
+    "Sign up for an account on CodeScript.",
+    "Complete the onboarding process.",
+    "Select a lesson from the available modules.",
+    "Read the lesson content and watch video tutorials.",
+    "Complete the coding assessments and quizzes.",
+    "Check your progress, and points on the leaderboard.",
+    "Earn certifications as you achieve milestones.",
+    "Repeat the process to master JavaScript.",
+  ];
+  return (
+    <div className="relative flex flex-col w-full max-w-screen-md gap-2 mx-auto mt-10">
+      <div className="absolute left-0 top-1/2 transform -translate-y-1/2 w-[240px] h-[240px] bg-indigo-700/60 rounded-full filter blur-[120px]" />
+      <h2 className="text-xl font-semibold">How to Use</h2>
+      <p className="mb-8 text-sm text-zinc-500 dark:text-zinc-400">
+        A step-by-step guide on how to use the system.
+      </p>
+
+      <ul className="space-y-4">
+        {steps.map((step, index) => (
+          <li key={index} className="flex items-start gap-2">
+            <div className="flex items-center justify-center w-5 h-5  text-white rounded border border-zinc-200 dark:border-zinc-700 bg-zinc-500 dark:bg-zinc-800 text-[10px] font-semibold">
+              {index + 1}
+            </div>
+            <p className="ml-2 text-sm text-zinc-600 dark:text-zinc-300">
+              {step}
+            </p>
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 };

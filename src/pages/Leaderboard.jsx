@@ -42,6 +42,7 @@ const Header = () => {
 const ListBox = () => {
   const { user } = useAuth();
   const [userDetails, setUserDetails] = useState(null);
+  const [rank, setRank] = useState(0);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -61,6 +62,7 @@ const ListBox = () => {
           // Calculate rank based on position in sorted leaderboard
           const rank = leaderboard.findIndex((u) => u.id === user.id) + 1;
           setUserDetails({ ...currentUser, rank });
+          setRank(rank);
         }
       } catch (error) {
         console.error("Error fetching user data:", error);
@@ -68,6 +70,25 @@ const ListBox = () => {
     };
 
     fetchUser();
+  }, [user]);
+
+  useEffect(() => {
+    const insertRank = async () => {
+      try {
+        const { data, error } = await supabase
+          .from("profiles")
+          .insert({
+            rank: rank,
+          })
+          .eq("id", user.id);
+
+        if (error) throw error;
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    insertRank();
   }, [user]);
 
   return (

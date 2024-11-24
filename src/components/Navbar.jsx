@@ -76,11 +76,31 @@ export default function Navbar() {
         if (error) throw error;
         setPoints(data.current_points);
       } catch (error) {
-        console.log("Error fetching points", error);
+        console.error("Error fetching points:", error);
       }
     };
 
     fetchPoints();
+
+    const channel = supabase
+      .channel("realtime:profiles")
+      .on(
+        "postgres_changes",
+        {
+          event: "UPDATE",
+          schema: "public",
+          table: "profiles",
+          filter: `id=eq.${user.id}`,
+        },
+        (payload) => {
+          setPoints(payload.new.current_points);
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
   }, [user?.id]);
 
   const handleRefresh = async () => {
@@ -100,7 +120,6 @@ export default function Navbar() {
       setTimeout(() => setRefreshPoints(false), 500);
     }
   };
-
   return (
     <div className="sticky top-0 z-50 grid w-full bg-white dark:border-b dark:bg-zinc-900/70 backdrop-blur-lg text-zinc-900 dark:text-zinc-300 place-items-center dark:border-zinc-800">
       <NavbarQuickSearch
@@ -183,7 +202,7 @@ export default function Navbar() {
           </div>
 
           {user ? (
-            <Dropdown placement="bottom-end" className="font-sans text-xs">
+            <Dropdown placement="bottom-end" className="text-xs font-Jost">
               <DropdownTrigger>
                 <div className="items-center gap-4">
                   <div className="grid overflow-hidden rounded-full cursor-pointer size-8 place-items-center">
@@ -235,7 +254,7 @@ export default function Navbar() {
             </Tooltip>
           )}
 
-          <Dropdown className="font-sans">
+          <Dropdown className="font-Jost">
             <DropdownTrigger>
               <div className="grid transition duration-500 ease-in-out rounded-lg cursor-pointer hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:brightness-125 size-9 place-items-center">
                 {getCurrentThemeIcon()}
@@ -299,11 +318,7 @@ const Navs = () => {
           <NavLink
             key={link.to}
             to={link.to}
-            className={`text-xs hover:brightness-125 ${
-              activeTab === link.to
-                ? "font-bold text-zinc-700 dark:text-zinc-100"
-                : ""
-            }`}
+            className={`text-xs hover:brightness-125`}
           >
             {link.label}
           </NavLink>

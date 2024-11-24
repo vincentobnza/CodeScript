@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import MainPicture from "../assets/MainPicture.png";
-import { Zap, Blocks, FlaskConical, ArrowUpRight } from "lucide-react";
+import { Zap, ArrowUpRight, Library, Braces } from "lucide-react";
 import InfiniteMarquee from "@/components/ui/InfiniteMarquee";
 import FeedbackIcon from "@/components/ui/FeedbackIcon";
 
@@ -40,7 +40,7 @@ const Hero = () => {
             </div>
           </div>
         </>
-        <h1 className="text-4xl md:text-[48px] dark:bg-gradient-to-br dark:from-white dark:to-zinc-600 dark:bg-clip-text dark:text-transparent text-zinc-800 leading-snug font-semibold z-10">
+        <h1 className="text-4xl md:text-[48px] dark:bg-gradient-to-br dark:from-white dark:to-zinc-600 dark:bg-clip-text dark:text-transparent text-zinc-800 leading-snug font-medium z-10">
           Learn, Build, and Excel in{" "}
           <span className="text-green-600 dark:text-transparent dark:bg-gradient-to-br dark:from-green-400 dark:to-green-950 bg-clip-text">
             JavaScript
@@ -55,17 +55,17 @@ const Hero = () => {
         <div className="absolute w-[240px] h-[100px] bg-green-600/40 rounded-full bottom-8 z-0 filter blur-[80px]" />
         <Link
           to="/learn"
-          className="z-10 flex items-center justify-center gap-2 w-[120px] py-2 mt-10 text-xs tracking-wide text-green-700 bg-green-100 dark:text-green-200 border border-green-400 dark:border-green-600 dark:bg-green-800/20 md:px-4 md:py-[0.60rem] md:text-md dark:hover:brightness-125 font-semibold rounded-sm"
+          className="z-10 flex items-center justify-center gap-2 w-[120px] py-2 mt-10 text-xs tracking-wide text-green-700 bg-green-100 dark:text-green-200 border border-green-400 dark:border-green-600 dark:bg-green-800/20 md:px-4 md:py-[0.60rem] md:text-md dark:hover:brightness-125 font-medium rounded-sm"
         >
           Learn JS
-          <Blocks size={16} />
+          <Library size={16} />
         </Link>
         <Link
           to="/code-lab"
-          className="z-10 flex items-center justify-center gap-2 w-[120px] py-2 mt-10 text-xs tracking-wide text-zinc-700 bg-transparent dark:text-white border border-zinc-400  dark:border-zinc-500 dark:bg-zinc-800/20 md:px-4 md:py-[0.60rem] md:text-md dark:hover:brightness-125 font-semibold rounded-sm"
+          className="z-10 flex items-center justify-center gap-2 w-[120px] py-2 mt-10 text-xs tracking-wide text-zinc-700 bg-transparent dark:text-white border border-zinc-400  dark:border-zinc-500 dark:bg-zinc-800/20 md:px-4 md:py-[0.60rem] md:text-md dark:hover:brightness-125 font-medium rounded-sm"
         >
           Code Lab
-          <FlaskConical size={16} />
+          <Braces size={16} />
         </Link>
       </div>
       <p className="mt-2 text-xs">From Zero to Hero</p>

@@ -58,18 +58,8 @@ export default function FeedbackForm() {
     visible: { opacity: 1, y: 0 },
   };
 
-  if (!user) {
-    return (
-      <div className="grid w-full min-h-screen bg-white place-items-center">
-        <p className="text-xl font-semibold text-gray-800">
-          Please log in to submit feedback.
-        </p>
-      </div>
-    );
-  }
-
   return (
-    <div className="flex items-center justify-center w-full min-h-screen font-sans bg-white border border-zinc-200">
+    <div className="flex items-center justify-center w-full min-h-screen bg-white border font-Jost border-zinc-200">
       <motion.div
         className="w-full max-w-2xl p-8 bg-white rounded-lg "
         variants={containerVariants}

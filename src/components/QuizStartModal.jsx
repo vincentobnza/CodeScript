@@ -57,7 +57,7 @@ const QuizStartModal = ({ isOpen, setIsOpen }) => {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 grid p-8 overflow-y-scroll cursor-pointer font-Lato bg-slate-900/20 backdrop-blur-lg place-items-center">
+        <div className="fixed inset-0 z-50 grid p-8 overflow-y-scroll cursor-pointer font-Jost bg-slate-900/20 backdrop-blur-lg place-items-center ">
           {openModal && (
             <motion.div
               initial={{ scale: 0, rotate: "12.5deg" }}
@@ -127,7 +127,7 @@ const QuizStartModal = ({ isOpen, setIsOpen }) => {
 
           {/* Show timer only when modal is closed and countdown is active */}
           {!openModal && showTimer && (
-            <div className="relative flex flex-col items-center justify-center w-full max-w-xl mx-auto space-y-4 font-Lato">
+            <div className="relative flex flex-col items-center justify-center w-full max-w-xl mx-auto space-y-4 font-Jost">
               <h1 className="text-4xl font-bold">Please Be Ready</h1>
               <p className="text-sm text-zinc-400">The quiz starts in</p>
               <motion.h1

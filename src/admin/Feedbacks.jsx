@@ -91,7 +91,7 @@ export default function Feedbacks() {
   };
 
   return (
-    <div className="flex flex-col w-full max-w-screen-lg gap-2 p-6 mx-auto space-y-6">
+    <div className="flex flex-col w-full max-w-screen-lg gap-2 mx-auto space-y-6">
       <Toaster />
       <Header searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <>

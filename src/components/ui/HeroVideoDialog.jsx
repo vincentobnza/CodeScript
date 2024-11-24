@@ -38,9 +38,9 @@ export default function HeroVideoDialog({ thumbnailSrc, videoSrc, link }) {
           className="absolute inset-0 flex items-center justify-center"
         >
           <div className="relative group-hover:scale-100 scale-[0.9]">
-            <div className="absolute rounded-full -inset-4 bg-zinc-200 dark:bg-zinc-200/50 backdrop-blur-sm" />
+            <div className="absolute rounded-full -inset-4 bg-zinc-200/20 dark:bg-zinc-700/20 backdrop-blur-sm" />
             <div
-              className={`flex items-center justify-center bg-white dark:bg-gradient-to-br dark:from-zinc-300 dark:to-zinc-400 shadow-md rounded-full size-20 transition-all ease-out duration-200 relative group-hover:scale-[1.2] scale-100`}
+              className={`flex items-center justify-center bg-white/40 dark:bg-zinc-500/40 shadow-md rounded-full size-20 transition-all ease-out duration-200 relative group-hover:scale-[1.2] scale-100`}
             >
               <Play
                 className="transition-transform duration-200 ease-out scale-100 text-zinc-500 dark:text-white size-8 fill-white group-hover:scale-105"

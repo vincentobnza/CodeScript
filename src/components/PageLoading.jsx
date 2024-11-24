@@ -62,7 +62,7 @@ const LoadingScreen = ({ route = "/code-editor" }) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex flex-col items-center justify-center text-white font-NotoSans bg-gradient-to-br from-zinc-900 to-zinc-800"
+      className="fixed inset-0 z-50 flex flex-col items-center justify-center text-white font-Jost bg-gradient-to-br from-zinc-900 to-zinc-800"
     >
       <motion.div
         animate={{

@@ -38,6 +38,8 @@ import AdminLeaderboard from "./admin/AdminLeaderboard";
 import AdminAssessments from "./admin/AdminAssessments";
 import Feedbacks from "./admin/Feedbacks";
 import CreateAssessment from "./admin/CreateAssessment";
+import AdminQuizzes from "./admin/AdminQuizzes";
+import AdminCustomization from "./admin/AdminCustomization";
 
 // LESSONS
 import Lesson1_Topic1 from "./content/Lesson1/Lesson1.1";
@@ -330,6 +332,14 @@ const router = createBrowserRouter([
         path: "feedbacks",
         element: <Feedbacks />,
       },
+      {
+        path: "students-quizzes",
+        element: <AdminQuizzes />,
+      },
+      {
+        path: "customization",
+        element: <AdminCustomization />,
+      },
     ],
   },
 
@@ -361,7 +371,7 @@ const router = createBrowserRouter([
 
 export default function App() {
   return (
-    <div className=" font-Lato App text-zinc-950 dark:text-zinc-300">
+    <div className=" font-Jost App text-zinc-950 dark:text-zinc-300">
       <AuthProvider>
         <UserProvider>
           <RouterProvider router={router} />

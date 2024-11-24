@@ -31,7 +31,9 @@ const Content = () => {
   const { bookmarks, loading } = useBookmarks();
 
   if (loading) {
-    return <p className="text-center text-zinc-500">Loading bookmarks...</p>;
+    return (
+      <p className="mt-10 text-center text-zinc-500">Loading bookmarks...</p>
+    );
   }
 
   if (bookmarks.length === 0) {

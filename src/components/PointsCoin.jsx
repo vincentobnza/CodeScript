@@ -2,7 +2,6 @@ import React, { useState, useEffect, useCallback, useRef } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import { motion } from "framer-motion";
 import { CircularProgress } from "@nextui-org/react";
-import { BadgeCheck } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 import supabase from "../config/supabaseClient";
 import { useUser } from "@/context/UserContext";
@@ -165,7 +164,9 @@ export default function PointsCoin() {
         if (!toastShownRef.current) {
           toastShownRef.current = true;
           updatePoints(5);
-          updateProgress(0.5);
+          updateProgress(0.5).then(() => {
+            toastShownRef.current = false; // Reset the ref after updating
+          });
         }
         setIsLoading(true);
         return 0;
@@ -254,7 +255,7 @@ export default function PointsCoin() {
           )}
         </motion.div>
 
-        <div className="mt-2 px-2 py-[1px] text-xs font-bold text-amber-700 dark:text-white rounded-full dark:bg-gradient-to-br dark:bg-orange-600/30 dark:to-amber-700/80 border-2 border-amber-500 dark:border-amber-300 text-center">
+        <div className="mt-2 px-2 py-[1px] text-xs font-bold text-amber-700 dark:text-white rounded-full dark:bg-amber-800/20  border border-amber-500 dark:border-amber-700 text-center">
           <p>{updatedPoints} ✨</p>
         </div>
       </div>

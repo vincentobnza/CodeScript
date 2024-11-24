@@ -31,7 +31,7 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-white font-NotoSans">
+    <div className="flex items-center justify-center h-screen bg-white font-Jost">
       <Toaster />
       <div className="w-1/2 p-10 bg-white ">
         <div className="flex flex-col items-center mb-10">

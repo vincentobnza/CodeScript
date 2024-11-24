@@ -305,7 +305,7 @@ export default function CodeScript() {
   };
 
   return (
-    <div className="flex flex-col w-full h-screen font-sans bg-zinc-900 md:flex-row">
+    <div className="flex flex-col w-full h-screen font-Jost bg-zinc-900 md:flex-row">
       <Toaster />
       <AssessmentSidePanel
         assessments={assessments}
