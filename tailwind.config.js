@@ -28,7 +28,7 @@ export default {
         Inter: ["Inter", "sans-serif"],
         SpaceGrotesk: ["Space Grotesk", "sans-serif"],
         Lato: ["Lato", "sans-serif"],
-        Jost: ["Jost"]
+        Jost: ["Jost", "sans-serif"]
       },
     },
   },

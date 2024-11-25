@@ -37,7 +37,7 @@ const QuizStartModal = ({ isOpen, setIsOpen }) => {
           }
           return prev - 1;
         });
-      }, 2000);
+      }, 1000);
     }
 
     return () => {

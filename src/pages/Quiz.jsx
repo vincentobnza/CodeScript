@@ -32,7 +32,7 @@ export default function Quiz() {
   const [points, setPoints] = useState(0);
   const [isOpen, setIsOpen] = useState(true);
   const [quizCompleted, setQuizCompleted] = useState(false);
-  const [time, setTime] = useState(120);
+  const [time, setTime] = useState(0);
 
   const isLowTime = time <= 10;
 
@@ -53,7 +53,6 @@ export default function Quiz() {
     if (!isOpen && !quizCompleted && time > 0) {
       timerInterval = setInterval(() => {
         setTime((prevTime) => {
-          // If time reaches 0, clear interval and set quiz as completed
           if (prevTime <= 1) {
             clearInterval(timerInterval);
             setQuizCompleted(true);
@@ -64,7 +63,6 @@ export default function Quiz() {
       }, 1000);
     }
 
-    // Cleanup function
     return () => {
       if (timerInterval) {
         clearInterval(timerInterval);
@@ -72,9 +70,34 @@ export default function Quiz() {
     };
   }, [isOpen, quizCompleted, time]);
 
+  // Fetch Timer Settings
+  useEffect(() => {
+    const fetchTimerSettings = async () => {
+      try {
+        const { data, error } = await supabase
+          .from("quiz_config")
+          .select("time");
+
+        if (error) {
+          console.error("Error fetching timer settings:", error);
+          return;
+        }
+
+        // If successful, set time in seconds (assuming `time` is in minutes)
+        if (data?.length > 0) {
+          setTime(data[0].time * 60); // Convert minutes to seconds
+        }
+      } catch (error) {
+        console.error("Error fetching timer settings:", error);
+      }
+    };
+
+    fetchTimerSettings();
+  }, []);
+
+  // Reset Timer on Modal Open
   useEffect(() => {
     if (isOpen) {
-      setTime(120);
       setQuizCompleted(false);
     }
   }, [isOpen]);
@@ -239,28 +262,54 @@ const QuizCard = ({ points, setPoints, quizCompleted, setQuizCompleted }) => {
   const { quizType } = useParams();
   const [lastAnswerCorrect, setLastAnswerCorrect] = useState(null);
   const [totalProgress, setTotalProgress] = useState(0);
+  const [random, setRandom] = useState("");
+
+  // FETCH THE VALUE OF RANDOM IF TRUE OR FALSE
 
   useEffect(() => {
-    const loadQuizData = () => {
-      const originalQuizData = Quizzes[quizType];
-      if (originalQuizData) {
-        const randomizedQuizData = [...originalQuizData].sort(
-          () => Math.random() - 0.5
-        );
-        setQuizData(randomizedQuizData);
-        setIsLoading(false);
-      } else {
-        setError("Quiz not found.");
-        setIsLoading(false);
+    const fetchIfRandom = async () => {
+      try {
+        const { data, error } = await supabase
+          .from("quiz_config")
+          .select("randomize")
+          .single(); // Fetch only one row
+
+        if (error) throw error;
+
+        setRandom(data.randomize?.toString() || "true"); // Convert to string and default to "true"
+      } catch (error) {
+        console.error("Error fetching random value:", error);
+        setRandom("true"); // Default to "true" on error
       }
     };
 
-    loadQuizData();
+    fetchIfRandom();
+  }, []); // Ensure quizId is properly defined in your context
 
-    if (user) {
-      fetchTotalProgress();
+  // LOAD QUIZ DATA
+  useEffect(() => {
+    const loadQuizData = () => {
+      const originalQuizData = Quizzes[quizType];
+
+      if (!originalQuizData) {
+        setError("Quiz not found.");
+        setIsLoading(false);
+        return;
+      }
+
+      const randomizedQuizData = [...originalQuizData].sort(
+        () => Math.random() - 0.5
+      );
+
+      // Render randomized or original data based on `random`
+      setQuizData(random === "true" ? randomizedQuizData : originalQuizData);
+      setIsLoading(false);
+    };
+
+    if (quizType) {
+      loadQuizData();
     }
-  }, [quizType]);
+  }, [quizType, random]);
 
   const fetchTotalProgress = async () => {
     try {

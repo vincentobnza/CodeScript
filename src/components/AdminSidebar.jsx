@@ -91,8 +91,10 @@ export default function AdminSidebar() {
                 key={index}
                 to={link.to}
                 className={({ isActive }) =>
-                  `relative flex items-center w-full gap-4 p-2 text-[13px] transition-colors duration-300 rounded-lg ${
-                    isActive ? "text-green-600" : "text-zinc-700"
+                  `relative flex items-center w-full gap-4 p-2 text-[13px] transition-colors duration-300 rounded ${
+                    isActive
+                      ? "border-l-2 border-green-500 bg-green-100 text-green-700 font-semibold"
+                      : "text-zinc-700"
                   }`
                 }
               >
@@ -111,8 +113,10 @@ export default function AdminSidebar() {
                 key={index}
                 to={link.to}
                 className={({ isActive }) =>
-                  `flex items-center w-full gap-4 p-2 text-[13px] transition-colors duration-300 rounded-lg ${
-                    isActive ? "text-green-500" : "text-zinc-700"
+                  `flex items-center w-full gap-4 p-2 text-[13px] transition-colors duration-300 rounded ${
+                    isActive
+                      ? "border-l-2 border-green-500 bg-green-100 text-green-700 font-semibold"
+                      : "text-zinc-700"
                   }`
                 }
               >
@@ -137,7 +141,12 @@ export default function AdminSidebar() {
         </div>
       </nav>
 
-      <Modal isOpen={isOpen} onClose={onClose} backdrop="blur">
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        className="font-Jost"
+        radius="none"
+      >
         <ModalContent>
           {(onClose) => (
             <>

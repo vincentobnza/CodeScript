@@ -163,12 +163,20 @@ const ListBox = () => {
                 : "text-indigo-600 dark:text-white font-bold"
             }`,
           }}
-          value={userDetails?.progress}
+          value={
+            userDetails?.progress > 100 || userDetails?.progress < 0
+              ? 100
+              : userDetails?.progress
+          }
           strokeWidth={4}
           showValueLabel={true}
         />
 
-        <p className="px-4 text-xs leading-snug text-center md:px-6">{`Your current progress in JavaScript is ${userDetails?.progress}%, Keep up the great work!!`}</p>
+        <p className="px-4 text-xs leading-snug text-center md:px-6">{`Your current progress in JavaScript is ${
+          userDetails?.progress > 100 || userDetails?.progress < 0
+            ? 100
+            : userDetails?.progress
+        }%, Keep up the great work!!`}</p>
       </div>
     </div>
   );
