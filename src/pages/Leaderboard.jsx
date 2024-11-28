@@ -13,16 +13,66 @@ import {
 } from "@nextui-org/react";
 import { CircularProgress } from "@nextui-org/react";
 import supabase from "../config/supabaseClient";
-import { Search, EyeOff, ArrowUpDown, Eye } from "lucide-react";
+import {
+  Search,
+  EyeOff,
+  ArrowUpDown,
+  Eye,
+  Ban,
+  ArrowUpRight,
+} from "lucide-react";
+import { Link } from "react-router-dom";
 import ProfileHeader from "../assets/profile header.png";
 
 export default function Leaderboard() {
+  const [status, setStatus] = useState("");
+
+  useEffect(() => {
+    const fetchLeaderboardStatus = async () => {
+      try {
+        const { data, error } = await supabase
+          .from("leaderboard_config")
+          .select("status")
+          .eq("id", 1)
+          .single();
+
+        if (error) throw error;
+        setStatus(data.status);
+      } catch (error) {
+        console.log("Error fetching leaderboard status:", error);
+      }
+    };
+
+    fetchLeaderboardStatus();
+  }, []);
   return (
-    <div className="pb-10 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300">
-      <Header />
-      <ListBox />
-      <Ranking />
-    </div>
+    <>
+      <div className="pb-10 bg-white dark:bg-zinc-900 text-zinc-700 dark:text-zinc-300">
+        <Header status={status} />
+        <ListBox />
+
+        {status === "visible" ? (
+          <Ranking />
+        ) : (
+          <>
+            <div className="relative flex flex-col items-center justify-center w-full max-w-screen-md p-5 mx-auto mt-10 h-80">
+              <div className="absolute w-[240px] h-[100px] bg-slate-600/60 rounded-full bottom-12 z-0 filter blur-[80px]" />
+              <Ban size={50} className="mb-10" />
+              <div className="flex items-center gap-2">
+                <h1>Leaderboard Ranking is currently hidden for view</h1>
+                <Link
+                  to="/leaderboard/learn-more"
+                  className="flex items-center gap-2 ml-2 text-green-500"
+                >
+                  Learn more
+                  <ArrowUpRight size={15} className="text-green-500" />
+                </Link>
+              </div>
+            </div>
+          </>
+        )}
+      </div>
+    </>
   );
 }
 
@@ -104,7 +154,7 @@ const ListBox = () => {
             className="absolute object-cover -bottom-8 md:-bottom-10 left-4 md:left-10"
             size="lg"
             isBordered
-            color="secondary"
+            color="success"
           />
         </div>
 

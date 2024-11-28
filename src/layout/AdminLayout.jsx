@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Outlet } from "react-router-dom";
 import AdminSidebar from "@/components/AdminSidebar";
 import AdminNavbar from "@/components/AdminNavbar";
 
 export default function AdminLayout() {
+  useEffect(() => {
+    document.title = "CodeScript - Instructor";
+  });
   return (
     <div className="flex flex-col w-full bg-white font-Jost text-zinc-700">
       <AdminNavbar />

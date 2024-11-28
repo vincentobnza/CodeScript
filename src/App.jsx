@@ -24,6 +24,7 @@ import PretestPage from "./pages/PretestPage";
 import Overview from "./pages/Overview";
 import Bookmark from "./pages/Bookmark";
 import Performance from "./pages/Performance";
+import LearnMore from "./pages/LearnMore";
 
 // LAYOUT
 import RootLayout from "./layout/RootLayout";
@@ -85,6 +86,8 @@ import AdminProtectedRoute from "./private/AdminProtectedRoute";
 
 // LOADER
 import LoadingPageWithNavigation from "./components/PageLoading";
+
+import CertificateLivePreview from "./admin/CertificateLivePreview";
 
 // 404
 
@@ -274,12 +277,21 @@ const router = createBrowserRouter([
     ],
   },
 
-  // 404 PAGE
+  {
+    path: "leaderboard/learn-more",
+    element: <LearnMore />,
+  },
+
+  {
+    path: "admin/certificate-live-preview",
+    element: <CertificateLivePreview />,
+  },
 
   {
     path: "*",
     element: <NotFound />,
   },
+
   {
     path: "code-editor",
     element: <CodeEditor />,

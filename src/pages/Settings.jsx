@@ -162,10 +162,10 @@ const Content = () => {
       toast.success("Profile updated successfully", {
         style: {
           fontSize: "12px",
-          fontWeight: "bold",
+          fontWeight: "500",
         },
       });
-      await fetchCurrentUser(); // Refresh user data
+      await fetchCurrentUser(); 
     } catch (error) {
       toast.error("Error updating profile: ", error);
     } finally {
@@ -182,8 +182,9 @@ const Content = () => {
           size="lg"
           isBordered
         />
-        <label className="px-4 py-2 mt-5 text-xs font-semibold border cursor-pointer border-zinc-200 dark:text-zinc-400 dark:border-zinc-700">
+        <label className="flex items-center gap-2 mt-5 text-xs font-semibold cursor-pointer text-green-600 dark:text-green-400">
           Change
+          <PencilLine size={14} />
           <input
             type="file"
             className="hidden"

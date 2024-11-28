@@ -93,7 +93,7 @@ export default function AdminSidebar() {
                 className={({ isActive }) =>
                   `relative flex items-center w-full gap-4 p-2 text-[13px] transition-colors duration-300 rounded ${
                     isActive
-                      ? "border-l-2 border-green-500 bg-green-100 text-green-700 font-semibold"
+                      ? "border-l-2 border-green-500 bg-green-100 text-green-700"
                       : "text-zinc-700"
                   }`
                 }
@@ -115,7 +115,7 @@ export default function AdminSidebar() {
                 className={({ isActive }) =>
                   `flex items-center w-full gap-4 p-2 text-[13px] transition-colors duration-300 rounded ${
                     isActive
-                      ? "border-l-2 border-green-500 bg-green-100 text-green-700 font-semibold"
+                      ? "border-l-2 border-green-500 bg-green-100 text-green-700"
                       : "text-zinc-700"
                   }`
                 }

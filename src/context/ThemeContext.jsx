@@ -5,7 +5,7 @@ const ThemeContext = createContext();
 export const useTheme = () => useContext(ThemeContext);
 
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState("system");
+  const [theme, setTheme] = useState("dark");
 
   // Function to get system theme preference
   const getSystemTheme = () => {

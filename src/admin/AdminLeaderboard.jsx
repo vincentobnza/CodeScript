@@ -252,7 +252,7 @@ const UsersTable = ({ users, loading, sortDescriptor, setSortDescriptor }) => {
 
     switch (columnKey) {
       case "rank":
-        return <div className="font-bold">{user.current_rank}</div>;
+        return <div className="font-bold">{user.rank}</div>;
       case "username":
         return (
           <div className="flex items-center gap-3">

@@ -151,30 +151,40 @@ export default function PointsCoin() {
     },
     [user]
   );
-
   const handleClick = useCallback(() => {
-    toast.success("You've earned 5 points!", {
-      icon: "🥇",
-      style: {
-        fontSize: "13px",
-        fontWeight: "bold",
-      },
-    });
-    setPoints((prevPoints) => {
-      if (prevPoints) {
-        if (!toastShownRef.current) {
-          toastShownRef.current = true;
-          updatePoints(5);
-          updateProgress(0.5).then(() => {
-            toastShownRef.current = false; // Reset the ref after updating
-          });
-        }
-        setIsLoading(true);
-        return 0;
-      }
-      return prevPoints;
-    });
-  }, [updatePoints, updateProgress]);
+    if (points === 100 && !toastShownRef.current) {
+      toastShownRef.current = true;
+      toast.success("You've earned 5 points!", {
+        icon: "🌱",
+        style: {
+          backgroundColor: "#15803d",
+          color: "#fff",
+          fontSize: "13px",
+          fontWeight: "500",
+        },
+      });
+
+      // Update points and progress
+      updatePoints(5);
+      updateProgress(0.5).then(() => {
+        toastShownRef.current = false; // Reset the ref after updating
+      });
+
+      // Reset points to 0 and mark loading
+      setPoints(0);
+      setIsLoading(true);
+    } else {
+      toast.error("Keep scrolling to earn points!", {
+        icon: "🫢",
+        style: {
+          fontSize: "13px",
+          fontWeight: "500",
+          backgroundColor: "#dc2626",
+          color: "#fff",
+        },
+      });
+    }
+  }, [points, updatePoints, updateProgress]);
 
   useEffect(() => {
     if (user) {

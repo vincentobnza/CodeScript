@@ -270,7 +270,8 @@ const Lesson1Data = () => {
             {/* Bookmark Icon */}
             <div className="absolute left-2 bottom-2">
               <Tooltip
-                placement="left"
+                className="font-Jost"
+                placement="top"
                 radius="none"
                 showArrow
                 content={
@@ -367,7 +368,8 @@ const Lesson2Data = () => {
             {/* Bookmark Icon */}
             <div className="absolute left-2 bottom-2">
               <Tooltip
-                placement="left"
+                className="font-Jost"
+                placement="top"
                 radius="none"
                 showArrow
                 content={
@@ -464,7 +466,8 @@ const Lesson3Data = () => {
             {/* Bookmark Icon */}
             <div className="absolute left-2 bottom-2">
               <Tooltip
-                placement="left"
+                className="font-Jost"
+                placement="top"
                 radius="none"
                 showArrow
                 content={
@@ -561,7 +564,8 @@ const Lesson4Data = () => {
             {/* Bookmark Icon */}
             <div className="absolute left-2 bottom-2">
               <Tooltip
-                placement="left"
+                className="font-Jost"
+                placement="top"
                 radius="none"
                 showArrow
                 content={
@@ -657,7 +661,8 @@ const Lesson5Data = () => {
             {/* Bookmark Icon */}
             <div className="absolute left-2 bottom-2">
               <Tooltip
-                placement="left"
+                className="font-Jost"
+                placement="top"
                 radius="none"
                 showArrow
                 content={
@@ -753,7 +758,8 @@ const Lesson6Data = () => {
             {/* Bookmark Icon */}
             <div className="absolute left-2 bottom-2">
               <Tooltip
-                placement="left"
+                className="font-Jost"
+                placement="top"
                 radius="none"
                 showArrow
                 content={
@@ -850,7 +856,8 @@ const Lesson7Data = () => {
             {/* Bookmark Icon */}
             <div className="absolute left-2 bottom-2">
               <Tooltip
-                placement="left"
+                className="font-Jost"
+                placement="top"
                 radius="none"
                 showArrow
                 content={
@@ -947,7 +954,8 @@ const Lesson8Data = () => {
             {/* Bookmark Icon */}
             <div className="absolute left-2 bottom-2">
               <Tooltip
-                placement="left"
+                className="font-Jost"
+                placement="top"
                 radius="none"
                 showArrow
                 content={

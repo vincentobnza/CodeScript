@@ -33,8 +33,8 @@ const Hero = () => {
             <div className="flex items-center gap-2">
               <p>
                 Boost Your Skills with{" "}
-                <span className="font-black text-green-500">21+</span> In-Depth
-                JavaScript Topics
+                <span className="font-semibold text-green-500">21+</span>{" "}
+                In-Depth JavaScript Topics
               </p>
               <Zap size={13} className="text-green-600 dark:text-green-500" />
             </div>

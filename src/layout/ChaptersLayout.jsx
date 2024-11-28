@@ -10,7 +10,7 @@ export default function ChaptersLayout() {
     <div className="flex mb-10">
       <PointsCoin />
       <DynamicSidebar />
-      <div className="flex-1 ml-0 space-y-8 md:mx-64">
+      <div className="max-w-5xl px-4 mx-auto md:px-14 lg:px-16">
         <div className="flex justify-between px-4 md:px-12">
           <div className="flex">
             <Link
@@ -42,7 +42,7 @@ export default function ChaptersLayout() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.7 }}
-          className="max-w-5xl px-4 mx-auto md:px-14 lg:px-16"
+          className="mt-8 max-w-5xl px-4 mx-auto md:px-14 lg:px-16"
         >
           <Outlet />
         </motion.main>

@@ -123,6 +123,7 @@ export default function Navbar() {
       setTimeout(() => setRefreshPoints(false), 500);
     }
   };
+
   return (
     <div className="sticky top-0 z-50 grid w-full bg-white dark:border-b dark:bg-zinc-900/70 backdrop-blur-lg text-zinc-900 dark:text-zinc-300 place-items-center dark:border-zinc-800">
       <NavbarQuickSearch
@@ -154,10 +155,9 @@ export default function Navbar() {
           </div>
           <Navs />
         </div>
-
         {/* Right Side Icons */}
         <div className="flex items-center gap-6">
-          <div className="flex items-center gap-1">
+          <div className="flex items-center gap-3">
             <Tooltip
               radius="sm"
               showArrow
@@ -166,14 +166,19 @@ export default function Navbar() {
                 <div className="grid grid-cols-2 gap-4 p-5 pb-2 font-Jost">
                   <div className="flex flex-col items-center justify-center gap-3 mb-3 text-xs text-zinc-500 dark:text-zinc-400">
                     <h1> Current Points</h1>
-                    <h1 className="text-lg font-bold text-amber-500">
-                      {userDetails?.current_points}
-                    </h1>
+                    <div className="relative">
+                      <h1 className="text-lg font-bold text-amber-500">
+                        {userDetails?.current_points || 0}{" "}
+                        <span className="absolute -top-2 -right-5 text-[9px]">
+                          pts
+                        </span>
+                      </h1>
+                    </div>
                   </div>
                   <div className="flex flex-col items-center justify-center gap-3 mb-3 text-xs text-zinc-500 dark:text-zinc-400">
                     <h1> Current Progress</h1>
                     <h1 className="text-lg font-bold text-indigo-500">
-                      {userDetails?.progress} %
+                      {userDetails?.progress || 0} %
                     </h1>
                   </div>
                 </div>
@@ -181,10 +186,11 @@ export default function Navbar() {
             >
               <div className="flex items-center gap-2 px-4 py-1 border rounded-full border-zinc-100 dark:border-zinc-800">
                 <div className="border border-green-600 rounded-full bg-gradient-to-br from-green-300 to-emerald-600 bg-gr size-3 dark:border-green-200"></div>
-
-                <p className="text-xs font-semibold text-zinc-500 dark:text-zinc-200">
-                  {userDetails?.current_points}
-                </p>
+                {userDetails && (
+                  <p className="text-xs font-semibold text-zinc-500 dark:text-zinc-200">
+                    {userDetails?.current_points}
+                  </p>
+                )}
               </div>
             </Tooltip>
             <RefreshCcw
@@ -246,6 +252,7 @@ export default function Navbar() {
                   onClick={() => {
                     signOut();
                     setPoints(0);
+                    setUserDetails(null);
                   }}
                 >
                   Signout
@@ -328,7 +335,7 @@ const Navs = () => {
   }, [location]);
 
   const navLinks = [
-    { to: "/learn", label: "Lessons" },
+    { to: "/learn-js", label: "Lessons" },
     { to: "/leaderboard", label: "Leaderboards" },
     { to: "/code-lab", label: "Code Lab" },
     { to: "/about-us", label: "About Us" },
@@ -358,7 +365,7 @@ function MobileMenu({ isOpen, onClose }) {
   const navigate = useNavigate();
 
   const navLinks = [
-    { href: "/learn", label: "Lessons" },
+    { href: "/learn-js", label: "Lessons" },
     { href: "/code-lab", label: "Code Lab" },
     { href: "/leaderboard", label: "Leaderboard" },
     { href: "/about-us", label: "About Us" },

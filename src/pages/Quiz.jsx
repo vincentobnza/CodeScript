@@ -141,6 +141,12 @@ export default function Quiz() {
     origin: { y: 0.7 },
   };
 
+  const formatTime = (timeInSeconds) => {
+    const minutes = Math.floor(timeInSeconds / 60);
+    const seconds = timeInSeconds % 60;
+    return `${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
+  };
+
   return (
     <>
       <QuizStartModal isOpen={isOpen} setIsOpen={setIsOpen} />
@@ -185,15 +191,15 @@ export default function Quiz() {
             )}
 
             {/* TIMER */}
-
-            {!quizCompleted && !isOpen && (
+            {!quizCompleted && !isOpen && time > 0 && (
               <motion.div
                 className="inline-flex items-center px-4 py-2 space-x-2 bg-white border rounded-full shadow-xl dark:bg-zinc-800/20 border-zinc-200 dark:border-zinc-800"
                 animate={isLowTime ? "shake" : ""}
                 variants={shakeAnimation}
               >
                 <Clock
-                  className={`w-5 h-5 ${
+                  strokeWidth={2.5}
+                  className={`w-4 h-4 ${
                     isLowTime ? "text-red-500" : "text-green-500"
                   }`}
                 />
@@ -309,6 +315,10 @@ const QuizCard = ({ points, setPoints, quizCompleted, setQuizCompleted }) => {
     if (quizType) {
       loadQuizData();
     }
+
+    if (user) {
+      fetchTotalProgress();
+    }
   }, [quizType, random]);
 
   const fetchTotalProgress = async () => {
@@ -368,7 +378,7 @@ const QuizCard = ({ points, setPoints, quizCompleted, setQuizCompleted }) => {
         try {
           const { data: profileData, error: fetchError } = await supabase
             .from("profiles")
-            .select("current_points, progress")
+            .select("current_points")
             .eq("id", user.id)
             .single();
 
@@ -377,7 +387,6 @@ const QuizCard = ({ points, setPoints, quizCompleted, setQuizCompleted }) => {
           const currentPoints = profileData?.current_points || 0;
           const newTotalPoints = currentPoints + pointsAdded;
 
-          // Calculate progress increase and ensure it doesn't exceed 100%
           const quizProgressPercentage =
             (score / quizData.length) * quizData.length;
           const newTotalProgress = Math.min(
@@ -385,47 +394,41 @@ const QuizCard = ({ points, setPoints, quizCompleted, setQuizCompleted }) => {
             100
           );
 
-          // Update only if the progress isn't already 100%
-          if (profileData.progress < 100) {
-            const { error: updateError } = await supabase
-              .from("profiles")
-              .update({
-                current_points: newTotalPoints,
-                progress: newTotalProgress,
-              })
-              .eq("id", user.id);
+          // Update points in the profiles table
+          const { error: updateError } = await supabase
+            .from("profiles")
+            .update({
+              current_points: newTotalPoints,
+              progress: newTotalProgress,
+            })
+            .eq("id", user.id);
 
-            if (updateError) throw updateError;
+          if (updateError) throw updateError;
 
-            // Insert a new record in users_quizzes table
-            const { error: insertError } = await supabase
-              .from("users_quizzes")
-              .insert({
-                user_id: user.id,
-                lesson: quizType,
-                status: "Completed",
-                score: `${score}/${quizData.length}`,
-                name: user.user_metadata.full_name,
-                completed_at: new Date().toISOString(),
-              });
-
-            if (insertError) throw insertError;
-
-            toast.success("Points updated successfully", {
-              position: "top-center",
-              style: {
-                borderRadius: "5px",
-                background: "#333",
-                color: "#fff",
-                fontSize: "12px",
-                letterSpacing: "0.5px",
-              },
+          // Insert a new record in users_quizzes table
+          const { error: insertError } = await supabase
+            .from("users_quizzes")
+            .insert({
+              user_id: user.id,
+              lesson: quizType,
+              status: "Completed",
+              score: `${score}/${quizData.length}`,
+              name: user.user_metadata.full_name,
+              completed_at: new Date().toISOString(),
             });
-          } else {
-            toast.info("Progress is already at 100%", {
-              position: "top-center",
-            });
-          }
+
+          if (insertError) throw insertError;
+
+          toast.success("Points updated successfully", {
+            position: "top-center",
+            style: {
+              borderRadius: "5px",
+              background: "#333",
+              color: "#fff",
+              fontSize: "12px",
+              letterSpacing: "0.5px",
+            },
+          });
         } catch (error) {
           console.error("Error updating points:", error);
           toast.error("Failed to update points. Please try again later.");
