@@ -52,17 +52,17 @@ const Hero = () => {
         Interactive lessons designed to sharpen your JavaScript Skills
       </p>
       <div className="relative flex items-center gap-2">
-        <div className="absolute w-[240px] h-[100px] bg-green-600/40 rounded-full bottom-8 z-0 filter blur-[80px]" />
+        <div className="hidden dark:flex absolute w-[240px] h-[100px] bg-green-600/40 rounded-full bottom-8 z-0 filter blur-[80px]" />
         <Link
           to="/learn"
-          className="z-10 flex items-center justify-center gap-2 w-[120px] py-2 mt-10 text-xs tracking-wide text-green-700 bg-green-100 dark:text-green-200 border border-green-400 dark:border-green-600 dark:bg-green-800/20 md:px-4 md:py-[0.60rem] md:text-md dark:hover:brightness-125 font-medium rounded-sm"
+          className="z-10 flex items-center justify-center gap-2 w-[120px] py-2 mt-10 text-xs tracking-wide dark:border bg-green-700 text-white dark:text-green-200 border border-green-700 dark:border-green-600 dark:bg-green-800/20 md:px-4 md:py-[0.60rem] md:text-md dark:hover:brightness-125 font-medium rounded-sm"
         >
           Learn JS
           <Library size={16} />
         </Link>
         <Link
           to="/code-lab"
-          className="z-10 flex items-center justify-center gap-2 w-[120px] py-2 mt-10 text-xs tracking-wide text-zinc-700 bg-transparent dark:text-white border border-zinc-400  dark:border-zinc-500 dark:bg-zinc-800/20 md:px-4 md:py-[0.60rem] md:text-md dark:hover:brightness-125 font-medium rounded-sm"
+          className="z-10 flex items-center justify-center gap-2 w-[120px] py-2 mt-10 text-xs tracking-wide text-zinc-700 bg-transparent dark:text-white border border-zinc-500  dark:border-zinc-500 dark:bg-zinc-800/20 md:px-4 md:py-[0.60rem] md:text-md dark:hover:brightness-125 font-medium rounded-sm"
         >
           Code Lab
           <Braces size={16} />
@@ -78,7 +78,7 @@ const Main = () => {
   return (
     <div className="grid w-full max-w-screen-lg gap-6 p-5 mx-auto md:grid-cols-2 md:p-0">
       <div className="flex flex-col w-full mt-4 md:mt-16">
-        <div className="flex items-center self-start justify-center gap-2 px-3 py-1 mb-4 font-medium text-green-600 bg-transparent border border-green-200 rounded-full dark:border-green-700 dark:text-green-300 dark:bg-green-800/20 animate-pulse">
+        <div className="flex items-center self-start justify-center gap-2 px-3 py-1 mb-4 font-medium text-green-600 bg-transparent border border-green-500 rounded-full dark:border-green-700 dark:text-green-300 dark:bg-green-800/20 ">
           <Zap size={14} />
           <h1 className="text-xs">Test Your Skills</h1>
         </div>
@@ -93,7 +93,7 @@ const Main = () => {
           <div className="hidden md:flex lg:flex absolute w-40 h-20 bg-green-600/40 rounded-full -bottom-12 z-0 filter blur-[80px]" />
           <Link
             to="/code-lab/loader=true"
-            className="z-10 flex items-center self-start justify-center gap-2 px-8 py-3 mt-8 text-sm font-bold transition duration-500 ease-in-out bg-transparent border rounded-full shadow-none dark:shadow-2xl text-zinc-700 dark:text-zinc-300 dark:bg-zinc-900/20 border-zinc-300 dark:border-zinc-700 hover:bg-transparent hover:text-green-400 dark:hover:text-green-500 hover:border-green-300 dark:hover:border-green-600 "
+            className="z-10 flex items-center self-start justify-center gap-2 px-8 py-3 mt-8 text-sm font-bold transition duration-500 ease-in-out bg-transparent border rounded-full shadow-none dark:shadow-2xl text-zinc-700 dark:text-zinc-300 dark:bg-zinc-900/20 border-zinc-500 dark:border-zinc-700 hover:bg-transparent hover:text-green-400 dark:hover:text-green-500 hover:border-green-300 dark:hover:border-green-600 "
           >
             Get Started
             <ArrowUpRight size={16} />

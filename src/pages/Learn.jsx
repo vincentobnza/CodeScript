@@ -85,7 +85,7 @@ const Header = () => {
 
   return (
     <div className="relative flex items-start justify-between w-full max-w-screen-lg gap-4 p-3 mx-auto md:p-0">
-      <div className="absolute w-[240px] h-[100px] bg-slate-400/80 rounded-full bottom-8 z-0 filter blur-[100px]" />
+      <div className="hidden md:flex absolute w-[240px] h-[100px] bg-slate-400/80 rounded-full bottom-8 z-0 filter blur-[100px]" />
       <NavbarQuickSearch
         isOpen={isOpen}
         onOpen={onOpen}

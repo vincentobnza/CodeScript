@@ -48,11 +48,11 @@ const DynamicSidebar = () => {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.7 }}
-      className="hidden md:flex bg-white dark:bg-zinc-900 p-4 w-64 h-screen overflow-y-auto fixed left-0 top-0 border-r border-zinc-2 dark:border-zinc-800 z-10"
+      className="fixed top-0 left-0 z-10 hidden w-64 h-screen p-4 overflow-y-auto bg-white border-r md:flex dark:bg-zinc-900 border-zinc-2 dark:border-zinc-800"
     >
       <div className="p-5 mt-[5.6rem] space-y-6">
         <div className="flex flex-col gap-1">
-          <p className="text-xs font-semibold text-zinc-400 dark:text-zinc-500">
+          <p className="text-xs font-semibold text-zinc-600 dark:text-zinc-500">
             Navigation
           </p>
           <h1 className="text-lg font-semibold text-zinc-700 dark:text-zinc-200">
@@ -82,7 +82,7 @@ const DynamicSidebar = () => {
                       className={`cursor-pointer text-sm ${
                         activeSection === section.id
                           ? "text-green-500 underline"
-                          : "text-zinc-500 dark:text-zinc-400"
+                          : "text-zinc-800 dark:text-zinc-400"
                       }`}
                     >
                       {section.title}

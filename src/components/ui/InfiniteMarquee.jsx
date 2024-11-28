@@ -93,10 +93,10 @@ export default function InfiniteMarquee() {
                       />
                     </div>
                     <div className="w-[250px] p-2 flex flex-col text-left gap-2">
-                      <div className="text-sm text-zinc-700 dark:text-zinc-300">
+                      <div className="text-sm text-zinc-800 dark:text-zinc-300">
                         {lesson.title}
                       </div>
-                      <div className="text-xs text-zinc-500 dark:text-zinc-500">
+                      <div className="text-xs text-zinc-600 dark:text-zinc-500">
                         {lesson.description}
                       </div>
                     </div>

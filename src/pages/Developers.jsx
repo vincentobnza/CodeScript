@@ -243,7 +243,7 @@ const LibrariesUsed = () => {
           return (
             <Link
               to={list.link}
-              className="relative flex flex-col items-start gap-2 p-4 pb-8 overflow-hidden transition duration-300 ease-linear border rounded-md bg-zinc-50 dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700 dark:hover:brightness-125 group"
+              className="relative flex flex-col items-start gap-2 p-4 pb-8 overflow-hidden transition duration-300 ease-linear bg-white border rounded-md dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700 dark:hover:brightness-125 group"
               key={idx}
             >
               <img
@@ -252,7 +252,7 @@ const LibrariesUsed = () => {
                 className="absolute w-20 transition duration-300 ease-linear opacity-30 dark:opacity-10 -bottom-2 -right-3 group-hover:grayscale-0 dark:grayscale group-hover:opacity-40"
               />
 
-              <div className="grid p-2 border rounded-lg size-8 bg-zinc-100 dark:bg-gradient-to-br dark:from-zinc-800 dark:to-zinc-700 border-zinc-200 dark:border-zinc-600 place-items-center">
+              <div className="grid p-2 bg-white border rounded-lg size-8 dark:bg-gradient-to-br dark:from-zinc-800 dark:to-zinc-700 border-zinc-200 dark:border-zinc-600 place-items-center">
                 <img src={list.icon} alt="icon" className="object-cover" />
               </div>
 

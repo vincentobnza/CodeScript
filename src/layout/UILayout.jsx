@@ -23,15 +23,13 @@ export const Topic = ({ children }) => (
 );
 
 export const Title = ({ children }) => (
-  <h1 className="mt-5 text-lg font-medium md:text-2xl text-zinc-700 dark:text-zinc-300">
+  <h1 className="mt-5 text-lg font-medium md:text-2xl text-zinc-800 dark:text-zinc-300">
     {children}
   </h1>
 );
 
 export const Description = ({ children }) => (
-  <p className="text-sm  font-medium text-zinc-500 dark:text-[#7e7e7e]">
-    {children}
-  </p>
+  <p className="text-sm  text-zinc-800 dark:text-[#7e7e7e]">{children}</p>
 );
 
 export const Example = ({ text }) => (
@@ -366,7 +364,7 @@ export const TopicRef = ({ reference }) => {
   const [hidden, setHidden] = useState(false);
   return (
     <div className="flex flex-col items-start justify-start w-full p-3 pb-6 space-y-2 bg-white border border-zinc-300 dark:border-zinc-700 dark:bg-zinc-800/20">
-      <button className="text-xs italic font-semibold text-zinc-400">
+      <button className="text-xs italic font-semibold text-zinc-600 dark:text-zinc-400">
         Topic Reference
       </button>
 

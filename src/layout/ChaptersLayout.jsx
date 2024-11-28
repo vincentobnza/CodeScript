@@ -15,13 +15,13 @@ export default function ChaptersLayout() {
           <div className="flex">
             <Link
               to="/learn-js"
-              className="flex items-center gap-2 px-4 py-2 text-xs font-semibold rounded text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:hover:brightness-125"
+              className="flex items-center gap-2 px-4 py-2 text-xs rounded text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:hover:brightness-125"
             >
               <Undo2 size={13} />
               Return to Homepage
             </Link>
           </div>
-          <div className="hidden md:flex items-center gap-[6px] text-xs font-semibold">
+          <div className="hidden md:flex items-center gap-[6px] text-xs">
             <Link
               to="/certificate"
               className="flex items-center gap-2 px-3 py-2 border rounded border-zinc-200 dark:border-zinc-700 dark:hover:brightness-125"
@@ -42,7 +42,7 @@ export default function ChaptersLayout() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ duration: 0.7 }}
-          className="mt-8 max-w-5xl px-4 mx-auto md:px-14 lg:px-16"
+          className="max-w-5xl px-4 mx-auto mt-8 md:px-14 lg:px-16"
         >
           <Outlet />
         </motion.main>
