@@ -5,13 +5,14 @@ import PointsCoin from "@/components/PointsCoin";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Undo2, Medal, Loader } from "lucide-react";
+import { Progress } from "@nextui-org/react";
 export default function ChaptersLayout() {
   return (
     <div className="flex mb-10">
       <PointsCoin />
       <DynamicSidebar />
       <div className="max-w-5xl px-4 mx-auto md:px-14 lg:px-16">
-        <div className="flex justify-between px-4 md:px-12">
+        <div className="w-full flex justify-between px-4 md:px-12 border-b border-zinc-200 dark:border-zinc-800 pb-5 ">
           <div className="flex">
             <Link
               to="/learn-js"
@@ -38,6 +39,7 @@ export default function ChaptersLayout() {
             </Link>
           </div>
         </div>
+
         <motion.main
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}

@@ -5,7 +5,6 @@ import { CircularProgress } from "@nextui-org/react";
 import { useAuth } from "@/context/AuthContext";
 import supabase from "../config/supabaseClient";
 import { useUser } from "@/context/UserContext";
-import { Pointer, PointerOff } from "lucide-react";
 
 export default function PointsCoin() {
   const [points, setPoints] = useState(0);
@@ -95,8 +94,6 @@ export default function PointsCoin() {
         const currentPoints = data.current_points || 0;
         const newPoints = currentPoints + pointsToAdd;
 
-        console.log("New total points:", newPoints);
-
         const { error: updateError } = await supabase
           .from("profiles")
           .update({ current_points: newPoints })
@@ -138,7 +135,7 @@ export default function PointsCoin() {
         const { error: updateError } = await supabase
           .from("profiles")
           .update({ progress: newProgress })
-          .eq("id", user.id);
+          .eq("id", user?.id);
 
         if (updateError) {
           throw updateError;
@@ -151,15 +148,16 @@ export default function PointsCoin() {
     },
     [user]
   );
-  const handleClick = useCallback(() => {
+
+  useEffect(() => {
     if (points === 100 && !toastShownRef.current) {
       toastShownRef.current = true;
+
       toast.success("You've earned 5 points!", {
-        icon: "🌱",
         style: {
           backgroundColor: "#15803d",
           color: "#fff",
-          fontSize: "13px",
+          fontSize: "12px",
           fontWeight: "500",
         },
       });
@@ -173,16 +171,6 @@ export default function PointsCoin() {
       // Reset points to 0 and mark loading
       setPoints(0);
       setIsLoading(true);
-    } else {
-      toast.error("Keep scrolling to earn points!", {
-        icon: "🫢",
-        style: {
-          fontSize: "13px",
-          fontWeight: "500",
-          backgroundColor: "#dc2626",
-          color: "#fff",
-        },
-      });
     }
   }, [points, updatePoints, updateProgress]);
 
@@ -219,59 +207,49 @@ export default function PointsCoin() {
 
   return (
     <div className="fixed z-50 flex items-center gap-3 bottom-4 right-4">
-      {points === 100 && (
-        <p className="mb-10 text-xs font-semibold text-amber-700 dark:text-amber-300 animate-pulse">
-          Click to gain points
-        </p>
-      )}
       <div className="flex flex-col items-center gap-1">
         <motion.div
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          className="relative cursor-pointer w-14 h-14 focus:outline-none"
-          onClick={handleClick}
+          className="relative w-14 h-14 focus:outline-none"
         >
           <div className="absolute inset-0 rounded-full focus:outline-none" />
-          <div
-            className={`absolute flex items-center justify-center rounded-full inset-1 focus:outline-none ${
-              points === 100
-                ? "bg-amber-600 dark:bg-amber-500/20 text-white animate-bounce border-2 border-amber-400"
-                : "bg-white dark:bg-zinc-800 text-black dark:text-zinc-100 font-Ubuntu"
-            }`}
-          >
-            <span
-              className={`font-bold ${
-                points === 100
-                  ? "text-amber-500 dark:text-amber-100"
-                  : "text-amber-500 dark:text-amber-100"
-              } text-md`}
-            >
-              {points === 100 ? (
-                <Pointer size={20} strokeWidth={2.5} />
-              ) : (
-                <PointerOff size={20} strokeWidth={2.5} />
-              )}
+          <div className="absolute flex items-center justify-center rounded-full inset-1 focus:outline-none">
+            <span>
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/17301/17301413.png"
+                alt="points"
+                className={`${points === 100 ? "size-11" : "size-9"} ${
+                  points === 100 ? "animate-bounce" : ""
+                }`}
+              />
             </span>
           </div>
-          {isLoading && (
-            <CircularProgress
-              size="lg"
-              value={points}
-              color="warning"
-              aria-label="Loading progress"
-              showValueLabel={false}
-              strokeWidth={2}
-              classNames={{
-                svg: "w-full h-full",
-                indicator: "stroke-[#f59e0b] outline-none",
-                track: "stroke-[#a1a1aa] opacity-30 outline-none",
-              }}
-            />
+          {points < 100 && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <CircularProgress
+                size="lg"
+                value={points}
+                color="warning"
+                aria-label="Loading progress"
+                showValueLabel={false}
+                strokeWidth={2}
+                classNames={{
+                  svg: "w-full h-full",
+                  indicator: "stroke-yellow-500 outline-none",
+                  track: "stroke-[#a1a1aa] opacity-30 outline-none",
+                }}
+              />
+            </div>
           )}
         </motion.div>
-
-        <div className="mt-2 px-2 py-[1px] text-xs font-bold text-amber-700 dark:text-white rounded-full dark:bg-amber-500/20  border border-amber-500 dark:border-amber-400 text-center">
-          <p>{updatedPoints} ✨</p>
+        <div className="mt-2 px-2 py-[3px] text-xs font-bold  text-white rounded-full bg-orange-600 text-center tracking-wider flex items-center gap-1">
+          <img
+            src="https://cdn-icons-png.flaticon.com/128/17301/17301413.png"
+            alt="points"
+            className="size-[0.6rem]"
+          />
+          <p className="antialiased">{updatedPoints}</p>
         </div>
       </div>
       <Toaster />

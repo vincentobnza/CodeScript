@@ -52,7 +52,7 @@ const LoadingScreen = ({ route = "/code-editor" }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       navigate(route);
-    }, 20000);
+    }, 10000);
 
     return () => clearTimeout(timer);
   }, [navigate, route]);

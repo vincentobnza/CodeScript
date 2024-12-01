@@ -91,9 +91,9 @@ export default function HeroVideoDialog({ thumbnailSrc, videoSrc, link }) {
             {link}
           </span>
         </Link>
-        <div className="flex items-start justify-start w-full gap-3 p-5 mt-5 border rounded border-zinc-300 dark:bg-gradient-to-br dark:from-amber-600/20 dark:to-bg-amber-800/50 dark:border-amber-500 ">
-          <BadgeInfo size={20} className="text-amber-300" />
-          <p className="text-xs leading-relaxed text-zinc-600 dark:text-amber-200">
+        <div className="flex items-start justify-start w-full gap-3 p-5 mt-5 border rounded border-zinc-300 dark:bg-gradient-to-br dark:from-amber-600/20 dark:to-bg-amber-800/50 dark:border-yellow-700/60 ">
+          <BadgeInfo size={22} className="text-zinc-700 dark:text-amber-300" />
+          <p className="text-sm leading-relaxed text-zinc-600 dark:text-amber-200">
             Please note: This video is sourced from youtube.com and is the
             property of its original creator. We do not own or claim any rights
             to its content.

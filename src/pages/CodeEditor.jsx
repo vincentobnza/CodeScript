@@ -25,12 +25,14 @@ import {
   Menu,
   Undo2,
   PanelRightClose,
+  MessageCircleCode,
 } from "lucide-react";
 import supabase from "../config/supabaseClient";
 import { useAuth } from "@/context/AuthContext";
 import { toast, Toaster } from "react-hot-toast";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
+import AssessmentModal from "@/components/ui/AssessmentModal";
 
 export default function CodeScript() {
   const editorRef = useRef(null);
@@ -147,7 +149,8 @@ export default function CodeScript() {
             `Progress and points updated: +${progressToAdd}%, +${pointsToAdd} points`,
             {
               style: {
-                fontSize: "12px",
+                fontSize: "13px",
+                fontWeight: "500",
               },
             }
           );
@@ -222,7 +225,7 @@ export default function CodeScript() {
         updateUserProgress(5, currentAssessment.points);
         setModalContent({
           title: "Assessment Passed!",
-          message: `Congratulations! You've completed this assessment and earned ${currentAssessment.points} points!`,
+          message: `Congratulations! You've completed the assessment and earned ${currentAssessment.points} points!`,
         });
         setIsModalOpen(true);
       } else if (!allPassed) {
@@ -275,7 +278,9 @@ export default function CodeScript() {
       toast.success("Code formatted", {
         icon: "🎉",
         style: {
-          fontSize: "12px",
+          fontWeight: "500",
+          background: "#333",
+          color: "white",
         },
       });
     }
@@ -369,26 +374,13 @@ export default function CodeScript() {
           />
         </div>
       </div>
-      <Modal
+      <AssessmentModal
         isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-        radius="none"
-        className="font-NotoSans"
-      >
-        <ModalContent>
-          <ModalHeader>{modalContent.title}</ModalHeader>
-          <ModalBody>
-            <div className="w-full h-20 p-3 mt-4 text-sm border rounded text-zinc-700 dark:text-zinc-300 bg-gradient-to-br from-red-zinc/20 to-zinc-800/60 border-zinc-200 dark:border-zinc-700 bg-zinc-100 dark:bg-zinc-800">
-              <p>{modalContent.message}</p>
-            </div>
-          </ModalBody>
-          <ModalFooter>
-            <Button onClick={() => setIsModalOpen(false)} radius="sm">
-              Close
-            </Button>
-          </ModalFooter>
-        </ModalContent>
-      </Modal>
+        setIsOpen={setIsModalOpen}
+        title={modalContent.title}
+        description={modalContent.message}
+        result={testResults}
+      />
     </div>
   );
 }
@@ -467,7 +459,7 @@ const ToolBar = ({
         {isDescriptionView ? (
           <Code size={16} className="mx-auto" />
         ) : (
-          <ScanSearch size={16} className="mx-auto" />
+          <MessageCircleCode size={16} className="mx-auto" />
         )}
         <span className="hidden sm:inline">
           {isDescriptionView ? "Code View" : "Description View"}
@@ -709,9 +701,9 @@ const DescriptionView = ({ assessment }) => {
       <div className="flex flex-col justify-between w-full mb-4 md:flex-row">
         <div className="flex flex-col gap-2 mb-4">
           <h2 className="text-2xl font-bold">{assessment.title}</h2>
-          <p className="text-xs font-bold">
+          <p className="text-xs">
             Points to earned:{" "}
-            <span className="text-[11px] py-[2px] bg-amber-800/20 text-amber-300 rounded-full border border-amber-600 px-3 ml-2">
+            <span className="text-[11px] py-[2px] font-semibold bg-amber-800/20 text-amber-300 rounded-full border border-amber-600 px-3 ml-2">
               {assessment.points} pts
             </span>
           </p>
@@ -733,7 +725,7 @@ const DescriptionView = ({ assessment }) => {
         </Tooltip>
       </div>
       <div className="w-full">
-        <p className="mb-4 text-sm">{assessment.description}</p>
+        <p className="mb-4 text-md">{assessment.description}</p>
       </div>
 
       <div className="w-full">
@@ -758,8 +750,8 @@ const DescriptionView = ({ assessment }) => {
             <div className="flex flex-col w-full gap-2 mt-8 overflow-hidden overflow-y-auto text-sm">
               <h2>Code Hint 💡</h2>
 
-              <div className="w-full p-3 mt-2 text-xs border rounded text-amber-100 border-amber-600 bg-gradient-to-br from-amber-700/10 to-yellow-800/40">
-                <p className="whitespace-pre-wrap font-NotoSans">
+              <div className="w-full p-3 mt-2 text-sm border rounded text-green-100 border-green-600 bg-green-700/20">
+                <p className="whitespace-pre-wrap font-NotoSans leading-relaxed">
                   {assessment.hint}
                 </p>
               </div>

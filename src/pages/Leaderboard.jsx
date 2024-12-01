@@ -118,10 +118,8 @@ const ListBox = () => {
         console.error("Error fetching user data:", error);
       }
     };
-
     fetchUser();
   }, [user]);
-
   useEffect(() => {
     const insertRank = async () => {
       try {
@@ -154,15 +152,15 @@ const ListBox = () => {
             className="absolute object-cover -bottom-8 md:-bottom-10 left-4 md:left-10"
             size="lg"
             isBordered
-            color="success"
+            color="secondary"
           />
         </div>
 
         <div className="flex flex-col w-full gap-2">
           <div className="flex flex-col gap-2 px-1 py-3 ml-20 md:ml-28">
-            <h1 className="text-xs font-semibold">
+            <h1 className="text-md">
               Username:{" "}
-              <span className="px-2 md:px-3 py-[4px] ml-1 text-purple-600 dark:text-purple-300 bg-transparent dark:bg-purple-600/20 rounded border border-purple-700">
+              <span className="px-2 md:px-3 py-[4px] text-purple-600 dark:text-purple-400">
                 {userDetails?.username}
               </span>
             </h1>

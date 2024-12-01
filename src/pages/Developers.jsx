@@ -8,10 +8,12 @@ import Kiel from "../assets/kiel.png";
 import { Mail } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Card, CardBody, CardFooter, Avatar, Tooltip } from "@nextui-org/react";
+import FeedbackIcon from "@/components/ui/FeedbackIcon";
 
 export default function Developers() {
   return (
     <div className="w-full p-8 pb-10 space-y-16 bg-white dark:bg-zinc-900 dark:text-zinc-400">
+      <FeedbackIcon />
       <div className="w-full max-w-screen-lg pb-10 mx-auto space-y-14">
         <TeamImage />
 

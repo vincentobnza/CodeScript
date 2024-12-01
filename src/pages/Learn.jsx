@@ -73,7 +73,7 @@ const Header = () => {
     const handleKeyDown = (event) => {
       if (event.ctrlKey && event.key === "k") {
         event.preventDefault();
-        setOpen(true);
+        onOpen();
       }
     };
 
@@ -81,7 +81,7 @@ const Header = () => {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, []);
+  }, [onOpen]);
 
   return (
     <div className="relative flex items-start justify-between w-full max-w-screen-lg gap-4 p-3 mx-auto md:p-0">
@@ -153,7 +153,7 @@ const Content = () => {
             </h1>
             <RiRoadMapLine size={20} />
           </div>
-          <p className="text-xs">
+          <p className="text-sm">
             The JavaScript curriculum is designed to offer a structured and
             comprehensive learning journey through the fundamentals of
             JavaScript, progressing from foundational concepts to advanced
@@ -164,13 +164,13 @@ const Content = () => {
             Core JavaScript Fundamentals
           </h1>
 
-          <ul className="flex flex-col gap-2">
-            <li className="text-xs md:list-inside md:list-disc">
+          <ul className="flex flex-col gap-2 text-sm">
+            <li className="md:list-inside md:list-disc">
               Covers the essential building blocks of JavaScript, providing a
               solid foundation in syntax, variables, data types, operators, and
               control structures.
             </li>
-            <li className="text-xs md:list-inside md:list-disc">
+            <li className="md:list-inside md:list-disc">
               Guides students through core programming principles, such as
               functions, scope, and error handling, essential for writing
               efficient and maintainable code.
@@ -193,7 +193,7 @@ const Lessons = () => {
               The JavaScript Language
             </h3>
           </div>
-          <p className="text-xs">
+          <p className="text-sm">
             Here we learn JavaScript, starting from scratch and go on to
             advanced concepts like OOP.
           </p>
@@ -229,7 +229,7 @@ const Lesson1Data = () => {
     <div className="flex flex-col gap-4">
       {/* Header */}
       <div className="flex items-center gap-6">
-        <SquareTerminal className="text-sm text-yellow-300 animate-pulse" />
+        <SquareTerminal className="text-sm text-yellow-500 dark:text-yellow-300 animate-pulse" />
         <div className="flex flex-col gap-1">
           <p className="text-xs font-semibold">Lesson 1</p>
           <h1 className="font-semibold text-zinc-700 dark:text-zinc-200">

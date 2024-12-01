@@ -178,7 +178,10 @@ export default function Navbar() {
                   <div className="flex flex-col items-center justify-center gap-3 mb-3 text-xs text-zinc-500 dark:text-zinc-400">
                     <h1> Current Progress</h1>
                     <h1 className="text-lg font-bold text-indigo-500">
-                      {userDetails?.progress || 0} %
+                      {userDetails?.progress > 100 || userDetails?.progress < 0
+                        ? 100
+                        : userDetails?.progress}{" "}
+                      %
                     </h1>
                   </div>
                 </div>

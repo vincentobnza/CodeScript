@@ -9,10 +9,11 @@ import {
   BookCheck,
   Trophy,
 } from "lucide-react";
-
+import FeedbackIcon from "@/components/ui/FeedbackIcon";
 export default function Overview() {
   return (
     <div className="w-full min-h-screen p-5 pb-10 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 ">
+      <FeedbackIcon />
       <Header />
       <Features />
       <HowToUse />

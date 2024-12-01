@@ -12,7 +12,7 @@ export default function Bookmark() {
   const handleToggleCheckbox = () => {
     setShowCheckbox(!showCheckbox);
     setSelectedBookmarks([]);
-  }
+  };
   const handleCheckboxChange = (id) => {
     setSelectedBookmarks((prev) =>
       prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
@@ -59,7 +59,7 @@ const Header = ({
         <Undo2 size={14} />
         Return to Homepage
       </Link>
-      <div className="w-full flex justify-between">
+      <div className="flex justify-between w-full">
         <div className="flex flex-col gap-2">
           <h1 className="mt-8 text-3xl font-semibold">Bookmark Topics</h1>
           <p className="text-sm text-zinc-500 dark:text-zinc-400">

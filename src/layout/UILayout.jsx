@@ -3,6 +3,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import {
   vscDarkPlus,
   oneLight,
+  okaidia,
 } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { IoCloseCircleSharp } from "react-icons/io5";
 import { Link } from "react-router-dom";
@@ -10,7 +11,6 @@ import { useTheme } from "next-themes";
 import { Kbd } from "@nextui-org/react";
 import { Copy, Check, CircleCheck } from "lucide-react";
 import { toast, Toaster } from "react-hot-toast";
-import { motion, AnimatePresence } from "framer-motion";
 import { Card, CardBody, Button, Select, SelectItem } from "@nextui-org/react";
 import { Loader2, Play, SquareX } from "lucide-react";
 import MonacoEditor from "@monaco-editor/react";
@@ -50,16 +50,16 @@ export const Code = ({
   return (
     <div className="w-full my-4 space-y-1">
       <div
-        className={`w-full relative rounded-md overflow-hidden ${
+        className={`w-full relative overflow-hidden ${
           theme === "dark"
-            ? "bg-[#1e1e1e] border border-zinc-700"
-            : "border border-zinc-200 bg-[#FAFAFA]"
+            ? "bg-[#1e1e1e] border border-zinc-800"
+            : "border border-zinc-200 bg-white"
         }`}
       >
         <div className="w-full overflow-x-auto">
           <SyntaxHighlighter
             language={language || "javascript"}
-            style={theme === "dark" ? vscDarkPlus : oneLight}
+            style={theme === "dark" ? okaidia : oneLight}
             customStyle={{
               padding: "15px",
               backgroundColor: "transparent",
@@ -94,7 +94,7 @@ export const Output = ({ output }) => (
     <h1 className="text-xs font-bold md:text-sm text-zinc-600 dark:text-zinc-500">
       Console Output
     </h1>
-    <div className="w-full mt-3 border rounded-lg border-zinc-200 dark:border-zinc-800">
+    <div className="w-full mt-3 border border-zinc-200 dark:border-zinc-800">
       <div className="w-full h-8 bg-zinc-100 dark:bg-[#1e1e1e] rounded-tr-lg rounded-tl-lg border-b border-zinc-300 dark:border-zinc-800 flex items-center p-3">
         <div className="w-[50px] grid grid-cols-3">
           <div className="bg-green-500 rounded-full size-2"></div>
@@ -146,7 +146,7 @@ export const Image = ({ image, height }) => (
 );
 
 export const List = ({ title, items }) => (
-  <div className="flex flex-col gap-2 text-zinc-700 dark:text-[#7e7e7e]">
+  <div className="flex flex-col gap-2 text-zinc-700 dark:text-zinc-400">
     <h1 className="text-base md:text-lg">{title}</h1>
     <ul className="flex flex-col gap-3 px-4 py-2 md:px-8">
       {items.map((item, index) => (
@@ -275,25 +275,25 @@ export const CodeEditor = ({
     }
   };
   return (
-    <div className="mt-2 w-full mx-auto border bg-zinc-100 dark:bg-[#1e1e1e] rounded-lg border-zinc-200 dark:border-zinc-700 relative p-4">
+    <div className="mt-2 w-full mx-auto border bg-zinc-100 dark:bg-[#1e1e1e] border-zinc-200 dark:border-zinc-800 relative p-6">
       <div>
         <div className="flex flex-col items-start justify-between mb-4 space-y-4 sm:flex-row sm:items-center sm:space-y-0">
           <div className="flex flex-col gap-2">
             <h2 className="text-lg font-medium text-zinc-800 dark:text-zinc-200">
               Try the Code here
             </h2>
-            <h3 className="text-xs text-zinc-500 dark:text-zinc-400">
+            <h3 className="text-xs text-zinc-700 dark:text-zinc-400">
               CodeScript Editor
             </h3>
           </div>
 
-          <div className="absolute top-0 right-0 flex items-center justify-between w-full gap-2 p-1 text-sm sm:w-auto sm:justify-end">
+          <div className="absolute top-2 right-2 flex items-center justify-between w-full gap-2 p-1 text-sm sm:w-auto sm:justify-end">
             <Button
               isIconOnly
               size="sm"
               radius="none"
               onClick={toggleTheme}
-              className="border border-zinc-600 bg-zinc-50 dark:bg-zinc-800/20"
+              className="border border-zinc-300 bg-zinc-50 dark:bg-zinc-800/20 dark:border-zinc-700"
               aria-label={
                 isDarkTheme ? "Switch to light theme" : "Switch to dark theme"
               }
@@ -309,7 +309,7 @@ export const CodeEditor = ({
               disabled={!isEditorReady}
               onClick={() => setOutput("")}
               size="sm"
-              className="px-4 py-2 border text-zinc-600 dark:text-white bg-zinc-50 dark:bg-zinc-800/20 hover:bg-zinc-700 border-zinc-600"
+              className="px-4 py-2 border text-zinc-700 dark:text-white bg-zinc-50 dark:bg-zinc-800/20 dark:hover:brightness-125 border-zinc-300 dark:border-zinc-700"
             >
               Clear Console
             </Button>
@@ -319,7 +319,7 @@ export const CodeEditor = ({
               onClick={runCode}
               size="sm"
               startContent={<Play className="w-4 h-4" />}
-              className="px-4 py-2 text-white bg-green-700 border border-green-500 rounded-tr-lg hover:bg-green-700"
+              className="px-4 py-2 text-white bg-green-700 border border-green-500  hover:bg-green-700"
             >
               Run Code
             </Button>
@@ -363,14 +363,19 @@ export const CodeEditor = ({
 export const TopicRef = ({ reference }) => {
   const [hidden, setHidden] = useState(false);
   return (
-    <div className="flex flex-col items-start justify-start w-full p-3 pb-6 space-y-2 bg-white border border-zinc-300 dark:border-zinc-700 dark:bg-zinc-800/20">
+    <div className="flex flex-col items-start justify-start w-full p-3 pb-6 space-y-2 bg-white border border-zinc-300 dark:border-zinc-800 dark:bg-zinc-800/20 relative overflow-hidden">
+      <img
+        src="https://cdn-icons-png.flaticon.com/128/16784/16784406.png"
+        alt="ref"
+        className="absolute -right-4 -bottom-4 opacity-none opacity-30 size-16 md:size-20 grayscale"
+      />
       <button className="text-xs italic font-semibold text-zinc-600 dark:text-zinc-400">
         Topic Reference
       </button>
 
       <Link
         to={reference}
-        className="italic font-semibold text-wrap text-md text-amber-700 dark:bg-gradient-to-br dark:from-amber-200 dark:to-amber-900 dark:bg-clip-text dark:text-transparent"
+        className="italic font-semibold text-wrap text-md text-amber-700 dark:bg-gradient-to-br dark:from-amber-200 dark:to-amber-900 dark:bg-clip-text dark:text-transparent underline"
       >
         {reference}
       </Link>

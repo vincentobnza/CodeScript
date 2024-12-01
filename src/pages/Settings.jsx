@@ -58,6 +58,8 @@ const Content = () => {
     username: "",
     display_name: "",
     avatar_url: "",
+    section: "",
+    year_level: "",
   });
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState({ type: "", text: "" });
@@ -154,6 +156,8 @@ const Content = () => {
           username: formData.username,
           display_name: formData.display_name,
           avatar_url: formData.avatar_url,
+          section: formData.section,
+          year_level: formData.year_level,
           updatedAt: new Date(),
         })
         .eq("id", user.id);
@@ -165,7 +169,7 @@ const Content = () => {
           fontWeight: "500",
         },
       });
-      await fetchCurrentUser(); 
+      await fetchCurrentUser();
     } catch (error) {
       toast.error("Error updating profile: ", error);
     } finally {
@@ -238,6 +242,81 @@ const Content = () => {
                 onChange={handleInputChange}
                 disabled={isLoading}
               />
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label
+                htmlFor="section"
+                className="text-xs font-semibold text-zinc-400"
+              >
+                Section
+              </label>
+              <select
+                name="section"
+                className="dark:bg-zinc-900 bg-white w-full h-10 px-3 bg-transparent border-b  outline-none border-zinc-200 dark:border-zinc-800 appearance-none"
+                value={formData.section || ""}
+                onChange={handleInputChange}
+                disabled={isLoading}
+              >
+                <option
+                  value=""
+                  disabled
+                  className="text-zinc-500 dark:text-zinc-300"
+                >
+                  Select Section
+                </option>
+                <option className="dark:text-zinc-300 text-zinc-800" value="A">
+                  Section A
+                </option>
+                <option className="dark:text-zinc-300 text-zinc-800" value="B">
+                  Section B
+                </option>
+                <option className="dark:text-zinc-300 text-zinc-800" value="C">
+                  Section C
+                </option>
+                <option className="dark:text-zinc-300 text-zinc-800" value="C">
+                  Section D
+                </option>
+                <option className="dark:text-zinc-300 text-zinc-800" value="C">
+                  Section E
+                </option>
+              </select>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label
+                htmlFor="year_level"
+                className="text-xs font-semibold text-zinc-400"
+              >
+                Year Level
+              </label>
+              <select
+                name="year_level"
+                className="dark:bg-zinc-900 bg-white w-full h-10 px-3 bg-transparent border-b  outline-none border-zinc-200 dark:border-zinc-800 appearance-none"
+                value={formData.year_level || ""}
+                onChange={handleInputChange}
+                disabled={isLoading}
+              >
+                <option
+                  value=""
+                  disabled
+                  className="text-zinc-500 dark:text-zinc-300"
+                >
+                  Select Year Level
+                </option>
+                <option className="dark:text-zinc-300 text-zinc-800" value="A">
+                  1st Year
+                </option>
+                <option className="dark:text-zinc-300 text-zinc-800" value="B">
+                  2nd Year
+                </option>
+                <option className="dark:text-zinc-300 text-zinc-800" value="C">
+                  3rd Year
+                </option>
+                <option className="dark:text-zinc-300 text-zinc-800" value="C">
+                  4th Year
+                </option>
+              </select>
             </div>
 
             <button
