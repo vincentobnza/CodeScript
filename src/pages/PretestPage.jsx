@@ -4,6 +4,7 @@ import { Undo2, LoaderCircle } from "lucide-react";
 import { Pretest } from "@/data/Pretest";
 import { RadioGroup, Radio, Button, Spinner } from "@nextui-org/react";
 import { useAuth } from "@/context/AuthContext";
+import { motion } from "framer-motion";
 
 import supabase from "../config/supabaseClient";
 
@@ -184,7 +185,12 @@ const Content = () => {
 
   if (done) {
     return (
-      <div className="relative flex flex-col items-center justify-center w-full max-w-xl gap-4 p-5 mx-auto text-center">
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        duration={{ opacity: 0.3, transition: 0.5 }}
+        className="relative flex flex-col items-center justify-center w-full max-w-xl gap-4 p-5 mx-auto text-center"
+      >
         <div className="absolute w-[240px] h-[100px] bg-slate-400/60 rounded-full bottom-8 z-0 filter blur-[80px]" />
 
         <img
@@ -202,7 +208,7 @@ const Content = () => {
         <p className="mt-10 font-semibold">
           Your score: {score.score} out of {test.length}
         </p>
-      </div>
+      </motion.div>
     );
   }
 

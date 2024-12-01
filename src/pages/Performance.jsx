@@ -83,12 +83,12 @@ const Stats = () => {
         />
 
         <div className="absolute w-[240px] h-[100px] bg-slate-400/60 rounded-full bottom-8 z-0 filter blur-[120px]" />
-        <p className="mt-5 text-xs font-medium text-center">
+        <p className="mt-5 text-sm font-medium text-center">
           You have completed {userDetails?.progress}% of the course
         </p>
 
-        <div className="w-full max-w-md p-5 mx-auto mt-8 text-green-700 bg-green-100 border border-green-200 dark:shadow-lg dark:text-green-400 dark:bg-green-700/10 dark:to-green-800 dark:border-green-700">
-          <p className="text-xs font-medium">
+        <div className="w-full max-w-md p-5 mx-auto mt-8 text-green-700 bg-green-100 border border-green-200 dark:shadow-lg dark:text-green-400 dark:bg-green-700/10 dark:to-green-800 dark:border-green-700/30">
+          <p className="text-sm font-medium">
             Gain progress by collecting coins poin, quizzes, and assessment in
             the course.
           </p>

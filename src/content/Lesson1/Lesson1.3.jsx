@@ -63,7 +63,7 @@ export default function Lesson1_Topic3() {
             message to the webpage. You will learn what each of these JavaScript
             statements signifies in following chapters.
           </Description>
-          <div className="flex items-start justify-start w-full gap-3 p-5 mt-5 text-xs leading-loose text-orange-700 border border-orange-300 rounded dark:bg-gradient-to-br dark:from-orange-600/20 dark:to-bg-green-800/50 dark:text-orange-300 dark:border-orange-500">
+          <div className="flex items-start justify-start w-full gap-3 p-5 mt-5 text-sm leading-loose text-orange-700 border border-orange-300 rounded dark:bg-gradient-to-br dark:from-orange-600/20 dark:to-bg-green-800/50 dark:text-orange-300 dark:border-orange-700/50">
             <h3>
               {`Note: The type attribute for <script> tag (i.e. <script type="text/javascript">) is no longer required since HTML5. JavaScript is the default scripting language for HTML5.`}
             </h3>
@@ -160,7 +160,7 @@ document.getElementById("btn").onclick = greetings;`}
             message will appear.
           </Description>
 
-          <div className="flex items-start justify-start w-full gap-3 p-5 mt-5 text-xs leading-loose text-green-700 border border-green-300 rounded dark:bg-gradient-to-br dark:from-green-600/20 dark:to-bg-green-800/50 dark:text-green-300 dark:border-green-500">
+          <div className="flex items-start justify-start w-full gap-3 p-5 mt-5 text-sm leading-loose text-green-700 border border-green-300 rounded dark:bg-gradient-to-br dark:from-green-600/20 dark:to-bg-green-800/50 dark:text-green-300 dark:border-green-700/50">
             <h3>
               {`Note: You should always maintain a clear separation between your website's presentation (CSS), behavior (JavaScript), and content (i.e., HTML).`}
             </h3>

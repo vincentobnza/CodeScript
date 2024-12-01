@@ -29,7 +29,9 @@ export const Title = ({ children }) => (
 );
 
 export const Description = ({ children }) => (
-  <p className="text-sm  text-zinc-800 dark:text-[#7e7e7e]">{children}</p>
+  <p className="antialiased text-sm  text-zinc-800 dark:text-[#868686]">
+    {children}
+  </p>
 );
 
 export const Example = ({ text }) => (

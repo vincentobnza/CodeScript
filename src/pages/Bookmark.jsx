@@ -3,6 +3,7 @@ import { Undo2, Delete, MousePointer2 } from "lucide-react";
 import { useBookmarks } from "../hooks/useBookmark";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
+import { Spinner } from "@nextui-org/react";
 
 export default function Bookmark() {
   const [showCheckbox, setShowCheckbox] = useState(false);
@@ -99,7 +100,12 @@ const Content = ({ showCheckbox, selectedBookmarks, onCheckboxChange }) => {
 
   if (loading) {
     return (
-      <p className="mt-10 text-center text-zinc-500">Loading bookmarks...</p>
+      <div className="flex justify-center items-center flex-col gap-2">
+        <Spinner color="success" />
+        <p className="mt-4 text-center text-zinc-500">
+          Fetching your bookmarks
+        </p>
+      </div>
     );
   }
 
