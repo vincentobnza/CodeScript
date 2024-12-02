@@ -21,8 +21,8 @@
 
 /* For the entire scrollbar */
 ::-webkit-scrollbar {
-  display: none;
-  /* width: 8px; */
+  /* display: none; */
+  width: 8px;
 }
 
 /* For the scrollbar track (background) */

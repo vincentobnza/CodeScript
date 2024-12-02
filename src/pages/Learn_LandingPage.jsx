@@ -28,7 +28,7 @@ const Hero = () => {
         practical examples, and expert guidance.
       </p>
 
-      <div className="mt-16 w-full h-[500px] md:h-[550px] flex flex-col items-center space-y-10 max-w-screen-md rounded-lg bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-800 relative">
+      <div className="antialiased mt-16 w-full h-[500px] md:h-[550px] flex flex-col items-center space-y-10 max-w-screen-md rounded-lg bg-white dark:bg-zinc-900 border border-zinc-300 dark:border-zinc-800 relative">
         {/* BOOK  */}
         <div className="w-[160px] h-[190px] -mt-10 bg-zinc-100 dark:bg-white rounded relative before:absolute before:content-[''] before:left-0 before:h-full before:w-[10px] before:bg-zinc-600 before:rounded-tl before:rounded-bl shadow-none dark:shadow-2xl dark:shadow-zinc-800 border border-zinc-300 dark:border-none">
           <img
@@ -46,7 +46,7 @@ const Hero = () => {
               Learn <br />
               JavaScript
             </h1>
-            <p className="text-[10px] text-zinc-800 font-medium">
+            <p className="text-[10px] text-zinc-800 font-medium antialiased">
               Getting Started With JavaScript
             </p>
           </div>
@@ -55,10 +55,10 @@ const Hero = () => {
         <div className="relative flex flex-col gap-2">
           <div className="absolute w-[240px] h-[100px] bg-slate-400/60 rounded-full bottom-8 z-0 filter blur-[80px]" />
 
-          <h1 className="text-xl font-semibold text-zinc-900 dark:text-white">
-            Learn JavaScript
+          <h1 className="text-2xl font-semibold text-zinc-900 dark:text-white">
+            Learn the Fundamentals of JavaScript
           </h1>
-          <div className="mt-5 w-[340px] mx-auto text-xs text-center text-zinc-500 dark:text-zinc-400">
+          <div className=" mt-5 w-[340px] mx-auto text-sm antialiased text-center text-zinc-500 dark:text-zinc-300">
             <p>
               The module in this Computer Assisted Instruction for JavaScript
               has been thoughtfully curated and endorsed by a certified web

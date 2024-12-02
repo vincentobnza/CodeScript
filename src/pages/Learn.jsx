@@ -201,7 +201,7 @@ const Lessons = () => {
 
         <Link
           to="/bookmarks"
-          className="text-[12px] font-semibold flex items-center gap-3 bg-white dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-800 dark:hover:brightness-125 dark:shadow-lg px-3 py-[6px] border border-zinc-200 dark:border-zinc-700 outline-none relative"
+          className="hidden text-[12px] font-semibold md:flex items-center gap-3 bg-white dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-800 dark:hover:brightness-125 dark:shadow-lg px-3 py-[6px] border border-zinc-200 dark:border-zinc-700 outline-none relative"
         >
           <Bookmark size={14} />
           Bookmarks
@@ -238,7 +238,7 @@ const Lesson1Data = () => {
         </div>
       </div>
       {/* Lesson List */}
-      <ul className="grid grid-cols-2 gap-2 p-1 md:grid-cols-4">
+      <ul className="grid  gap-2 p-1 md:grid-cols-4">
         {Lesson1.map((item, idx) => (
           <div
             key={idx} // Move `key` to the top-level element
@@ -257,12 +257,12 @@ const Lesson1Data = () => {
               className="flex flex-col gap-3"
             >
               <div className="flex justify-between w-full">
-                <h1 className="z-10 flex items-center text-xs font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
+                <h1 className="z-10 flex items-center  font-semibold text-md md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
                   {item.name}
                 </h1>
                 <GoArrowRight className="text-zinc-400 group-hover:text-zinc-300 dark:group-hover:text-zinc-200" />
               </div>
-              <p className="text-[10px] md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
+              <p className="text-sm md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
                 {item.subTopics} Subtopics
               </p>
             </Link>
@@ -336,7 +336,7 @@ const Lesson2Data = () => {
         </div>
       </div>
       {/* Lesson List */}
-      <ul className="grid grid-cols-2 gap-2 p-1 md:grid-cols-4">
+      <ul className="grid grid-cols gap-2 p-1 md:grid-cols-4">
         {Lesson2.map((item, idx) => (
           <div
             key={idx} // Move `key` to the top-level element
@@ -355,12 +355,12 @@ const Lesson2Data = () => {
               className="flex flex-col gap-3"
             >
               <div className="flex justify-between w-full">
-                <h1 className="z-10 flex items-center text-xs font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
+                <h1 className="z-10 flex items-center text-md font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
                   {item.name}
                 </h1>
                 <GoArrowRight className="text-zinc-400 group-hover:text-zinc-300 dark:group-hover:text-zinc-200" />
               </div>
-              <p className="text-[10px] md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
+              <p className="text-md md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
                 {item.subTopics} Subtopics
               </p>
             </Link>
@@ -434,7 +434,7 @@ const Lesson3Data = () => {
         </div>
       </div>
       {/* Lesson List */}
-      <ul className="grid grid-cols-2 gap-2 p-1 md:grid-cols-4">
+      <ul className="grid grid-cols gap-2 p-1 md:grid-cols-4">
         {Lesson3.map((item, idx) => (
           <div
             key={idx} // Move `key` to the top-level element
@@ -453,12 +453,12 @@ const Lesson3Data = () => {
               className="flex flex-col gap-3"
             >
               <div className="flex justify-between w-full">
-                <h1 className="z-10 flex items-center text-xs font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
+                <h1 className="z-10 flex items-center text-md font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
                   {item.name}
                 </h1>
                 <GoArrowRight className="text-zinc-400 group-hover:text-zinc-300 dark:group-hover:text-zinc-200" />
               </div>
-              <p className="text-[10px] md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
+              <p className="text-md md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
                 {item.subTopics} Subtopics
               </p>
             </Link>
@@ -532,7 +532,7 @@ const Lesson4Data = () => {
         </div>
       </div>
       {/* Lesson List */}
-      <ul className="grid grid-cols-2 gap-2 p-1 md:grid-cols-4">
+      <ul className="grid grid-cols gap-2 p-1 md:grid-cols-4">
         {Lesson4.map((item, idx) => (
           <div
             key={idx} // Move `key` to the top-level element
@@ -551,12 +551,12 @@ const Lesson4Data = () => {
               className="flex flex-col gap-3"
             >
               <div className="flex justify-between w-full">
-                <h1 className="z-10 flex items-center text-xs font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
+                <h1 className="z-10 flex items-center text-md font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
                   {item.name}
                 </h1>
                 <GoArrowRight className="text-zinc-400 group-hover:text-zinc-300 dark:group-hover:text-zinc-200" />
               </div>
-              <p className="text-[10px] md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
+              <p className="text-md md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
                 {item.subTopics} Subtopics
               </p>
             </Link>
@@ -629,7 +629,7 @@ const Lesson5Data = () => {
         </div>
       </div>
       {/* Lesson List */}
-      <ul className="grid grid-cols-2 gap-2 p-1 md:grid-cols-4">
+      <ul className="grid grid-cols gap-2 p-1 md:grid-cols-4">
         {Lesson5.map((item, idx) => (
           <div
             key={idx} // Move `key` to the top-level element
@@ -648,12 +648,12 @@ const Lesson5Data = () => {
               className="flex flex-col gap-3"
             >
               <div className="flex justify-between w-full">
-                <h1 className="z-10 flex items-center text-xs font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
+                <h1 className="z-10 flex items-center text-md font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
                   {item.name}
                 </h1>
                 <GoArrowRight className="text-zinc-400 group-hover:text-zinc-300 dark:group-hover:text-zinc-200" />
               </div>
-              <p className="text-[10px] md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
+              <p className="text-md md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
                 {item.subTopics} Subtopics
               </p>
             </Link>
@@ -726,7 +726,7 @@ const Lesson6Data = () => {
         </div>
       </div>
       {/* Lesson List */}
-      <ul className="grid grid-cols-2 gap-2 p-1 md:grid-cols-4">
+      <ul className="grid grid-cols gap-2 p-1 md:grid-cols-4">
         {Lesson6.map((item, idx) => (
           <div
             key={idx} // Move `key` to the top-level element
@@ -745,12 +745,12 @@ const Lesson6Data = () => {
               className="flex flex-col gap-3"
             >
               <div className="flex justify-between w-full">
-                <h1 className="z-10 flex items-center text-xs font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
+                <h1 className="z-10 flex items-center text-md font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
                   {item.name}
                 </h1>
                 <GoArrowRight className="text-zinc-400 group-hover:text-zinc-300 dark:group-hover:text-zinc-200" />
               </div>
-              <p className="text-[10px] md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
+              <p className="text-md md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
                 {item.subTopics} Subtopics
               </p>
             </Link>
@@ -824,7 +824,7 @@ const Lesson7Data = () => {
         </div>
       </div>
       {/* Lesson List */}
-      <ul className="grid grid-cols-2 gap-2 p-1 md:grid-cols-4">
+      <ul className="grid grid-cols gap-2 p-1 md:grid-cols-4">
         {Lesson7.map((item, idx) => (
           <div
             key={idx} // Move `key` to the top-level element
@@ -843,12 +843,12 @@ const Lesson7Data = () => {
               className="flex flex-col gap-3"
             >
               <div className="flex justify-between w-full">
-                <h1 className="z-10 flex items-center text-xs font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
+                <h1 className="z-10 flex items-center text-md font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
                   {item.name}
                 </h1>
                 <GoArrowRight className="text-zinc-400 group-hover:text-zinc-300 dark:group-hover:text-zinc-200" />
               </div>
-              <p className="text-[10px] md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
+              <p className="text-md md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
                 {item.subTopics} Subtopics
               </p>
             </Link>
@@ -922,7 +922,7 @@ const Lesson8Data = () => {
         </div>
       </div>
       {/* Lesson List */}
-      <ul className="grid grid-cols-2 gap-2 p-1 md:grid-cols-4">
+      <ul className="grid grid-cols gap-2 p-1 md:grid-cols-4">
         {Lesson8.map((item, idx) => (
           <div
             key={idx} // Move `key` to the top-level element
@@ -941,12 +941,12 @@ const Lesson8Data = () => {
               className="flex flex-col gap-3"
             >
               <div className="flex justify-between w-full">
-                <h1 className="z-10 flex items-center text-xs font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
+                <h1 className="z-10 flex items-center text-md font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
                   {item.name}
                 </h1>
                 <GoArrowRight className="text-zinc-400 group-hover:text-zinc-300 dark:group-hover:text-zinc-200" />
               </div>
-              <p className="text-[10px] md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
+              <p className="text-md md:text-xs text-zinc-500 dark:text-zinc-500 dark:group-hover:text-zinc-400">
                 {item.subTopics} Subtopics
               </p>
             </Link>

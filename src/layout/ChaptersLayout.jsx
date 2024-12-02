@@ -12,7 +12,7 @@ export default function ChaptersLayout() {
       <PointsCoin />
       <DynamicSidebar />
       <div className="max-w-5xl px-4 mx-auto md:px-14 lg:px-16">
-        <div className="w-full flex justify-between px-4 md:px-12 border-b border-zinc-200 dark:border-zinc-800 pb-5 ">
+        <div className="w-full flex justify-between px-1 md:px-12 pb-6">
           <div className="flex">
             <Link
               to="/learn-js"
