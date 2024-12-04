@@ -55,14 +55,14 @@ const Hero = () => {
         <div className="hidden dark:flex absolute w-[240px] h-[100px] bg-green-600/40 rounded-full bottom-8 z-0 filter blur-[80px]" />
         <Link
           to="/learn"
-          className="z-10 flex items-center justify-center gap-2 w-[120px] py-2 mt-10 text-xs tracking-wide dark:border bg-green-700 text-white dark:text-green-200 border border-green-700 dark:border-green-600 dark:bg-green-800/20 md:px-4 md:py-[0.60rem] md:text-md dark:hover:brightness-125 font-medium rounded-sm"
+          className="z-10 flex items-center justify-center gap-2 w-[120px] py-2 mt-10 text-xs tracking-wide dark:border bg-green-700 text-white dark:text-green-200 border border-green-700 dark:border-green-600 dark:bg-green-800/20 md:px-3 md:py-[0.60rem] md:text-md dark:hover:brightness-125 font-medium rounded-sm"
         >
           Learn JS
           <Library size={16} />
         </Link>
         <Link
           to="/code-lab"
-          className="z-10 flex items-center justify-center gap-2 w-[120px] py-2 mt-10 text-xs tracking-wide text-zinc-700 bg-transparent dark:text-white border border-zinc-500  dark:border-zinc-500 dark:bg-zinc-800/20 md:px-4 md:py-[0.60rem] md:text-md dark:hover:brightness-125 font-medium rounded-sm"
+          className="z-10 flex items-center justify-center gap-2 w-[120px] py-2 mt-10 text-xs tracking-wide text-zinc-700 bg-transparent dark:text-white border border-zinc-500  dark:border-zinc-500 dark:bg-zinc-800/20 md:px-3 md:py-[0.60rem] md:text-md dark:hover:brightness-125 font-medium rounded-sm"
         >
           Code Lab
           <Braces size={16} />

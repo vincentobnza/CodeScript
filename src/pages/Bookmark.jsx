@@ -8,7 +8,7 @@ import { Spinner } from "@nextui-org/react";
 export default function Bookmark() {
   const [showCheckbox, setShowCheckbox] = useState(false);
   const [selectedBookmarks, setSelectedBookmarks] = useState([]);
-  const { bookmarks, toggleBookmark } = useBookmarks();
+  const { bookmarks, toggleBookmark, loading } = useBookmarks();
 
   const handleToggleCheckbox = () => {
     setShowCheckbox(!showCheckbox);
@@ -38,6 +38,7 @@ export default function Bookmark() {
         onToggleCheckbox={handleToggleCheckbox}
         onDeleteSelected={handleDeleteSelected}
         disableDelete={!selectedBookmarks.length}
+        loading={loading}
       />
       <Content
         showCheckbox={showCheckbox}
@@ -53,6 +54,7 @@ const Header = ({
   onToggleCheckbox,
   onDeleteSelected,
   disableDelete,
+  loading,
 }) => {
   return (
     <div className="flex flex-col w-full max-w-screen-lg gap-2 p-5 mx-auto">
@@ -67,29 +69,31 @@ const Header = ({
             Topics you've bookmarked
           </p>
         </div>
-        <div className="flex items-center gap-2">
-          <button
-            onClick={onToggleCheckbox}
-            className="text-[13px] flex outline-none items-center gap-2 py-1 px-3 border border-zinc-200 dark:border-zinc-700 rounded text-zinc-600 dark:text-zinc-300 dark:hover:brightness-125"
-          >
-            <MousePointer2 size={15} />
-            {showCheckbox ? "Cancel Selection" : "Select Item"}
-          </button>
-          {showCheckbox && (
+        {!loading && (
+          <div className="flex items-center gap-2">
             <button
-              onClick={onDeleteSelected}
-              disabled={disableDelete}
-              className={`text-[13px] flex outline-none items-center gap-2 py-1 px-3 border border-zinc-200 dark:border-zinc-700 rounded ${
-                disableDelete
-                  ? "opacity-50 cursor-not-allowed"
-                  : "border-red-500 dark:border-none bg-red-50 text-red-600 dark:bg-white dark:text-zinc-800 font-semibold"
-              }`}
+              onClick={onToggleCheckbox}
+              className="text-[13px] flex outline-none items-center gap-2 py-1 px-3 border border-zinc-200 dark:border-zinc-700 rounded text-zinc-600 dark:text-zinc-300 dark:hover:brightness-125"
             >
-              <Delete size={15} />
-              Delete Selected
+              <MousePointer2 size={15} />
+              {showCheckbox ? "Cancel Selection" : "Select Item"}
             </button>
-          )}
-        </div>
+            {showCheckbox && (
+              <button
+                onClick={onDeleteSelected}
+                disabled={disableDelete}
+                className={`text-[13px] flex outline-none items-center gap-2 py-1 px-3 border border-zinc-200 dark:border-zinc-700 rounded ${
+                  disableDelete
+                    ? "opacity-50 cursor-not-allowed"
+                    : "border-red-500 dark:border-none bg-red-50 text-red-600 dark:bg-white dark:text-zinc-800 font-semibold"
+                }`}
+              >
+                <Delete size={15} />
+                Delete Selected
+              </button>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );
@@ -168,7 +172,7 @@ const BookmarkCard = ({
       <div className="flex flex-col">
         <Link to={`/learn-js/${bookmark.link}`}>
           <h2 className="mb-2 text-xl font-semibold">{bookmark.topic}</h2>
-          <p className="text-xs text-zinc-500 dark:text-zinc-400">
+          <p className="text-sm text-zinc-500 dark:text-zinc-400">
             Subtopics: {bookmark.subTopics || "No subtopics available"}
           </p>
         </Link>

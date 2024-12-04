@@ -4,7 +4,7 @@ import { Undo2, LoaderCircle } from "lucide-react";
 import { Pretest } from "@/data/Pretest";
 import { RadioGroup, Radio, Button, Spinner } from "@nextui-org/react";
 import { useAuth } from "@/context/AuthContext";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 import supabase from "../config/supabaseClient";
 
@@ -62,6 +62,7 @@ const Content = () => {
   const [submitting, setSubmitting] = useState(false);
   const { user } = useAuth();
   const [done, setDone] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const testData = Pretest[lesson];
@@ -149,7 +150,7 @@ const Content = () => {
 
   const handleSubmit = async () => {
     if (Object.keys(answers).length !== test.length) {
-      alert("Please answer all questions before submitting!");
+      setIsModalOpen(true);
       return;
     }
     setSubmitting(true);
@@ -278,6 +279,48 @@ const Content = () => {
           "Submit Pre Test"
         )}
       </Button>
+
+      <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </div>
+  );
+};
+
+// POPUP MODAL WHEN USER CLICK THE SUBMIT BUT THE QUESTION IS NOT FULLY ANSWERED
+
+const Modal = ({ isOpen, onClose }) => {
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: isOpen ? 1 : 0 }}
+      exit={{ opacity: 0 }}
+      className={`fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 ${
+        isOpen ? "" : "hidden"
+      }`}
+    >
+      <motion.div
+        initial={{ scale: 0 }}
+        animate={{ scale: isOpen ? 1 : 0 }}
+        exit={{ scale: 0 }}
+        className="relative w-full max-w-sm p-6 mx-4 my-10 bg-white border rounded-lg shadow-lg dark:bg-zinc-900 dark:border-zinc-700 flex flex-col justify-center items-center text-center"
+      >
+        <button
+          onClick={onClose}
+          className="absolute top-3 right-3 text-zinc-600 dark:text-zinc-400"
+        >
+          <Undo2 size={16} />
+        </button>
+        <h2 className="mb-4 text-amber-500 text-2xl font-medium">Warning</h2>
+        <p className="mb-6 text-sm text-zinc-600 dark:text-zinc-400">
+          Please answer all questions before submitting.
+        </p>
+
+        <button
+          onClick={onClose}
+          className="mt-10 py-1 px-4 flex text-sm text-yellow-300 rounded bg-yellow-500/20 border border-yellow-700"
+        >
+          Go back
+        </button>
+      </motion.div>
+    </motion.div>
   );
 };

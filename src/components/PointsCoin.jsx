@@ -247,7 +247,7 @@ export default function PointsCoin() {
             <div className="absolute flex items-center justify-center rounded-full inset-1 focus:outline-none">
               <span>
                 <img
-                  src={CoinLogo}
+                  src="https://cdn-icons-png.flaticon.com/128/17301/17301413.png"
                   alt="points"
                   className={`${points === 100 ? "size-11" : "size-7"} ${
                     points === 100 ? "animate-bounce" : ""
