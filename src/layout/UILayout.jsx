@@ -371,7 +371,7 @@ export const TopicRef = ({ reference }) => {
         alt="ref"
         className="absolute -right-4 -bottom-4 opacity-none opacity-30 size-16 md:size-20 grayscale"
       />
-      <button className="text-xs italic font-semibold text-zinc-600 dark:text-zinc-400">
+      <button className="text-xs italic text-zinc-600 dark:text-zinc-400">
         Topic Reference
       </button>
 

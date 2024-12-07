@@ -230,61 +230,65 @@ export default function PointsCoin() {
   }, [user, setCurrentUser]);
 
   return (
-    <div className="fixed z-50 flex items-center gap-3 bottom-4 right-4">
-      <div className="flex flex-col items-center gap-1">
-        <Tooltip
-          content="Keep scrolling to gain points and progress ✨"
-          placement="top"
-          className="font-Jost"
-          radius="none"
-        >
-          <motion.div
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            className="relative w-14 h-14  focus:outline-none"
-          >
-            <div className="absolute inset-0 rounded-full focus:outline-none" />
-            <div className="absolute flex items-center justify-center rounded-full inset-1 focus:outline-none">
-              <span>
-                <img
-                  src="https://cdn-icons-png.flaticon.com/128/17301/17301413.png"
-                  alt="points"
-                  className={`${points === 100 ? "size-11" : "size-7"} ${
-                    points === 100 ? "animate-bounce" : ""
-                  }`}
-                />
-              </span>
-            </div>
-            {points < 100 && (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <CircularProgress
-                  size="lg"
-                  value={points}
-                  color="warning"
-                  aria-label="Loading progress"
-                  showValueLabel={false}
-                  strokeWidth={2}
-                  classNames={{
-                    svg: "w-full h-full",
-                    indicator: "stroke-yellow-500 outline-none",
-                    track: "stroke-[#a1a1aa] opacity-30 outline-none",
-                  }}
-                />
-              </div>
-            )}
-          </motion.div>
-        </Tooltip>
+    <>
+      {user && (
+        <div className="fixed z-50 flex items-center gap-3 bottom-4 right-4">
+          <div className="flex flex-col items-center gap-1">
+            <Tooltip
+              content="Keep scrolling to gain points and progress ✨"
+              placement="top"
+              className="font-Jost"
+              radius="none"
+            >
+              <motion.div
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="relative w-14 h-14  focus:outline-none"
+              >
+                <div className="absolute inset-0 rounded-full focus:outline-none" />
+                <div className="absolute flex items-center justify-center rounded-full inset-1 focus:outline-none">
+                  <span>
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/128/17301/17301413.png"
+                      alt="points"
+                      className={`${points === 100 ? "size-11" : "size-7"} ${
+                        points === 100 ? "animate-bounce" : ""
+                      }`}
+                    />
+                  </span>
+                </div>
+                {points < 100 && (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <CircularProgress
+                      size="lg"
+                      value={points}
+                      color="warning"
+                      aria-label="Loading progress"
+                      showValueLabel={false}
+                      strokeWidth={2}
+                      classNames={{
+                        svg: "w-full h-full",
+                        indicator: "stroke-yellow-500 outline-none",
+                        track: "stroke-[#a1a1aa] opacity-30 outline-none",
+                      }}
+                    />
+                  </div>
+                )}
+              </motion.div>
+            </Tooltip>
 
-        <div className="mt-2 px-2 py-[3px] text-xs font-bold  text-white rounded-full bg-orange-600 text-center tracking-wider flex items-center gap-1">
-          <img
-            src="https://cdn-icons-png.flaticon.com/128/17301/17301413.png"
-            alt="points"
-            className="size-[0.6rem]"
-          />
-          <p className="antialiased">{displayedPoints}</p>
+            <div className="mt-2 px-2 py-[3px] text-xs font-bold  text-white rounded-full bg-orange-600 text-center tracking-wider flex items-center gap-1">
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/17301/17301413.png"
+                alt="points"
+                className="size-[0.6rem]"
+              />
+              <p className="antialiased">{displayedPoints}</p>
+            </div>
+          </div>
+          <Toaster />
         </div>
-      </div>
-      <Toaster />
-    </div>
+      )}
+    </>
   );
 }

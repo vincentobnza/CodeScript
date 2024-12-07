@@ -6,12 +6,12 @@ import { Clock, Check, LightbulbIcon } from "lucide-react";
 
 function ListItem({ icon, text }) {
   return (
-    <li className="flex items-center w-full p-2 space-x-3 border group border-zinc-700 bg-zinc-700/20 ">
+    <li className="flex items-center w-full p-2 space-x-3 border group border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-700/20 ">
       <div className="flex items-center justify-center flex-shrink-0 w-8 h-8 transition-colors duration-200 rounded-lg group-hover:bg-gray-200 dark:group-hover:bg-zinc-700">
         {icon}
       </div>
       <div className="flex-1">
-        <p className="text-xs font-medium leading-relaxed text-gray-700 transition-colors duration-200 dark:text-gray-300 group-hover:text-gray-900 dark:group-hover:text-white">
+        <p className="text-sm leading-relaxed text-gray-600 transition-colors duration-200 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white">
           {text}
         </p>
       </div>
@@ -50,14 +50,14 @@ const QuizStartModal = ({ isOpen, setIsOpen }) => {
       setShowTimer(true);
     } else {
       setShowTimer(false);
-      setCountdown(5); // Reset countdown when modal opens
+      setCountdown(5);
     }
   }, [openModal]);
 
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 grid p-8 overflow-y-scroll cursor-pointer font-Jost bg-slate-900/20 backdrop-blur-lg place-items-center ">
+        <div className="fixed inset-0 z-50 grid p-8 overflow-y-scroll cursor-pointer font-Jost bg-white dark:bg-slate-900/20 backdrop-blur-lg place-items-center">
           {openModal && (
             <motion.div
               initial={{ scale: 0, rotate: "12.5deg" }}
@@ -73,11 +73,11 @@ const QuizStartModal = ({ isOpen, setIsOpen }) => {
               />
 
               <div className="flex flex-col">
-                <h1 className="mb-5 text-lg font-bold text-zinc-900 dark:text-zinc-100 md:text-2xl">
+                <h1 className="mb-5 text-lg font-medium text-zinc-700 dark:text-zinc-100 md:text-2xl">
                   Important Quiz Guidelines
                 </h1>
 
-                <div className="w-full text-xs font-semibold text-zinc-700 dark:text-zinc-400">
+                <div className="w-full text-sm  text-zinc-600 dark:text-zinc-400">
                   <p>
                     Please be mindful of the following rules to ensure a fair
                     experience for all participants:
@@ -106,8 +106,7 @@ const QuizStartModal = ({ isOpen, setIsOpen }) => {
                     isSelected={isSelected}
                     onValueChange={setIsSelected}
                     classNames={{
-                      label:
-                        "text-xs font-semibold text-zinc-500 dark:text-zinc-400",
+                      label: "text-sm text-zinc-500 dark:text-zinc-400",
                     }}
                   >
                     I understand and agree with the quiz guidelines
@@ -117,7 +116,7 @@ const QuizStartModal = ({ isOpen, setIsOpen }) => {
                 <button
                   disabled={!isSelected}
                   onClick={() => setOpenModal(false)}
-                  className="self-start px-6 py-3 mt-5 text-xs font-bold text-black rounded bg-zinc-200 disabled:bg-zinc-500 disabled:cursor-not-allowed"
+                  className="self-start px-6 py-3 mt-5 text-xs font-bold text-white dark:text-zinc-700 rounded bg-green-500 dark:bg-zinc-200 disabled:opacity-30"
                 >
                   Start Quiz
                 </button>
@@ -128,7 +127,9 @@ const QuizStartModal = ({ isOpen, setIsOpen }) => {
           {/* Show timer only when modal is closed and countdown is active */}
           {!openModal && showTimer && (
             <div className="relative flex flex-col items-center justify-center w-full max-w-xl mx-auto space-y-4 font-Jost">
-              <h1 className="text-4xl font-bold">Please Be Ready</h1>
+              <h1 className="text-4xl font-medium text-zinc-700 dark:text-zinc-300">
+                Please Be Ready
+              </h1>
               <p className="text-sm text-zinc-400">The quiz starts in</p>
               <motion.h1
                 initial={{ scale: 0 }}
