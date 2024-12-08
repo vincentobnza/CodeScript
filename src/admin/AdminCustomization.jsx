@@ -1,7 +1,14 @@
 import { useState, useEffect } from "react";
 import supabase from "../config/supabaseClient";
 import { toast, Toaster } from "react-hot-toast";
-import { Columns2, ArrowUpRight, ImageDown, LoaderCircle } from "lucide-react";
+import {
+  Columns2,
+  ArrowUpRight,
+  ImageDown,
+  LoaderCircle,
+  Fullscreen,
+  ArrowUpToLine,
+} from "lucide-react";
 import { Tooltip } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 import {
@@ -464,6 +471,9 @@ const CertificateTab = () => {
       console.error("Unexpected error:", error.message);
     } finally {
       setLoading(false);
+      setInstructorName("");
+      setExtension("");
+      setSignatureImg(null);
     }
   };
 
@@ -539,10 +549,11 @@ const CertificateTab = () => {
                 className="sr-only"
                 id="signatureImage"
                 onChange={handleAvatarChange}
+                required
               />
               <label
                 htmlFor="signatureImage"
-                className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-green-700 bg-green-100 border border-green-300 rounded-md shadow-sm outline-none cursor-pointer hover:opacity-70"
+                className="flex items-center gap-2 px-4 py-2 text-xs font-medium text-green-700 bg-green-100 border border-green-300 rounded-md shadow-sm outline-none cursor-pointer hover:opacity-70"
               >
                 Upload Image
               </label>
@@ -562,7 +573,7 @@ const CertificateTab = () => {
             </div>
 
             <p className="text-[11px] text-zinc-400 self-end">
-              Recommended <i>(PNG)</i>
+              Recommended <i>(Image with transparent background)</i>
             </p>
           </div>
         </div>
@@ -606,10 +617,36 @@ const LivePreview = ({
   const name = `${instructor_name} ${
     extension && extension.length <= 20 ? `, ${extension}` : ""
   }`;
+
+  const [onOpen, setOnOpen] = useState(false);
   return (
     <div className="flex flex-col gap-1 mt-4">
-      <h2 className="text-md font-medium">Live Preview</h2>
-      <p className="text-xs text-zinc-400">Live preview of your work</p>
+      <div className="w-full flex justify-between items-center">
+        <div className="space-y-2">
+          <h2 className="text-md font-medium">Live Preview</h2>
+          <p className="text-xs text-zinc-400">Live preview of your work</p>
+        </div>
+
+        <Tooltip
+          content="Full View"
+          radius="none"
+          className="font-Jost text-xs"
+        >
+          <Fullscreen
+            onClick={() => setOnOpen(true)}
+            className="cursor-pointer text-zinc-600 hover:text-zinc-800"
+          />
+        </Tooltip>
+
+        <LivePreviewFullScreen
+          onOpen={onOpen}
+          setOnOpen={setOnOpen}
+          instructor_name={instructor_name}
+          signatureImg={signatureImg}
+          extension={extension}
+          date={date}
+        />
+      </div>
 
       <div className="w-full h-80 mt-4 border border-zinc-200 relative overflow-hidden">
         <img
@@ -622,11 +659,11 @@ const LivePreview = ({
           {date}
         </h1>
 
-        <h1 className="text-xs absolute bottom-3 inset-0 flex items-center justify-center">
+        <h1 className="text-xs italic absolute bottom-3 inset-0 flex items-center justify-center">
           Student Name
         </h1>
 
-        <h1 className="text-xs absolute left-1/2 transform -translate-x-1/2 bottom-3">
+        <h1 className="uppercase text-xs absolute left-1/2 transform -translate-x-1/2 bottom-3">
           {name}
         </h1>
 
@@ -641,6 +678,58 @@ const LivePreview = ({
         )}
       </div>
     </div>
+  );
+};
+
+const LivePreviewFullScreen = ({
+  instructor_name,
+  signatureImg,
+  date,
+  extension,
+  onOpen,
+  setOnOpen,
+}) => {
+  return (
+    <>
+      {onOpen && (
+        <div
+          onClick={() => setOnOpen(false)}
+          className="grid fixed inset-0 bg-zinc-900/70 place-items-center z-[100]"
+        >
+          <motion.div
+            initial={{ opacity: 0, blur: "60px" }}
+            whileInView={{ opacity: 1, blur: "0" }}
+            className="relative flex flex-col items-center justify-center"
+          >
+            <img
+              src={COC}
+              alt="certificate of completion"
+              className="w-[820px]"
+            />
+            <h1 className="absolute inset-0 flex items-center justify-center italic -top-4">
+              Student Name
+            </h1>
+            <h1 className="absolute inset-0 flex items-center justify-center text-sm top-60">
+              {date}
+            </h1>
+
+            {signatureImg && (
+              <div className="w-[120px] h-[65px] text-sm font-bold absolute left-1/2 transform -translate-x-1/2 bottom-[5rem] text-zinc-700">
+                <img
+                  src={URL.createObjectURL(signatureImg)}
+                  alt="signature"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+            )}
+
+            <h1 className="uppercase text-sm font-bold absolute left-1/2 transform -translate-x-1/2 bottom-7 text-zinc-700">
+              {instructor_name} {extension && `, ${extension}`}
+            </h1>
+          </motion.div>
+        </div>
+      )}
+    </>
   );
 };
 
