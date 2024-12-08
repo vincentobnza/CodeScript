@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import { toPng } from "html-to-image";
 import { Button, Card, Progress } from "@nextui-org/react";
 import { Download, Medal, ThumbsUp } from "lucide-react";
-import CertificateOfCompletion from "../assets/CertificateOfCompletion.png";
-import CertificateOfExcellence from "../assets/CertificateOfExcellence.png";
+import CertificateOfCompletion from "../assets/COC.png";
+import CertificateOfExcellence from "../assets/COE.png";
 import supabase from "../config/supabaseClient";
 import { Tooltip } from "@nextui-org/react";
 
@@ -15,6 +15,7 @@ export default function Certificate() {
   const [isDownloading, setIsDownloading] = useState(false);
   const certificateRef = useRef(null);
   const [currentUser, setCurrentUser] = useState(null);
+  const [certificate, setCertificate] = useState(null);
 
   useEffect(() => {
     const fetchUserPoints = async () => {
@@ -88,6 +89,32 @@ export default function Certificate() {
         });
     }, 100);
   }, [certificateRef, activeTab, isProgressComplete]);
+
+  // FETCH CERTIFICATE DETAILS ON DB
+  useEffect(() => {
+    const fetchCertificate = async () => {
+      try {
+        const { data, error } = await supabase
+          .from("certificate")
+          .select("*") // Ensure you're selecting all relevant columns
+          .single(); // Retrieve only a single record
+
+        if (error) {
+          console.error("Error fetching certificate:", error.message);
+          return;
+        }
+
+        if (data) {
+          console.log("Fetched certificate:", data);
+          setCertificate(data); // Set the fetched data into the state
+        }
+      } catch (err) {
+        console.error("Unexpected error fetching certificate:", err.message);
+      }
+    };
+
+    fetchCertificate();
+  }, []);
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen p-4 pb-10">
@@ -191,6 +218,17 @@ export default function Certificate() {
                   Awarded on {formattedDate}
                 </p>
               </div>
+              <div className="w-[100px] h-[55px] text-sm font-bold absolute left-1/2 transform -translate-x-1/2 bottom-[4.5rem] text-zinc-700">
+                <img
+                  src={certificate?.signature_img_url}
+                  alt="signature"
+                  className="w-full h-full object-contain"
+                />
+              </div>
+
+              <h1 className="uppercase text-sm font-bold absolute left-1/2 transform -translate-x-1/2 bottom-7 text-zinc-700">
+                {certificate?.instructor_name}
+              </h1>
             </div>
           </motion.div>
           <div

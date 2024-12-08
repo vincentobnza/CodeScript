@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import supabase from "../config/supabaseClient";
 import { toast, Toaster } from "react-hot-toast";
-import { Columns2, ArrowUpRight, ImageDown } from "lucide-react";
+import { Columns2, ArrowUpRight, ImageDown, LoaderCircle } from "lucide-react";
 import { Tooltip } from "@nextui-org/react";
 import { Link } from "react-router-dom";
 import {
@@ -14,7 +14,9 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 import CertificateOfCompletion from "../assets/CertificateOfCompletion.png";
+import CertificateOfExcellence from "../assets/CertificateOfExcellence.png";
 import { motion } from "framer-motion";
+import COC from "../assets/COC.png";
 
 const Header = () => {
   return (
@@ -326,61 +328,148 @@ const QuizTab = () => {
 
 const CertificateTab = () => {
   const [instructorName, setInstructorName] = useState("");
-  const [description, setDescription] = useState("");
+  const [extension, setExtension] = useState("");
   const [signatureImg, setSignatureImg] = useState(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [certificateID, setCertificateID] = useState("");
 
-  const handleImageUpload = async (e) => {
+  useEffect(() => {
+    const fetchCertificate = async () => {
+      const { data, error } = await supabase
+        .from("certificate")
+        .select("id")
+        .single();
+
+      if (error) {
+        console.error("Error fetching certificate:", error.message);
+      } else if (data) {
+        setCertificateID(data.id);
+      }
+    };
+
+    fetchCertificate();
+  }, []);
+
+  // MAKE A RANDOM CERTIFICATE ID 10 WORDS
+  const generateRandomID = () => {
+    const characters =
+      "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    const charactersLength = characters.length;
+    let result = "";
+    for (let i = 0; i < 10; i++) {
+      // 10 characters long
+      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  };
+
+  useEffect(() => {
+    setCertificateID(generateRandomID());
+  }, []);
+
+  const handleAvatarChange = (e) => {
     const file = e.target.files[0];
-    if (!file) return;
-
-    // Upload to Supabase
-    const { data, error } = await supabase.storage
-      .from("signature")
-      .upload(`signature-${Date.now()}.png`, file, {
-        contentType: "image/png",
-        cacheControl: "3600",
-        upsert: false,
-      });
-
-    if (error) {
-      console.error("Upload error:", error.message);
-      return;
+    if (file) {
+      setSignatureImg(file);
     }
-
-    // Retrieve public URL of the uploaded image
-    const { publicURL, error: urlError } = supabase.storage;
-    const { publicURL, error: urlError } = supabase.storage
-      .from("signature")
-      .getPublicUrl(data.Key);
-    if (urlError) {
-      console.error("Error fetching public URL:", urlError.message);
-      return;
-    }
-
-    setSignatureImg(publicURL);
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const { data, error } = await supabase.from("certificate").insert([
-      {
-        instructor_name: instructorName,
-        description,
-        signature_img_url: signatureImg,
-      },
-    ]);
+    let signatureUrl = null;
+    if (signatureImg) {
+      const fileExt = signatureImg.name.split(".").pop();
+      const fileName = `${Math.random()}.${fileExt}`;
+      const filePath = `Certificate ${fileName}`;
 
-    if (error) {
+      const { error: uploadError } = await supabase.storage
+        .from("signature")
+        .upload(filePath, signatureImg);
+
+      if (uploadError) throw uploadError;
+
+      const {
+        data: { publicUrl },
+      } = supabase.storage.from("signature").getPublicUrl(filePath);
+
+      signatureUrl = publicUrl;
+    }
+
+    try {
+      setLoading(true);
+      const { error } = await supabase
+        .from("certificate")
+        .update({
+          instructor_name: `${instructorName}, ${extension}`,
+          signature_img_url: signatureUrl,
+        })
+        .eq("id", certificateID)
+        .single();
+
+      if (error) {
+        console.error("Error saving certificate:", error.message);
+      }
+    } catch (error) {
       console.error("Error saving certificate:", error.message);
-    } else {
-      console.log("Certificate saved:", data);
-      alert("Certificate details saved successfully!");
+      alert("Error saving certificate details");
+    } finally {
+      setLoading(false);
+      setCertificateID("");
+      setInstructorName("");
+      setSignatureImg(null);
+      setExtension("");
+      toast.success("Certificate settings saved successfully", {
+        style: { fontSize: "13px", fontWeight: "500" },
+      });
+    }
+  };
+
+  const date = new Date().toLocaleDateString("en-US", {
+    month: "long",
+    day: "numeric",
+    year: "numeric",
+  });
+  const handleDefault = async () => {
+    if (!certificateID) {
+      console.error("Error: certificateID is missing.");
+      return;
+    }
+
+    try {
+      setLoading(true);
+      const { error } = await supabase
+        .from("certificate")
+        .update({
+          instructor_name: `GIENELLE O, GUINANAO, MIT`,
+          signature_img_url:
+            "https://ppaomzodamoqjvviwojn.supabase.co/storage/v1/object/public/signature/sir%20gienelle%20signature.jpg",
+        })
+        .eq("id", certificateID)
+        .single();
+
+      if (error) {
+        console.error("Error switching to default certificate:", error.message);
+        toast.error("Failed to switch to default certificate.");
+      } else {
+        toast.success("Switched to default certificate successfully.", {
+          style: {
+            fontSize: "13px",
+            fontWeight: "500",
+          },
+        });
+      }
+    } catch (error) {
+      console.error("Unexpected error:", error.message);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <>
+      <Toaster />
       <div className="flex items-start justify-between w-full p-3 mt-8">
         <div className="flex flex-col gap-2">
           <h2 className="text-xl font-semibold text-gray-800">
@@ -393,50 +482,53 @@ const CertificateTab = () => {
 
         <div className="flex items-center gap-2">
           <button
+            onClick={handleDefault}
+            className="flex items-center gap-2 px-3 py-2 text-xs font-semibold border rounded text-zinc-700 border-zinc-300 hover:border-zinc-400 hover:text-zinc-800"
+          >
+            Set to Default Certificate
+          </button>
+          <button
             onClick={() => setIsOpen(true)}
             className="flex items-center gap-2 px-3 py-2 text-xs font-semibold border rounded text-zinc-700 border-zinc-300 hover:border-zinc-400 hover:text-zinc-800"
           >
             View Default Certificate
+            <ArrowUpRight size={16} />
           </button>
-          <a
-            href="/admin/certificate-live-preview"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 px-3 py-2 text-xs font-semibold border rounded text-zinc-700 border-zinc-300 hover:border-zinc-400 hover:text-zinc-800"
-          >
-            Live Preview
-          </a>
         </div>
+
+        <DefaultCertificate isOpen={isOpen} setIsOpen={setIsOpen} />
       </div>
 
       <form className="flex w-full gap-2" onSubmit={handleSubmit}>
         <div className="flex flex-col w-full gap-2 p-3">
-          <div className="flex flex-col gap-2">
-            <label className="text-sm text-zinc-500">Instructor Name</label>
-            <input
-              type="text"
-              placeholder="Enter instructor name"
-              className="h-10 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-300"
-              value={instructorName}
-              onChange={(e) => setInstructorName(e.target.value)}
-              required
-            />
+          <div className="w-full flex justify-between gap-2">
+            <div className="basis-3/4 flex flex-col gap-2">
+              <label className="text-sm text-zinc-500">Instructor Name</label>
+              <input
+                type="text"
+                placeholder="Enter instructor name"
+                className="h-10 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-300 placeholder:text-[13px] uppercase"
+                value={instructorName}
+                onChange={(e) => setInstructorName(e.target.value)}
+                required
+              />
+            </div>
+            <div className="basis-1/4 flex flex-col gap-2">
+              <label className="text-sm text-zinc-500">
+                Extension <i className="text-xs text-zinc-400">Optional</i>
+              </label>
+              <input
+                type="text"
+                placeholder="ex. (MIT, MSIT, DIT)"
+                className="h-10 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-300 placeholder:text-[13px] uppercase"
+                value={extension}
+                onChange={(e) => setExtension(e.target.value)}
+                required
+              />
+            </div>
           </div>
 
-          <div className="flex flex-col gap-2">
-            <label className="text-sm text-zinc-500">
-              Description (Certificate Description)
-            </label>
-            <textarea
-              placeholder="Enter certificate description"
-              required
-              className="h-40 p-5 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-300"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-            />
-          </div>
-
-          <div className="flex flex-col gap-4 bg-white">
+          <div className="mt-5 flex flex-col gap-4 bg-white">
             <label className="text-sm font-medium text-zinc-700">
               Upload Signature Image
             </label>
@@ -446,7 +538,7 @@ const CertificateTab = () => {
                 accept="image/*"
                 className="sr-only"
                 id="signatureImage"
-                onChange={handleImageUpload}
+                onChange={handleAvatarChange}
               />
               <label
                 htmlFor="signatureImage"
@@ -457,17 +549,21 @@ const CertificateTab = () => {
               <p className="text-xs text-zinc-500">Max file size: 2MB</p>
             </div>
 
-            <div className="flex items-center justify-center w-full h-48 overflow-hidden border border-dashed rounded-lg border-zinc-300 bg-zinc-50">
+            <div className="flex items-center justify-center w-full h-40 overflow-hidden border-2 border-dashed rounded-lg border-zinc-200 bg-white">
               {signatureImg ? (
                 <img
-                  src={signatureImg}
+                  src={URL.createObjectURL(signatureImg)}
                   alt="Signature Preview"
-                  className="object-cover w-full h-full"
+                  className="object-contain w-full h-full"
                 />
               ) : (
                 <p className="text-xs text-zinc-500">No image uploaded yet</p>
               )}
             </div>
+
+            <p className="text-[11px] text-zinc-400 self-end">
+              Recommended <i>(PNG)</i>
+            </p>
           </div>
         </div>
 
@@ -475,36 +571,75 @@ const CertificateTab = () => {
           <div className="flex justify-end w-full gap-2 pb-5 border-b border-zinc-200">
             <button
               type="submit"
-              className="px-4 py-2 text-sm font-bold text-white rounded bg-zinc-700"
+              className="px-4 py-2 text-sm font-bold text-white rounded bg-zinc-700 flex items-center gap-2"
             >
-              Save Changes
+              {loading ? (
+                <>
+                  Saving
+                  <LoaderCircle size={16} className="animate-spin" />
+                </>
+              ) : (
+                "Save Changes"
+              )}
             </button>
           </div>
+
+          <LivePreview
+            instructor_name={instructorName}
+            date={date}
+            signatureImg={signatureImg}
+            extension={extension}
+          />
         </div>
       </form>
     </>
   );
 };
 
-const Note = () => {
-  const note = [
-    "Ensure the instructor's name, certificate description, and signature image fields are correctly formatted.",
-    "If you want to view the live preview of the certificate, click the 'Live Preview' button.",
-    "Saved changes will be immediately applied and visible to students who earn the certificate.",
-  ];
-
+const LivePreview = ({
+  instructor_name,
+  description,
+  signatureImg,
+  date,
+  extension,
+}) => {
+  const name = `${instructor_name} ${
+    extension && extension.length <= 20 ? `, ${extension}` : ""
+  }`;
   return (
-    <div className="flex flex-col items-start gap-2 p-5 mt-2 border rounded-lg bg-amber-50 border-amber-300">
-      <h2 className="mb-4 text-lg font-semibold text-amber-700">
-        Important Note
-      </h2>
-      <ul className="pl-5 list-disc text-amber-700">
-        {note.map((item, index) => (
-          <li className="mb-3 text-sm" key={index}>
-            {item}
-          </li>
-        ))}
-      </ul>
+    <div className="flex flex-col gap-1 mt-4">
+      <h2 className="text-md font-medium">Live Preview</h2>
+      <p className="text-xs text-zinc-400">Live preview of your work</p>
+
+      <div className="w-full h-80 mt-4 border border-zinc-200 relative overflow-hidden">
+        <img
+          src={COC}
+          alt="Signature Preview"
+          className="object-fit w-full h-full"
+        />
+
+        <h1 className="text-[10px] absolute left-1/2 transform -translate-x-1/2 bottom-20">
+          {date}
+        </h1>
+
+        <h1 className="text-xs absolute bottom-3 inset-0 flex items-center justify-center">
+          Student Name
+        </h1>
+
+        <h1 className="text-xs absolute left-1/2 transform -translate-x-1/2 bottom-3">
+          {name}
+        </h1>
+
+        {signatureImg && (
+          <div className="w-[65px] h-[25px] absolute left-1/2 transform -translate-x-1/2 bottom-11 overflow-hidden">
+            <img
+              src={URL.createObjectURL(signatureImg)}
+              alt="signature"
+              className="w-full h-full object contain"
+            />
+          </div>
+        )}
+      </div>
     </div>
   );
 };

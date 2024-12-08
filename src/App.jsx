@@ -87,8 +87,6 @@ import AdminProtectedRoute from "./private/AdminProtectedRoute";
 // LOADER
 import LoadingPageWithNavigation from "./components/PageLoading";
 
-import CertificateLivePreview from "./admin/CertificateLivePreview";
-
 // 404
 
 import NotFound from "./pages/NotFound";
@@ -280,11 +278,6 @@ const router = createBrowserRouter([
   {
     path: "leaderboard/learn-more",
     element: <LearnMore />,
-  },
-
-  {
-    path: "admin/certificate-live-preview",
-    element: <CertificateLivePreview />,
   },
 
   {
