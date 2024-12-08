@@ -668,7 +668,7 @@ const ViewAccuracyModal = ({
       isOpen={isOpen}
       onOpenChange={onOpenChange}
       scrollBehavior="inside"
-      className="font-sans"
+      className="font-Jost"
       size="2xl"
     >
       <ModalContent>

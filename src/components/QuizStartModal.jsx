@@ -6,7 +6,7 @@ import { Clock, Check, LightbulbIcon } from "lucide-react";
 
 function ListItem({ icon, text }) {
   return (
-    <li className="flex items-center w-full p-2 space-x-3 border group border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-700/20 ">
+    <li className="flex items-center w-full p-2 space-x-3 bg-white border group border-zinc-200 dark:border-zinc-700 dark:bg-zinc-700/20 ">
       <div className="flex items-center justify-center flex-shrink-0 w-8 h-8 transition-colors duration-200 rounded-lg group-hover:bg-gray-200 dark:group-hover:bg-zinc-700">
         {icon}
       </div>
@@ -57,7 +57,7 @@ const QuizStartModal = ({ isOpen, setIsOpen }) => {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 grid p-8 overflow-y-scroll cursor-pointer font-Jost bg-white dark:bg-slate-900/20 backdrop-blur-lg place-items-center">
+        <div className="fixed inset-0 z-50 grid p-8 overflow-y-scroll font-Jost bg-white cursor-pointer dark:bg-slate-900/20 backdrop-blur-lg place-items-center">
           {openModal && (
             <motion.div
               initial={{ scale: 0, rotate: "12.5deg" }}
@@ -77,7 +77,7 @@ const QuizStartModal = ({ isOpen, setIsOpen }) => {
                   Important Quiz Guidelines
                 </h1>
 
-                <div className="w-full text-sm  text-zinc-600 dark:text-zinc-400">
+                <div className="w-full text-sm text-zinc-600 dark:text-zinc-400">
                   <p>
                     Please be mindful of the following rules to ensure a fair
                     experience for all participants:
@@ -116,7 +116,7 @@ const QuizStartModal = ({ isOpen, setIsOpen }) => {
                 <button
                   disabled={!isSelected}
                   onClick={() => setOpenModal(false)}
-                  className="self-start px-6 py-3 mt-5 text-xs font-bold text-white dark:text-zinc-700 rounded bg-green-500 dark:bg-zinc-200 disabled:opacity-30"
+                  className="self-start px-6 py-3 mt-5 text-xs font-bold text-white bg-green-500 rounded dark:text-zinc-700 dark:bg-zinc-200 disabled:opacity-30"
                 >
                   Start Quiz
                 </button>

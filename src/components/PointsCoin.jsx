@@ -243,7 +243,7 @@ export default function PointsCoin() {
               <motion.div
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
-                className="relative w-14 h-14  focus:outline-none"
+                className="relative w-14 h-14 focus:outline-none"
               >
                 <div className="absolute inset-0 rounded-full focus:outline-none" />
                 <div className="absolute flex items-center justify-center rounded-full inset-1 focus:outline-none">

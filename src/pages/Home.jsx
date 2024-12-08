@@ -2,7 +2,14 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import MainPicture from "../assets/MainPicture.png";
-import { Zap, ArrowUpRight, Library, Braces } from "lucide-react";
+import {
+  Zap,
+  ArrowUpRight,
+  Library,
+  Braces,
+  ChevronRight,
+  ArrowRight,
+} from "lucide-react";
 import InfiniteMarquee from "@/components/ui/InfiniteMarquee";
 import FeedbackIcon from "@/components/ui/FeedbackIcon";
 
@@ -25,6 +32,7 @@ export default function Home() {
 }
 
 const Hero = () => {
+  const [hovered, setHovered] = React.useState(null); // Track hover state
   return (
     <div className="relative flex flex-col items-center justify-center w-full max-w-screen-lg gap-6 p-4 mx-auto text-center md:p-8 lg:p-8">
       <div className="flex flex-col items-center justify-center space-y-2">
@@ -55,20 +63,36 @@ const Hero = () => {
         <div className="hidden dark:flex absolute w-[240px] h-[100px] bg-green-600/40 rounded-full bottom-8 z-0 filter blur-[80px]" />
         <Link
           to="/learn"
-          className="z-10 flex items-center justify-center gap-2 w-[120px] py-2 mt-10 text-xs tracking-wide dark:border bg-green-700 text-white dark:text-green-200 border border-green-700 dark:border-green-600 dark:bg-green-800/20 md:px-3 md:py-[0.60rem] md:text-md dark:hover:brightness-125 font-medium rounded-sm"
+          className="z-10 flex items-center justify-center gap-4 w-[170px] py-3 mt-10 text-[14px] tracking-wide dark:border bg-green-700 text-white dark:text-green-200 border border-green-700 dark:border-green-800 dark:bg-green-800/20 md:px-3  md:text-md dark:hover:brightness-125 font-medium rounded-sm"
+          onMouseEnter={() => setHovered("learn")}
+          onMouseLeave={() => setHovered(null)}
         >
-          Learn JS
-          <Library size={16} />
+          Learn JavaScript
+          <div className="transition-transform duration-500 ease-in-out transform">
+            {hovered === "learn" ? (
+              <ArrowRight size={16} />
+            ) : (
+              <ChevronRight size={16} />
+            )}
+          </div>
         </Link>
         <Link
           to="/code-lab"
-          className="z-10 flex items-center justify-center gap-2 w-[120px] py-2 mt-10 text-xs tracking-wide text-zinc-700 bg-transparent dark:text-white border border-zinc-500  dark:border-zinc-500 dark:bg-zinc-800/20 md:px-3 md:py-[0.60rem] md:text-md dark:hover:brightness-125 font-medium rounded-sm"
+          className="z-10 flex items-center justify-center gap-4 w-[170px] py-3 mt-10 text-[14px] tracking-wide text-zinc-700 bg-transparent dark:text-white border border-zinc-500  dark:border-zinc-700 dark:bg-zinc-800/20 md:px-3  md:text-md dark:hover:brightness-125 font-medium rounded-sm"
+          onMouseEnter={() => setHovered("code-lab")}
+          onMouseLeave={() => setHovered(null)}
         >
-          Code Lab
-          <Braces size={16} />
+          Try Code Lab
+          <div className="transition-transform duration-500 ease-in-out transform">
+            {hovered === "code-lab" ? (
+              <ArrowRight size={16} />
+            ) : (
+              <ChevronRight size={16} />
+            )}
+          </div>
         </Link>
       </div>
-      <p className="mt-2 text-xs">From Zero to Hero</p>
+      <p className="mt-2 text-sm">From Zero to Hero</p>
       <InfiniteMarquee />
     </div>
   );

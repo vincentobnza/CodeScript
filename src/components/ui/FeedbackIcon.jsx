@@ -12,7 +12,7 @@ export default function FeedbackIcon() {
       >
         <Link
           to="/feedback"
-          className="fixed z-50 grid text-green-500 transition duration-500 ease-linear  bottom-5 right-5"
+          className="fixed z-50 grid text-green-500 transition duration-500 ease-linear bottom-5 right-5"
         >
           <MessageCircleQuestion size={35} />
         </Link>

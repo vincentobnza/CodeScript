@@ -126,13 +126,13 @@ const Header = () => {
 
       <div className="items-center hidden gap-2 md:flex">
         <Link to="/certificate" className="flex">
-          <button className="flex items-center justify-center gap-2 px-3 py-2 text-xs transition-all duration-300 ease-linear bg-white border dark:hover:brightness-125 dark:bg-zinc-800/20 border-zinc-200 dark:border-zinc-700">
+          <button className="flex items-center justify-center gap-2 px-3 py-2 text-sm transition-all duration-300 ease-linear bg-white border dark:hover:brightness-125 dark:bg-zinc-800/20 border-zinc-200 dark:border-zinc-700">
             <Medal size={15} />
             My Certificate
           </button>
         </Link>
         <Link to="/performance" className="flex">
-          <button className="flex items-center justify-center gap-2 px-3 py-2 text-xs transition-all duration-300 ease-linear bg-white border dark:hover:brightness-125 dark:bg-zinc-800/20 border-zinc-200 dark:border-zinc-700">
+          <button className="flex items-center justify-center gap-2 px-3 py-2 text-sm transition-all duration-300 ease-linear bg-white border dark:hover:brightness-125 dark:bg-zinc-800/20 border-zinc-200 dark:border-zinc-700">
             <LoaderCircle size={15} />
             Progress
           </button>
@@ -238,7 +238,7 @@ const Lesson1Data = () => {
         </div>
       </div>
       {/* Lesson List */}
-      <ul className="grid  gap-2 p-1 md:grid-cols-4">
+      <ul className="grid gap-2 p-1 md:grid-cols-4">
         {Lesson1.map((item, idx) => (
           <div
             key={idx} // Move `key` to the top-level element
@@ -257,7 +257,7 @@ const Lesson1Data = () => {
               className="flex flex-col gap-3"
             >
               <div className="flex justify-between w-full">
-                <h1 className="z-10 flex items-center  font-semibold text-md md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
+                <h1 className="z-10 flex items-center font-semibold text-md md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
                   {item.name}
                 </h1>
                 <GoArrowRight className="text-zinc-400 group-hover:text-zinc-300 dark:group-hover:text-zinc-200" />
@@ -336,7 +336,7 @@ const Lesson2Data = () => {
         </div>
       </div>
       {/* Lesson List */}
-      <ul className="grid grid-cols gap-2 p-1 md:grid-cols-4">
+      <ul className="grid gap-2 p-1 grid-cols md:grid-cols-4">
         {Lesson2.map((item, idx) => (
           <div
             key={idx} // Move `key` to the top-level element
@@ -355,7 +355,7 @@ const Lesson2Data = () => {
               className="flex flex-col gap-3"
             >
               <div className="flex justify-between w-full">
-                <h1 className="z-10 flex items-center text-md font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
+                <h1 className="z-10 flex items-center font-semibold text-md md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
                   {item.name}
                 </h1>
                 <GoArrowRight className="text-zinc-400 group-hover:text-zinc-300 dark:group-hover:text-zinc-200" />
@@ -434,7 +434,7 @@ const Lesson3Data = () => {
         </div>
       </div>
       {/* Lesson List */}
-      <ul className="grid grid-cols gap-2 p-1 md:grid-cols-4">
+      <ul className="grid gap-2 p-1 grid-cols md:grid-cols-4">
         {Lesson3.map((item, idx) => (
           <div
             key={idx} // Move `key` to the top-level element
@@ -453,7 +453,7 @@ const Lesson3Data = () => {
               className="flex flex-col gap-3"
             >
               <div className="flex justify-between w-full">
-                <h1 className="z-10 flex items-center text-md font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
+                <h1 className="z-10 flex items-center font-semibold text-md md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
                   {item.name}
                 </h1>
                 <GoArrowRight className="text-zinc-400 group-hover:text-zinc-300 dark:group-hover:text-zinc-200" />
@@ -532,7 +532,7 @@ const Lesson4Data = () => {
         </div>
       </div>
       {/* Lesson List */}
-      <ul className="grid grid-cols gap-2 p-1 md:grid-cols-4">
+      <ul className="grid gap-2 p-1 grid-cols md:grid-cols-4">
         {Lesson4.map((item, idx) => (
           <div
             key={idx} // Move `key` to the top-level element
@@ -551,7 +551,7 @@ const Lesson4Data = () => {
               className="flex flex-col gap-3"
             >
               <div className="flex justify-between w-full">
-                <h1 className="z-10 flex items-center text-md font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
+                <h1 className="z-10 flex items-center font-semibold text-md md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
                   {item.name}
                 </h1>
                 <GoArrowRight className="text-zinc-400 group-hover:text-zinc-300 dark:group-hover:text-zinc-200" />
@@ -629,7 +629,7 @@ const Lesson5Data = () => {
         </div>
       </div>
       {/* Lesson List */}
-      <ul className="grid grid-cols gap-2 p-1 md:grid-cols-4">
+      <ul className="grid gap-2 p-1 grid-cols md:grid-cols-4">
         {Lesson5.map((item, idx) => (
           <div
             key={idx} // Move `key` to the top-level element
@@ -648,7 +648,7 @@ const Lesson5Data = () => {
               className="flex flex-col gap-3"
             >
               <div className="flex justify-between w-full">
-                <h1 className="z-10 flex items-center text-md font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
+                <h1 className="z-10 flex items-center font-semibold text-md md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
                   {item.name}
                 </h1>
                 <GoArrowRight className="text-zinc-400 group-hover:text-zinc-300 dark:group-hover:text-zinc-200" />
@@ -726,7 +726,7 @@ const Lesson6Data = () => {
         </div>
       </div>
       {/* Lesson List */}
-      <ul className="grid grid-cols gap-2 p-1 md:grid-cols-4">
+      <ul className="grid gap-2 p-1 grid-cols md:grid-cols-4">
         {Lesson6.map((item, idx) => (
           <div
             key={idx} // Move `key` to the top-level element
@@ -745,7 +745,7 @@ const Lesson6Data = () => {
               className="flex flex-col gap-3"
             >
               <div className="flex justify-between w-full">
-                <h1 className="z-10 flex items-center text-md font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
+                <h1 className="z-10 flex items-center font-semibold text-md md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
                   {item.name}
                 </h1>
                 <GoArrowRight className="text-zinc-400 group-hover:text-zinc-300 dark:group-hover:text-zinc-200" />
@@ -824,7 +824,7 @@ const Lesson7Data = () => {
         </div>
       </div>
       {/* Lesson List */}
-      <ul className="grid grid-cols gap-2 p-1 md:grid-cols-4">
+      <ul className="grid gap-2 p-1 grid-cols md:grid-cols-4">
         {Lesson7.map((item, idx) => (
           <div
             key={idx} // Move `key` to the top-level element
@@ -843,7 +843,7 @@ const Lesson7Data = () => {
               className="flex flex-col gap-3"
             >
               <div className="flex justify-between w-full">
-                <h1 className="z-10 flex items-center text-md font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
+                <h1 className="z-10 flex items-center font-semibold text-md md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
                   {item.name}
                 </h1>
                 <GoArrowRight className="text-zinc-400 group-hover:text-zinc-300 dark:group-hover:text-zinc-200" />
@@ -922,7 +922,7 @@ const Lesson8Data = () => {
         </div>
       </div>
       {/* Lesson List */}
-      <ul className="grid grid-cols gap-2 p-1 md:grid-cols-4">
+      <ul className="grid gap-2 p-1 grid-cols md:grid-cols-4">
         {Lesson8.map((item, idx) => (
           <div
             key={idx} // Move `key` to the top-level element
@@ -941,7 +941,7 @@ const Lesson8Data = () => {
               className="flex flex-col gap-3"
             >
               <div className="flex justify-between w-full">
-                <h1 className="z-10 flex items-center text-md font-semibold md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
+                <h1 className="z-10 flex items-center font-semibold text-md md:text-sm text-zinc-700 dark:text-zinc-300 underline-offset-2 dark:group-hover:text-yellow-200">
                   {item.name}
                 </h1>
                 <GoArrowRight className="text-zinc-400 group-hover:text-zinc-300 dark:group-hover:text-zinc-200" />

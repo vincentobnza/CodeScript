@@ -8,7 +8,7 @@ export default function AdminLayout() {
     document.title = "CodeScript - Instructor";
   });
   return (
-    <div className="flex flex-col w-full bg-white font-Jost text-zinc-700">
+    <div className="flex flex-col w-full font-Jost bg-white text-zinc-700">
       <AdminNavbar />
       <div className="flex flex-1 overflow-hidden">
         <AdminSidebar />

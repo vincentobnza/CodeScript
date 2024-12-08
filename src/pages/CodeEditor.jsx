@@ -750,8 +750,8 @@ const DescriptionView = ({ assessment }) => {
             <div className="flex flex-col w-full gap-2 mt-8 overflow-hidden overflow-y-auto text-sm">
               <h2>Code Hint 💡</h2>
 
-              <div className="w-full p-3 mt-2 text-sm border rounded text-green-100 border-green-600 bg-green-700/20">
-                <p className="whitespace-pre-wrap font-NotoSans leading-relaxed">
+              <div className="w-full p-3 mt-2 text-sm text-green-100 border border-green-600 rounded bg-green-700/20">
+                <p className="leading-relaxed whitespace-pre-wrap font-NotoSans">
                   {assessment.hint}
                 </p>
               </div>

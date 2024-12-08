@@ -222,11 +222,11 @@ export default function Certificate() {
                 <img
                   src={certificate?.signature_img_url}
                   alt="signature"
-                  className="w-full h-full object-contain"
+                  className="object-contain w-full h-full"
                 />
               </div>
 
-              <h1 className="uppercase text-sm font-bold absolute left-1/2 transform -translate-x-1/2 bottom-7 text-zinc-700">
+              <h1 className="absolute text-sm font-bold uppercase transform -translate-x-1/2 left-1/2 bottom-7 text-zinc-700">
                 {certificate?.instructor_name}
               </h1>
             </div>

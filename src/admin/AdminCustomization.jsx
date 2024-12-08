@@ -511,8 +511,8 @@ const CertificateTab = () => {
 
       <form className="flex w-full gap-2" onSubmit={handleSubmit}>
         <div className="flex flex-col w-full gap-2 p-3">
-          <div className="w-full flex justify-between gap-2">
-            <div className="basis-3/4 flex flex-col gap-2">
+          <div className="flex justify-between w-full gap-2">
+            <div className="flex flex-col gap-2 basis-3/4">
               <label className="text-sm text-zinc-500">Instructor Name</label>
               <input
                 type="text"
@@ -523,7 +523,7 @@ const CertificateTab = () => {
                 required
               />
             </div>
-            <div className="basis-1/4 flex flex-col gap-2">
+            <div className="flex flex-col gap-2 basis-1/4">
               <label className="text-sm text-zinc-500">
                 Extension <i className="text-xs text-zinc-400">Optional</i>
               </label>
@@ -538,9 +538,9 @@ const CertificateTab = () => {
             </div>
           </div>
 
-          <div className="mt-5 flex flex-col gap-4 bg-white">
+          <div className="flex flex-col gap-4 mt-5 bg-white">
             <label className="text-sm font-medium text-zinc-700">
-              Upload Signature Image
+              Upload Digital Signature
             </label>
             <div className="flex items-center gap-4 mt-2">
               <input
@@ -560,7 +560,7 @@ const CertificateTab = () => {
               <p className="text-xs text-zinc-500">Max file size: 2MB</p>
             </div>
 
-            <div className="flex items-center justify-center w-full h-40 overflow-hidden border-2 border-dashed rounded-lg border-zinc-200 bg-white">
+            <div className="flex items-center justify-center w-full h-40 overflow-hidden bg-white border-2 border-dashed rounded-lg border-zinc-200">
               {signatureImg ? (
                 <img
                   src={URL.createObjectURL(signatureImg)}
@@ -582,7 +582,7 @@ const CertificateTab = () => {
           <div className="flex justify-end w-full gap-2 pb-5 border-b border-zinc-200">
             <button
               type="submit"
-              className="px-4 py-2 text-sm font-bold text-white rounded bg-zinc-700 flex items-center gap-2"
+              className="flex items-center gap-2 px-4 py-2 text-sm font-bold text-white rounded bg-zinc-700"
             >
               {loading ? (
                 <>
@@ -621,9 +621,9 @@ const LivePreview = ({
   const [onOpen, setOnOpen] = useState(false);
   return (
     <div className="flex flex-col gap-1 mt-4">
-      <div className="w-full flex justify-between items-center">
+      <div className="flex items-center justify-between w-full">
         <div className="space-y-2">
-          <h2 className="text-md font-medium">Live Preview</h2>
+          <h2 className="font-medium text-md">Live Preview</h2>
           <p className="text-xs text-zinc-400">Live preview of your work</p>
         </div>
 
@@ -648,22 +648,22 @@ const LivePreview = ({
         />
       </div>
 
-      <div className="w-full h-80 mt-4 border border-zinc-200 relative overflow-hidden">
+      <div className="relative w-full mt-4 overflow-hidden border h-80 border-zinc-200">
         <img
           src={COC}
           alt="Signature Preview"
-          className="object-fit w-full h-full"
+          className="w-full h-full object-fit"
         />
 
         <h1 className="text-[10px] absolute left-1/2 transform -translate-x-1/2 bottom-20">
           {date}
         </h1>
 
-        <h1 className="text-xs italic absolute bottom-3 inset-0 flex items-center justify-center">
+        <h1 className="absolute inset-0 flex items-center justify-center text-xs italic bottom-3">
           Student Name
         </h1>
 
-        <h1 className="uppercase text-xs absolute left-1/2 transform -translate-x-1/2 bottom-3">
+        <h1 className="absolute text-xs uppercase transform -translate-x-1/2 left-1/2 bottom-3">
           {name}
         </h1>
 
@@ -718,12 +718,12 @@ const LivePreviewFullScreen = ({
                 <img
                   src={URL.createObjectURL(signatureImg)}
                   alt="signature"
-                  className="w-full h-full object-contain"
+                  className="object-contain w-full h-full"
                 />
               </div>
             )}
 
-            <h1 className="uppercase text-sm font-bold absolute left-1/2 transform -translate-x-1/2 bottom-7 text-zinc-700">
+            <h1 className="absolute text-sm font-bold uppercase transform -translate-x-1/2 left-1/2 bottom-7 text-zinc-700">
               {instructor_name} {extension && `, ${extension}`}
             </h1>
           </motion.div>
