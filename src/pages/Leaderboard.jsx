@@ -20,6 +20,8 @@ import {
   Eye,
   Ban,
   ArrowUpRight,
+  Zap,
+  Trophy,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import ProfileHeader from "../assets/profile header.png";
@@ -143,48 +145,48 @@ const ListBox = () => {
     <div className="grid w-full max-w-screen-md gap-4 p-3 mx-auto md:grid-cols-2">
       <div className="relative flex flex-col w-full bg-white border rounded-lg dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700">
         <div
-          className={`relative w-full h-28 rounded-tl-lg rounded-tr-lg bg-cover bg-center`}
+          className={`relative w-full h-32 rounded-tl-lg rounded-tr-lg bg-cover bg-center`}
           style={{ backgroundImage: `url(${ProfileHeader})` }}
         >
-          <Avatar
+          <img
             src={userDetails?.avatar_url}
             alt="avatar"
-            className="absolute object-cover -bottom-8 md:-bottom-10 left-4 md:left-10"
-            size="lg"
-            isBordered
-            color="secondary"
+            className="absolute z-10 object-cover rounded-full -bottom-8 md:-bottom-10 left-4 md:left-10 size-20 animate-pulse-slow"
           />
         </div>
 
-        <div className="flex flex-col w-full gap-2">
-          <div className="flex flex-col gap-2 px-1 py-3 ml-20 md:ml-28">
-            <h1 className="text-md">
-              Username:{" "}
-              <span className="px-2 md:px-3 py-[4px] text-purple-600 dark:text-purple-400">
+        <div className="flex flex-col w-full gap-1">
+          <div className="flex items-center gap-2 px-1 py-3 ml-20 md:ml-32">
+            <h1 className="font-bold text-md">
+              <span className="px-2 md:px-3 py-[4px] text-zinc-600 dark:text-zinc-400">
                 {userDetails?.username}
               </span>
             </h1>
+
+            <div className="flex items-center gap-1 px-2 py-[2px] text-xs font-bold text-green-300 rounded-full bg-green-600/10 border border-green-700">
+              <p>Active</p>
+
+              <Zap size={12} strokeWidth={2.5} />
+            </div>
           </div>
         </div>
 
         <div className="grid w-full grid-cols-2 mt-12 border-t border-zinc-200 dark:border-zinc-700">
-          <div className="flex flex-col gap-2 p-3 text-center border-r md:p-5 border-zinc-200 dark:border-zinc-700">
-            <p className="text-[10px] md:text-[11px] text-zinc-500 dark:text-zinc-200 font-semibold">
-              Current Points
-            </p>
-
-            <h1 className="text-2xl font-bold text-orange-400 md:text-3xl">
+          <div className="relative flex flex-col gap-3 p-3 overflow-hidden text-center border-r md:p-5 border-zinc-200 dark:border-zinc-700">
+            <h1 className="text-2xl font-bold text-amber-400 md:text-5xl">
               {userDetails?.current_points}
             </h1>
-          </div>
-          <div className="flex flex-col gap-2 p-3 text-center md:p-5">
-            <p className="text-[10px] md:text-[11px] font-semibold text-zinc-500 dark:text-zinc-200">
-              Rank
+            <p className="text-[10px] md:text-[12px] text-zinc-500 dark:text-zinc-400 font-semibold">
+              Total Points
             </p>
-
-            <h1 className="text-2xl font-bold md:text-3xl text-violet-600">
+          </div>
+          <div className="flex flex-col gap-3 p-3 text-center border-r md:p-5 border-zinc-200 dark:border-zinc-700">
+            <h1 className="text-2xl font-bold text-green-400 md:text-5xl">
               {userDetails?.rank}
             </h1>
+            <p className="text-[10px] md:text-[12px] text-zinc-500 dark:text-zinc-400 font-semibold">
+              Current Rank
+            </p>
           </div>
         </div>
       </div>
@@ -325,7 +327,7 @@ const Ranking = () => {
 
             <button
               onClick={toggleVisibility}
-              className="flex items-center h-8 gap-2 px-3 text-xs font-medium bg-transparent border rounded outline-none dark:bg-zinc-700/20 border-zinc-200 dark:border-zinc-600 hover:brightness-110"
+              className="flex items-center self-end h-8 gap-2 px-3 text-xs font-medium bg-transparent border rounded outline-none dark:bg-zinc-700/20 border-zinc-200 dark:border-zinc-600 hover:brightness-110"
             >
               {isHidden ? (
                 <Eye size={15} className="text-amber-500" />
@@ -352,7 +354,7 @@ const Ranking = () => {
                 </div>
                 <button
                   onClick={toggleSort}
-                  className="w-full h-10 px-3 bg-transparent border border-gray-200 shadow md:w-auto dark:border-zinc-700 hover:border-zinc-300 dark:hover:border-zinc-600 focus:outline-none dark:shadow-none"
+                  className="self-end w-10 h-10 px-3 bg-transparent border border-gray-200 shadow md:w-auto dark:border-zinc-700 hover:border-zinc-300 dark:hover:border-zinc-600 focus:outline-none dark:shadow-none"
                   title={
                     sortAscending
                       ? "Sort Highest to Lowest"
@@ -375,9 +377,9 @@ const Ranking = () => {
                   <TableColumn className="hidden text-center md:table-cell">
                     Progress
                   </TableColumn>
-                  <TableColumn className="hidden text-center md:table-cell">
+                  {/* <TableColumn className="hidden text-center md:table-cell">
                     Status
-                  </TableColumn>
+                  </TableColumn> */}
                 </TableHeader>
                 <TableBody emptyContent={"No user is found"}>
                   {sortedUsers.map(
@@ -453,7 +455,7 @@ const Ranking = () => {
                               color="success"
                             />
                           </TableCell>
-                          <TableCell className="text-xs font-bold text-center md:text-sm">
+                          {/* <TableCell className="text-xs font-bold text-center md:text-sm">
                             <div className="flex items-center justify-center gap-2 px-4 py-1 mx-auto">
                               <p
                                 className={`text-sm ${
@@ -467,7 +469,7 @@ const Ranking = () => {
                                   : "Disconnected"}
                               </p>
                             </div>
-                          </TableCell>
+                          </TableCell> */}
                         </TableRow>
                       )
                   )}
