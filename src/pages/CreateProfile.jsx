@@ -126,7 +126,7 @@ export default function CreateProfile() {
               />
             ) : (
               <img
-                src="https://cdn-icons-png.flaticon.com/128/4202/4202843.png"
+                src="https://static.vecteezy.com/system/resources/previews/011/490/381/original/happy-smiling-young-man-avatar-3d-portrait-of-a-man-cartoon-character-people-illustration-isolated-on-white-background-vector.jpg"
                 alt="Avatar"
                 className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white grayscale"
               />
@@ -150,19 +150,22 @@ export default function CreateProfile() {
           <h2 className="text-2xl md:text-4xl font-semibold text-white mb-4">
             Setup Your Profile
           </h2>
-          <p className="text-xs md:text-sm text-zinc-400 mt-2">
+          <p className="text-xs md:text-[16px] leading-relaxed text-zinc-400 mt-2">
             Let’s know a little bit about you <br /> This won’t take long.
           </p>
         </div>
 
         {/* Right Section */}
         <div className="w-full md:w-2/3 p-6 md:p-20">
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-6 relative">
+            <i className="text-sm md:text-lg font-medium absolute top-0 right-0 text-zinc-700">
+              ( Required All Fields )
+            </i>
             <div className="grid grid-cols-1 gap-4">
               <div>
                 <label
                   htmlFor="username"
-                  className="block text-sm md:text-md font-medium text-gray-700"
+                  className="block text-sm md:text-lg font-medium text-gray-700"
                 >
                   Username
                 </label>
@@ -174,13 +177,13 @@ export default function CreateProfile() {
                   value={formData.username}
                   onChange={handleInputChange}
                   required
-                  className="mt-1 block w-full border-zinc-200 border-b bg-white h-10 md:h-12 outline-none focus:outline-none focus:border-b-4 focus:border-zinc-700 text-zinc-700 text-sm md:text-md"
+                  className="mt-1 block w-full border-zinc-200 border-b bg-white h-10 md:h-12 outline-none focus:outline-none focus:border-b-4 focus:border-zinc-700 text-zinc-700 text-sm md:text-lg"
                 />
               </div>
               <div>
                 <label
                   htmlFor="displayName"
-                  className="block text-sm md:text-md font-medium text-gray-700"
+                  className="block text-sm md:text-lg font-medium text-gray-700"
                 >
                   Display Name
                 </label>
@@ -192,13 +195,13 @@ export default function CreateProfile() {
                   value={formData.displayName}
                   onChange={handleInputChange}
                   required
-                  className="mt-1 block w-full border-zinc-200 border-b bg-white h-10 md:h-12 outline-none focus:outline-none focus:border-b-4 focus:border-zinc-700 text-zinc-700 text-sm md:text-md"
+                  className="mt-1 block w-full border-zinc-200 border-b bg-white h-10 md:h-12 outline-none focus:outline-none focus:border-b-4 focus:border-zinc-700 text-zinc-700 text-sm md:text-lg"
                 />
               </div>
               <div>
                 <label
                   htmlFor="yearLevel"
-                  className="block text-sm md:text-md font-medium text-gray-700"
+                  className="block text-sm md:text-lg font-medium text-gray-700"
                 >
                   Year Level
                 </label>
@@ -208,7 +211,7 @@ export default function CreateProfile() {
                   value={formData.yearLevel}
                   onChange={handleInputChange}
                   required
-                  className="mt-1 block w-full border-zinc-200 border-b bg-white h-10 md:h-12 outline-none focus:outline-none focus:border-b-4 focus:border-zinc-700 text-zinc-700 text-sm md:text-md"
+                  className="mt-1 block w-full border-zinc-200 border-b bg-white h-10 md:h-12 outline-none focus:outline-none focus:border-b-4 focus:border-zinc-700 text-zinc-700 text-sm md:text-lg"
                 >
                   <option value=""></option>
                   <option value="1st Year">1st Year</option>
@@ -220,7 +223,7 @@ export default function CreateProfile() {
               <div>
                 <label
                   htmlFor="section"
-                  className="block text-sm md:text-md font-medium text-gray-700"
+                  className="block text-sm md:text-lg font-medium text-gray-700"
                 >
                   Section
                 </label>
@@ -230,7 +233,7 @@ export default function CreateProfile() {
                   value={formData.section}
                   onChange={handleInputChange}
                   required
-                  className="mt-1 block w-full border-zinc-200 border-b bg-white h-10 md:h-12 outline-none focus:outline-none focus:border-b-4 focus:border-zinc-700 text-zinc-700 text-sm md:text-md"
+                  className="mt-1 block w-full border-zinc-200 border-b bg-white h-10 md:h-12 outline-none focus:outline-none focus:border-b-4 focus:border-zinc-700 text-zinc-700 text-sm md:text-lg"
                 >
                   <option value=""></option>
                   <option value="A">Section A</option>
@@ -246,7 +249,7 @@ export default function CreateProfile() {
               <button
                 type="button"
                 onClick={() => navigate(-1)}
-                className="w-full md:w-auto px-6 text-sm md:text-md font-semibold py-3 bg-zinc-300 text-zinc-600"
+                className="w-full md:w-auto px-6 text-sm md:text-lg font-semibold py-3 bg-zinc-300 text-zinc-600"
               >
                 Cancel
               </button>
@@ -259,7 +262,7 @@ export default function CreateProfile() {
                   !formData.yearLevel ||
                   !formData.section
                 }
-                className="w-full md:w-auto px-6 text-sm md:text-md font-semibold py-3 bg-zinc-700 text-white hover:bg-zinc-600 disabled:opacity-30"
+                className="w-full md:w-auto px-6 text-sm md:text-lg font-semibold py-3 bg-zinc-700 text-white hover:bg-zinc-600 disabled:opacity-30"
               >
                 {loading ? "Creating..." : "Save"}
               </button>
