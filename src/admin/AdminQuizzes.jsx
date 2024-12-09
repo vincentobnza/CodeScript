@@ -374,7 +374,12 @@ const QuizDetailModal = ({ isOpen, onClose, quiz }) => {
   if (!quiz) return null;
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size="2xl">
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      size="2xl"
+      className="font-Jost text-zinc-700"
+    >
       <ModalContent>
         <ModalHeader className="flex flex-col gap-1">Quiz Details</ModalHeader>
         <ModalBody>

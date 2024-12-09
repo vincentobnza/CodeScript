@@ -29,7 +29,7 @@ export default {
         SpaceGrotesk: ["Space Grotesk", "sans-serif"],
         Lato: ["Lato", "sans-serif"],
         Jost: ["Jost", "sans-serif"],
-        MonaSans: ["Mona Sans", "sans-serif"],
+        PlayFair: ["Playfair Display", "serif"],
       },
     },
   },

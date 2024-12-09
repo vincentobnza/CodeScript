@@ -554,7 +554,7 @@ const CreateModal = ({ isOpen, onOpen, onOpenChange }) => {
                         showArrow={true}
                         placement="left"
                         content={
-                          <div className="w-[400px] p-5 pb-8 font-NotoSans">
+                          <div className="w-[400px] p-5 pb-8 font-Jost">
                             <div className="mb-3 font-bold text-small">
                               Test Code Note ⚠️
                             </div>
@@ -830,7 +830,7 @@ const EditModal = ({ isOpen, onOpenChange, assessment, onUpdate }) => {
                         showArrow={true}
                         placement="left"
                         content={
-                          <div className="w-[400px] p-5 pb-8 font-NotoSans">
+                          <div className="w-[400px] p-5 pb-8 font-Jost">
                             <div className="mb-3 font-bold text-small">
                               Test Code Note ⚠️
                             </div>

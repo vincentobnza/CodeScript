@@ -7,22 +7,8 @@ export const useTheme = () => useContext(ThemeContext);
 export const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState("dark");
 
-  // Function to get system theme preference
-  const getSystemTheme = () => {
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
-  };
-
-  // Function to determine if dark mode should be active
-  const shouldUseDarkMode = () => {
-    if (theme === "system") {
-      return getSystemTheme() === "dark";
-    }
-    return theme === "dark";
-  };
-
   useEffect(() => {
+    // Check if a theme is saved in localStorage
     const savedTheme = localStorage.getItem("theme");
     if (savedTheme) {
       setTheme(savedTheme);
@@ -30,23 +16,10 @@ export const ThemeProvider = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    const isDark = shouldUseDarkMode();
+    // Apply the dark or light theme based on the current state
+    const isDark = theme === "dark";
     document.documentElement.classList.toggle("dark", isDark);
     localStorage.setItem("theme", theme);
-  }, [theme]);
-
-  useEffect(() => {
-    if (theme === "system") {
-      const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
-
-      const handleChange = () => {
-        const isDark = shouldUseDarkMode();
-        document.documentElement.classList.toggle("dark", isDark);
-      };
-
-      mediaQuery.addEventListener("change", handleChange);
-      return () => mediaQuery.removeEventListener("change", handleChange);
-    }
   }, [theme]);
 
   return (
@@ -54,7 +27,7 @@ export const ThemeProvider = ({ children }) => {
       value={{
         theme,
         setTheme,
-        isDarkMode: shouldUseDarkMode(),
+        isDarkMode: theme === "dark",
       }}
     >
       {children}

@@ -171,7 +171,7 @@ export default function Quiz() {
                 showArrow={true}
                 placement="bottom"
                 content={
-                  <div className="w-[220px] p-3 font-SpaceGrotesk">
+                  <div className="w-[220px] p-3 font-Jost">
                     <h1 className="mb-3 text-xs font-semibold">
                       Fantastic Score 🥳
                     </h1>

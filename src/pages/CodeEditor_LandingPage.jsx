@@ -24,10 +24,10 @@ const Hero = () => {
   const [hovered, setHovered] = React.useState(null);
   return (
     <div className="relative flex flex-col items-center justify-center w-full max-w-screen-md gap-4 p-4 mx-auto text-center md:p-8 lg:p-8">
-      <div className="hidden md:flex lg:flex absolute w-96 h-96 bg-gradient-to-br from-pink-600/10 via-violet-500/60 to-purple-400/10 rounded-full  z-0 filter blur-[90px]" />
-      <div className="z-10 flex items-center self-start justify-center gap-2 px-3 py-[6px] mx-auto font-medium text-green-700 dark:text-green-300 border border-green-300 dark:border-green-600 rounded-lg bg-green-100 dark:bg-green-800/20">
+      <div className="hidden md:flex lg:flex absolute w-96 h-60 bg-gradient-to-br from-indigo-600/10 via-violet-500/30 to-blue-400/10 rounded-full  z-0 filter blur-[90px]" />
+      <div className="z-10 flex items-center self-start justify-center gap-2 px-3 py-[6px] mx-auto font-medium text-green-700 dark:text-green-200 border border-green-300 dark:border-green-700 rounded-lg bg-green-100 dark:bg-green-800/40">
         <Zap size={14} />
-        <h1 className="text-xs">Test, Debug, and Improve</h1>
+        <h1 className="text-sm">Test, Debug, and Improve</h1>
       </div>
       <h1 className="z-10 text-4xl md:text-[48px] dark:text-zinc-200 text-zinc-700 leading-snug font-semibold ">
         Welcome to Code Lab

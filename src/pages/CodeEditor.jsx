@@ -732,7 +732,7 @@ const DescriptionView = ({ assessment }) => {
         <h2 className="mb-4 font-semibold">Expected Output</h2>
 
         <div className="w-full p-3 overflow-y-auto border rounded text-zinc-300 h-28 bg-zinc-800 border-zinc-600">
-          <pre className="text-sm whitespace-pre-wrap font-NotoSans">
+          <pre className="text-sm whitespace-pre-wrap font-Jost">
             {assessment.expectedOutput}
           </pre>
         </div>
@@ -751,7 +751,7 @@ const DescriptionView = ({ assessment }) => {
               <h2>Code Hint 💡</h2>
 
               <div className="w-full p-3 mt-2 text-sm text-green-100 border border-green-600 rounded bg-green-700/20">
-                <p className="leading-relaxed whitespace-pre-wrap font-NotoSans">
+                <p className="leading-relaxed whitespace-pre-wrap font-Jost">
                   {assessment.hint}
                 </p>
               </div>

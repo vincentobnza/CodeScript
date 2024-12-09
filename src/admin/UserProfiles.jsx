@@ -604,7 +604,12 @@ const UserDrawer = ({
 
 const DeleteConfirmationModal = ({ isOpen, onClose, onConfirm, loading }) => {
   return (
-    <Modal isOpen={isOpen} onClose={onClose} radius="none">
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      radius="none"
+      className="font-Jost"
+    >
       <ModalContent>
         <ModalHeader className="border-b border-zinc-200">
           <h1>Confirm Deletion</h1>
@@ -645,7 +650,12 @@ const EditUserModal = ({
   setUsername,
 }) => {
   return (
-    <Modal isOpen={isOpen} onClose={onClose} radius="none">
+    <Modal
+      isOpen={isOpen}
+      onClose={onClose}
+      radius="none"
+      className="font-Jost"
+    >
       <ModalContent>
         <ModalHeader>Edit User</ModalHeader>
         <ModalBody>

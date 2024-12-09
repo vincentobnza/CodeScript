@@ -163,7 +163,7 @@ export default function Navbar() {
               showArrow
               placement="bottom"
               content={
-                <div className="grid grid-cols-2 gap-4 p-5 pb-2 ffont-Jost">
+                <div className="grid grid-cols-2 gap-4 p-5 pb-2 font-Jost">
                   <div className="flex flex-col items-center justify-center gap-3 mb-3 text-xs text-zinc-500 dark:text-zinc-400">
                     <h1> Current Points</h1>
                     <div className="relative">
@@ -229,7 +229,7 @@ export default function Navbar() {
           </div>
 
           {user ? (
-            <Dropdown placement="bottom-end" className="ffont-Jost text-xs">
+            <Dropdown placement="bottom-end" className="font-Jost text-xs">
               <DropdownTrigger>
                 <div className="items-center gap-4">
                   <div className="grid overflow-hidden rounded-full cursor-pointer size-8 place-items-center">
@@ -269,7 +269,7 @@ export default function Navbar() {
               showArrow={true}
               placement="bottom"
               content={
-                <div className="w-[250px] p-5 pb-8 ffont-Jost">
+                <div className="w-[250px] p-5 pb-8 font-Jost">
                   <div className="grid mb-4 border rounded-lg size-8 place-items-center bg-zinc-100 dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700">
                     <Lock size={15} />
                   </div>
@@ -288,7 +288,7 @@ export default function Navbar() {
             </Tooltip>
           )}
 
-          <Dropdown className="ffont-Jost">
+          <Dropdown className="font-Jost">
             <DropdownTrigger>
               <div className="grid transition duration-500 ease-in-out rounded-lg cursor-pointer hover:bg-zinc-100 dark:hover:bg-zinc-800 hover:brightness-125 size-9 place-items-center">
                 {getCurrentThemeIcon()}
@@ -352,7 +352,7 @@ const Navs = () => {
           <NavLink
             key={link.to}
             to={link.to}
-            className={`text-xs hover:brightness-125`}
+            className={`text-[12.5px] hover:brightness-125`}
           >
             {link.label}
           </NavLink>

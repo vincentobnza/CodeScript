@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import supabase from "../config/supabaseClient";
-import { User, CloudUpload } from "lucide-react";
-import { Checkbox } from "@nextui-org/react";
+import { User, CloudUpload, Dices } from "lucide-react";
 
 export default function CreateProfile() {
   const [formData, setFormData] = useState({
@@ -16,8 +15,6 @@ export default function CreateProfile() {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
-
-  const [checked, setChecked] = useState(false);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -34,6 +31,12 @@ export default function CreateProfile() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
+
+    if (!avatar) {
+      toast.error("Please upload an avatar!");
+      setLoading(false);
+      return;
+    }
 
     const createProfilePromise = new Promise(async (resolve, reject) => {
       try {
@@ -109,146 +112,160 @@ export default function CreateProfile() {
   };
 
   return (
-    <div className="flex justify-center min-h-screen p-3 bg-white">
+    <div className="flex justify-center items-center min-h-screen bg-white">
       <Toaster />
-      <div className="w-full max-w-2xl p-8 bg-white">
-        <div className="flex flex-col items-center gap-4 mb-8">
-          <div className="relative mb-2 overflow-hidden bg-white border rounded-full border-zinc-200 size-20">
+      <div className="flex flex-col md:flex-row w-full bg-white overflow-hidden min-h-screen">
+        {/* Left Section */}
+        <div className="w-full md:w-1/3 flex flex-col justify-center text-center items-center p-6 bg-slate-800">
+          <div className="relative mb-10 md:mb-20">
             {avatar ? (
               <img
                 src={URL.createObjectURL(avatar)}
                 alt="Avatar"
-                className="object-cover object-center w-full h-full"
+                className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-3 border-slate-500"
               />
             ) : (
-              <User
-                className="w-full h-full p-4 text-gray-400"
-                strokeWidth={1}
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/4202/4202843.png"
+                alt="Avatar"
+                className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-white grayscale"
               />
             )}
+            <label
+              htmlFor="avatar-upload"
+              className="absolute -bottom-2 -right-2 bg-gradient-to-br from-green-500 to-indigo-500 p-2 md:p-4 rounded-full cursor-pointer"
+            >
+              <CloudUpload size={20} md:size={24} className="text-white" />
+              <input
+                autoComplete="off"
+                id="avatar-upload"
+                type="file"
+                accept="image/*"
+                onChange={handleAvatarChange}
+                className="hidden"
+                required
+              />
+            </label>
           </div>
-          <label
-            htmlFor="avatar-upload"
-            className="flex items-center px-3 py-2 text-xs font-medium text-green-600 transition-colors bg-green-100 border border-green-300 rounded-lg cursor-pointer"
-          >
-            <CloudUpload size={16} className="mr-2" />
-            <span>Upload Avatar</span>
-            <input
-              id="avatar-upload"
-              type="file"
-              accept="image/*"
-              onChange={handleAvatarChange}
-              className="hidden"
-            />
-          </label>
-        </div>
-        <div className="mb-8 text-center">
-          <h2 className="text-4xl font-bold text-gray-800">
+          <h2 className="text-2xl md:text-4xl font-semibold text-white mb-4">
             Setup Your Profile
           </h2>
-          <p className="mt-4 text-xs text-gray-500">
-            Please set up your profile before starting
+          <p className="text-xs md:text-sm text-zinc-400 mt-2">
+            Let’s know a little bit about you <br /> This won’t take long.
           </p>
         </div>
-        <form onSubmit={handleSubmit} className="space-y-6">
-          <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
-            <div>
-              <label
-                htmlFor="username"
-                className="block mb-2 text-xs text-gray-700"
-              >
-                Username
-              </label>
-              <input
-                id="username"
-                name="username"
-                type="text"
-                required
-                value={formData.username}
-                onChange={handleInputChange}
-                className="block w-full px-3 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="displayName"
-                className="block mb-2 text-xs text-gray-700"
-              >
-                Display Name
-              </label>
-              <input
-                id="displayName"
-                name="displayName"
-                type="text"
-                required
-                value={formData.displayName}
-                onChange={handleInputChange}
-                className="block w-full px-3 py-2 mt-1 text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-green-500 focus:border-green-500"
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="yearLevel"
-                className="block mb-2 text-xs text-gray-700"
-              >
-                Year Level
-              </label>
-              <select
-                id="yearLevel"
-                name="yearLevel"
-                value={formData.yearLevel}
-                onChange={handleInputChange}
-                required
-                className="block w-full h-12 px-3 mt-1 text-xs text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-green-500 focus:border-green-500"
-              >
-                <option value="">Select Year Level</option>
-                <option value="1st Year">1st Year</option>
-                <option value="2nd Year">2nd Year</option>
-                <option value="3rd Year">3rd Year</option>
-                <option value="4th Year">4th Year</option>
-              </select>
-            </div>
-            <div>
-              <label
-                htmlFor="section"
-                className="block mb-2 text-xs text-gray-700"
-              >
-                Section
-              </label>
-              <select
-                id="section"
-                name="section"
-                value={formData.section}
-                onChange={handleInputChange}
-                required
-                className="block w-full h-12 px-3 mt-1 text-xs text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-green-500 focus:border-green-500"
-              >
-                <option value="">Select Section</option>
-                <option value="A">Section A</option>
-                <option value="B">Section B</option>
-                <option value="C">Section C</option>
-                <option value="D">Section D</option>
-                <option value="E">Section E</option>
-              </select>
-            </div>
-          </div>
 
-          <div>
-            <button
-              type="submit"
-              disabled={
-                loading ||
-                !formData.username.trim() ||
-                !formData.displayName.trim() ||
-                !formData.yearLevel ||
-                !formData.section
-              }
-              className="flex items-center justify-center w-full h-12 px-4 text-sm font-medium text-white transition-colors bg-green-600 border border-transparent rounded-md shadow-sm hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              {loading ? "Creating..." : "Create Profile"}
-            </button>
-          </div>
-        </form>
+        {/* Right Section */}
+        <div className="w-full md:w-2/3 p-6 md:p-20">
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="grid grid-cols-1 gap-4">
+              <div>
+                <label
+                  htmlFor="username"
+                  className="block text-sm md:text-md font-medium text-gray-700"
+                >
+                  Username
+                </label>
+                <input
+                  autoComplete="off"
+                  id="username"
+                  name="username"
+                  type="text"
+                  value={formData.username}
+                  onChange={handleInputChange}
+                  required
+                  className="mt-1 block w-full border-zinc-200 border-b bg-white h-10 md:h-12 outline-none focus:outline-none focus:border-b-4 focus:border-zinc-700 text-zinc-700 text-sm md:text-md"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="displayName"
+                  className="block text-sm md:text-md font-medium text-gray-700"
+                >
+                  Display Name
+                </label>
+                <input
+                  autoComplete="off"
+                  id="displayName"
+                  name="displayName"
+                  type="text"
+                  value={formData.displayName}
+                  onChange={handleInputChange}
+                  required
+                  className="mt-1 block w-full border-zinc-200 border-b bg-white h-10 md:h-12 outline-none focus:outline-none focus:border-b-4 focus:border-zinc-700 text-zinc-700 text-sm md:text-md"
+                />
+              </div>
+              <div>
+                <label
+                  htmlFor="yearLevel"
+                  className="block text-sm md:text-md font-medium text-gray-700"
+                >
+                  Year Level
+                </label>
+                <select
+                  id="yearLevel"
+                  name="yearLevel"
+                  value={formData.yearLevel}
+                  onChange={handleInputChange}
+                  required
+                  className="mt-1 block w-full border-zinc-200 border-b bg-white h-10 md:h-12 outline-none focus:outline-none focus:border-b-4 focus:border-zinc-700 text-zinc-700 text-sm md:text-md"
+                >
+                  <option value=""></option>
+                  <option value="1st Year">1st Year</option>
+                  <option value="2nd Year">2nd Year</option>
+                  <option value="3rd Year">3rd Year</option>
+                  <option value="4th Year">4th Year</option>
+                </select>
+              </div>
+              <div>
+                <label
+                  htmlFor="section"
+                  className="block text-sm md:text-md font-medium text-gray-700"
+                >
+                  Section
+                </label>
+                <select
+                  id="section"
+                  name="section"
+                  value={formData.section}
+                  onChange={handleInputChange}
+                  required
+                  className="mt-1 block w-full border-zinc-200 border-b bg-white h-10 md:h-12 outline-none focus:outline-none focus:border-b-4 focus:border-zinc-700 text-zinc-700 text-sm md:text-md"
+                >
+                  <option value=""></option>
+                  <option value="A">Section A</option>
+                  <option value="B">Section B</option>
+                  <option value="C">Section C</option>
+                  <option value="D">Section D</option>
+                  <option value="E">Section E</option>
+                </select>
+              </div>
+            </div>
+
+            <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
+              <button
+                type="button"
+                onClick={() => navigate(-1)}
+                className="w-full md:w-auto px-6 text-sm md:text-md font-semibold py-3 bg-zinc-300 text-zinc-600"
+              >
+                Cancel
+              </button>
+              <button
+                type="submit"
+                disabled={
+                  loading ||
+                  !formData.username.trim() ||
+                  !formData.displayName.trim() ||
+                  !formData.yearLevel ||
+                  !formData.section
+                }
+                className="w-full md:w-auto px-6 text-sm md:text-md font-semibold py-3 bg-zinc-700 text-white hover:bg-zinc-600 disabled:opacity-30"
+              >
+                {loading ? "Creating..." : "Save"}
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   );
