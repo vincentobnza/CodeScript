@@ -173,7 +173,7 @@ const ListBox = () => {
 
         <div className="grid w-full grid-cols-2 mt-12 border-t border-zinc-200 dark:border-zinc-700">
           <div className="relative flex flex-col gap-3 p-3 overflow-hidden text-center border-r md:p-5 border-zinc-200 dark:border-zinc-700">
-            <h1 className="text-2xl font-bold text-amber-400 md:text-5xl">
+            <h1 className="text-2xl font-bold text-amber-400 md:text-4xl">
               {userDetails?.current_points}
             </h1>
             <p className="text-[10px] md:text-[12px] text-zinc-500 dark:text-zinc-400 font-semibold">
@@ -181,7 +181,7 @@ const ListBox = () => {
             </p>
           </div>
           <div className="flex flex-col gap-3 p-3 text-center border-r md:p-5 border-zinc-200 dark:border-zinc-700">
-            <h1 className="text-2xl font-bold text-green-400 md:text-5xl">
+            <h1 className="text-2xl font-bold text-green-400 md:text-4xl">
               {userDetails?.rank}
             </h1>
             <p className="text-[10px] md:text-[12px] text-zinc-500 dark:text-zinc-400 font-semibold">
