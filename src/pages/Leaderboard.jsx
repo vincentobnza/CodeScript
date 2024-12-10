@@ -10,6 +10,7 @@ import {
   TableCell,
   Avatar,
   Progress,
+  Tooltip,
 } from "@nextui-org/react";
 import { CircularProgress } from "@nextui-org/react";
 import supabase from "../config/supabaseClient";
@@ -163,11 +164,16 @@ const ListBox = () => {
               </span>
             </h1>
 
-            <div className="flex items-center gap-1 px-2 py-[2px] text-xs font-bold text-green-300 rounded-full bg-green-600/10 border border-green-700">
-              <p>Active</p>
-
-              <Zap size={12} strokeWidth={2.5} />
-            </div>
+            <Tooltip
+              content="Active"
+              radius="none"
+              showArrow
+              className="font-Jost"
+            >
+              <div className="flex items-center gap-1 p-1 text-xs font-bold text-green-300 border border-green-700 rounded-full bg-green-600/10">
+                <Zap size={12} strokeWidth={2.5} />
+              </div>
+            </Tooltip>
           </div>
         </div>
 
