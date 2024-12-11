@@ -36,6 +36,7 @@ import {
   Medal,
 } from "lucide-react";
 import { Tooltip } from "@nextui-org/react";
+import { BookOpen, Code, Users } from "lucide-react";
 
 import { useBookmarks } from "@/hooks/useBookmark";
 
@@ -45,10 +46,12 @@ export default function Learn() {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="w-full pb-24 space-y-16 bg-white dark:bg-zinc-900 dark:text-zinc-400"
+      className="w-full pb-24 space-y-14 bg-white dark:bg-zinc-900 dark:text-zinc-400"
     >
       <ScrollUp />
       <LearnJs />
+
+      <AddedLessons />
     </motion.div>
   );
 }
@@ -999,6 +1002,93 @@ const Lesson8Data = () => {
           Take Pre Test
           <BookCheck size={15} />
         </Link>
+      </div>
+    </div>
+  );
+};
+
+const AddedLessons = () => {
+  const list = [
+    {
+      icon: BookOpen,
+      title: "Curated Lessons",
+      color: "from-blue-500 to-cyan-400",
+    },
+    {
+      icon: Code,
+      title: "Practice Examples",
+      color: "from-purple-500 to-pink-400",
+    },
+    {
+      icon: Users,
+      title: "Advanced Topics",
+      color: "from-green-500 to-emerald-400",
+    },
+    {
+      icon: BookOpen,
+      title: "Expert Guidance",
+      color: "from-orange-500 to-amber-400",
+    },
+  ];
+  return (
+    <div className="w-full max-w-screen-lg mx-auto">
+      <div className="w-full mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="glass-card rounded-2xl p-8 md:p-12 mb-8"
+        >
+          <div className="flex flex-col md:flex-row gap-8 items-center">
+            <div className="flex-1 space-y-6">
+              <span className="inline-flex items-center px-4 py-2 rounded-full bg-amber-500/20 border border-amber-500/30">
+                <span className="w-2 h-2 rounded-full bg-amber-400 mr-2 animate-pulse"></span>
+                <span className="text-amber-200 text-sm font-medium">
+                  Learning Resources
+                </span>
+              </span>
+
+              <h1 className="text-4xl md:text-5xl font-bold gradient-text leading-tight">
+                Instructor Added Materials
+              </h1>
+
+              <p className="text-gray-300 text-lg leading-relaxed">
+                Expand your knowledge with curated JavaScript resources and
+                materials. Access handpicked tutorials, examples, and practice
+                exercises designed to accelerate your learning journey.
+              </p>
+
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-600 rounded-xl text-white font-semibold 
+                          shadow-lg shadow-amber-500/30 hover:shadow-amber-500/40 transition-all duration-300"
+              >
+                Explore Resources
+              </motion.button>
+            </div>
+
+            <div className="flex-1 grid grid-cols-2 gap-4">
+              {list.map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 * index }}
+                  className="glass-card p-6 rounded-xl hover:bg-white/20 transition-all duration-300 float-animation"
+                  style={{ animationDelay: `${index * 0.2}s` }}
+                >
+                  <div
+                    className={`w-12 h-12 rounded-lg bg-gradient-to-br ${item.color} p-2.5 mb-4`}
+                  >
+                    <item.icon className="w-full h-full text-white" />
+                  </div>
+                  <h3 className="text-white font-semibold">{item.title}</h3>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
       </div>
     </div>
   );
