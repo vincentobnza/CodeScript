@@ -241,7 +241,6 @@ const StatCard = ({ title, value, icon }) => (
 
 const UsersTable = ({ users, loading, sortDescriptor, setSortDescriptor }) => {
   const columns = [
-    { name: "RANK", uid: "rank" },
     { name: "USER", uid: "username" },
     { name: "POINTS", uid: "current_points" },
     { name: "PROGRESS", uid: "progress" },

@@ -23,6 +23,10 @@ import {
   ArrowUpRight,
   Zap,
   Trophy,
+  Axe,
+  Pickaxe,
+  Award,
+  Bug,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import ProfileHeader from "../assets/profile header.png";
@@ -142,8 +146,52 @@ const ListBox = () => {
     insertRank();
   }, [user]);
 
+  // CHECK IF RANK IS >= 0 AND <= 20 = "Beginner"
+  // CHECK IF RANK IS >= 21 AND <= 40 = "Apprentice Programmer"
+  // CHECK IF RANK IS >= 41 AND <= 60 = "Code Explorer"
+  // CHECK IF RANK IS >= 61 AND <= 80 = "Debugging Expert"
+  // CHECK IF RANK IS >= 81 AND <= 100 = "CodeScript Master"
+
+  const RankList = [
+    {
+      name: "Beginner",
+      icon: Axe,
+      description:
+        "Entry-level rank for new learners starting their JavaScript journey.",
+      range: [0, 20],
+    },
+    {
+      name: "Apprentice Programmer",
+      icon: Pickaxe,
+      description:
+        "For students who are familiar with basic syntax and concepts.",
+      range: [21, 40],
+    },
+    {
+      name: "Code Explorer",
+      icon: Search,
+      description:
+        "For learners actively exploring and applying JavaScript in various challenges.",
+      range: [41, 60],
+    },
+    {
+      name: "Debugging Expert",
+      icon: Bug,
+      description:
+        "For those skilled in solving complex coding errors and challenges.",
+      range: [61, 80],
+    },
+    {
+      name: "CodeScript Master",
+      icon: Trophy,
+      description:
+        "For learners who have mastered JavaScript and are ready to take on advanced challenges.",
+      range: [81, 100],
+    },
+  ];
+
   return (
-    <div className="grid w-full max-w-screen-md gap-4 p-3 mx-auto md:grid-cols-2">
+    <div className="grid w-full max-w-screen-lg gap-4 p-3 mx-auto md:grid-cols-3">
       <div className="relative flex flex-col w-full bg-white border rounded-lg dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700">
         <div
           className={`relative w-full h-32 rounded-tl-lg rounded-tr-lg bg-cover bg-center`}
@@ -152,7 +200,7 @@ const ListBox = () => {
           <img
             src={userDetails?.avatar_url}
             alt="avatar"
-            className="absolute z-10 object-cover rounded-full -bottom-8 md:-bottom-10 left-4 md:left-10 size-20 animate-pulse-slow"
+            className="absolute z-10 object-cover rounded-full -bottom-8 md:-bottom-10 left-4 md:left-10 size-20"
           />
         </div>
 
@@ -177,9 +225,9 @@ const ListBox = () => {
           </div>
         </div>
 
-        <div className="grid w-full grid-cols-2 mt-12 border-t border-zinc-200 dark:border-zinc-700">
+        <div className="grid w-full grid-cols-2 mt-6 border-t border-zinc-200 dark:border-zinc-700">
           <div className="relative flex flex-col gap-3 p-3 overflow-hidden text-center border-r md:p-5 border-zinc-200 dark:border-zinc-700">
-            <h1 className="text-2xl font-bold text-amber-400 md:text-4xl">
+            <h1 className="text-xl font-bold text-amber-400 md:text-3xl">
               {userDetails?.current_points}
             </h1>
             <p className="text-[10px] md:text-[12px] text-zinc-500 dark:text-zinc-400 font-semibold">
@@ -187,7 +235,7 @@ const ListBox = () => {
             </p>
           </div>
           <div className="flex flex-col gap-3 p-3 text-center border-r md:p-5 border-zinc-200 dark:border-zinc-700">
-            <h1 className="text-2xl font-bold text-green-400 md:text-4xl">
+            <h1 className="text-xl font-bold text-green-400 md:text-3xl">
               {userDetails?.rank}
             </h1>
             <p className="text-[10px] md:text-[12px] text-zinc-500 dark:text-zinc-400 font-semibold">
@@ -233,6 +281,47 @@ const ListBox = () => {
             ? 100
             : userDetails?.progress
         }%, Keep up the great work!!`}</p>
+      </div>
+      <div className="flex flex-col items-start justify-start w-full p-4 space-y-4 bg-white border rounded-lg md:p-9 md:space-y-6 dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700 relative overflow-hidden">
+        <div className="flex flex-col gap-2">
+          {RankList.filter(
+            (rank) =>
+              userDetails?.progress >= rank.range[0] &&
+              userDetails?.progress <= rank.range[1]
+          ).map((rank, index) => {
+            return (
+              <div
+                key={index}
+                className="w-full flex flex-col items-start gap-2"
+              >
+                <div className="w-full  flex justify-between">
+                  <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-amber-500/20 mb-4 border border-amber-500">
+                    <rank.icon size={20} className="text-amber-300" />
+                  </div>
+
+                  <h1 className="text-xs font-semibold">
+                    Level {userDetails?.progress} %
+                  </h1>
+                </div>
+                <div className="flex flex-col gap-4 mb-8">
+                  <h1 className="text-xl font-semibold text-zinc-600 dark:text-zinc-200">
+                    {rank.name}
+                  </h1>
+                  <p className="text-sm text-zinc-500 dark:text-zinc-400">
+                    {rank.description}
+                  </p>
+                </div>
+
+                <Progress
+                  value={userDetails?.progress}
+                  color="warning"
+                  size="md"
+                  radius="none"
+                />
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
@@ -434,9 +523,6 @@ const Ranking = () => {
                                 <h1 className="text-xs font-semibold md:text-sm text-zinc-700 dark:text-zinc-200">
                                   {rankedUser.username}
                                 </h1>
-                                <p className="text-[10px] md:text-xs font-semibold text-zinc-500">
-                                  User ID: {rankedUser.id.slice(0, 8)}...
-                                </p>
                               </div>
                             </div>
                           </TableCell>
