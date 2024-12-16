@@ -114,19 +114,19 @@ export default function NavbarQuickSearch({ isOpen, onOpen, onOpenChange }) {
           {(onClose) => (
             <>
               <div className="relative flex flex-col justify-center w-full bg-transparent border dark:border-zinc-800">
-                <div className="absolute px-3 py-[4px] text-[9px] border rounded top-1 right-1 bg-white dark:bg-gradient-to-br dark:from-zinc-900 dark:to-zinc-800 border-zinc-200 dark:border-zinc-800">
+                <div className="absolute py-2 px-3  text-[9px] border rounded top-2 right-2 bg-white dark:bg-transparent border-zinc-200 dark:border-zinc-700">
                   ESC
                 </div>
-                <div className="grid w-full px-2 border-b h-14 border-zinc-200 dark:border-zinc-800 place-items-center">
+                <div className="grid w-full h-20 px-2 border-b border-zinc-200 dark:border-zinc-800 place-items-center">
                   <div className="relative w-full">
                     <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                      <Search className="text-gray-400 size-4" />
+                      <Search className="text-gray-400 size-5" />
                     </div>
                     <input
                       autoFocus={true}
                       type="text"
-                      className="w-full py-2 pl-10 pr-4 bg-transparent rounded-md outline-none placeholder:text-sm"
-                      placeholder="Search"
+                      className="w-full py-3 pr-4 bg-transparent rounded-md outline-none pl-14 placeholder:text-md"
+                      placeholder="What are you searching for?"
                       value={searchTerm}
                       onChange={handleSearch}
                     />
@@ -220,7 +220,7 @@ export default function NavbarQuickSearch({ isOpen, onOpen, onOpenChange }) {
                     </div>
                   ) : (
                     <div className="grid p-8 place-items-center">
-                      <p className="text-sm text-zinc-600 dark:text-zinc-500">
+                      <p className="text-md text-zinc-600 dark:text-zinc-500">
                         No Recent Searches
                       </p>
                     </div>

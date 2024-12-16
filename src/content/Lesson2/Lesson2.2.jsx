@@ -313,7 +313,6 @@ console.log( typeof bool);   // output will be:   Boolean
           />
         </section>
         <div className="flex items-center justify-end w-full gap-3">
-          <QuizButton text="Operators" link="/quiz/lesson2" />
           <NextButton
             link="/learn-js/comments-code-structure"
             text="Comments & Code Structure"

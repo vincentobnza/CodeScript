@@ -61,7 +61,7 @@ export default function Feedback() {
   return (
     <div className="flex items-center justify-center w-full px-1 pb-6 mt-16 md:px-12">
       <div
-        className={`flex flex-col gap-4 border rounded-lg border-zinc-700 transition-all duration-300 ${
+        className={`flex flex-col gap-4 border rounded-lg border-zinc-700 transition-all duration-300 shadow-2xl  ${
           isFormVisible ? "w-[400px]" : "w-[250px]"
         }`}
       >

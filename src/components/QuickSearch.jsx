@@ -1,7 +1,7 @@
 export const QuickSearchData = [
   {
     name: "Learn Javascript",
-    link: "/learn-js/learn-js",
+    link: "/learn-js",
     description: "Build your foundation in Javascript",
   },
   {

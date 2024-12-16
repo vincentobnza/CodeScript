@@ -188,7 +188,7 @@ export default function Navbar() {
               }
             >
               <div className="flex items-center gap-2 px-4 py-1 border rounded-full border-zinc-100 dark:border-zinc-800">
-                <div className="border border-green-600 rounded-full bg-gradient-to-br from-green-300 to-emerald-600 bg-gr size-3 dark:border-green-200"></div>
+                <div className="transform rotate-45 border border-violet-600 bg-gradient-to-br from-violet-300 to-purple-600 size-[9px] dark:border-pink-200"></div>
                 {userDetails && (
                   <p className="text-xs font-semibold text-zinc-500 dark:text-zinc-200">
                     {userDetails?.current_points}
@@ -229,7 +229,7 @@ export default function Navbar() {
           </div>
 
           {user ? (
-            <Dropdown placement="bottom-end" className="font-Jost text-xs">
+            <Dropdown placement="bottom-end" className="text-xs font-Jost">
               <DropdownTrigger>
                 <div className="items-center gap-4">
                   <div className="grid overflow-hidden rounded-full cursor-pointer size-8 place-items-center">

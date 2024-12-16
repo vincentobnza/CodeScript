@@ -51,13 +51,15 @@ const DynamicSidebar = () => {
       className="fixed top-0 left-0 z-10 hidden w-64 h-screen p-4 overflow-y-auto bg-white border-r md:flex dark:bg-zinc-900 border-zinc-2 dark:border-zinc-800"
     >
       <div className="p-5 mt-[5.6rem] space-y-6">
-        <div className="flex flex-col gap-1">
-          <p className="text-xs font-semibold text-zinc-600 dark:text-zinc-500">
-            Navigation
-          </p>
-          <h1 className="text-lg font-semibold text-zinc-700 dark:text-zinc-200">
-            On this topic
-          </h1>
+        <div className="flex items-start gap-2">
+          <div className="flex flex-col gap-1">
+            <p className="text-xs font-semibold text-zinc-600 dark:text-zinc-500">
+              Navigation
+            </p>
+            <h1 className="text-lg font-semibold text-zinc-700 dark:text-zinc-200">
+              On this topic
+            </h1>
+          </div>
         </div>
         <div className="space-y-2 text-zinc-600 dark:text-zinc-400">
           {currentRoute && (
