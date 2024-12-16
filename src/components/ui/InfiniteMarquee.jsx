@@ -85,18 +85,18 @@ export default function InfiniteMarquee() {
             <motion.div key={index} className="w-full m-2">
               <Card className="p-3 bg-transparent border border-zinc-50 dark:border-zinc-800">
                 <CardHeader>
-                  <div className="flex items-center space-x-4">
-                    <div className="grid bg-white border rounded-lg size-12 place-items-center dark:bg-zinc-800/50 backdrop-blur border-zinc-200 dark:border-zinc-700">
+                  <div className="flex items-start space-x-6">
+                    <div className="grid bg-white border rounded-lg size-8 place-items-center dark:bg-zinc-800/50 backdrop-blur border-zinc-200 dark:border-zinc-700">
                       <lesson.icon
-                        size={20}
+                        size={15}
                         className="text-green-500 animate-pulse"
                       />
                     </div>
-                    <div className="w-[250px] p-2 flex flex-col text-left gap-2">
-                      <div className="text-sm text-zinc-800 dark:text-zinc-300">
+                    <div className="w-[250px] ml-3 flex flex-col text-left gap-2">
+                      <div className="font-mdsemibold text- text-zinc-800 dark:text-zinc-300">
                         {lesson.title}
                       </div>
-                      <div className="text-xs text-zinc-600 dark:text-zinc-500">
+                      <div className="text-sm text-zinc-600 dark:text-zinc-500">
                         {lesson.description}
                       </div>
                     </div>

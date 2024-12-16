@@ -27,9 +27,12 @@ import {
   Pickaxe,
   Award,
   Bug,
+  BugPlay,
+  Braces,
 } from "lucide-react";
 import { Link } from "react-router-dom";
 import ProfileHeader from "../assets/profile header.png";
+import Crown from "../assets/crown.png";
 
 export default function Leaderboard() {
   const [status, setStatus] = useState("");
@@ -146,12 +149,6 @@ const ListBox = () => {
     insertRank();
   }, [user]);
 
-  // CHECK IF RANK IS >= 0 AND <= 20 = "Beginner"
-  // CHECK IF RANK IS >= 21 AND <= 40 = "Apprentice Programmer"
-  // CHECK IF RANK IS >= 41 AND <= 60 = "Code Explorer"
-  // CHECK IF RANK IS >= 61 AND <= 80 = "Debugging Expert"
-  // CHECK IF RANK IS >= 81 AND <= 100 = "CodeScript Master"
-
   const RankList = [
     {
       name: "Beginner",
@@ -194,8 +191,7 @@ const ListBox = () => {
     <div className="grid w-full max-w-screen-lg gap-4 p-3 mx-auto md:grid-cols-3">
       <div className="relative flex flex-col w-full bg-white border rounded-lg dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700">
         <div
-          className={`relative w-full h-32 rounded-tl-lg rounded-tr-lg bg-cover bg-center`}
-          style={{ backgroundImage: `url(${ProfileHeader})` }}
+          className={`relative w-full h-32 rounded-tl-lg rounded-tr-lg bg-gradient-to-r from-green-500 to-emerald-500`}
         >
           <img
             src={userDetails?.avatar_url}
@@ -258,7 +254,7 @@ const ListBox = () => {
             indicator: `${
               userDetails?.progress === 100
                 ? "stroke-amber-400"
-                : "stroke-violet-600"
+                : "stroke-green-500"
             }`,
             track: "stroke-zinc-300 dark:stroke-white/10 ",
             value: `text-lg md:text-xl ${
@@ -282,7 +278,7 @@ const ListBox = () => {
             : userDetails?.progress
         }%, Keep up the great work!!`}</p>
       </div>
-      <div className="flex flex-col items-start justify-start w-full p-4 space-y-4 bg-white border rounded-lg md:p-9 md:space-y-6 dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700 relative overflow-hidden">
+      <div className="relative flex flex-col items-start justify-start w-full p-4 space-y-4 overflow-hidden bg-white border rounded-lg md:p-9 md:space-y-6 dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700">
         <div className="flex flex-col gap-2">
           {RankList.filter(
             (rank) =>
@@ -292,10 +288,10 @@ const ListBox = () => {
             return (
               <div
                 key={index}
-                className="w-full flex flex-col items-start gap-2"
+                className="flex flex-col items-start w-full gap-2"
               >
-                <div className="w-full  flex justify-between">
-                  <div className="flex items-center justify-center w-10 h-10 rounded-lg bg-amber-500/20 mb-4 border border-amber-500">
+                <div className="flex justify-between w-full">
+                  <div className="flex items-center justify-center w-10 h-10 mb-4 border rounded-lg bg-amber-500/20 border-amber-500">
                     <rank.icon size={20} className="text-amber-300" />
                   </div>
 
@@ -485,27 +481,23 @@ const Ranking = () => {
                             <div
                               className={`w-6 h-6 md:w-8 md:h-8 rounded-lg relative ${
                                 index === 0
-                                  ? "bg-orange-100 dark:bg-amber-800/20  shadow-yellow-900/60 animate-pulse"
-                                  : "bg-zinc-200 dark:bg-zinc-800"
+                                  ? "bg-gradient-to-br from-indigo-600 to-pink-500 text-white"
+                                  : "bg-white dark:bg-zinc-800"
                               } grid place-items-center border ${
                                 index === 0
-                                  ? "border-amber-400"
+                                  ? "border-violet-400"
                                   : "dark:border-zinc-700 border-zinc-300"
                               }`}
                             >
                               {index === 0 && (
                                 <img
-                                  src="https://cdn-icons-png.flaticon.com/128/707/707163.png"
+                                  src={Crown}
                                   alt="crown"
                                   className="w-8 md:w-12 absolute -left-3 md:-left-5 -top-5 md:-top-7 -rotate-[30deg]"
                                 />
                               )}
                               <h1
-                                className={`text-xs font-extrabold ${
-                                  index === 0
-                                    ? "text-yellow-400"
-                                    : "text-zinc-500 dark:text-white"
-                                }`}
+                                className={`text-xs font-extrabold text-zinc-400 dark:text-white`}
                               >
                                 {rankedUser.rank}
                               </h1>
@@ -528,40 +520,24 @@ const Ranking = () => {
                           </TableCell>
                           <TableCell className="text-xs font-medium text-center md:text-sm">
                             <div className="flex items-center justify-center gap-2 px-4 py-1 mx-auto">
-                              <div className="border border-green-600 rounded-full bg-gradient-to-br from-green-300 to-emerald-600 bg-gr size-3 dark:border-green-200"></div>
-
                               <p className="text-sm font-semibold text-zinc-500 dark:text-zinc-200">
                                 {rankedUser.current_points}
                               </p>
                             </div>
                           </TableCell>
                           <TableCell className="items-center justify-center hidden gap-2 text-xs font-medium text-center md:flex text-zinc-500 dark:text-zinc-400">
-                            <Progress
-                              aria-label="Downloading..."
-                              size="sm"
+                            <CircularProgress
+                              size="lg"
                               value={rankedUser?.progress || 0}
                               showValueLabel={true}
-                              className="w-[100px]"
+                              classNames={{
+                                value: "text-[10px] font-semibold",
+                              }}
                               maxValue={100}
                               radius="none"
-                              color="success"
+                              color="warning"
                             />
                           </TableCell>
-                          {/* <TableCell className="text-xs font-bold text-center md:text-sm">
-                            <div className="flex items-center justify-center gap-2 px-4 py-1 mx-auto">
-                              <p
-                                className={`text-sm ${
-                                  rankedUser.status === "online"
-                                    ? "text-green-500"
-                                    : "text-zinc-500"
-                                }`}
-                              >
-                                {rankedUser.status === "online"
-                                  ? "Connected"
-                                  : "Disconnected"}
-                              </p>
-                            </div>
-                          </TableCell> */}
                         </TableRow>
                       )
                   )}

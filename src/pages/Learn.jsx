@@ -46,7 +46,7 @@ export default function Learn() {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1.5 }}
-      className="w-full pb-24 space-y-14 bg-white dark:bg-zinc-900 dark:text-zinc-400"
+      className="w-full pb-24 bg-white space-y-14 dark:bg-zinc-900 dark:text-zinc-400"
     >
       <ScrollUp />
       <LearnJs />
@@ -127,7 +127,7 @@ const Header = () => {
         </div>
       </div>
 
-      <div className="items-center hidden gap-2 md:flex">
+      <div className="items-center hidden gap-2 font-bold md:flex">
         <Link to="/certificate" className="flex">
           <button className="flex items-center justify-center gap-2 px-3 py-2 text-sm transition-all duration-300 ease-linear bg-white border dark:hover:brightness-125 dark:bg-zinc-800/20 border-zinc-200 dark:border-zinc-700">
             <Medal size={15} />
@@ -1037,22 +1037,22 @@ const AddedLessons = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
-          className="glass-card rounded-2xl p-8 md:p-12 mb-8"
+          className="p-8 mb-8 glass-card rounded-2xl md:p-12"
         >
-          <div className="flex flex-col md:flex-row gap-8 items-center">
+          <div className="flex flex-col items-center gap-8 md:flex-row">
             <div className="flex-1 space-y-6">
-              <span className="inline-flex items-center px-4 py-2 rounded-full bg-amber-500/20 border border-amber-500/30">
-                <span className="w-2 h-2 rounded-full bg-amber-400 mr-2 animate-pulse"></span>
-                <span className="text-amber-200 text-sm font-medium">
+              <span className="inline-flex items-center px-4 py-2 border rounded-full bg-amber-500/20 border-amber-500/30">
+                <span className="w-2 h-2 mr-2 rounded-full bg-amber-400 animate-pulse"></span>
+                <span className="text-sm font-medium text-amber-200">
                   Learning Resources
                 </span>
               </span>
 
-              <h1 className="text-4xl md:text-5xl font-bold gradient-text leading-tight">
+              <h1 className="text-4xl font-bold leading-tight md:text-5xl gradient-text">
                 Instructor Added Materials
               </h1>
 
-              <p className="text-gray-300 text-lg leading-relaxed">
+              <p className="text-lg leading-relaxed text-gray-300">
                 Expand your knowledge with curated JavaScript resources and
                 materials. Access handpicked tutorials, examples, and practice
                 exercises designed to accelerate your learning journey.
@@ -1061,21 +1061,20 @@ const AddedLessons = () => {
               <motion.button
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-600 rounded-xl text-white font-semibold 
-                          shadow-lg shadow-amber-500/30 hover:shadow-amber-500/40 transition-all duration-300"
+                className="px-8 py-4 font-semibold text-white transition-all duration-300 shadow-lg bg-gradient-to-r from-amber-500 to-orange-600 rounded-xl shadow-amber-500/30 hover:shadow-amber-500/40"
               >
                 Explore Resources
               </motion.button>
             </div>
 
-            <div className="flex-1 grid grid-cols-2 gap-4">
+            <div className="grid flex-1 grid-cols-2 gap-4">
               {list.map((item, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.2 * index }}
-                  className="glass-card p-6 rounded-xl hover:bg-white/20 transition-all duration-300 float-animation"
+                  className="p-6 transition-all duration-300 glass-card rounded-xl hover:bg-white/20 float-animation"
                   style={{ animationDelay: `${index * 0.2}s` }}
                 >
                   <div
@@ -1083,7 +1082,7 @@ const AddedLessons = () => {
                   >
                     <item.icon className="w-full h-full text-white" />
                   </div>
-                  <h3 className="text-white font-semibold">{item.title}</h3>
+                  <h3 className="font-semibold text-white">{item.title}</h3>
                 </motion.div>
               ))}
             </div>

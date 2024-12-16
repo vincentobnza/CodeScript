@@ -197,12 +197,12 @@ export const Key = ({ children }) => (
 export const NextButton = ({ text, link }) => (
   <Link
     to={link}
-    className="mt-8 md:mt-12 w-full md:w-[340px] h-[70px] md:h-[90px] border border-zinc-200 dark:border-zinc-700 self-end text-xs md:text-sm flex justify-end text-right p-3 md:p-4 gap-2 md:gap-4 text-zinc-900 dark:text-zinc-300 hover:border-zinc-600 duration-500"
+    className="mt-8 md:mt-12 w-full md:w-[340px] h-[70px] md:h-[90px] border border-zinc-200 dark:border-zinc-800 self-end text-xs md:text-sm flex justify-end text-right p-3 md:p-4 gap-2 md:gap-4 text-zinc-900 dark:text-zinc-300 hover:border-zinc-600 duration-500 dark:hover:brightness-125"
   >
-    <div className="flex flex-col gap-1">
-      <p>Next</p>
+    <div className="flex flex-col gap-3">
+      <p className="font-bold text-zinc-500">Next</p>
       <div className="flex items-center gap-2">
-        <h1 className="text-xs font-bold text-green-700 md:text-[15px] dark:text-green-500">
+        <h1 className="text-xs font-bold text-zinc-800 md:text-[15px] dark:text-zinc-100 animate-pulse">
           {text}
         </h1>
       </div>
@@ -219,19 +219,22 @@ export const Highlight = ({ children }) => (
 export const QuizButton = ({ text, link }) => (
   <Link
     to={link}
-    className="mt-8 md:mt-12 w-full md:w-[260px] h-[70px] md:h-[90px] bg-green-500 dark:bg-green-800 border-none dark:border dark:border-green-600 self-end text-xs  md:text-sm flex justify-end text-right p-3 md:p-4 gap-2 md:gap-4 text-white hover:border-green-600 duration-500 relative overflow-hidden hover:opacity-80 outline-none"
+    class="mt-8 md:mt-12 w-full md:w-[340px] h-[70px] md:h-[90px] items-center justify-center"
   >
-    <img
-      src="https://cdn-icons-png.flaticon.com/128/5827/5827057.png"
-      alt="quiz icon"
-      className="absolute -left-4 -bottom-2 opacity-none dark:opacity-70 size-16 md:size-20"
-    />
-    <div className="flex flex-col gap-1">
-      <p className="text-xs md:text-sm">Take a Quiz</p>
-      <div className="flex items-center gap-2">
-        <h1 className="text-xs font-bold text-yellow-200 md:text-[15px] ">
-          {text}
-        </h1>
+    <div class="relative z-10 flex w-full h-full cursor-pointer items-center justify-end text-right overflow-hidden  border border-zinc-100 dark:border-zinc-700 p-[1.5px]">
+      <div class="animate-rotate absolute inset-0 h-full w-full rounded-full bg-[conic-gradient(#f59e0b_20deg,transparent_120deg)]"></div>
+      <div class="relative z-20  w-full h-full bg-white dark:bg-zinc-900 p-2 gap-2 ">
+        <img
+          src="https://cdn-icons-png.flaticon.com/128/5968/5968292.png"
+          alt="ref"
+          className="absolute z-10 left-4 bottom-3 opacity-20 size-10"
+        />
+        <div className="flex flex-col gap-2 p-2 text-right">
+          <p className="text-xs font-bold text-zinc-500">Take a Quiz</p>
+          <h1 className="text-xs font-bold text-zinc-800 md:text-[15px] dark:text-amber-400  text-right">
+            {text}
+          </h1>
+        </div>
       </div>
     </div>
   </Link>
@@ -289,7 +292,7 @@ export const CodeEditor = ({
             </h3>
           </div>
 
-          <div className="absolute top-2 right-2 flex items-center justify-between w-full gap-2 p-1 text-sm sm:w-auto sm:justify-end">
+          <div className="absolute flex items-center justify-between w-full gap-2 p-1 text-sm top-2 right-2 sm:w-auto sm:justify-end">
             <Button
               isIconOnly
               size="sm"
@@ -321,7 +324,7 @@ export const CodeEditor = ({
               onClick={runCode}
               size="sm"
               startContent={<Play className="w-4 h-4" />}
-              className="px-4 py-2 text-white bg-green-700 border border-green-500  hover:bg-green-700"
+              className="px-4 py-2 text-white bg-green-700 border border-green-500 hover:bg-green-700"
             >
               Run Code
             </Button>
@@ -365,7 +368,7 @@ export const CodeEditor = ({
 export const TopicRef = ({ reference }) => {
   const [hidden, setHidden] = useState(false);
   return (
-    <div className="flex flex-col items-start justify-start w-full p-3 pb-6 space-y-2 bg-white border border-zinc-300 dark:border-zinc-800 dark:bg-zinc-800/20 relative overflow-hidden">
+    <div className="relative flex flex-col items-start justify-start w-full p-3 pb-6 space-y-2 overflow-hidden bg-white border border-zinc-300 dark:border-zinc-800 dark:bg-zinc-800/20">
       <img
         src="https://cdn-icons-png.flaticon.com/128/16784/16784406.png"
         alt="ref"
@@ -377,7 +380,7 @@ export const TopicRef = ({ reference }) => {
 
       <Link
         to={reference}
-        className="italic font-semibold text-wrap text-md text-amber-700 dark:bg-gradient-to-br dark:from-amber-200 dark:to-amber-900 dark:bg-clip-text dark:text-transparent underline"
+        className="italic font-semibold underline text-wrap text-md text-amber-700 dark:bg-gradient-to-br dark:from-amber-200 dark:to-amber-900 dark:bg-clip-text dark:text-transparent"
       >
         {reference}
       </Link>

@@ -40,20 +40,20 @@ const Hero = () => {
     <div className="relative flex flex-col items-center justify-center w-full max-w-screen-lg gap-6 p-4 mx-auto text-center md:p-8 lg:p-8">
       <div className="flex flex-col items-center justify-center space-y-2">
         <>
-          <div className="grid self-center px-6 py-[5px] mb-5 -mt-2 md:-mt-6 text-xs bg-transparent border rounded-full text-zinc-800 dark:text-zinc-300 border-zinc-300 dark:border-zinc-800 place-items-center">
-            <div className="flex items-center gap-2">
+          <div className="grid self-center px-3 shadow-2xl  py-[5px] mb-5 -mt-2 md:-mt-6 text-xs bg-transparent border rounded-full text-zinc-800 dark:text-zinc-300 border-zinc-300 dark:border-zinc-800 place-items-center">
+            <div className="flex items-center gap-2 font-semibold">
               <p>
                 Boost Your Skills with{" "}
-                <span className="font-semibold text-green-500">21+</span>{" "}
-                In-Depth JavaScript Topics
+                <span className="text-green-500 ">21+</span> In-Depth JavaScript
+                Topics
               </p>
               <Zap size={13} className="text-green-600 dark:text-green-500" />
             </div>
           </div>
         </>
-        <h1 className="text-4xl md:text-[48px] dark:bg-gradient-to-br dark:from-white dark:to-zinc-600 dark:bg-clip-text dark:text-transparent text-zinc-800 leading-snug font-medium z-10">
+        <h1 className="text-4xl md:text-[52px] dark:bg-gradient-to-br dark:from-white dark:to-zinc-600 dark:bg-clip-text dark:text-transparent text-zinc-800 leading-snug  z-10 font-semibold">
           Learn, Build, and Excel in{" "}
-          <span className="text-green-600 dark:text-transparent dark:bg-gradient-to-br dark:from-green-400 dark:to-green-950 bg-clip-text">
+          <span className="text-green-600 dark:text-transparent dark:bg-gradient-to-br dark:from-green-400 dark:to-green-900 bg-clip-text">
             JavaScript
           </span>{" "}
           Programming
@@ -159,33 +159,33 @@ const Content = () => {
   ];
 
   return (
-    <div className="w-full mx-auto p-8 md:p-12 bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-900 dark:to-zinc-800 border border-zinc-200/50 dark:border-zinc-700/50 shadow-xl relative overflow-hidden">
+    <div className="relative w-full p-8 mx-auto overflow-hidden border shadow-xl md:p-12 bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-900 dark:to-zinc-800 border-zinc-200/50 dark:border-zinc-700/50">
       <div className="absolute inset-0 bg-grid-black/[0.02] dark:bg-grid-white/[0.02]" />
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
-        className="relative space-y-12 z-10"
+        className="relative z-10 space-y-12"
       >
         {/* Header Section */}
-        <div className="text-center max-w-3xl mx-auto space-y-6">
+        <div className="max-w-3xl mx-auto space-y-6 text-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center px-4 py-2 rounded-full bg-amber-500/10 border border-amber-500/20 dark:bg-amber-400/10 dark:border-amber-400/20"
+            className="inline-flex items-center px-4 py-2 border rounded-full bg-amber-500/10 border-amber-500/20 dark:bg-amber-400/10 dark:border-amber-400/20"
           >
-            <span className="text-amber-700 dark:text-amber-300 text-sm font-medium">
+            <span className="text-sm font-medium text-amber-700 dark:text-amber-300">
               JavaScript Lessons
             </span>
           </motion.div>
 
-          <h1 className="text-4xl md:text-5xl font-semibold bg-gradient-to-br from-zinc-800 to-zinc-600 dark:from-zinc-200 dark:to-zinc-400 bg-clip-text text-transparent leading-loose">
+          <h1 className="text-4xl font-semibold leading-loose text-transparent md:text-5xl bg-gradient-to-br from-zinc-800 to-zinc-600 dark:from-zinc-200 dark:to-zinc-400 bg-clip-text">
             Why Choose Our JavaScript Lessons?
           </h1>
 
-          <p className="text-lg text-zinc-600 dark:text-zinc-300 max-w-2xl mx-auto">
+          <p className="max-w-2xl mx-auto text-lg text-zinc-600 dark:text-zinc-300">
             Master JavaScript through our comprehensive curriculum. Tackle
             real-world challenges and learn from diverse problem-solving
             approaches.
@@ -193,14 +193,14 @@ const Content = () => {
         </div>
 
         {/* Features Grid */}
-        <div className="w-full max-w-screen-lg mx-auto grid md:grid-cols-3 gap-6 mt-12">
+        <div className="grid w-full max-w-screen-lg gap-6 mx-auto mt-12 md:grid-cols-3">
           {features.map((feature, index) => (
             <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group p-6 rounded-xl bg-white dark:bg-zinc-800/50 border border-zinc-200 dark:border-zinc-700/50 hover:border-amber-500/50 dark:hover:border-amber-400/50 transition-all duration-300"
+              className="p-6 transition-all duration-300 bg-white border group rounded-xl dark:bg-zinc-800/50 border-zinc-200 dark:border-zinc-700/50 hover:border-amber-500/50 dark:hover:border-amber-400/50"
             >
               <div className="space-y-4">
                 <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 p-2.5 group-hover:scale-110 transition-transform duration-300">
@@ -223,11 +223,10 @@ const Content = () => {
             onClick={() => window.location.replace("/learn-js")}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-amber-500 to-orange-600 rounded-xl text-white font-semibold 
-                      shadow-lg shadow-amber-500/30 hover:shadow-amber-500/40 transition-all duration-300 group"
+            className="inline-flex items-center px-8 py-4 font-semibold text-white transition-all duration-300 shadow-lg bg-gradient-to-r from-amber-500 to-orange-600 rounded-xl shadow-amber-500/30 hover:shadow-amber-500/40 group"
           >
             Start Learning Now
-            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
           </motion.button>
         </div>
       </motion.div>

@@ -5,7 +5,7 @@ import PointsCoin from "@/components/PointsCoin";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { Undo2, Medal, Loader } from "lucide-react";
-import { Progress } from "@nextui-org/react";
+import Feedback from "@/components/Feedback";
 export default function ChaptersLayout() {
   return (
     <div className="flex mb-10">
@@ -47,6 +47,9 @@ export default function ChaptersLayout() {
           className="max-w-5xl px-4 mx-auto mt-8 md:px-14 lg:px-16"
         >
           <Outlet />
+
+          {/* WAS THIS HELPFUL FEEDBACK  */}
+          <Feedback />
         </motion.main>
       </div>
       <LessonNavigation />

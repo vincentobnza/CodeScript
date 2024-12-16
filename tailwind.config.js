@@ -13,10 +13,15 @@ export default {
       animation: {
         border: "border 4s linear infinite",
         "pulse-slow": "pulse 4s linear infinite",
+        rotate: "rotate 10s linear infinite",
       },
       keyframes: {
         border: {
           to: { "--border-angle": "360deg" },
+        },
+        rotate: {
+          "0%": { transform: "rotate(0deg) scale(10)" },
+          "100%": { transform: "rotate(-360deg) scale(10)" },
         },
       },
       fontFamily: {
