@@ -180,7 +180,7 @@ export default function Navbar() {
                     <h1 className="text-lg font-bold text-indigo-500">
                       {userDetails?.progress > 100 || userDetails?.progress < 0
                         ? 100
-                        : userDetails?.progress}{" "}
+                        : userDetails?.progress || 0}
                       %
                     </h1>
                   </div>

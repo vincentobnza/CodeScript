@@ -38,141 +38,6 @@ const Header = () => {
   );
 };
 
-const GeneralTab = () => {
-  const [isChecked, setIsChecked] = useState(true);
-  const { isOpen, onOpen, onClose } = useDisclosure();
-
-  useEffect(() => {
-    const fetchLeaderboardStatus = async () => {
-      try {
-        const { data, error } = await supabase
-          .from("leaderboard_config")
-          .select("status")
-          .eq("id", 1)
-          .single();
-
-        if (error) throw error;
-
-        setIsChecked(data?.status === "visible");
-      } catch (err) {
-        toast.error("Error fetching leaderboard status");
-      }
-    };
-
-    fetchLeaderboardStatus();
-  }, []);
-
-  const handleCheckboxChange = () => {
-    if (isChecked) {
-      onOpen(); // Open modal for confirmation when turning off
-    } else {
-      // Enable leaderboard directly
-      const updateStatus = async () => {
-        try {
-          const { error } = await supabase
-            .from("leaderboard_config")
-            .update({ status: "visible" })
-            .eq("id", 1);
-
-          if (error) throw error;
-
-          toast.success("Leaderboard enabled successfully", {
-            style: {
-              fontSize: "13px",
-              fontWeight: "500",
-            },
-          });
-          setIsChecked(true);
-        } catch (err) {
-          toast.error("Error enabling leaderboard");
-        }
-      };
-
-      updateStatus();
-    }
-  };
-
-  return (
-    <div className="p-3 mt-8 bg-white rounded-lg shadow-sm">
-      <div className="flex flex-col gap-2">
-        <h2 className="text-xl font-semibold text-gray-800">
-          General Settings
-        </h2>
-        <p className="mb-8 text-sm text-gray-600">
-          Configure your general settings here.
-        </p>
-      </div>
-
-      <div className="space-y-8">
-        <div className="flex items-center justify-between">
-          <div className="flex flex-col gap-2">
-            <label
-              htmlFor="leaderboardVisibility"
-              className="font-medium text-zinc-800 text-md"
-            >
-              Change Theme
-            </label>
-            <p className="text-sm text-zinc-500">
-              Select a theme for the dashboard and other pages.
-            </p>
-          </div>
-          <select
-            id="theme"
-            name="theme"
-            className="h-10 px-3 text-sm border border-gray-300 rounded-md appearance-none cursor-pointer w-28 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          >
-            <option value="light">Light Theme</option>
-            <option value="dark">Dark Theme</option>
-          </select>
-        </div>
-        <div className="flex items-center justify-between">
-          <div className="flex flex-col gap-2">
-            <label
-              htmlFor="leaderboardVisibility"
-              className="font-medium text-zinc-800 text-md"
-            >
-              Leaderboard Visibility
-            </label>
-            <p className="text-sm text-zinc-500">
-              Turn off this feature to hide the leaderboard from users.
-            </p>
-          </div>
-          <div className="flex flex-col items-end gap-4">
-            <label className="relative inline-flex items-center cursor-pointer">
-              <input
-                type="checkbox"
-                id="leaderboardVisibility"
-                name="leaderboardVisibility"
-                checked={isChecked}
-                onChange={handleCheckboxChange}
-                className="sr-only peer"
-              />
-              <div className="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-500"></div>
-            </label>
-
-            <div className="flex items-center gap-2">
-              <div
-                className={`size-2 ${
-                  isChecked ? "bg-green-400" : "bg-gray-400"
-                } rounded-full animate-pulse-slow`}
-              ></div>
-              <p className="text-xs text-zinc-400">
-                {isChecked ? "Visible for users" : "Hidden from users"}
-              </p>
-            </div>
-          </div>
-
-          <LeaderboardToggleModal
-            isOpen={isOpen}
-            onClose={onClose}
-            setIsChecked={setIsChecked}
-          />
-        </div>
-      </div>
-    </div>
-  );
-};
-
 const QuizTab = () => {
   const [quizSettings, setQuizSettings] = useState({
     timerMinutes: 3,
@@ -630,7 +495,7 @@ const LivePreview = ({
         <Tooltip
           content="Full View"
           radius="none"
-          className="font-Jost text-xs"
+          className="text-xs font-Jost"
         >
           <Fullscreen
             onClick={() => setOnOpen(true)}
@@ -838,11 +703,6 @@ export default function AdminCustomization() {
   const [activeTab, setActiveTab] = useState(0);
 
   const tabs = [
-    {
-      name: "General",
-      component: <GeneralTab />,
-    },
-
     {
       name: "Quiz",
       component: <QuizTab />,

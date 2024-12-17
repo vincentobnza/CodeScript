@@ -128,7 +128,6 @@ export default function AdminQuizzes() {
 
   return (
     <div className="flex flex-col w-full gap-4 p-4">
-      <Toaster />
       <Header
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}

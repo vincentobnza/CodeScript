@@ -16,13 +16,13 @@ export default function ChaptersLayout() {
           <div className="flex">
             <Link
               to="/learn-js"
-              className="flex items-center gap-2 px-4 py-2 text-sm rounded text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:hover:brightness-125"
+              className="flex items-center gap-2 px-4 py-2 text-sm font-medium rounded text-zinc-600 dark:text-zinc-400 border-zinc-200 dark:hover:brightness-125"
             >
               <Undo2 size={13} />
               Return to Homepage
             </Link>
           </div>
-          <div className="hidden md:flex items-center gap-[6px] text-[13px]">
+          <div className="hidden md:flex items-center gap-[6px] text-[13px] font-semibold">
             <Link
               to="/certificate"
               className="flex items-center gap-2 px-3 py-2 border rounded border-zinc-200 dark:border-zinc-700 dark:hover:brightness-125"

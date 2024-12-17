@@ -5,13 +5,11 @@ import MainPicture from "../assets/MainPicture.png";
 import {
   Zap,
   ArrowUpRight,
-  Library,
-  Braces,
   ChevronRight,
   ArrowRight,
   BookOpen,
-  Brain,
-  Target,
+  Code,
+  Users,
 } from "lucide-react";
 import InfiniteMarquee from "@/components/ui/InfiniteMarquee";
 import FeedbackIcon from "@/components/ui/FeedbackIcon";
@@ -140,96 +138,90 @@ const Main = () => {
 };
 
 const Content = () => {
-  const features = [
+  const list = [
     {
       icon: BookOpen,
+      title: "Curated Lessons",
+      color: "from-blue-500 to-cyan-400",
+    },
+    {
+      icon: Code,
+      title: "Practice Examples",
+      color: "from-purple-500 to-pink-400",
+    },
+    {
+      icon: Users,
       title: "Structured Learning",
-      description: "Progressive curriculum designed for all skill levels",
+      color: "from-green-500 to-emerald-400",
     },
     {
-      icon: Target,
-      title: "Practical Approach",
-      description: "Real-world projects and hands-on exercises",
-    },
-    {
-      icon: Brain,
-      title: "Problem Solving",
-      description: "Learn different approaches to tackle challenges",
+      icon: BookOpen,
+      title: "Expert Guidance",
+      color: "from-orange-500 to-amber-400",
     },
   ];
-
   return (
-    <div className="relative w-full p-8 mx-auto overflow-hidden border shadow-xl md:p-12 bg-gradient-to-br from-zinc-50 to-zinc-100 dark:from-zinc-900 dark:to-zinc-800 border-zinc-200/50 dark:border-zinc-700/50">
-      <div className="absolute inset-0 bg-grid-black/[0.02] dark:bg-grid-white/[0.02]" />
+    <div className="w-full max-w-screen-lg mx-auto">
+      <div className="w-full mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="p-8 mb-8 bg-zinc-50 dark:glass-card rounded-2xl md:p-12"
+        >
+          <div className="flex flex-col items-center gap-8 md:flex-row">
+            <div className="flex-1 space-y-6">
+              <span className="inline-flex items-center px-4 py-2 bg-transparent border rounded-full dark:bg-amber-500/20 border-zinc-600 dark:border-amber-500/30">
+                <span className="w-2 h-2 mr-2 bg-transparent rounded-full dark:bg-amber-400 animate-pulse"></span>
+                <span className="text-sm font-medium text-zinc-500 dark:text-amber-200">
+                  Learning Resources
+                </span>
+              </span>
 
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="relative z-10 space-y-12"
-      >
-        {/* Header Section */}
-        <div className="max-w-3xl mx-auto space-y-6 text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center px-4 py-2 border rounded-full bg-amber-500/10 border-amber-500/20 dark:bg-amber-400/10 dark:border-amber-400/20"
-          >
-            <span className="text-sm font-medium text-amber-700 dark:text-amber-300">
-              JavaScript Lessons
-            </span>
-          </motion.div>
+              <h1 className="text-4xl font-bold leading-tight md:text-5xl text-zinc-800 dark:gradient-text">
+                Master JavaScript Programming
+              </h1>
 
-          <h1 className="text-4xl font-semibold leading-loose text-transparent md:text-5xl bg-gradient-to-br from-zinc-800 to-zinc-600 dark:from-zinc-200 dark:to-zinc-400 bg-clip-text">
-            Why Choose Our JavaScript Lessons?
-          </h1>
+              <p className="text-lg leading-relaxed text-zinc-500 dark:text-gray-300">
+                Master JavaScript through our comprehensive curriculum. Tackle
+                real-world challenges and learn from diverse problem-solving
+                approaches.
+              </p>
 
-          <p className="max-w-2xl mx-auto text-lg text-zinc-600 dark:text-zinc-300">
-            Master JavaScript through our comprehensive curriculum. Tackle
-            real-world challenges and learn from diverse problem-solving
-            approaches.
-          </p>
-        </div>
+              <motion.button
+                onClick={() => (window.location.href = "/learn")}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="px-8 py-4 font-semibold text-white transition-all duration-300 shadow-lg bg-gradient-to-r from-amber-500 to-orange-600 rounded-xl shadow-amber-500/30 hover:shadow-amber-500/40"
+              >
+                Explore Resources
+              </motion.button>
+            </div>
 
-        {/* Features Grid */}
-        <div className="grid w-full max-w-screen-lg gap-6 mx-auto mt-12 md:grid-cols-3">
-          {features.map((feature, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="p-6 transition-all duration-300 bg-white border group rounded-xl dark:bg-zinc-800/50 border-zinc-200 dark:border-zinc-700/50 hover:border-amber-500/50 dark:hover:border-amber-400/50"
-            >
-              <div className="space-y-4">
-                <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-amber-500 to-orange-600 p-2.5 group-hover:scale-110 transition-transform duration-300">
-                  <feature.icon className="w-full h-full text-white" />
-                </div>
-                <h3 className="text-xl font-semibold text-zinc-800 dark:text-zinc-100">
-                  {feature.title}
-                </h3>
-                <p className="text-zinc-600 dark:text-zinc-400">
-                  {feature.description}
-                </p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-
-        {/* CTA Button */}
-        <div className="text-center">
-          <motion.button
-            onClick={() => window.location.replace("/learn-js")}
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            className="inline-flex items-center px-8 py-4 font-semibold text-white transition-all duration-300 shadow-lg bg-gradient-to-r from-amber-500 to-orange-600 rounded-xl shadow-amber-500/30 hover:shadow-amber-500/40 group"
-          >
-            Start Learning Now
-            <ArrowRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-          </motion.button>
-        </div>
-      </motion.div>
+            <div className="grid flex-1 grid-cols-2 gap-4">
+              {list.map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: 0.2 * index }}
+                  className="p-6 transition-all duration-300 bg-white dark:glass-card rounded-xl hover:bg-white/20 float-animation"
+                  style={{ animationDelay: `${index * 0.2}s` }}
+                >
+                  <div
+                    className={`w-12 h-12 rounded-lg bg-gradient-to-br ${item.color} p-2.5 mb-4`}
+                  >
+                    <item.icon className="w-full h-full text-zinc-700 dark:text-white" />
+                  </div>
+                  <h3 className="font-semibold text-zinc-900 dark:text-white">
+                    {item.title}
+                  </h3>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+      </div>
     </div>
   );
 };

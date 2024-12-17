@@ -70,7 +70,7 @@ export default function AdminSidebar() {
 
   return (
     <aside
-      className="fixed top-0 left-0 z-30 flex flex-col w-64 bg-white border-r border-zinc-200 text-zinc-700"
+      className="fixed top-0 left-0 z-30 flex flex-col w-64 border-r bg-zinc-900 border-zinc-700 text-zinc-300"
       style={{ height: sidebarHeight }}
     >
       <div className="flex-shrink-0 p-5 text-center">
@@ -84,7 +84,7 @@ export default function AdminSidebar() {
 
       <div className="flex-grow overflow-y-auto">
         <nav className="w-full p-5">
-          <h1 className="text-xs text-zinc-700">Navigation</h1>
+          <h1 className="text-xs text-zinc-400">Navigation</h1>
           <ul className="flex flex-col items-start p-1 mt-3 space-y-1">
             {navLinks.map((link, index) => (
               <NavLink
@@ -93,8 +93,8 @@ export default function AdminSidebar() {
                 className={({ isActive }) =>
                   `relative flex items-center w-full gap-4 p-2 text-[13px] transition-colors duration-300 rounded ${
                     isActive
-                      ? "border-l-2 border-green-500 bg-green-100 text-green-700"
-                      : "text-zinc-700"
+                      ? "border-l-2 border-green-500 bg-green-700 text-white"
+                      : "text-zinc-300"
                   }`
                 }
               >
@@ -106,7 +106,7 @@ export default function AdminSidebar() {
         </nav>
 
         <nav className="w-full p-5 mt-1">
-          <h1 className="text-xs text-zinc-700">System</h1>
+          <h1 className="text-xs text-zinc-400">System</h1>
           <ul className="flex flex-col items-start p-1 mt-3 space-y-1">
             {accountLinks.map((link, index) => (
               <NavLink
@@ -115,8 +115,8 @@ export default function AdminSidebar() {
                 className={({ isActive }) =>
                   `flex items-center w-full gap-4 p-2 text-[13px] transition-colors duration-300 rounded ${
                     isActive
-                      ? "border-l-2 border-green-500 bg-green-100 text-green-700"
-                      : "text-zinc-700"
+                      ? "border-l-2 border-green-500 bg-green-700 text-white"
+                      : "text-zinc-300"
                   }`
                 }
               >
@@ -129,11 +129,11 @@ export default function AdminSidebar() {
       </div>
 
       <nav className="flex-shrink-0 w-full p-5 mt-auto">
-        <h1 className="text-xs font-semibold text-zinc-700">System</h1>
+        <h1 className="text-xs font-semibold text-zinc-400">System</h1>
         <div className="flex flex-col items-start p-1 mt-3 space-y-1">
           <button
             onClick={onOpen}
-            className="flex items-center self-start gap-4 p-2 text-[13px] text-zinc-700"
+            className="flex items-center self-start gap-4 p-2 text-[13px] text-zinc-300"
           >
             <LogOut size={20} />
             Logout

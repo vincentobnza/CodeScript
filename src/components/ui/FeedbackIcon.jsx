@@ -1,5 +1,5 @@
 import React from "react";
-import { MessageCircleQuestion } from "lucide-react";
+import { MessageSquareShare } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Tooltip } from "@nextui-org/react";
 export default function FeedbackIcon() {
@@ -12,9 +12,9 @@ export default function FeedbackIcon() {
       >
         <Link
           to="/feedback"
-          className="fixed z-50 grid text-green-500 transition duration-500 ease-linear bottom-5 right-5"
+          className="fixed z-50 grid transition duration-500 ease-linear text-emerald-500 bottom-5 right-5"
         >
-          <MessageCircleQuestion size={35} />
+          <MessageSquareShare size={30} />
         </Link>
       </Tooltip>
     </>

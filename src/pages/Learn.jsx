@@ -19,7 +19,6 @@ import ScrollUp from "@/components/ScrollUp";
 import NavbarQuickSearch from "@/components/NavbarQuickSearch";
 import { Link } from "react-router-dom";
 import {
-  ShieldCheck,
   SquareTerminal,
   EqualNot,
   RefreshCcw,
@@ -30,13 +29,11 @@ import {
   Ban,
   BookCheck,
   ArrowUpRight,
-  ChartNoAxesColumn,
   Bookmark,
   LoaderCircle,
   Medal,
 } from "lucide-react";
 import { Tooltip } from "@nextui-org/react";
-import { BookOpen, Code, Users } from "lucide-react";
 
 import { useBookmarks } from "@/hooks/useBookmark";
 
@@ -50,8 +47,6 @@ export default function Learn() {
     >
       <ScrollUp />
       <LearnJs />
-
-      <AddedLessons />
     </motion.div>
   );
 }
@@ -1002,92 +997,6 @@ const Lesson8Data = () => {
           Take Pre Test
           <BookCheck size={15} />
         </Link>
-      </div>
-    </div>
-  );
-};
-
-const AddedLessons = () => {
-  const list = [
-    {
-      icon: BookOpen,
-      title: "Curated Lessons",
-      color: "from-blue-500 to-cyan-400",
-    },
-    {
-      icon: Code,
-      title: "Practice Examples",
-      color: "from-purple-500 to-pink-400",
-    },
-    {
-      icon: Users,
-      title: "Advanced Topics",
-      color: "from-green-500 to-emerald-400",
-    },
-    {
-      icon: BookOpen,
-      title: "Expert Guidance",
-      color: "from-orange-500 to-amber-400",
-    },
-  ];
-  return (
-    <div className="w-full max-w-screen-lg mx-auto">
-      <div className="w-full mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="p-8 mb-8 glass-card rounded-2xl md:p-12"
-        >
-          <div className="flex flex-col items-center gap-8 md:flex-row">
-            <div className="flex-1 space-y-6">
-              <span className="inline-flex items-center px-4 py-2 border rounded-full bg-amber-500/20 border-amber-500/30">
-                <span className="w-2 h-2 mr-2 rounded-full bg-amber-400 animate-pulse"></span>
-                <span className="text-sm font-medium text-amber-200">
-                  Learning Resources
-                </span>
-              </span>
-
-              <h1 className="text-4xl font-bold leading-tight md:text-5xl gradient-text">
-                Instructor Added Materials
-              </h1>
-
-              <p className="text-lg leading-relaxed text-gray-300">
-                Expand your knowledge with curated JavaScript resources and
-                materials. Access handpicked tutorials, examples, and practice
-                exercises designed to accelerate your learning journey.
-              </p>
-
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="px-8 py-4 font-semibold text-white transition-all duration-300 shadow-lg bg-gradient-to-r from-amber-500 to-orange-600 rounded-xl shadow-amber-500/30 hover:shadow-amber-500/40"
-              >
-                Explore Resources
-              </motion.button>
-            </div>
-
-            <div className="grid flex-1 grid-cols-2 gap-4">
-              {list.map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 * index }}
-                  className="p-6 transition-all duration-300 glass-card rounded-xl hover:bg-white/20 float-animation"
-                  style={{ animationDelay: `${index * 0.2}s` }}
-                >
-                  <div
-                    className={`w-12 h-12 rounded-lg bg-gradient-to-br ${item.color} p-2.5 mb-4`}
-                  >
-                    <item.icon className="w-full h-full text-white" />
-                  </div>
-                  <h3 className="font-semibold text-white">{item.title}</h3>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </motion.div>
       </div>
     </div>
   );

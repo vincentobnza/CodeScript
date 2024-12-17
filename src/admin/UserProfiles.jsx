@@ -183,7 +183,6 @@ export default function UserProfiles() {
 
   return (
     <div className="flex flex-col w-full gap-2 space-y-6">
-      <Toaster />
       <Header
         searchTerm={searchTerm}
         setSearchTerm={setSearchTerm}

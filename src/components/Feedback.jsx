@@ -62,7 +62,7 @@ export default function Feedback() {
     <div className="flex items-center justify-center w-full px-1 pb-6 mt-16 md:px-12">
       <div
         className={`flex flex-col gap-4 border rounded-lg border-zinc-700 transition-all duration-300 shadow-2xl  ${
-          isFormVisible ? "w-[400px]" : "w-[250px]"
+          isFormVisible ? "w-[400px]" : "w-[300px]"
         }`}
       >
         <div className="p-3">
@@ -70,16 +70,10 @@ export default function Feedback() {
             <h1 className="text-sm font-semibold">Was this helpful?</h1>
             <div className="flex items-center gap-1 font-semibold">
               <button
-                className="flex items-center gap-2 px-3 py-1 text-sm outline-none text-zinc-500 dark:text-zinc-400"
-                onClick={handleButtonClick}
-              >
-                No
-              </button>
-              <button
                 className="flex items-center gap-2 px-3 py-1 text-sm text-white rounded outline-none bg-zinc-700 dark:bg-white dark:text-black"
                 onClick={handleButtonClick}
               >
-                Yes
+                {!isFormVisible ? "Submit Feedback" : "Close"}
               </button>
             </div>
           </div>
