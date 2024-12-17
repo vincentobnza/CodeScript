@@ -49,7 +49,7 @@ const Hero = () => {
             </div>
           </div>
         </>
-        <h1 className="text-4xl md:text-[52px] dark:bg-gradient-to-br dark:from-white dark:to-zinc-600 dark:bg-clip-text dark:text-transparent text-zinc-800 leading-snug  z-10 font-semibold">
+        <h1 className="text-4xl md:text-[52px] dark:bg-gradient-to-br dark:from-white dark:to-zinc-600 dark:bg-clip-text dark:text-transparent text-zinc-800 leading-snug  z-10 font-medium">
           Learn, Build, and Excel in{" "}
           <span className="text-green-600 dark:text-transparent dark:bg-gradient-to-br dark:from-green-400 dark:to-green-900 bg-clip-text">
             JavaScript
