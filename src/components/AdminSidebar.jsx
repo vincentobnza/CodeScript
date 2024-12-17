@@ -27,7 +27,7 @@ export default function AdminSidebar() {
 
   const handleLogout = () => {
     // Perform logout actions here (e.g., clear session, cookies, etc.)
-    navigate("/admin-login");
+    navigate("/admin-login/9b74c9897bac770ffc029102a200c5de");
   };
 
   useEffect(() => {
