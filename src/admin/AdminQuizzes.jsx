@@ -291,7 +291,7 @@ const QuizzesTable = ({
         return (
           <div className="flex items-center gap-3">
             <Avatar
-              src="https://cdn-icons-png.flaticon.com/128/4997/4997543.png"
+              src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png"
               size="sm"
               isBordered
             />
@@ -412,7 +412,7 @@ const QuizDetailModal = ({ isOpen, onClose, quiz }) => {
                 </span>
               </p>
               <p>
-                <strong>Score:</strong> {quiz.score}%
+                <strong>Score:</strong> {quiz.score}
               </p>
             </div>
           </div>
