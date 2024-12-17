@@ -349,7 +349,7 @@ const router = createBrowserRouter([
   },
 
   {
-    path: "admin-login",
+    path: "admin-login/9b74c9897bac770ffc029102a200c5de",
     element: <AdminLogin />,
   },
   {
