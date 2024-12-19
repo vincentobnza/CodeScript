@@ -10,6 +10,7 @@ import {
   Lesson8,
 } from "../data/Chapter1Data";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const lessons = [
   { id: 1, title: "Introduction to JavaScript", topics: Lesson1 },
@@ -34,7 +35,7 @@ export default function LessonNavigation() {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       transition={{ duration: 0.7 }}
-      className="hidden md:flex bg-white dark:bg-zinc-900 p-4 w-64 h-screen overflow-y-auto fixed right-0 top-0 border-l border-zinc-200 dark:border-zinc-800 z-10"
+      className="fixed top-0 right-0 z-10 hidden w-64 h-screen p-4 overflow-y-auto bg-white border-l md:flex dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800"
     >
       <div className="p-5 mt-[5.6rem] space-y-6">
         <div className="flex flex-col gap-1">
@@ -60,7 +61,7 @@ export default function LessonNavigation() {
               </button>
               {lesson.topics.length > 0 && (
                 <div
-                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                  className={`transition-all duration-300 ease-in-out overflow-hidden ${
                     openSectionId === lesson.id
                       ? "max-h-60 opacity-100"
                       : "max-h-0 opacity-0"
@@ -68,11 +69,13 @@ export default function LessonNavigation() {
                 >
                   <ul className="mt-2 ml-4 space-y-2">
                     {lesson.topics.map((topic) => (
-                      <li
-                        key={topic.id}
-                        className="text-left text-sm hover:text-black dark:hover:text-zinc-300 hover:underline"
-                      >
-                        <a href={topic.link}>{topic.name}</a>
+                      <li key={topic.id}>
+                        <Link
+                          to={topic.link}
+                          className="block w-full text-sm text-left text-gray-700 dark:text-gray-300 hover:text-black dark:hover:text-zinc-300 hover:underline"
+                        >
+                          {topic.name}
+                        </Link>
                       </li>
                     ))}
                   </ul>

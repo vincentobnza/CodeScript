@@ -18,7 +18,7 @@ const Overview = () => {
       </section>
 
       {/* Features Section */}
-      <section className="px-6 py-16 bg-neutral-dark/50">
+      <section className="px-6 py-4 bg-neutral-dark/50">
         <div className="max-w-6xl mx-auto">
           <h2 className="mb-12 text-3xl font-bold text-center text-zinc-700 dark:text-white">
             Key Features
