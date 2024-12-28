@@ -35,6 +35,7 @@ export default {
         Lato: ["Lato", "sans-serif"],
         Jost: ["Jost", "sans-serif"],
         PlayFair: ["Playfair Display", "serif"],
+        Roboto: ["Roboto", "sans-serif"],
       },
     },
   },

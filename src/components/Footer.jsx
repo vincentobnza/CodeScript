@@ -2,28 +2,30 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export default function Footer() {
+  const links = [
+    { to: "/privacy-policy", label: "Privacy Policy" },
+    { to: "/about-us", label: "Developers" },
+  ];
+
   return (
     <div className="relative grid w-full gap-2 p-4 bg-white border-t place-items-center dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 f text-zinc-700 dark:text-zinc-200">
       <footer>
-        <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center justify-between items-center text-center">
-          <span class="text-xs md:text-sm text-zinc-700 sm:text-center dark:text-zinc-400">
+        <div className="items-center justify-between w-full max-w-screen-xl p-4 mx-auto text-center md:flex md:items-center">
+          <span className="text-xs md:text-sm text-zinc-700 sm:text-center dark:text-zinc-400">
             © 2024{" "}
-            <Link to="/" class="hover:underline">
+            <Link to="/" className="hover:underline">
               CodeScript™
             </Link>
             . All Rights Reserved.
           </span>
-          <ul class="ml-8 flex flex-wrap items-center mt-3 text-xs md:text-sm  text-zinc-600 dark:text-gray-400 sm:mt-0 text-center">
-            <li>
-              <a href="/privacy-policy" class="hover:underline me-4 md:me-6">
-                Privacy Policy
-              </a>
-            </li>
-            <li>
-              <a href="/about-us" class="hover:underline me-4 md:me-6">
-                Developers
-              </a>
-            </li>
+          <ul className="flex flex-wrap items-center mt-3 ml-8 text-xs text-center md:text-sm text-zinc-600 dark:text-gray-400 sm:mt-0">
+            {links.map((link, index) => (
+              <li key={index}>
+                <Link to={link.to} className="hover:underline me-4 md:me-6">
+                  {link.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
       </footer>

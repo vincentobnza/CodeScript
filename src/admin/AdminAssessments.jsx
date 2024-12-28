@@ -1,5 +1,13 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Search, Plus, Box, Trash2, AlertTriangle, Edit } from "lucide-react";
+import {
+  Search,
+  Plus,
+  Box,
+  Trash2,
+  AlertTriangle,
+  Edit,
+  BookOpenText,
+} from "lucide-react";
 import { toast, Toaster } from "react-hot-toast";
 import supabase from "@/config/supabaseClient";
 import {
@@ -12,7 +20,6 @@ import {
   useDisclosure,
   Input,
   Textarea,
-  Skeleton,
   Tooltip,
   Spinner,
 } from "@nextui-org/react";
@@ -127,10 +134,17 @@ const Header = ({ searchTerm, setSearchTerm }) => {
       <div className="flex items-center gap-2">
         <Link
           to="/admin/create-assessment"
-          className="flex items-center self-start gap-3 px-3 py-2 mt-5 text-sm font-semibold text-green-500 border rounded shadow outline-none border-zinc-200 shadow-zinc-200"
+          className="flex items-center self-start gap-3 px-3 py-2 mt-5 text-sm font-semibold text-green-600 border rounded shadow outline-none border-zinc-200 shadow-zinc-200"
         >
           <Plus size={15} />
           Create Assessment
+        </Link>
+        <Link
+          to="/admin/add-lesson"
+          className="flex items-center self-start gap-3 px-3 py-2 mt-5 text-sm font-semibold text-zinc-600 border rounded shadow outline-none border-zinc-200 shadow-zinc-200"
+        >
+          <BookOpenText size={15} />
+          Add Lesson
         </Link>
       </div>
 
@@ -245,7 +259,7 @@ const ViewModal = ({
         isOpen={isOpen}
         onOpenChange={onOpenChange}
         size="3xl"
-        className="font-Jost"
+        className="font-Roboto"
       >
         <ModalContent>
           {(onClose) => (
@@ -460,7 +474,7 @@ const CreateModal = ({ isOpen, onOpen, onOpenChange }) => {
       isOpen={isOpen}
       onOpenChange={onOpenChange}
       size="5xl"
-      className="font-Jost"
+      className="font-Roboto"
       radius="none"
       hideCloseButton
     >
@@ -554,7 +568,7 @@ const CreateModal = ({ isOpen, onOpen, onOpenChange }) => {
                         showArrow={true}
                         placement="left"
                         content={
-                          <div className="w-[400px] p-5 pb-8 font-Jost">
+                          <div className="w-[400px] p-5 pb-8 font-Roboto">
                             <div className="mb-3 font-bold text-small">
                               Test Code Note ⚠️
                             </div>
@@ -736,7 +750,7 @@ const EditModal = ({ isOpen, onOpenChange, assessment, onUpdate }) => {
       onOpenChange={onOpenChange}
       size="5xl"
       radius="none"
-      className="font-Jost"
+      className="font-Roboto"
       hideCloseButton
     >
       <ModalContent>
@@ -830,7 +844,7 @@ const EditModal = ({ isOpen, onOpenChange, assessment, onUpdate }) => {
                         showArrow={true}
                         placement="left"
                         content={
-                          <div className="w-[400px] p-5 pb-8 font-Jost">
+                          <div className="w-[400px] p-5 pb-8 font-Roboto">
                             <div className="mb-3 font-bold text-small">
                               Test Code Note ⚠️
                             </div>
@@ -930,7 +944,7 @@ const DeleteModal = ({ isOpen, onOpenChange, assessment, onDelete }) => {
       onOpenChange={onOpenChange}
       size="md"
       radius="none"
-      className="font-Jost"
+      className="font-Roboto"
     >
       <ModalContent>
         {(onClose) => (

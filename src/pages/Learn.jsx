@@ -268,7 +268,7 @@ const Lesson1Data = () => {
             {/* Bookmark Icon */}
             <div className="absolute left-2 bottom-2">
               <Tooltip
-                className="font-Jost"
+                className="font-Roboto"
                 placement="top"
                 radius="none"
                 showArrow
@@ -366,7 +366,7 @@ const Lesson2Data = () => {
             {/* Bookmark Icon */}
             <div className="absolute left-2 bottom-2">
               <Tooltip
-                className="font-Jost"
+                className="font-Roboto"
                 placement="top"
                 radius="none"
                 showArrow
@@ -464,7 +464,7 @@ const Lesson3Data = () => {
             {/* Bookmark Icon */}
             <div className="absolute left-2 bottom-2">
               <Tooltip
-                className="font-Jost"
+                className="font-Roboto"
                 placement="top"
                 radius="none"
                 showArrow
@@ -562,7 +562,7 @@ const Lesson4Data = () => {
             {/* Bookmark Icon */}
             <div className="absolute left-2 bottom-2">
               <Tooltip
-                className="font-Jost"
+                className="font-Roboto"
                 placement="top"
                 radius="none"
                 showArrow
@@ -659,7 +659,7 @@ const Lesson5Data = () => {
             {/* Bookmark Icon */}
             <div className="absolute left-2 bottom-2">
               <Tooltip
-                className="font-Jost"
+                className="font-Roboto"
                 placement="top"
                 radius="none"
                 showArrow
@@ -756,7 +756,7 @@ const Lesson6Data = () => {
             {/* Bookmark Icon */}
             <div className="absolute left-2 bottom-2">
               <Tooltip
-                className="font-Jost"
+                className="font-Roboto"
                 placement="top"
                 radius="none"
                 showArrow
@@ -854,7 +854,7 @@ const Lesson7Data = () => {
             {/* Bookmark Icon */}
             <div className="absolute left-2 bottom-2">
               <Tooltip
-                className="font-Jost"
+                className="font-Roboto"
                 placement="top"
                 radius="none"
                 showArrow
@@ -952,7 +952,7 @@ const Lesson8Data = () => {
             {/* Bookmark Icon */}
             <div className="absolute left-2 bottom-2">
               <Tooltip
-                className="font-Jost"
+                className="font-Roboto"
                 placement="top"
                 radius="none"
                 showArrow

@@ -144,7 +144,7 @@ export default function AdminSidebar() {
       <Modal
         isOpen={isOpen}
         onClose={onClose}
-        className="font-Jost"
+        className="font-Roboto"
         radius="none"
       >
         <ModalContent>

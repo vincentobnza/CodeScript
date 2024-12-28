@@ -41,6 +41,7 @@ import Feedbacks from "./admin/Feedbacks";
 import CreateAssessment from "./admin/CreateAssessment";
 import AdminQuizzes from "./admin/AdminQuizzes";
 import AdminCustomization from "./admin/AdminCustomization";
+import AddLesson from "./admin/AddLesson";
 
 // LESSONS
 import Lesson1_Topic1 from "./content/Lesson1/Lesson1.1";
@@ -345,6 +346,10 @@ const router = createBrowserRouter([
         path: "customization",
         element: <AdminCustomization />,
       },
+      {
+        path: "add-lesson",
+        element: <AddLesson />,
+      },
     ],
   },
 
@@ -376,7 +381,7 @@ const router = createBrowserRouter([
 
 export default function App() {
   return (
-    <div className="font-Jost App text-zinc-950 dark:text-zinc-300">
+    <div className="font-Roboto App text-zinc-950 dark:text-zinc-300">
       <AuthProvider>
         <UserProvider>
           <RouterProvider router={router} />

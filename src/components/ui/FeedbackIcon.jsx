@@ -8,7 +8,7 @@ export default function FeedbackIcon() {
       <Tooltip
         content="Provide us your feedback ⭐"
         radius="none"
-        className="font-Jost"
+        className="font-Roboto"
       >
         <Link
           to="/feedback"
