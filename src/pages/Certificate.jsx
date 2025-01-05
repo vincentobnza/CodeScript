@@ -131,7 +131,7 @@ export default function Certificate() {
           showArrow={true}
           placement="bottom"
           content={
-            <div className="w-[400px] p-5 pb-8 font-Roboto">
+            <div className="w-[400px] p-5 pb-8 font-Jost">
               <div className="grid mb-3 border rounded-lg size-8 place-items-center bg-zinc-50 dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700 ">
                 <Medal size={18} className="text-green-400" />
               </div>
@@ -162,7 +162,7 @@ export default function Certificate() {
           showArrow={true}
           placement="bottom"
           content={
-            <div className="w-[400px] p-5 pb-8 font-Roboto">
+            <div className="w-[400px] p-5 pb-8 font-Jost">
               <div className="grid mb-3 border rounded-lg size-8 place-items-center bg-zinc-50 dark:bg-zinc-800 border-zinc-200 dark:border-zinc-700 ">
                 <ThumbsUp size={18} className="text-amber-400" />
               </div>

@@ -75,6 +75,8 @@ import Lesson8_Topic1 from "./content/Lesson8/Lesson8.1";
 import Lesson8_Topic2 from "./content/Lesson8/Lesson8.2";
 import Lesson8_Topic3 from "./content/Lesson8/Lesson8.3";
 
+import LessonsPage from "./pages/LessonsPage";
+
 // PROVIDER
 import { AuthProvider } from "./context/AuthContext";
 import { ThemeProvider } from "./components/ThemeProvider";
@@ -173,6 +175,11 @@ const router = createBrowserRouter([
       {
         path: "learn-js",
         element: <Learn />,
+      },
+
+      {
+        path: "lessons-page",
+        element: <LessonsPage />,
       },
 
       {
@@ -381,7 +388,7 @@ const router = createBrowserRouter([
 
 export default function App() {
   return (
-    <div className="font-Roboto App text-zinc-950 dark:text-zinc-300">
+    <div className="font-Jost App text-zinc-950 dark:text-zinc-300">
       <AuthProvider>
         <UserProvider>
           <RouterProvider router={router} />

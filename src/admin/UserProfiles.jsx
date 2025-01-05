@@ -607,7 +607,7 @@ const DeleteConfirmationModal = ({ isOpen, onClose, onConfirm, loading }) => {
       isOpen={isOpen}
       onClose={onClose}
       radius="none"
-      className="font-Roboto"
+      className="font-Jost"
     >
       <ModalContent>
         <ModalHeader className="border-b border-zinc-200">
@@ -653,7 +653,7 @@ const EditUserModal = ({
       isOpen={isOpen}
       onClose={onClose}
       radius="none"
-      className="font-Roboto"
+      className="font-Jost"
     >
       <ModalContent>
         <ModalHeader>Edit User</ModalHeader>

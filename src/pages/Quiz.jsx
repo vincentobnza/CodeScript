@@ -171,7 +171,7 @@ export default function Quiz() {
                 showArrow={true}
                 placement="bottom"
                 content={
-                  <div className="w-[220px] p-3 font-Roboto">
+                  <div className="w-[220px] p-3 font-Jost">
                     <h1 className="mb-3 text-xs font-semibold">
                       Fantastic Score 🥳
                     </h1>
@@ -668,7 +668,7 @@ const ViewAccuracyModal = ({
       isOpen={isOpen}
       onOpenChange={onOpenChange}
       scrollBehavior="inside"
-      className="font-Roboto"
+      className="font-Jost"
       size="2xl"
     >
       <ModalContent>

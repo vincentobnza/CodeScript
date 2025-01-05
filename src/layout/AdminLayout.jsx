@@ -9,7 +9,7 @@ export default function AdminLayout() {
     document.title = "CodeScript - Instructor";
   });
   return (
-    <div className="flex flex-col w-full bg-white font-Roboto text-zinc-700">
+    <div className="flex flex-col w-full bg-white font-Jost text-zinc-700">
       <Toaster />
       <AdminNavbar />
       <div className="flex flex-1 overflow-hidden">

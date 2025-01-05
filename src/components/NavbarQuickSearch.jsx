@@ -83,7 +83,7 @@ export default function NavbarQuickSearch({ isOpen, onOpen, onOpenChange }) {
   return (
     <>
       <Modal
-        className="font-Roboto"
+        className="font-Jost"
         radius="none"
         size="3xl"
         isOpen={isOpen}

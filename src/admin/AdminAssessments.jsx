@@ -259,7 +259,7 @@ const ViewModal = ({
         isOpen={isOpen}
         onOpenChange={onOpenChange}
         size="3xl"
-        className="font-Roboto"
+        className="font-Jost"
       >
         <ModalContent>
           {(onClose) => (
@@ -474,7 +474,7 @@ const CreateModal = ({ isOpen, onOpen, onOpenChange }) => {
       isOpen={isOpen}
       onOpenChange={onOpenChange}
       size="5xl"
-      className="font-Roboto"
+      className="font-Jost"
       radius="none"
       hideCloseButton
     >
@@ -568,7 +568,7 @@ const CreateModal = ({ isOpen, onOpen, onOpenChange }) => {
                         showArrow={true}
                         placement="left"
                         content={
-                          <div className="w-[400px] p-5 pb-8 font-Roboto">
+                          <div className="w-[400px] p-5 pb-8 font-Jost">
                             <div className="mb-3 font-bold text-small">
                               Test Code Note ⚠️
                             </div>
@@ -750,7 +750,7 @@ const EditModal = ({ isOpen, onOpenChange, assessment, onUpdate }) => {
       onOpenChange={onOpenChange}
       size="5xl"
       radius="none"
-      className="font-Roboto"
+      className="font-Jost"
       hideCloseButton
     >
       <ModalContent>
@@ -844,7 +844,7 @@ const EditModal = ({ isOpen, onOpenChange, assessment, onUpdate }) => {
                         showArrow={true}
                         placement="left"
                         content={
-                          <div className="w-[400px] p-5 pb-8 font-Roboto">
+                          <div className="w-[400px] p-5 pb-8 font-Jost">
                             <div className="mb-3 font-bold text-small">
                               Test Code Note ⚠️
                             </div>
@@ -944,7 +944,7 @@ const DeleteModal = ({ isOpen, onOpenChange, assessment, onDelete }) => {
       onOpenChange={onOpenChange}
       size="md"
       radius="none"
-      className="font-Roboto"
+      className="font-Jost"
     >
       <ModalContent>
         {(onClose) => (

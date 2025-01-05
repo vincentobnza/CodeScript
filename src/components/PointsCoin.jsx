@@ -237,7 +237,7 @@ export default function PointsCoin() {
             <Tooltip
               content="Keep scrolling to gain points and progress ✨"
               placement="top"
-              className="font-Roboto"
+              className="font-Jost"
               radius="none"
             >
               <motion.div

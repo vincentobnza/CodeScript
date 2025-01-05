@@ -7,14 +7,17 @@ export default function Footer() {
     { to: "/about-us", label: "Developers" },
   ];
 
+  // MAKE THE DATE OF THE FOOTER DYNAMIC WHEN THE YEAR CHANGES
+  const currentYear = new Date().getFullYear();
+
   return (
     <div className="relative grid w-full gap-2 p-4 bg-white border-t place-items-center dark:bg-zinc-900 border-zinc-200 dark:border-zinc-800 f text-zinc-700 dark:text-zinc-200">
       <footer>
         <div className="items-center justify-between w-full max-w-screen-xl p-4 mx-auto text-center md:flex md:items-center">
           <span className="text-xs md:text-sm text-zinc-700 sm:text-center dark:text-zinc-400">
-            © 2024{" "}
+            © {currentYear}{" "}
             <Link to="/" className="hover:underline">
-              CodeScript™
+              CodeScript ™
             </Link>
             . All Rights Reserved.
           </span>

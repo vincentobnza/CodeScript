@@ -495,7 +495,7 @@ const LivePreview = ({
         <Tooltip
           content="Full View"
           radius="none"
-          className="text-xs font-Roboto"
+          className="text-xs font-Jost"
         >
           <Fullscreen
             onClick={() => setOnOpen(true)}
@@ -657,7 +657,7 @@ const LeaderboardToggleModal = ({ isOpen, onClose, setIsChecked }) => {
           onClose();
         }}
         radius="none"
-        className="font-Roboto"
+        className="font-Jost"
       >
         <ModalContent>
           {(onClose) => (
