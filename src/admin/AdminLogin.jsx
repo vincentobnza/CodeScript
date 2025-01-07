@@ -60,7 +60,7 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="flex h-screen bg-white font-Jost">
+    <div className="flex h-screen bg-white font-Balsamiq">
       <div className="flex flex-col items-center w-1/2 text-white p-[3.4rem] bg-zinc-800 group">
         <h1 className="mt-10 text-4xl font-bold">Instructor Access Only</h1>
         <p className="mt-6 text-center text-zinc-400">

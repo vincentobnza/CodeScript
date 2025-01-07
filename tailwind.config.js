@@ -36,6 +36,7 @@ export default {
         Jost: ["Jost", "sans-serif"],
         PlayFair: ["Playfair Display", "serif"],
         Roboto: ["Roboto", "sans-serif"],
+        Balsamiq: ["Balsamiq Sans", "serif"],
       },
     },
   },

@@ -1,32 +1,37 @@
 import React, { useState } from "react";
-import "react-quill/dist/quill.snow.css";
-import ReactQuill from "react-quill";
 import supabase from "../config/supabaseClient";
-import toast, { Toaster } from "react-hot-toast";
-import { Captions, Pill, List, Braces } from "lucide-react";
+import toast from "react-hot-toast";
 
 export default function AddLesson() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [subTopic, setSubTopic] = useState("");
+  const [sampleCode, setSampleCode] = useState("");
+  const [showSubTopic, setShowSubTopic] = useState(false);
+  const [showSampleCode, setShowSampleCode] = useState(false);
   const [loading, setLoading] = useState(false);
-
-  // State for content sections
-  const [contentSections, setContentSections] = useState([]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!title.trim() || !description.trim()) {
+    if (
+      !title.trim() ||
+      !description.trim() ||
+      (showSubTopic && !subTopic.trim()) ||
+      (showSampleCode && !sampleCode.trim())
+    ) {
       toast.error("All fields are required!");
       return;
     }
 
     setLoading(true);
+
     const { data, error } = await supabase.from("lessons").insert([
       {
         title,
         description,
-        content: contentSections,
+        sub_topic: showSubTopic ? subTopic : null,
+        sample_code: showSampleCode ? sampleCode : null,
       },
     ]);
 
@@ -39,85 +44,20 @@ export default function AddLesson() {
       toast.success("Lesson successfully added!");
       setTitle("");
       setDescription("");
-      setContentSections([]);
-    }
-  };
-
-  const addContentSection = (type) => {
-    setContentSections([
-      ...contentSections,
-      {
-        id: Date.now(),
-        type,
-        content: "",
-        isVisible: true,
-      },
-    ]);
-  };
-
-  const updateContentSection = (id, content) => {
-    setContentSections(
-      contentSections.map((section) =>
-        section.id === id ? { ...section, content } : section
-      )
-    );
-  };
-
-  const removeContentSection = (id) => {
-    setContentSections(contentSections.filter((section) => section.id !== id));
-  };
-
-  const ContentInput = ({ section }) => {
-    switch (section.type) {
-      case "title":
-        return (
-          <input
-            type="text"
-            placeholder="Enter section title"
-            value={section.content}
-            onChange={(e) => updateContentSection(section.id, e.target.value)}
-            className="w-full p-3 px-4 border border-gray-300 rounded-md"
-          />
-        );
-      case "description":
-        return (
-          <textarea
-            placeholder="Enter section description"
-            value={section.content}
-            onChange={(e) => updateContentSection(section.id, e.target.value)}
-            className="w-full h-32 p-3 px-4 border border-gray-300 rounded-md"
-          />
-        );
-      case "list":
-        return (
-          <textarea
-            placeholder="Enter items (one per line)"
-            value={section.content}
-            onChange={(e) => updateContentSection(section.id, e.target.value)}
-            className="w-full h-32 p-3 px-4 border border-gray-300 rounded-md"
-          />
-        );
-      case "code":
-        return (
-          <textarea
-            placeholder="Enter sample code"
-            value={section.content}
-            onChange={(e) => updateContentSection(section.id, e.target.value)}
-            className="w-full h-48 p-3 px-4 font-mono border border-gray-300 rounded-md"
-          />
-        );
-      default:
-        return null;
+      setSubTopic("");
+      setSampleCode("");
+      setShowSubTopic(false);
+      setShowSampleCode(false);
     }
   };
 
   return (
     <div className="flex flex-col w-full gap-2 space-y-2">
       <Header />
-      <div className="flex flex-col gap-4 p-5 m-5 bg-white border-2 border-dashed rounded-md border-zinc-200">
+      <div className="flex flex-col gap-4 p-5">
         <form className="space-y-4" onSubmit={handleSubmit}>
           {/* Title */}
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col w-full gap-2 p-5 border border-zinc-100">
             <label htmlFor="title" className="text-sm font-medium">
               Title
             </label>
@@ -127,12 +67,12 @@ export default function AddLesson() {
               placeholder="Enter title"
               value={title}
               onChange={(e) => setTitle(e.target.value)}
-              className="p-3 px-4 border border-gray-300 rounded-md"
+              className="p-3 px-4 transition duration-300 ease-in-out border-b border-zinc-100 focus:border-zinc-600 focus:border-b-2 focus:outline-none"
             />
           </div>
 
           {/* Description */}
-          <div className="flex flex-col gap-2">
+          <div className="flex flex-col w-full gap-4 p-5 border border-zinc-100">
             <label htmlFor="description" className="text-sm font-medium">
               Description
             </label>
@@ -141,69 +81,62 @@ export default function AddLesson() {
               placeholder="Enter description"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="h-40 p-3 px-4 border border-gray-300 rounded-md"
+              className="h-40 p-3 px-4 border rounded-md border-zinc-100"
             />
           </div>
 
-          {/* Content Sections */}
-          <div className="space-y-4">
-            {contentSections.map((section) => (
-              <div key={section.id}>
-                <div className="flex justify-between items-center mb-2">
-                  <span className="text-sm font-medium capitalize">
-                    {section.type}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={() => removeContentSection(section.id)}
-                    className="py-1 px-2 border border-zinc-300 text-xs font-medium rounded text-zinc-600"
-                  >
-                    Remove
-                  </button>
-                </div>
-                <ContentInput section={section} />
-              </div>
-            ))}
-          </div>
+          {/* Dynamic Fields */}
+          {showSubTopic && (
+            <div className="flex flex-col w-full gap-2 p-5 border border-zinc-100">
+              <label htmlFor="subTopic" className="text-sm font-medium">
+                Subtopic
+              </label>
+              <input
+                type="text"
+                id="subTopic"
+                placeholder="Enter subtopic"
+                value={subTopic}
+                onChange={(e) => setSubTopic(e.target.value)}
+                className="p-3 px-4 border rounded-md border-zinc-100"
+              />
+            </div>
+          )}
 
-          {/* Content Buttons */}
-          <div className="w-full justify-start items-start flex gap-2">
+          {showSampleCode && (
+            <div className="flex flex-col w-full gap-2 p-5 border border-zinc-100">
+              <label htmlFor="sampleCode" className="text-sm font-medium">
+                Sample Code
+              </label>
+              <textarea
+                id="sampleCode"
+                placeholder="Enter sample code"
+                value={sampleCode}
+                onChange={(e) => setSampleCode(e.target.value)}
+                className="h-40 p-3 px-4 border rounded-md border-zinc-100"
+              />
+            </div>
+          )}
+
+          {/* Add Buttons */}
+          <div className="flex justify-start w-full gap-4 p-5">
             <button
               type="button"
-              onClick={() => addContentSection("title")}
-              className="shadow py-2 px-3 border border-zinc-300 text-sm font-semibold rounded text-zinc-600 flex items-center gap-2"
+              onClick={() => setShowSubTopic(!showSubTopic)}
+              className="px-4 py-1 border border-zinc-400"
             >
-              <Captions size={18} />
-              Add Title
+              Add Subtopic
             </button>
             <button
               type="button"
-              onClick={() => addContentSection("description")}
-              className="shadow py-2 px-3 border border-zinc-300 text-sm font-semibold rounded text-zinc-600 flex items-center gap-2"
+              onClick={() => setShowSampleCode(!showSampleCode)}
+              className="px-4 py-1 border border-zinc-400"
             >
-              <Pill size={18} />
-              Add Description
-            </button>
-            <button
-              type="button"
-              onClick={() => addContentSection("list")}
-              className="shadow py-2 px-3 border border-zinc-300 text-sm font-semibold rounded text-zinc-600 flex items-center gap-2"
-            >
-              <List size={18} />
-              Add List
-            </button>
-            <button
-              type="button"
-              onClick={() => addContentSection("code")}
-              className="shadow py-2 px-3 border border-zinc-300 text-sm font-semibold rounded text-zinc-600 flex items-center gap-2"
-            >
-              <Braces size={18} />
               Add Sample Code
             </button>
           </div>
 
           {/* Submit Button */}
-          <div className="flex gap-4 mt-">
+          <div className="flex gap-4 mt-4">
             <button
               type="submit"
               className={`py-2 px-4 rounded-md text-white ${

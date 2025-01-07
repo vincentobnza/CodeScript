@@ -241,7 +241,7 @@ const Create = () => {
                   showArrow={true}
                   placement="left"
                   content={
-                    <div className="w-[400px] p-5 pb-8 font-Jost">
+                    <div className="w-[400px] p-5 pb-8 font-Balsamiq">
                       <div className="mb-3 font-bold text-small">
                         Test Code Note ⚠️
                       </div>

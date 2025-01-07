@@ -37,6 +37,8 @@ import { Tooltip } from "@nextui-org/react";
 
 import { useBookmarks } from "@/hooks/useBookmark";
 
+import BannerImage from "../assets/Self Learning.png";
+
 export default function Learn() {
   return (
     <motion.div
@@ -47,6 +49,8 @@ export default function Learn() {
     >
       <ScrollUp />
       <LearnJs />
+
+      <LessonBanner />
     </motion.div>
   );
 }
@@ -124,13 +128,13 @@ const Header = () => {
 
       <div className="items-center hidden gap-2 font-bold md:flex">
         <Link to="/certificate" className="flex">
-          <button className="flex items-center justify-center gap-2 px-3 py-2 text-sm transition-all duration-300 ease-linear bg-white border dark:hover:brightness-125 dark:bg-zinc-800/20 border-zinc-200 dark:border-zinc-700">
+          <button className="flex items-center justify-center gap-2 px-3 py-2 text-xs transition-all duration-300 ease-linear bg-white border dark:hover:brightness-125 dark:bg-zinc-800/20 border-zinc-200 dark:border-zinc-800">
             <Medal size={15} />
             My Certificate
           </button>
         </Link>
         <Link to="/performance" className="flex">
-          <button className="flex items-center justify-center gap-2 px-3 py-2 text-sm transition-all duration-300 ease-linear bg-white border dark:hover:brightness-125 dark:bg-zinc-800/20 border-zinc-200 dark:border-zinc-700">
+          <button className="flex items-center justify-center gap-2 px-3 py-2 text-xs transition-all duration-300 ease-linear bg-white border dark:hover:brightness-125 dark:bg-zinc-800/20 border-zinc-200 dark:border-zinc-800">
             <LoaderCircle size={15} />
             Progress
           </button>
@@ -268,7 +272,7 @@ const Lesson1Data = () => {
             {/* Bookmark Icon */}
             <div className="absolute left-2 bottom-2">
               <Tooltip
-                className="font-Jost"
+                className="font-Balsamiq"
                 placement="top"
                 radius="none"
                 showArrow
@@ -366,7 +370,7 @@ const Lesson2Data = () => {
             {/* Bookmark Icon */}
             <div className="absolute left-2 bottom-2">
               <Tooltip
-                className="font-Jost"
+                className="font-Balsamiq"
                 placement="top"
                 radius="none"
                 showArrow
@@ -464,7 +468,7 @@ const Lesson3Data = () => {
             {/* Bookmark Icon */}
             <div className="absolute left-2 bottom-2">
               <Tooltip
-                className="font-Jost"
+                className="font-Balsamiq"
                 placement="top"
                 radius="none"
                 showArrow
@@ -562,7 +566,7 @@ const Lesson4Data = () => {
             {/* Bookmark Icon */}
             <div className="absolute left-2 bottom-2">
               <Tooltip
-                className="font-Jost"
+                className="font-Balsamiq"
                 placement="top"
                 radius="none"
                 showArrow
@@ -659,7 +663,7 @@ const Lesson5Data = () => {
             {/* Bookmark Icon */}
             <div className="absolute left-2 bottom-2">
               <Tooltip
-                className="font-Jost"
+                className="font-Balsamiq"
                 placement="top"
                 radius="none"
                 showArrow
@@ -756,7 +760,7 @@ const Lesson6Data = () => {
             {/* Bookmark Icon */}
             <div className="absolute left-2 bottom-2">
               <Tooltip
-                className="font-Jost"
+                className="font-Balsamiq"
                 placement="top"
                 radius="none"
                 showArrow
@@ -854,7 +858,7 @@ const Lesson7Data = () => {
             {/* Bookmark Icon */}
             <div className="absolute left-2 bottom-2">
               <Tooltip
-                className="font-Jost"
+                className="font-Balsamiq"
                 placement="top"
                 radius="none"
                 showArrow
@@ -952,7 +956,7 @@ const Lesson8Data = () => {
             {/* Bookmark Icon */}
             <div className="absolute left-2 bottom-2">
               <Tooltip
-                className="font-Jost"
+                className="font-Balsamiq"
                 placement="top"
                 radius="none"
                 showArrow
@@ -997,6 +1001,35 @@ const Lesson8Data = () => {
           Take Pre Test
           <BookCheck size={15} />
         </Link>
+      </div>
+    </div>
+  );
+};
+
+const LessonBanner = () => {
+  return (
+    <div className="relative flex items-center justify-between w-full max-w-screen-lg mx-auto overflow-hidden bg-white border shadow dark:bg-zinc-800 p-9 text-zinc-900 dark:text-zinc-200 border-zinc-200 dark:border-zinc-700">
+      <div className="flex flex-col items-start gap-4">
+        <h1 className="text-4xl font-bold">Want More?</h1>
+        <p className="font-semibold text-md text-zinc-600 dark:text-zinc-400">
+          Other JavaScript Resources added by your instructor.
+        </p>
+
+        <Link
+          to="/"
+          className="flex items-center gap-5 px-6 py-3 mt-8 font-bold text-white shadow bg-zinc-900 dark:bg-white dark:text-black"
+        >
+          Learn More
+          <GoArrowRight size={17} />
+        </Link>
+      </div>
+
+      <div>
+        <img
+          src={BannerImage}
+          alt="image"
+          className="absolute w-32 md:w-[13.5rem] right-4 bottom-4  -rotate-[20deg]"
+        />
       </div>
     </div>
   );

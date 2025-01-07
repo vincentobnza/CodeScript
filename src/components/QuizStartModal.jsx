@@ -60,7 +60,7 @@ const QuizStartModal = ({ isOpen, setIsOpen }) => {
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.div className="fixed inset-0 z-50 grid p-8 overflow-y-scroll bg-white cursor-pointer font-Jost dark:bg-zinc-900 backdrop-blur-lg place-items-center">
+        <motion.div className="fixed inset-0 z-50 grid p-8 overflow-y-scroll bg-white cursor-pointer font-Balsamiq dark:bg-zinc-900 backdrop-blur-lg place-items-center">
           {openModal && (
             <motion.div
               initial={{ opacity: 0 }}
@@ -130,8 +130,8 @@ const QuizStartModal = ({ isOpen, setIsOpen }) => {
 
           {/* Show timer only when modal is closed and countdown is active */}
           {!openModal && showTimer && (
-            <div className="relative flex flex-col items-center justify-center w-full max-w-xl mx-auto space-y-4 font-Jost">
-              <h1 className="text-5xl font-bold text-zinc-700 dark:text-zinc-300 font-NotoSans">
+            <div className="relative flex flex-col items-center justify-center w-full max-w-xl mx-auto space-y-4 font-Balsamiq">
+              <h1 className="text-5xl font-bold text-zinc-700 dark:text-zinc-300">
                 Please Be Ready
               </h1>
               <p className="text-lg font-semibold text-zinc-400">
@@ -141,7 +141,7 @@ const QuizStartModal = ({ isOpen, setIsOpen }) => {
                 initial={{ scale: 0 }}
                 animate={{ scale: 1 }}
                 exit={{ scale: 0 }}
-                className="font-bold bg-gradient-to-br from-yellow-400 to-amber-600 bg-clip-text text-transparent text-[6rem] md:text-[9rem] font-NotoSans"
+                className="font-bold bg-gradient-to-br from-yellow-400 to-amber-600 bg-clip-text text-transparent text-[6rem] md:text-[9rem]"
               >
                 {countdown}
               </motion.h1>

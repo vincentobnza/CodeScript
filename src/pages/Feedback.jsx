@@ -59,7 +59,7 @@ export default function FeedbackForm() {
   };
 
   return (
-    <div className="flex items-center justify-center w-full min-h-screen font-Jost bg-white border border-zinc-200">
+    <div className="flex items-center justify-center w-full min-h-screen bg-white border font-Balsamiq border-zinc-200">
       <motion.div
         className="w-full max-w-2xl p-8 bg-white rounded-lg "
         variants={containerVariants}

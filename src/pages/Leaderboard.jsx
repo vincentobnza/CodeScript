@@ -212,7 +212,7 @@ const ListBox = () => {
               content="Active"
               radius="none"
               showArrow
-              className="font-Jost"
+              className="font-Balsamiq"
             >
               <div className="flex items-center gap-1 p-1 text-xs font-bold text-green-300 border border-green-700 rounded-full bg-green-600/10">
                 <Zap size={12} strokeWidth={2.5} />

@@ -141,7 +141,7 @@ const Header = ({ searchTerm, setSearchTerm }) => {
         </Link>
         <Link
           to="/admin/add-lesson"
-          className="flex items-center self-start gap-3 px-3 py-2 mt-5 text-sm font-semibold text-zinc-600 border rounded shadow outline-none border-zinc-200 shadow-zinc-200"
+          className="flex items-center self-start gap-3 px-3 py-2 mt-5 text-sm font-semibold border rounded shadow outline-none text-zinc-600 border-zinc-200 shadow-zinc-200"
         >
           <BookOpenText size={15} />
           Add Lesson
@@ -259,7 +259,7 @@ const ViewModal = ({
         isOpen={isOpen}
         onOpenChange={onOpenChange}
         size="3xl"
-        className="font-Jost"
+        className="font-Balsamiq"
       >
         <ModalContent>
           {(onClose) => (
@@ -474,7 +474,7 @@ const CreateModal = ({ isOpen, onOpen, onOpenChange }) => {
       isOpen={isOpen}
       onOpenChange={onOpenChange}
       size="5xl"
-      className="font-Jost"
+      className="font-Balsamiq"
       radius="none"
       hideCloseButton
     >
@@ -568,7 +568,7 @@ const CreateModal = ({ isOpen, onOpen, onOpenChange }) => {
                         showArrow={true}
                         placement="left"
                         content={
-                          <div className="w-[400px] p-5 pb-8 font-Jost">
+                          <div className="w-[400px] p-5 pb-8 font-Balsamiq">
                             <div className="mb-3 font-bold text-small">
                               Test Code Note ⚠️
                             </div>
@@ -750,7 +750,7 @@ const EditModal = ({ isOpen, onOpenChange, assessment, onUpdate }) => {
       onOpenChange={onOpenChange}
       size="5xl"
       radius="none"
-      className="font-Jost"
+      className="font-Balsamiq"
       hideCloseButton
     >
       <ModalContent>
@@ -844,7 +844,7 @@ const EditModal = ({ isOpen, onOpenChange, assessment, onUpdate }) => {
                         showArrow={true}
                         placement="left"
                         content={
-                          <div className="w-[400px] p-5 pb-8 font-Jost">
+                          <div className="w-[400px] p-5 pb-8 font-Balsamiq">
                             <div className="mb-3 font-bold text-small">
                               Test Code Note ⚠️
                             </div>
@@ -944,7 +944,7 @@ const DeleteModal = ({ isOpen, onOpenChange, assessment, onDelete }) => {
       onOpenChange={onOpenChange}
       size="md"
       radius="none"
-      className="font-Jost"
+      className="font-Balsamiq"
     >
       <ModalContent>
         {(onClose) => (
