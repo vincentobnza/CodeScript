@@ -37,7 +37,7 @@ import { Tooltip } from "@nextui-org/react";
 
 import { useBookmarks } from "@/hooks/useBookmark";
 
-import BannerImage from "../assets/Self Learning.png";
+import BannerImage from "../assets/Educational Resources.png";
 
 export default function Learn() {
   return (
@@ -1008,10 +1008,10 @@ const Lesson8Data = () => {
 
 const LessonBanner = () => {
   return (
-    <div className="relative flex items-center justify-between w-full max-w-screen-lg mx-auto overflow-hidden bg-white border shadow dark:bg-zinc-800 p-9 text-zinc-900 dark:text-zinc-200 border-zinc-200 dark:border-zinc-700">
+    <div className="relative flex items-center justify-between w-full max-w-screen-lg mx-auto overflow-hidden bg-white border shadow dark:bg-gradient-to-br dark:from-green-700 dark:to-emerald-900 p-9 text-zinc-900 dark:text-white border-zinc-200 dark:border-green-500">
       <div className="flex flex-col items-start gap-4">
         <h1 className="text-4xl font-bold">Want More?</h1>
-        <p className="font-semibold text-md text-zinc-600 dark:text-zinc-400">
+        <p className="font-semibold text-md text-zinc-600 dark:text-white">
           Other JavaScript Resources added by your instructor.
         </p>
 

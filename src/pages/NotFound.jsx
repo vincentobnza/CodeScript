@@ -1,6 +1,4 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 
 export default function NotFound() {
   return (
@@ -15,10 +13,10 @@ export default function NotFound() {
         <p className="mb-8 text-sm text-gray-400">
           Oops! The page you're looking for doesn't exist or has been moved.
         </p>
-        <div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+        <div className="flex items-center justify-center">
           <Link
             to="/"
-            className="inline-block px-6 py-2 mt-8 text-sm text-white underline transition duration-300 rounded-full underline-offset-4"
+            className="flex items-center justify-center gap-4 px-6 py-2 mt-8 text-sm font-bold transition duration-300 rounded-full text-zinc-500"
           >
             Go Back Home
           </Link>

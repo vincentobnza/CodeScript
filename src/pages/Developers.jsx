@@ -165,7 +165,7 @@ const LibrariesUsed = () => {
     {
       name: "Supabase",
       description: "An open-source backend as a service (BaaS).",
-      icon: "https://seeklogo.com/images/S/supabase-logo-DCC676FFE2-seeklogo.com.png",
+      icon: "https://media.zeemly.com/zeemly/product/supabase.png",
       link: "https://supabase.io/",
     },
     {
@@ -177,7 +177,7 @@ const LibrariesUsed = () => {
     {
       name: "Framer Motion",
       description: "A library for animations in React applications.",
-      icon: "https://seeklogo.com/images/F/framer-motion-logo-DA1E33CAA1-seeklogo.com.png",
+      icon: "https://attact.co/_next/image?url=%2Fframer-motion-logo.png&w=1080&q=75",
       link: "https://www.framer.com/motion/",
     },
     {

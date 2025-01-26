@@ -49,7 +49,7 @@ const Hero = () => {
             </div>
           </div>
         </>
-        <h1 className="text-4xl md:text-[52px] dark:bg-gradient-to-br dark:from-white dark:to-zinc-600 dark:bg-clip-text dark:text-transparent text-zinc-800 leading-snug  z-10 font-medium">
+        <h1 className="text-4xl md:text-[52px] dark:bg-gradient-to-br dark:from-white dark:to-zinc-600 dark:bg-clip-text dark:text-transparent text-zinc-800 leading-snug  z-10 font-semibold">
           Learn, Build, and Excel in{" "}
           <span className="text-green-600 dark:text-transparent dark:bg-gradient-to-br dark:from-green-400 dark:to-green-900 bg-clip-text">
             JavaScript
@@ -64,7 +64,7 @@ const Hero = () => {
         <div className="hidden dark:flex absolute w-[240px] h-[100px] bg-green-600/40 rounded-full bottom-8 z-0 filter blur-[80px]" />
         <Link
           to="/learn"
-          className="z-10 flex items-center justify-center gap-4 w-[170px] py-3 mt-10 text-[14px] tracking-wide dark:border bg-green-700 text-white dark:text-green-200 border border-green-700 dark:border-green-800 dark:bg-green-800/20 md:px-3  md:text-md dark:hover:brightness-125 font-medium rounded-sm"
+          className="z-10 flex items-center justify-center gap-4 w-[170px] py-3 mt-10 text-[14px] tracking-wide dark:border bg-green-700 text-white dark:text-green-200 border border-green-700 dark:border-green-900 dark:bg-green-800/20 md:px-3  md:text-md dark:hover:brightness-125 font-medium rounded-sm"
           onMouseEnter={() => setHovered("learn")}
           onMouseLeave={() => setHovered(null)}
         >

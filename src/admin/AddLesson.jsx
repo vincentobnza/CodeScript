@@ -1,53 +1,102 @@
 import React, { useState } from "react";
 import supabase from "../config/supabaseClient";
 import toast from "react-hot-toast";
+import { CornerDownLeft, Plus, Trash2 } from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function AddLesson() {
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [subTopic, setSubTopic] = useState("");
-  const [sampleCode, setSampleCode] = useState("");
-  const [showSubTopic, setShowSubTopic] = useState(false);
-  const [showSampleCode, setShowSampleCode] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+  const [isLoading, setIsLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    title: "",
+    description: "",
+    subtopics: [],
+    additionalDescriptions: [],
+    sampleCodes: [],
+  });
 
+  // Handle input changes
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [id]: value,
+    }));
+  };
+
+  // Add subtopic
+  const addSubtopic = () => {
+    setFormData((prev) => ({
+      ...prev,
+      subtopics: [...prev.subtopics, { title: "", content: "" }],
+    }));
+  };
+
+  // Add additional description
+  const addDescription = () => {
+    setFormData((prev) => ({
+      ...prev,
+      additionalDescriptions: [...prev.additionalDescriptions, ""],
+    }));
+  };
+
+  // Add sample code
+  const addSampleCode = () => {
+    setFormData((prev) => ({
+      ...prev,
+      sampleCodes: [...prev.sampleCodes, { language: "", code: "" }],
+    }));
+  };
+
+  // Update nested items
+  const updateSubtopic = (index, field, value) => {
+    setFormData((prev) => {
+      const newSubtopics = [...prev.subtopics];
+      newSubtopics[index] = { ...newSubtopics[index], [field]: value };
+      return { ...prev, subtopics: newSubtopics };
+    });
+  };
+
+  const updateDescription = (index, value) => {
+    setFormData((prev) => {
+      const newDescriptions = [...prev.additionalDescriptions];
+      newDescriptions[index] = value;
+      return { ...prev, additionalDescriptions: newDescriptions };
+    });
+  };
+
+  const updateSampleCode = (index, field, value) => {
+    setFormData((prev) => {
+      const newSampleCodes = [...prev.sampleCodes];
+      newSampleCodes[index] = { ...newSampleCodes[index], [field]: value };
+      return { ...prev, sampleCodes: newSampleCodes };
+    });
+  };
+
+  // Remove items
+  const removeItem = (type, index) => {
+    setFormData((prev) => ({
+      ...prev,
+      [type]: prev[type].filter((_, i) => i !== index),
+    }));
+  };
+
+  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
-    if (
-      !title.trim() ||
-      !description.trim() ||
-      (showSubTopic && !subTopic.trim()) ||
-      (showSampleCode && !sampleCode.trim())
-    ) {
-      toast.error("All fields are required!");
-      return;
-    }
+    try {
+      const { data, error } = await supabase.from("lessons").insert([formData]);
 
-    setLoading(true);
+      if (error) throw error;
 
-    const { data, error } = await supabase.from("lessons").insert([
-      {
-        title,
-        description,
-        sub_topic: showSubTopic ? subTopic : null,
-        sample_code: showSampleCode ? sampleCode : null,
-      },
-    ]);
-
-    setLoading(false);
-
-    if (error) {
-      console.error("Error inserting data:", error.message);
-      toast.error("Failed to add lesson. Please try again.");
-    } else {
-      toast.success("Lesson successfully added!");
-      setTitle("");
-      setDescription("");
-      setSubTopic("");
-      setSampleCode("");
-      setShowSubTopic(false);
-      setShowSampleCode(false);
+      toast.success("Lesson created successfully!");
+      navigate("/admin/lessons");
+    } catch (error) {
+      toast.error(error.message);
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -55,82 +104,155 @@ export default function AddLesson() {
     <div className="flex flex-col w-full gap-2 space-y-2">
       <Header />
       <div className="flex flex-col gap-4 p-5">
-        <form className="space-y-4" onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="space-y-4">
           {/* Title */}
-          <div className="flex flex-col w-full gap-2 p-5 border border-zinc-100">
+          <div className="flex flex-col w-full gap-2 p-5 border border-zinc-500">
             <label htmlFor="title" className="text-sm font-medium">
               Title
             </label>
             <input
               type="text"
               id="title"
+              value={formData.title}
+              onChange={handleChange}
               placeholder="Enter title"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              className="p-3 px-4 transition duration-300 ease-in-out border-b border-zinc-100 focus:border-zinc-600 focus:border-b-2 focus:outline-none"
+              className="p-3 px-4 transition duration-300 ease-in-out border-b border-zinc-500 focus:border-zinc-600 focus:border-b-2 focus:outline-none"
+              required
             />
           </div>
 
           {/* Description */}
-          <div className="flex flex-col w-full gap-4 p-5 border border-zinc-100">
+          <div className="flex flex-col w-full gap-4 p-5 border border-zinc-500">
             <label htmlFor="description" className="text-sm font-medium">
               Description
             </label>
             <textarea
               id="description"
+              value={formData.description}
+              onChange={handleChange}
               placeholder="Enter description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              className="h-40 p-3 px-4 border rounded-md border-zinc-100"
+              className="h-40 p-3 px-4 border rounded-md border-zinc-100 outline-none"
+              required
             />
           </div>
 
-          {/* Dynamic Fields */}
-          {showSubTopic && (
-            <div className="flex flex-col w-full gap-2 p-5 border border-zinc-100">
-              <label htmlFor="subTopic" className="text-sm font-medium">
-                Subtopic
-              </label>
+          {/* Subtopics */}
+          {formData.subtopics.map((subtopic, index) => (
+            <div
+              key={index}
+              className="flex flex-col w-full gap-4 p-5 border border-zinc-500"
+            >
+              <div className="flex justify-between items-center">
+                <label className="text-sm font-medium">
+                  Subtopic {index + 1}
+                </label>
+                <button
+                  type="button"
+                  onClick={() => removeItem("subtopics", index)}
+                  className="text-red-500"
+                >
+                  <Trash2 size={16} />
+                </button>
+              </div>
               <input
                 type="text"
-                id="subTopic"
-                placeholder="Enter subtopic"
-                value={subTopic}
-                onChange={(e) => setSubTopic(e.target.value)}
-                className="p-3 px-4 border rounded-md border-zinc-100"
+                value={subtopic.title}
+                onChange={(e) => updateSubtopic(index, "title", e.target.value)}
+                placeholder="Subtopic title"
+                className="p-3 border-b border-zinc-500"
               />
             </div>
-          )}
+          ))}
 
-          {showSampleCode && (
-            <div className="flex flex-col w-full gap-2 p-5 border border-zinc-100">
-              <label htmlFor="sampleCode" className="text-sm font-medium">
-                Sample Code
-              </label>
+          {/* Additional Descriptions */}
+          {formData.additionalDescriptions.map((desc, index) => (
+            <div
+              key={index}
+              className="flex flex-col w-full gap-4 p-5 border border-zinc-500"
+            >
+              <div className="flex justify-between items-center">
+                <label className="text-sm font-medium">
+                  Additional Description {index + 1}
+                </label>
+                <button
+                  type="button"
+                  onClick={() => removeItem("additionalDescriptions", index)}
+                  className="text-red-500"
+                >
+                  <Trash2 size={16} />
+                </button>
+              </div>
               <textarea
-                id="sampleCode"
-                placeholder="Enter sample code"
-                value={sampleCode}
-                onChange={(e) => setSampleCode(e.target.value)}
-                className="h-40 p-3 px-4 border rounded-md border-zinc-100"
+                value={desc}
+                onChange={(e) => updateDescription(index, e.target.value)}
+                placeholder="Enter additional description"
+                className="h-24 p-3 border rounded-md"
               />
             </div>
-          )}
+          ))}
+
+          {/* Sample Codes */}
+          {formData.sampleCodes.map((code, index) => (
+            <div
+              key={index}
+              className="flex flex-col w-full gap-4 p-5 border border-zinc-500"
+            >
+              <div className="flex justify-between items-center">
+                <label className="text-sm font-medium">
+                  Sample Code {index + 1}
+                </label>
+                <button
+                  type="button"
+                  onClick={() => removeItem("sampleCodes", index)}
+                  className="text-red-500"
+                >
+                  <Trash2 size={16} />
+                </button>
+              </div>
+              <input
+                type="text"
+                value={code.language}
+                onChange={(e) =>
+                  updateSampleCode(index, "language", e.target.value)
+                }
+                placeholder="Programming language"
+                className="p-3 border-b border-zinc-500"
+              />
+              <textarea
+                value={code.code}
+                onChange={(e) =>
+                  updateSampleCode(index, "code", e.target.value)
+                }
+                placeholder="Enter code"
+                className="h-40 p-3 font-mono border rounded-md"
+              />
+            </div>
+          ))}
 
           {/* Add Buttons */}
-          <div className="flex justify-start w-full gap-4 p-5">
+          <div className="flex justify-start w-full gap-4 text-sm font-medium">
             <button
               type="button"
-              onClick={() => setShowSubTopic(!showSubTopic)}
-              className="px-4 py-1 border border-zinc-400"
+              onClick={addSubtopic}
+              className="flex items-center gap-2 px-4 py-2 shadow-sm border border-zinc-400 hover:bg-zinc-50"
             >
+              <Plus size={14} />
               Add Subtopic
             </button>
             <button
               type="button"
-              onClick={() => setShowSampleCode(!showSampleCode)}
-              className="px-4 py-1 border border-zinc-400"
+              onClick={addDescription}
+              className="flex items-center gap-2 px-4 py-2 shadow-sm border border-zinc-400 hover:bg-zinc-50"
             >
+              <Plus size={14} />
+              Add Description
+            </button>
+            <button
+              type="button"
+              onClick={addSampleCode}
+              className="flex items-center gap-2 px-4 py-2 shadow-sm border border-zinc-400 hover:bg-zinc-50"
+            >
+              <Plus size={14} />
               Add Sample Code
             </button>
           </div>
@@ -139,14 +261,10 @@ export default function AddLesson() {
           <div className="flex gap-4 mt-4">
             <button
               type="submit"
-              className={`py-2 px-4 rounded-md text-white ${
-                loading
-                  ? "bg-gray-400 cursor-not-allowed"
-                  : "bg-green-500 hover:bg-green-600"
-              }`}
-              disabled={loading}
+              disabled={isLoading}
+              className={`py-2 px-4 rounded-md text-white bg-green-500 hover:bg-green-600 disabled:bg-green-300 disabled:cursor-not-allowed`}
             >
-              {loading ? "Saving..." : "Save Lesson"}
+              {isLoading ? "Saving..." : "Save Lesson"}
             </button>
           </div>
         </form>
@@ -158,6 +276,10 @@ export default function AddLesson() {
 const Header = () => (
   <div className="flex items-center justify-between p-5">
     <div className="space-y-2">
+      <Link to="/admin/assessments" className="flex items-center gap-2">
+        <CornerDownLeft size={24} className="cursor-pointer mb-6" />
+      </Link>
+
       <h1 className="text-2xl font-semibold text-gray-800">
         Create a New Lesson
       </h1>
